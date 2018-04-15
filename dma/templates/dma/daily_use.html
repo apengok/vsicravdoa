@@ -1,0 +1,115 @@
+{% extends 'virvo/_base.html' %}
+
+
+
+
+{% block organizationtree %}
+<div class=" treel">
+  {% include 'virvo/stationtree.html' %}
+</div>
+{% endblock %}
+
+
+{% block content %}
+<div class=" context">
+    
+
+<div  class="ax_default">
+
+  <div class="list-group" role="tab" id="heading">
+      <div>
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1" class="list-group-item active main-color-bg">
+          <span class="fa fa-caret-down" title="Toggle dropdown menu"></span> 图形分析
+        </a>
+      </div>
+      
+          <div id="collapse1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading">
+            <div>
+              <form>
+                <input type="text" name="sname">
+                <input type="submit" name="btn_seach">
+                
+              </form>
+              <button id="add_station"><a href="{% url 'virvo:stations_create_manager' %}" data-toggle="modal" data-target="#modal" class="fa fa-pencil" title="create stations" data-tooltip>新增</a></button>
+              
+            </div>
+        </div>
+
+
+        <div >
+        <div id="chart_station" style="width: 1200px;height:555px;"></div>
+        
+      </div>
+      
+  </div>
+
+
+
+    
+
+
+    
+</div>
+{% endblock %}
+
+
+{% block javascript %}
+{{ block.super }}
+    
+
+    <script>
+        
+        $(function(){
+          load_Tree('daily');
+        });
+
+
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('chart_station'));
+        var server_info;
+        // 指定图表的配置项和数据
+        var option = {
+            // title: {
+            //     text: 'ECharts 入门示例'
+            // },
+            tooltip: {},
+            legend: {
+                data:['昨日曲线','当日柱状图',]
+            },
+            
+            xAxis: {
+                data: ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24"]
+            },
+            yAxis: {},
+            series: [
+              {
+                  name: '当日柱状图',
+                  type: 'bar',
+                  data: [37, 28, 26, 26, 29, 30,40,48,54,58,62,58,55,54,52,48,52,54,56,58,62,63,64,58,48]
+              },
+              {
+                  name: '昨日曲线',
+                  type: 'line',
+                  data: [37, 28, 26, 26, 29, 30,40,48,54,58,62,58,55,54,52,48,52,54,56,58,62,63,64,58,48]
+              },
+            ]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+
+        
+ 
+
+        // myChart.setOption(option, true);
+
+            
+ 
+         window.onresize = function () {
+            myChart.resize();      
+        };
+
+        
+    </script>
+
+{% endblock %}

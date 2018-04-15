@@ -1,0 +1,232 @@
+<div class=" sidebar">
+        
+
+        <div id="navitem_div" class="ax_default _一级标题" style="cursor: pointer;">
+          
+            <div class="col-md-2" style="top: 20px;">
+              
+              <span class="fa fa-home"></span>
+              
+            </div>
+            <div class="col-md-8" style="top: 20px;">
+              
+              <p><a href="{% url 'dma:virvo_home' %}"><span>首页</span></a></p>
+              
+            </div>
+            <div class="col-md-2" style="top: 20px;">
+              
+              <p><span></span></p>
+              
+            </div>
+
+          
+        </div>
+
+        <div id="navitem_div" class="ax_default _一级标题" style="cursor: pointer;">
+          
+            <div class="col-md-2" style="top: 20px;">
+              
+              <span class="fa fa-eye"></span>
+              
+            </div>
+            <div class="col-md-8" style="top: 20px;">
+              
+              <p><span>数据监控</span></p>
+              
+            </div>
+            <div class=" dropdown col-md-2" style="top: 20px;">
+              
+              <span class="fa fa-angle-right"></span>
+
+              <!-- dropdown menu -->
+              <ul class="dropdown-menu">
+                  <li><a href="{% url 'dma:map_monitor' dma_id=1 %}">地图监控</a></li>
+                  <li><a href="{% url 'dma:rt_curve' dma_id=1 %}">实时曲线</a></li>
+                  <li><a href="{% url 'dma:rt_data' dma_id=1 %}">实时数据</a></li>
+              </ul>
+              
+            </div>
+        </div>
+
+        
+
+        <div id="navitem_div" class="ax_default _一级标题" style="cursor: pointer;">
+          
+            <div class="col-md-2" style="top: 20px;">
+              
+              <span class="fa fa-bar-chart"></span>
+              
+            </div>
+            <div class="col-md-8" style="top: 20px;">
+              
+              <p><span>数据分析</span></p>
+              
+            </div>
+            <div class="dropdown col-md-2" style="top: 20px;">
+              
+              <span class="fa fa-angle-right"></span>
+
+              <!-- dropdown menu -->
+              <ul class="dropdown-menu">
+                  <li><a href="{% url 'dma:daily_use' dma_id=1 %}">日用水分析</a></li>
+                  
+              </ul>
+              
+            </div>
+        </div>
+
+        
+
+        <div id="navitem_div" class="ax_default _一级标题" style="cursor: pointer;">
+          
+            <div class="col-md-2" style="top: 20px;">
+              
+              <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>
+              
+            </div>
+            <div class="col-md-8" style="top: 20px;">
+              
+              <p><span>报警中心</span></p>
+              
+            </div>
+            <div class="col-md-2" style="top: 20px;">
+              
+              <span class="fa fa-angle-right"></span>
+              
+            </div>
+        </div>
+
+        
+
+        <div id="navitem_div" >
+          
+            <div class="col-md-2" style="top: 20px;">
+              
+              <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+              
+            </div>
+            <div class="col-md-8" style="top: 20px;">
+              
+              <p><span>基础管理</span></p>
+              
+            </div>
+            <div class=" dropdown col-md-2" style="top: 20px;">
+              
+              <span class="fa fa-angle-right"></span>
+
+              <!-- dropdown menu -->
+              <ul class="dropdown-menu">
+                  <li><a href="{% url 'dma:dma_manager' pk=1 %}">dma管理</a></li>
+                  <li><a href="{% url 'dma:stations_list_manager' dma_id=1 %}">站点管理</a></li>
+              </ul>
+              
+            </div>
+        </div>
+
+        
+
+        <div id="navitem_div" class="ax_default _一级标题" style="cursor: pointer;">
+          
+            <div class="col-md-2" style="top: 20px;">
+              
+              <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+              
+            </div>
+            <div class="col-md-8" style="top: 20px;">
+              
+              <p><span>设备管理</span></p>
+              
+            </div>
+            <div class="col-md-2" style="top: 20px;">
+              
+              <span class="fa fa-angle-right"></span>
+              
+            </div>
+        </div>
+
+        
+
+        <div id="navitem_div" class="ax_default _一级标题" style="cursor: pointer;">
+          
+            <div class="col-md-2" style="top: 20px;">
+              
+              <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+              
+            </div>
+            <div class="col-md-8" style="top: 20px;">
+              
+              <p><span>企业管理</span></p>
+              
+            </div>
+            <div class="col-md-2" style="top: 20px;">
+              
+              <span class="fa fa-angle-right"></span>
+              
+            </div>
+        </div>
+
+        
+
+        <div id="navitem_div" class="ax_default _一级标题" style="cursor: pointer;">
+          
+            <div class="col-md-2" style="top: 20px;">
+              
+              <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+              
+            </div>
+            <div class="col-md-8" style="top: 20px;">
+              
+              <p><span>基准分析</span></p>
+              
+            </div>
+            <div class="col-md-2" style="top: 20px;">
+              
+              <span class="fa fa-angle-right"></span>
+              
+            </div>
+        </div>
+
+        
+
+        <div id="navitem_div" class="ax_default _一级标题" style="cursor: pointer;">
+          
+            <div class="col-md-2" style="top: 20px;">
+              
+              <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+              
+            </div>
+            <div class="col-md-8" style="top: 20px;">
+              
+              <p><span>报表统计</span></p>
+              
+            </div>
+            <div class="col-md-2" style="top: 20px;">
+              
+              <span class="fa fa-angle-right"></span>
+              
+            </div>
+        </div>
+
+        
+
+        <div id="navitem_div" class="ax_default _一级标题" style="cursor: pointer;">
+          
+            <div class="col-md-2" style="top: 20px;">
+              
+              <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+              
+            </div>
+            <div class="col-md-8" style="top: 20px;">
+              
+              <p><span>系统管理</span></p>
+              
+            </div>
+            <div class="col-md-2" style="top: 20px;">
+              
+              <span class="fa fa-angle-right"></span>
+              
+            </div>
+        </div>
+
+      </div>
+      

@@ -1,0 +1,168 @@
+<form id="station-form" method='POST' action='{{ request.build_absolute_uri|safe }}' class = "form-horizontal"  role = "form">{% csrf_token %}
+
+<div class=" formedit">
+    <div class="form_header"><div class="pull-left">新增站点</div></div>
+
+    <div style="margin-top: 5px;">
+        <div class = "panel panel-primary ">
+          
+           <div class = "panel-body">
+                
+                    <div><!-- <form> -->
+                   <div class = "form-group">
+                      <label for = "{{ form.station_name.id_for_label }}" class = "col-sm-4 control-label">站点名称</label>
+                        
+                      <div class = "col-sm-8">
+
+                         <input type = "text" class = "form-control" id = "id_station_name" value="{{ form.station_name.value|default:'' }}" >
+                         
+                      </div>
+                   </div>
+                   
+                   <div class = "form-group">
+                      <label for = "{{ form.staion_desc.id_for_label }}" class = "col-sm-4 control-label">站点描述</label>
+                        
+                      <div class = "col-sm-8">
+                         <input type = "text" class = "form-control" id = "id_staion_desc" value="{{ form.staion_desc.value|default:'' }}" placeholder = "staion_description">
+                      </div>
+                   </div>
+
+                   <div class = "form-group">
+                      <label for = "{{ form.belongto.id_for_label }}" class="col-sm-4 control-label">所属组织</label>
+                      <div class="col-sm-8">
+                          {{ form.belongto }}
+                      </div>
+                   </div>
+
+                   <div class = "form-group">
+                      <label for = "{{ form.meter_property.id_for_label }}" class="col-sm-4 control-label">用水性质</label>
+                      <div class="col-sm-8">
+                          {{ form.meter_property }}
+
+                      </div>
+                   </div>
+
+                   <div class = "form-group">
+
+                      <div class = "col-sm-offset-2 col-sm-8">
+                        <div class = "radio">
+                          {% if form.meter_type %}
+                            {% for mt in form.meter_type %}
+                              <label class="checkbox-inline"><input type = "radio"  id = "{{ mt.id_for_label }}" value = "{{ mt.choice_label }}" {% if form.instance.meter_type == mt.choice_label %} checked {% endif %} > {{ mt.choice_label }}</label>
+                            {% empty %}
+                              <label class="checkbox-inline"><input type = "radio" name = "meter_type" id = "id_meter_type" value = "水表" checked> 水表</label>
+                              <label class="checkbox-inline"><input type = "radio" name = "meter_type" id = "id_meter_type" value = "流量计" checked> 流量计</label>
+                            {% endfor %}
+                          {% else %}
+                            
+                          {% endif %}
+                         </div>
+                        
+                         
+                      </div>
+                   </div>
+
+                   <div class = "form-group">
+                      <label for = "related_meter" class="col-sm-4 control-label">关联表具</label>
+                      <div class="col-sm-8">
+                          <select class = "form-control " id="sname">
+                             <option>10</option>
+                             <option>20</option>
+                             <option>30</option>
+                             <option>40</option>
+                             <option>50</option>
+                          </select>
+                      </div>
+                   </div>
+
+                   <div class = "form-group">
+                      <label for = "{{ form.meter_code.id_for_label }}" class = "col-sm-4 control-label">表具编号</label>
+                        
+                      <div class = "col-sm-8">
+                         <input type = "text" class = "form-control" id = "id_meter_code" value="{{ form.meter_code.value|default:'' }}" placeholder = "meter_code">
+                         
+                      </div>
+                   </div>
+                   
+                   <div class = "form-group">
+                      <label for = "{{ form.simno.id_for_label }}" class = "col-sm-4 control-label">SIM卡号</label>
+                        
+                      <div class = "col-sm-8">
+                         <input type = "text" class = "form-control" id = "id_simno" value="{{ form.simno.value|default:'' }}" placeholder = "staion_description">
+                      </div>
+                   </div>
+
+                   <div class = "form-group">
+                      <label for = "{{ form.caliber.id_for_label }}" class = "col-sm-4 control-label">口径</label>
+                        
+                      <div class = "col-sm-8">
+                         <input type = "text" class = "form-control" id = "id_caliber" value="{{ form.caliber.value|default:'' }}" placeholder = "caliber">
+                         
+                      </div>
+                   </div>
+                   
+                   <div class = "form-group">
+                      <label for = "installed" class = "col-sm-4 control-label">安装日期</label>
+                        
+                      <div class = "col-sm-8">
+                         <input type = "text" class = "form-control" id = "installed" placeholder = "installed">
+                      </div>
+                   </div>
+                   
+                   
+                    </div>
+                <!-- </form> -->
+            </div>
+           <!-- <div class = "panel-footer">Panel footer</div> -->
+        </div>
+    </div>
+
+    <div class="form_map">
+        
+        <div style="border: 1px solid black;height: 400px;"></div>
+        <div>
+          <div style="margin-top: 30px;">
+            <label for = "{{ form.longitude.id_for_label }}" class = "col-sm-3 control-label">经度:</label>
+              
+            <div class = "col-sm-3">
+               <input type = "text" class = "form-control " id = "jingdu" value="{{ form.longitude.value|default:'' }}">
+               
+            </div>
+         </div>
+         
+         <div>
+            <label for = "{{ form.latitude.id_for_label }}" class = "col-sm-3 control-label">纬度:</label>
+              
+            <div class = "col-sm-3">
+               <input type = "text" class = "form-control" id = "id_latitude" value="{{ form.latitude.value|default:'' }}">
+            </div>
+         </div>
+       </div>
+
+       <div class = "form-group">
+          <label for = "{{ form.geopos.id_for_label}}" class="col-sm-3 control-label" >位置信息</label>
+          <div class="col-sm-8" >
+              {{ form.geopos }}
+          </div>
+       </div>
+        
+    </div>
+
+    <div class="form_img">
+      <div ><button type="button" class="btn btn-primary">载入现场图片</button></div>
+      <div class="form_img_box"></div>
+      <div class="form_img_box"></div>
+      <div class="form_img_box"></div>
+      <div class="form_img_box"></div>
+      <div class="form_img_box"></div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary pull-left" >重点关注</button>
+      <button type="submit" class="btn btn-primary">提交</button>
+      <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      
+    </div>
+    
+</div>
+</form>

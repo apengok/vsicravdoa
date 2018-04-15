@@ -1,0 +1,96 @@
+{% extends '_base2.html' %}
+
+{% load staticfiles %}
+
+{% block page_title %}
+<div class="page_title center">
+  <div class="pg_text"><span> 数据监控 | {{ page_title }}</span></div>
+</div>
+{% endblock %}
+
+
+{% block content %}
+  <div >
+    
+      <table id="tb_rtdata" class="table table-bordered">
+        <thead>
+          <tr>
+            <th >序号</th>
+            <th >站点名称</th>
+            <th >所属组织</th>
+            <th >表具编号</th>
+            <th >报警</th>
+            <th >状态</th>
+            <th >口径</th>
+            <th >最新采样时间</th>
+            <th >采样间隔min</th>
+            <th >上报间隔h</th>
+            <th >瞬时流量m³/h</th>
+            
+            <th >正向流量m³</th>
+            <th >反向流量m³</th>
+            <th >压力Mpa</th>
+            <th >基表电量%</th>
+            <th >远传电量%</th>
+            <th >信号强度%</th>
+            
+            
+          </tr>
+
+        </thead>
+       {% for stations in stations_list %}
+          <tr>
+            <td>{{ stations.id }} </td>
+            
+            <td>{{ stations.station_name }} </td>
+            <td>{{ stations.belongto }} </td>
+            <td>{{ stations.meter_code }} </td>
+            <td><a href="{% url 'dma:stations_alarms_message' stations.id %}" data-toggle="modal" data-target="#modal"   data-tooltip>{{ stations.alarms_set.all.count }}</a> </td>
+            <td>{{ stations.meterflow_set.first.comm_status }} </td>
+            <td>{{ stations.caliber }} </td>
+            <td>{{ stations.meterflow_set.first.read_time|date:'Y-m-d H:i:s' }} </td>
+            <td>{{ stations.meterflow_set.first.read_interval }} </td>
+            <td>{{ stations.meterflow_set.first.report_interval }} </td>
+            <td>{{ stations.meterflow_set.first.instance_flow }} </td>
+            <td>{{ stations.meterflow_set.first.postive_flow }} </td>
+            <td>{{ stations.meterflow_set.first.reverse_flow }} </td>
+            <td>{{ stations.meterpress_set.first.press }} </td>
+            <td>{{ stations.meterflow_set.first.base_power }} </td>
+            <td>{{ stations.meterflow_set.first.trans_power }} </td>
+            <td>{{ stations.meterflow_set.first.signals }} </td>
+            
+          </tr>
+          
+       {% endfor %}
+     </table>
+      
+      <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+          <div class="modal-dialog" role="document" >
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">报警信息</h4>
+              </div>
+              <div class="modal-body">
+                
+              </div>
+              
+            </div>
+          </div>
+        </div>
+
+  </div>
+  
+{% endblock %}
+
+
+{% block javascript %}
+ {{ block.super }}
+    <SCRIPT LANGUAGE="JavaScript">
+
+    $(function(){
+        load_Tree('rt_data');
+    });
+      
+    </SCRIPT>
+{% endblock %}      

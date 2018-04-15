@@ -1,0 +1,140 @@
+  {% load staticfiles %}<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block title %}Test layout{% endblock %}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'dma/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'dma/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'gis/assets/css/ol.css' %}" type = "text/css"/>
+    <link rel="stylesheet" href="{% static 'gis/assets/css/jquery-ui.css' %}" type = "text/css"/>
+
+     <!-- virvo provider -->
+    <link href="{% static 'virvo/data/styles.css' %}" type="text/css" rel="stylesheet"/>
+    <link href="{% static 'virvo/state_content.css' %}" type="text/css" rel="stylesheet"/>
+
+    <link href="{% static 'virvo/grid.css' %}" type="text/css" rel="stylesheet"/>
+
+    <!-- openlayer -->
+    
+    <script src="{%  static 'gis/assets/js/ol-debug.js' %} "></script>
+
+    <script src="{%  static 'gis/assets/js/jquery.js' %} "></script>
+    <script src="{%  static 'gis/assets/js/jquery-ui.js' %} "></script>
+    <script src="{% static 'dma/js/bootstrap.min.js' %}"></script>
+
+    <!-- zTree -->
+    <link rel="stylesheet" href="{% static 'zTree/css/demo.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'zTree/css/zTreeStyle/zTreeStyle.css' %}" type="text/css">
+  
+    <script type="text/javascript" src="{% static 'zTree/js/jquery.ztree.core.js' %}"></script>
+
+    <!-- echart -->
+    <script src="{% static 'virvo/echarts.min.js' %}"></script>
+
+
+    <script src="{% static 'virvo/virvo_app.js' %}"></script>
+
+    <script src="{% static 'virvo/jquery.form.js' %}"></script>
+
+    <!-- jQuery Modal -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+ -->
+    {% block stylesheet %}
+    <style type="text/css">
+    </style>
+    {% endblock %}
+</head>
+<body>
+    <div class="wrapper">
+
+      <!-- header -->
+      {% include '_header.html' %}
+
+      <!-- nav menu -->
+      {% include '_nav.html' %}
+
+      <div class=" content">
+        <!-- breadcrumbs -->
+        <div class="breads center">
+          <div class="bred_text ">{% block breadcrumbs %}<a href="{% url 'home' %}"><span class="fa fa-home">首页</span></a> / 站点管理{% endblock %}</div>
+        </div>
+          <!-- page title -->
+        <div class="page_title center">
+          <div class="pg_text"><span>{% block page_title %}{{ page_title }}{% endblock %}</span></div>
+        </div>
+        
+        <!-- main contents -->
+        <div class="main_content">
+
+          {% block organizationtree %}
+          <div class=" treel">
+            
+          </div>
+          {% endblock %}
+
+          {% block content %}
+          <div class=" context">
+              
+
+              
+          </div>
+          {% endblock %}
+          
+        </div>
+        
+      </div>
+      
+    </div>
+    {% block javascript %}
+    <SCRIPT LANGUAGE="JavaScript">
+
+    // $(function(){
+    //     load_dmaTree();
+    // });
+
+    
+
+
+ // using jQuery This is directly from the Django docs. Put this code before any jQuery that uses AJAX as a catch-all for cross site request forgery protection (CSRF).
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+var csrftoken = getCookie('csrftoken');
+
+function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+});
+
+    
+        
+</SCRIPT>
+    {% endblock %}
+</body>
+</html>

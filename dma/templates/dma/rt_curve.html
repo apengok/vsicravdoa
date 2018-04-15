@@ -1,0 +1,107 @@
+{% extends '_base2.html' %}
+
+{% load staticfiles %}
+
+{% block page_title %}
+
+{% endblock %}
+
+
+{% block content %}
+  <div class="curve_content">
+    {% for rt in rt_dataset %}
+      <div class="curve_item">
+        <div id="{{ rt.chart_id }}" style="width: 300px;height:220px;"></div>
+        <div >{{ rt.station_name }}</div>
+        <div>{{ rt.caliber }}</div>
+      </div>
+    {% endfor %}
+      <!-- <div class="curve_item">
+        <div id="main2" style="width: 300px;height:220px;"></div>
+        <div >沙田水厂淡水</div>
+        <div>DN200</div>
+      </div> -->
+      
+
+  </div>
+  <div id="myposition"></div>
+{% endblock %}
+
+
+{% block javascript %}
+ {{ block.super }}
+    <SCRIPT LANGUAGE="JavaScript">
+
+      $(function(){
+          load_Tree('rt_curve');
+      });
+
+       // 基于准备好的dom，初始化echarts实例
+        // var myChart = echarts.init(document.getElementById('main'));
+        var server_info;
+        // 指定图表的配置项和数据
+        var option = {
+            // title: {
+            //     text: 'ECharts 入门示例'
+            // },
+            tooltip: {},
+            legend: {
+                data:['flow']
+            },
+            xAxis: {
+                data: ["0:00","","08:00","","16:00","","24:00"]
+            },
+            yAxis: {
+              name:'m3/h'
+            },
+            series: [{
+                name: 'time',
+                type: 'line',
+                data: [5, 20, 36, 10, 10, 20]
+            }]
+        };
+
+      var a = {{ jsd|safe }};
+      json = eval(a);
+      
+      for (var i = json.length - 1; i >= 0; i--) {
+        var name = json[i].name;
+        var data = json[i].data;
+        
+        myChart = echarts.init(document.getElementById(name));
+        option.series[0].data = data;
+        myChart.setOption(option, true);
+        
+      }
+
+      
+
+      
+
+
+        // 使用刚指定的配置项和数据显示图表。
+        // myChart.setOption(option);
+
+        // // setInterval( function () {     
+ 
+        //         $.ajax({
+        //             type: 'GET',
+        //             url: '/dma/getchartd',
+        //             dataType: 'json',
+        //             success: function (json) {
+        //                 server_info = json['data'];
+        //             }
+        //         });
+ 
+                    
+        //         option.series[0].data = server_info;
+
+                // myChart.setOption(option, true);
+
+            // }, 2000);  
+ 
+        //  window.onresize = function () {
+        //     myChart.resize();      
+        // };
+    </SCRIPT>
+{% endblock %}      

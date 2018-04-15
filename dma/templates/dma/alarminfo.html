@@ -1,0 +1,38 @@
+<div class="modal-dialog " >
+    <div class="modal-content">
+
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="exampleModalLabel">报警信息</h4>
+      </div>
+      <div class="modal-body">
+        <table class="table table-bordered">
+            <thead>
+              <tr>
+                
+                <th >报警类型</th>
+                <th>报警时间</th>
+                
+                
+              </tr>
+
+            </thead>
+            <tbody>
+                {% for q in qs %}
+                    <tr>
+                        <td>{{ q.alarm_type }}</td>
+                        <td>{{ q.report_time }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+            
+            
+      </div>
+             
+        
+
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+

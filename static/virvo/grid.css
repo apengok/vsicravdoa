@@ -1,0 +1,474 @@
+body {
+  margin: 0px;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  grid-gap: 1px;
+  /*background-color: #fff;*/
+  /*color: #444;*/
+  
+}
+
+
+
+
+.logo {
+    background-color: rgba(40, 40, 46, 1);
+    color: #fff;
+    height: 80px;
+    width: 240px;
+
+    font-family:'Berlin Sans FB Demi Bold', 'Berlin Sans FB Normal', 'Berlin Sans FB';
+    font-weight:600;
+    font-style:normal;
+    font-size:60px;
+    color:#FFFFFF;
+}
+
+.header {
+    height: 80px;
+    
+    display: grid;
+    grid-template-columns: 40px 423px repeat(6,1fr);
+}
+
+.user {
+  grid-column-start: 6;
+    grid-column-end: 7;
+}
+
+.date_1 {
+    grid-column-start: 7;
+    grid-column-end: 8;
+    background-color: rgba(0, 153, 204, 1);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    margin:5px;
+}
+
+.w {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+.d {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+.m {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+
+.time_1 {
+  grid-column-start: 8;
+  grid-column-end: 9;
+  margin:5px;
+}
+
+.sidebar {
+    height: 980px;
+    width: 240px;
+    background-color: #32323A;
+    display: grid;
+    grid-template-rows: repeat(10,60px);
+}
+
+.sitem {
+    display: grid;
+    grid-template-columns: 60px 1fr 60px;
+
+    background-color: rgba(255, 255, 255, 0);
+}
+
+
+
+.brand_input {
+  top:25px;
+  width:423px;
+  height:42px;
+  font-family:'微软雅黑 Bold', '微软雅黑 Regular', '微软雅黑';
+  font-weight:700;
+  font-style:normal;
+  font-size:36px;
+  text-decoration:none;
+  color:#666666;
+  text-align:left;
+  border-color:transparent;
+  outline-style:none;
+
+}
+
+.center {
+  margin-top:auto;
+  margin-right: auto;
+  margin-bottom: auto;
+/*margin-left: auto;*/
+}
+
+#navitem_div {
+  border-bottom: 1px solid grey;
+  width:240px;
+  height:60px;
+  background:inherit;
+  background-color:rgba(255, 255, 255, 0);
+  /*border:1px solid red;*/
+  border-radius:0px;
+  -moz-box-shadow:none;
+  -webkit-box-shadow:none;
+  box-shadow:none;
+  font-family:'微软雅黑 Bold', '微软雅黑 Regular', '微软雅黑';
+  font-weight:700;
+  font-style:normal;
+  font-size:16px;
+  color:#CCCCCC;
+}
+
+#navitem_div:hover {
+  /*border-width:0px;
+  position:absolute;
+  left:0px;
+  top:0px;*/
+  width:240px;
+  height:60px;
+  background:inherit;
+  background-color:rgba(0, 153, 204, 1);
+  border:none;
+  border-radius:0px;
+  -moz-box-shadow:none;
+  -webkit-box-shadow:none;
+  box-shadow:none;
+  /*font-family:'微软雅黑 Bold', '微软雅黑 Regular', '微软雅黑';
+  font-weight:700;
+  font-style:normal;
+  font-size:16px;
+  color:#CCCCCC;*/
+}
+
+
+
+
+.content {
+    display: grid;
+    
+    grid-template-rows: 40px 49px 1fr;
+
+    background-color: rgba(241, 242, 247, 1);
+}
+
+
+
+
+
+.breads {
+  margin-left: 20px;
+  /*border:1px solid green;*/
+  text-align: left;
+  
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 5px;
+  width: 98%;
+  box-shadow: none;
+}
+
+.bred_text {
+    
+  font-family:'微软雅黑';
+  font-weight:400;
+  font-style:normal;
+  width: 100%;
+  color:#999999;
+}
+
+.page_title {
+  margin-left: 20px;
+
+  background-color: #fafafa;
+}
+
+.pg_text {
+  
+  font-family:'微软雅黑 Bold', '微软雅黑 Regular', '微软雅黑';
+  font-weight:700;
+  font-style:normal;
+  font-size:24px;
+  text-decoration:none;
+  color:#666666;
+  text-align:left;
+  border-color:transparent;
+  outline-style:none;
+}
+
+.main_content {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.treel {
+    /*margin-left: 20px;*/
+    background-color: white; 
+    
+    display: grid;
+    grid-template-rows: 40px 1fr;
+}
+
+.tree_hd {
+    
+    width: 280px;
+    height: 49px;
+    background: inherit;
+    background-color: rgba(250, 250, 250, 1);
+    border: none;
+    border-radius: 5px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    font-family: '微软雅黑 Bold', '微软雅黑 Regular', '微软雅黑';
+    font-weight: 700;
+    font-style: normal;
+    font-size: 16px;
+    text-align: left;
+}
+
+
+
+.context {
+  margin-left: 10px;
+  /*background-color: none; */
+  /*align-self: start;*/
+
+  /*border: 1px solid red;*/
+}
+
+.context_notree {
+  margin-left: 10px;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.dropdown {
+    position: relative;
+
+    /** Make it fit tightly around it's children */
+    display: inline-block;
+}
+
+/**
+ * Apply these styles to .dropdown-menu when user hovers
+ * over .dropdown
+ */
+.dropdown:hover .dropdown-menu {
+
+    /** Show dropdown menu */
+    display: block;
+}
+
+.dropdown .dropdown-menu {
+    position: absolute;
+
+    /**
+     * Set the top of the dropdown menu to be positioned 100%
+     * from the top of the container, and aligned to the left.
+     */
+    top: 100%;
+    left: 0;
+
+    /** Allow no empty space between this and .dropdown */
+    margin: 0;
+
+
+
+    background-color:#32323A;
+
+} 
+
+.dropdown-menu>li>a {
+    display: block;
+    padding: 3px 20px;
+    
+    font-family:'微软雅黑 Bold', '微软雅黑 Regular', '微软雅黑';
+    font-style:normal;
+    font-size:14px;
+    color:white;
+}
+
+
+.formedit {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  /*background-color:rgba(255, 255, 255, 1);*/
+  box-sizing:border-box;
+  border-width:1px;
+  border-style:solid;
+  border-color:rgba(204, 204, 204, 1);
+  border-radius:20px;
+}
+
+.form_header {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  height: 20px;
+  border-bottom: 1px solid grey;
+  /*background: blue;*/
+}
+
+.form_map {
+  display: grid;
+  grid-template-rows: 420 1fr 1fr;
+
+  margin-top: 5px;
+  margin-left: 25px;
+}
+
+.form_img {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  height: 200px;
+  background: transparent;
+
+  display: grid;
+  grid-template-columns: repeat(6,1fr);
+}
+
+.form_img_box {
+  border: 1px solid grey;
+  margin-top: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  margin-left: 5px;
+}
+
+.emd_map {
+    /*position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;*/
+    height: 420px;
+    /*width: 400px;*/
+    font-family: Arial, sans-serif;
+}
+
+.ol-attribution > ul {
+    font-size: 1.6rem;
+}
+
+.overlay {
+    display: none;
+    position: absolute;
+    background: rgba(255,255,255,0.9);
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.25);
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    width: 180px;
+    top: -76px;
+    left: -90px;
+}
+
+.overlay:after {
+    top: 100%;
+    border: 10px solid transparent;
+    content: "";
+    height: 0;
+    width: 0;
+    position: absolute;
+    border-top-color: rgba(255,255,255,0.9);
+}
+
+.overlay button + button {
+    float: right;
+}
+
+
+.panel_edit.modal {
+  width: 300;
+
+  background: red;
+  z-index: 100;
+}
+
+/* 2 columns form css-grid layout */
+.col2Form {
+    display: grid;
+    grid-template-columns:  1fr 1fr;
+    grid-auto-flow: row dense;
+    grid-gap: .8em;
+    /*background: #eee;*/
+    padding: 1.2em;
+  }
+  .col2Form > p {
+    display:grid;
+    grid-template-columns:30% 1fr;
+  }
+  .col2Form > p > label  {
+    grid-column: 1;
+    grid-row: auto;
+    padding: 1em;
+  }
+  .col2Form > p > input,
+  .col2Form > p > button {
+    grid-column: 2;
+    grid-row: auto;
+    padding: 1em;
+    /*border: none;*/
+  }
+
+  .col2Form > button {
+   grid-column:2; 
+    
+  }
+
+
+  /* 3 columns form css-grid layout */
+.col3Form {
+    display: grid;
+    grid-template-columns:  1fr 1fr 1fr;
+    /*grid-auto-flow: row dense;*/
+    grid-gap: .8em;
+    /*background: #eee;*/
+    padding: 1.2em;
+  }
+  .col3Form > p {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+  }
+  .col3Form > p > label  {
+    grid-column: 1;
+    /*grid-row: auto;*/
+    padding: 1em;
+    text-align: right;
+  }
+  .col3Form > p > input{
+    grid-column: 2;
+    /*grid-row: auto;*/
+    /*padding: 1em;*/
+    /*border: none;*/
+  }
+
+  .col3Form > p > button {
+    grid-column: 2;
+    /*grid-row: auto;*/
+    /*padding: 1em;*/
+    /*border: none;*/
+  }
+
+  .col3Form > button {
+   grid-column:3; 
+    
+  }

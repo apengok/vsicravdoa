@@ -1,0 +1,247 @@
+{% extends '_base.html' %}
+
+
+{% block organizationtree %}
+<div class=" treel">
+  {% include 'dmatree.html' %}
+</div>
+{% endblock %}
+
+
+{% block content %}
+<div class=" context">
+
+
+
+<!-- Unnamed (表格) -->
+<div  class="ax_default">
+
+  <div class="list-group" role="tab" id="heading">
+      <div>
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1" class="list-group-item active ">
+          <span class="fa fa-caret-down" title="Toggle dropdown menu"></span> 基本配置
+        </a>
+      </div>
+      
+          <div id="collapse1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading">
+            <div>
+              <form id="dmainfo-form" method="POST" action='{{ request.build_absolute_uri|safe }}' class="col3Form">
+                {% csrf_token %}
+                
+                <p>
+                  <label for="{{ form.dma_no.id_for_label }}">{{ form.dma_no.label }} </label>
+                  <input type="text"  id="id_dma_no" name="dma_no" value="{{ form.dma_no.value }}" required>
+                </p>
+                <p>
+                  <label for="{{ form.pipe_texture.id_for_label }}">{{ form.pipe_texture.label }} </label>
+                  <input type="text"  id="id_pipe_texture" name="pipe_texture" value="{{ form.pipe_texture.value|default:'' }}">
+                </p>
+                <p>
+                  <label for="{{ form.ifc.id_for_label }}">{{ form.ifc.label }} </label>
+                  <input type="text" name="ifc"  id="id_ifc" value="{{ form.ifc.value|default:'' }}">
+                </p>
+
+                <p>
+                  <label for="{{ form.orgs.id_for_label }}">{{ form.orgs.label }} </label>
+                  {{ form.orgs }}
+                  
+                </p>
+                <p>
+                  <label for="{{ form.pipe_length.id_for_label }}">{{ form.pipe_length.label }} </label>
+                  <input type="text"  id="id_pipe_length" name="pipe_length" value="{{ form.pipe_length.value|default:'' }}">
+                </p>
+                <p>
+                  <label for="{{ form.aznp.id_for_label }}">{{ form.aznp.label }} </label>
+                  <input type="text" name="aznp"  id="id_aznp" value="{{ form.aznp.value|default:'' }}">
+                </p>
+                <p>
+                  <label for="{{ form.pepoles_num.id_for_label }}">{{ form.pepoles_num.label }} </label>
+                  <input type="text"  id="id_pepoles_num" name="pepoles_num" value="{{ form.pepoles_num.value|default:'' }}">
+                </p>
+                
+                <p>
+                  <label for="{{ form.pipe_links.id_for_label }}">{{ form.pipe_links.label }} </label>
+                  <input type="text"  id="id_pipe_links" name="pipe_links" value="{{ form.pipe_links.value|default:'' }}">
+                </p>
+                <p>
+                  <label for="{{ form.night_use.id_for_label }}">{{ form.night_use.label }} </label>
+                  <input type="text" name="night_use"  id="id_night_use" value="{{ form.night_use.value|default:'' }}">
+                </p>
+                <p>
+                  <label for="{{ form.acreage.id_for_label }}">{{ form.acreage.label }} </label>
+                  <input type="text"  id="id_acreage" name="acreage" value="{{ form.acreage.value|default:'' }}">
+                </p>
+                <p>
+                  <label for="{{ form.pipe_years.id_for_label }}">{{ form.pipe_years.label }} </label>
+                  <input type="text"  id="id_pipe_years" name="pipe_years" value="{{ form.pipe_years.value|default:'' }}">
+                </p>
+                <p>
+                  <label for="{{ form.cxc_value.id_for_label }}">{{ form.cxc_value.label }} </label>
+                  <input type="text" name="cxc_value"  id="id_cxc_value" value="{{ form.cxc_value.value|default:'' }}">
+                </p>
+                <p>
+                  <label for="{{ form.user_num.id_for_label }}">{{ form.user_num.label }} </label>
+                  <input type="text"  id="id_user_num" name="user_num" value="{{ form.user_num.value|default:'' }}">
+                </p>
+                <p>
+                  <label for="{{ form.pipe_private.id_for_label }}">{{ form.pipe_private.label }} </label>
+                  <input type="text"  id="id_pipe_private" name="pipe_private" value="{{ form.pipe_private.value|default:'' }}">
+                </p>
+                
+                <button type="submit">Submit</button>
+              </form>
+
+                
+            </div>
+        </div>
+      
+  </div>
+
+  <div class="list-group" role="tab" id="heading">
+      <div>
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="true" aria-controls="collapse2" class="list-group-item active main-color-bg">
+          <span class="fa fa-caret-down" title="Toggle dropdown menu"></span> 站点配置
+        </a>
+      </div>
+      
+          <div id="collapse2" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading">
+            <div>
+              <table id="tb_dma_stations" class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th class="id orderable"><a href="?sort=id">ID</a></th>
+                    
+                    <th class="orderable station_name"><a href="?sort=station_name">站点名称</a></th>
+                    <th class="meter_property orderable"><a href="?sort=meter_property">类型</a></th>
+                    <th class="meter_type orderable"><a href="?sort=meter_type">表具类型</a></th>
+                    <th class="meter_code orderable"><a href="?sort=meter_code">表具编号</a></th>
+                    
+                    <th class="caliber orderable"><a href="?sort=caliber">口径</a></th>
+                    <th class="belongto orderable"><a href="?sort=belongto">所属组织</a></th>
+                    
+                    <th class="installed orderable"><a href="?sort=installed">安装日期</a></th>
+                    
+                    
+                  </tr>
+  
+                </thead>
+               {% for obj in station_list %}
+                  <tr>
+                    <td>{{ obj.id }} </td>
+                    <td>{{ obj.station_name }} </td>
+                    <td>{{ obj.meter_property }} </td>
+                    <td>{{ obj.meter_type }} </td>
+                    <td>{{ obj.meter_code }} </td>
+                    
+                    <td>{{ obj.caliber }} </td>
+                    <td>{{ obj.belongto }} </td>
+                    
+                    <td>{{ obj.installed }} </td>
+                    
+                    
+                  </tr>
+                  
+               {% endfor %}
+             </table>
+            </div>
+        </div>
+      
+  </div>
+
+  
+
+  <div id="new-form-modal" class="modal fade">
+            <div class="modal-dialog" style="width: 728px;height: 299px;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">新建DMA分区</h4>
+                    </div>
+                    <div id="form-modal-body" class="modal-body">
+                        <form id="dma-form" method="POST" class="col2Form">
+                          {% csrf_token %}
+                          
+                          <p>
+                            <label for="{{ dma_form.dma_no.id_for_label }}">{{ dma_form.dma_no.label }} </label>
+                            <input type="text"  id="id_dma_no" name="dma_no" required>
+                          </p>
+                          <p>
+                            <label for="{{ dma_form.dma_name.id_for_label }}">{{ dma_form.dma_name.label }} </label>
+                            <input type="text"  id="id_dma_name" name="dma_name" required>
+                          </p>
+                          <p>
+                            <label for="{{ dma_form.creator.id_for_label }}">{{ dma_form.creator.label }} </label>
+                            <input type="text" name="creator"  id="id_creator" required>
+                          </p>
+                          <p>
+
+                            <label for="{{ dma_form.create_date.id_for_label }}">{{ dma_form.crate_date.label }} </label>
+                            <input type="input" name="create_date" id="id_create_date" placeholder="dd-mm-yyyy">
+                          </p>
+                          <button type="submit">Submit</button>
+                        </form>
+                    </div>
+                    <!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div> -->
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal --> 
+
+
+   
+
+</div>  
+{% endblock content %}
+
+
+
+
+
+
+
+   {% block javascript %}
+   {{ block.super }}
+    <script type="text/javascript">
+
+
+    $(function(){
+      load_dmaTree('');
+    });
+
+
+        $("#tb_stations").on('click', '.btnDelete', function () {
+            $(this).closest('tr').remove();
+        });
+
+      
+            
+    $('.alter-button').click(function() {
+        var $newformmodal = $("#new-form-modal");
+
+        $newformmodal.modal();
+        
+        
+    });
+
+    $('#dma-form').submit(function(e){
+      e.preventDefault();
+      var nendpoint = "{% url 'dma:create_dma' %}";
+console.log($(this).serialize());
+      $.ajax({
+        method:'POST',
+        data:$(this).serialize(),
+        url:nendpoint,
+        success:function(data){
+          // console.log(data);
+          $('.new-form-error').html('success save');
+        },
+        error:function (data) {
+          // console.log(data);
+          $('.new-form-error').html('error save');
+        }
+      })
+    })
+        
+    </script>
+{% endblock %}
