@@ -31,7 +31,7 @@ class CreateDMAForm(forms.Form):
 
 class DMABaseinfoForm(forms.ModelForm):
 
-    orgs = forms.ModelChoiceField(label='所属组织',queryset=models.Organization.objects.all())
+    orgs = forms.ModelChoiceField(label='所属组织',queryset=models.Organization.objects.all(),required=False)
 
     class Meta:
         model = models.DMABaseinfo
@@ -53,10 +53,22 @@ class DMABaseinfoForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(DMABaseinfoForm, self).__init__(*args, **kwargs)
-        # if self.instance.dma.parent:
-        #     self.fields['orgs'].initial = self.instance.dma.parent.pk
-        # else:
-        #     self.fields['orgs'].initial =  1
+        print('dma form:',kwargs,self.instance)
+        self.fields['orgs'].empty_label = ("威尔沃")
+        if not kwargs.get('base'):
+            if self.instance.dma.parent:
+                self.fields['orgs'].initial = self.instance.dma.parent.pk
+            else:
+                self.fields['orgs'].initial =  0
+
+    def validate_orgs(value):
+        print("validate:",value)
+
+    def clean_orgs(self):
+        
+        orgs = self.cleaned_data.get('orgs')
+        print('orgs:',orgs)
+        return orgs
 
 
 class TestForm(forms.ModelForm):
@@ -92,7 +104,9 @@ class StationsCreateManagerForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(StationsCreateManagerForm, self).__init__(*args, **kwargs)
-        # self.fields['invoice_date'].widget.attrs['class'] = 'calendar'
+        self.fields['installed'].widget = forms.DateInput(format='%m/%d/%Y')
+        self.fields['installed'].widget.attrs['input_formats'] =('%m/%d/%Y',)
+
     class Meta:
         model = Stations
         fields= '__all__'

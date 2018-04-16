@@ -1,11 +1,23 @@
-{% extends 'virvo/_base.html' %}
+{% extends '_base.html' %}
 
+{% block stylesheet %}
+  <style type="text/css">
 
+  .query_div {
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    margin-bottom: 5px;
+  }
+  .query_div > h2 {
+    grid-column: 1/8;
+  }
+  </style>
+{% endblock %}
 
 
 {% block organizationtree %}
 <div class=" treel">
-  {% include 'virvo/stationtree.html' %}
+  {% include 'stationtree.html' %}
 </div>
 {% endblock %}
 
@@ -16,6 +28,21 @@
 
 <div  class="ax_default">
 
+  <div class="query_div">
+    <h2>查询条件</h2>
+    <p>所属组织:{{ station.belongto.name }}</p>
+    <p>站点名称:{{ station.station_name }}</p>
+    <p><input type="checkbox" id="checkbox1" name="compare_date" >多日期对比分析</p>
+    <p><button>昨天</button></p>
+    <p><button>三天内</button></p>
+    <p><button>七天内</button></p>
+    <p><button>查询</button></p>
+    
+  </div>
+  <div id="autoUpdate" class="autoUpdate" style="height: 100px;display: none;">
+  content
+  </div>
+
   <div class="list-group" role="tab" id="heading">
       <div>
         <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1" class="list-group-item active main-color-bg">
@@ -23,23 +50,24 @@
         </a>
       </div>
       
-          <div id="collapse1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading">
-            <div>
-              <form>
-                <input type="text" name="sname">
-                <input type="submit" name="btn_seach">
-                
-              </form>
-              <button id="add_station"><a href="{% url 'virvo:stations_create_manager' %}" data-toggle="modal" data-target="#modal" class="fa fa-pencil" title="create stations" data-tooltip>新增</a></button>
-              
-            </div>
-        </div>
-
-
-        <div >
-        <div id="chart_station" style="width: 1200px;height:555px;"></div>
+      <div id="collapse1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading">
         
+        <div >
+          <div id="chart_station" style="width: 1200px;height:555px;"></div>
+          
+        </div>
+        <div>
+          <p>当天用水量: 186 m³ </p>
+          <p>昨日用水量: 206.3 </p>
+          <p>前日用水量: 206 </p>
+          <p>最大值: 68 m³   （11：00）</p>
+          <p>最小值: 21 m³   （04：00）</p>
+          <p>平均值: 46 m³   （11：00）</p>
+        </div>
       </div>
+
+
+      
       
   </div>
 
@@ -62,6 +90,16 @@
         $(function(){
           load_Tree('daily');
         });
+
+        $(document).ready(function(){
+$('#checkbox1').change(function(){
+if($(this).is(":checked") == true)
+$('#autoUpdate').show();
+else
+$('#autoUpdate').hide();
+
+});
+});
 
 
         // 基于准备好的dom，初始化echarts实例

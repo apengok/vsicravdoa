@@ -19,9 +19,11 @@ urlpatterns = [
     url(r'getchartd/$',views.getchartd,name='getchartd'),
 
     url(r'createdma/$',views.create_dma,name='create_dma'),
+    url(r'^base/$', views.DMABaseView.as_view(),name='dma_manager_base'),
     url(r'^(?P<pk>\d+)/$', views.DMAListView.as_view(),name='dma_manager'),
 
     url(r'^(?P<dma_id>\d+)/daily/$', views.DailyuseView.as_view(), name="daily_use"),
+    url(r'^(?P<dma_id>\d+)/daily/(?P<station_id>\d+)$', views.DailyuseDetailView.as_view(), name="daily_use_detail"),
     
     url(r'mnf/$', views.MNFView.as_view(),name='mnf'),
     url(r'^(?P<dma_id>\d+)/mapmonitor/?$', TemplateView.as_view(template_name='dma/map_monitor.html'),name='map_monitor'),

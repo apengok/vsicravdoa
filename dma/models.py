@@ -84,7 +84,7 @@ class Stations(models.Model):
     caliber         = models.CharField('口径',max_length=50,  null=True, blank=True)
     big_user        = models.BooleanField('大用户',max_length=50, blank=True)
     focus           = models.BooleanField('重点关注',max_length=50, blank=True)
-    installed       = models.DateField('安装日期',blank=True)
+    installed       = models.DateField('安装日期',auto_now=False,null=True,blank=True)
 
     belongto        = models.ForeignKey(Organization,verbose_name='所属组织',related_name='station',on_delete=models.CASCADE) #class_instance.model_set.all()
 

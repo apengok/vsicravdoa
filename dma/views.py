@@ -56,13 +56,19 @@ def recursive_node_to_dict(node,url_cat):
     children = [recursive_node_to_dict(c,url_cat) for c in node.get_children()]
     
     # get each node's station if exist
-    # try:
-    #     sats = node.station.all()
-    #     for s in sats:
-    #         children.append({'name':s.station_name})
-    #     # children.append({'name':})
-    # except:
-    #     pass
+    if url_cat != '':
+        try:
+            sats = node.station.all()
+            for s in sats:
+                children.append({
+                    'name':s.station_name,
+                    'url':'/dma/{}/{}/{}'.format(node.pk,url_cat,s.id),
+                    'target':'_self',
+                    'icon':"/static/virvo/images/u3672.png",
+                })
+            # children.append({'name':})
+        except:
+            pass
 
     if children:
         result['children'] = children
@@ -87,6 +93,8 @@ def get_stationtree(request):
 
 
 def get_dmatree(request):
+    # page_name = request.GET.get('page_name') or ''
+    '''只获取分区结构，不获取站点信息'''
     organs = Organization.objects.all()
     
     top_nodes = get_cached_trees(organs)
@@ -95,15 +103,12 @@ def get_dmatree(request):
     for n in top_nodes:
         dicts.append(recursive_node_to_dict(n,''))
 
+    virvo_tree = [{'name':'威尔沃','open':'true','children':dicts}]
+    return JsonResponse({'trees':virvo_tree})
     
-    # print json.dumps(dicts, indent=4)
-
-    
-    
-    return JsonResponse({'trees':dicts})
+    # return JsonResponse({'trees':dicts})
 
 def gettree(request):
-    print(request.GET)
     page_name = request.GET.get('page_name') or ''
     print(page_name)
     organs = Organization.objects.all()
@@ -117,9 +122,9 @@ def gettree(request):
     
     # print json.dumps(dicts, indent=4)
 
-    # virvo_tree = [{'name':'威尔沃','open':'true','children':dicts}]
-    
-    return JsonResponse({'trees':dicts})
+    virvo_tree = [{'name':'威尔沃','open':'true','children':dicts}]
+    return JsonResponse({'trees':virvo_tree})
+    # return JsonResponse({'trees':dicts})
 
 def gettreenode(request):
     node = request.POST['node']
@@ -228,46 +233,63 @@ class MNFView(TemplateView):
         return context                 
 
 
-class AjaxTemplateMixin(object):
-    
-    def dispatch(self, request, *args, **kwargs):
-        if not hasattr(self, 'ajax_template_name'):
-            split = self.template_name.split('.html')
-            split[-1] = '_inner'
-            split.append('.html')
-            self.ajax_template_name = ''.join(split)
-        if request.is_ajax():
-            self.template_name = self.ajax_template_name
-        return super(AjaxTemplateMixin, self).dispatch(request, *args, **kwargs)
-
-
-class TestFormView(SuccessMessageMixin, AjaxTemplateMixin, FormView):
-    template_name = 'dma/test_form.html'
-    form_class = TestForm
-    success_url = reverse_lazy('home')
-    success_message = "Way to go!"        
-
-
 
 def create_dma(request):
     
-    print(request.POST)
-    if request.method == 'POST':
-        # dma_no = request.POST.get('dma_no')
-        # dma_name = request.POST.get('dma_name')
-        # creator = request.POST.get('creator')
-        create_date = request.POST.get('create_date')
-        print(create_date)
+    
     dma_form = CreateDMAForm(request.POST or None)
-    if dma_form.is_valid():
-        parent = Organization.objects.first()
-        orgs = Organization.objects.create(name=dma_form.cleaned_data.get('dma_name'),parent=parent)
 
-        obj = DMABaseinfo.objects.create(dma_no=dma_form.cleaned_data.get('dma_no'),dma=orgs)
+    if dma_form.is_valid():
+        # parent = Organization.objects.first()
+        orgs = Organization.objects.create(name=dma_form.cleaned_data.get('dma_name'),parent=None)
+
+        obj = DMABaseinfo.objects.create(
+            dma_no=dma_form.cleaned_data.get('dma_no'),
+            dma=orgs,
+            create_date = dma_form.cleaned_data.get('create_date')
+        )
         # return HttpResponseRedirect("/dma/dma/1/")
     if dma_form.errors:
         print(dma_form.errors)
     return render(request,'dma/dma_manager.html',{'dma_form':dma_form})
+
+
+class DMABaseView(TemplateView):
+    template_name = 'dma/dma_manager.html'
+    # form_class = DMABaseinfoForm
+    model = DMABaseinfo
+    # success_url = '/dma/dma/1'
+
+    def get_queryset(self):
+        
+        return DMABaseinfo.objects.all()
+        # return get_object_or_404(DMABaseinfo)
+
+    def get_form_kwargs(self):
+        print (self.kwargs)
+        kwargs = super(DMABaseView, self).get_form_kwargs()
+        # kwargs['user'] = self.request.user
+        print (kwargs)
+        return kwargs
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(DMABaseView, self).get_context_data(*args, **kwargs)
+        context['title'] = 'DMA 管理'
+        try:
+            pk = self.kwargs.get('pk')
+            orgs = Organization.objects.get(pk=pk)
+            context['station_list'] = Stations.objects.filter(belongto=orgs)
+        except:
+            pass
+
+        create_dma_form = CreateDMAForm()
+        context['dma_form'] = create_dma_form
+        context['form'] = DMABaseinfoForm({'base':True})
+
+        return context
+
+    
+
 
 class DMAListView(UpdateView):
     template_name = 'dma/dma_manager.html'
@@ -304,9 +326,9 @@ class DMAListView(UpdateView):
 
     def form_valid(self,form):
         orgs = form.cleaned_data.get('orgs')
-        print(orgs,type(orgs))
-        print (form.instance)
-        print(form.instance.dma)
+        # print(orgs,type(orgs))
+        # print (form.instance)
+        # print(form.instance.dma)
         # print(form.instance.dma.parent)
         form.instance.dma.parent = orgs
         form.instance.dma.save()
@@ -340,6 +362,7 @@ class StationsListMangerView(ListView):
 
     # @method_decorator(permission_required('dma.change_stations'))
     def dispatch(self, *args, **kwargs):
+        print('when call dispatch..?')
         return super(StationsListMangerView, self).dispatch(*args, **kwargs)
 
     def get_queryset(self):
@@ -421,35 +444,28 @@ class DailyuseView(TemplateView):
         context['page_title'] = '日用水分析'
         dma_id = self.kwargs.get('dma_id') or 1
         orgs = Organization.objects.get(pk=dma_id)
-        stations_list = Stations.objects.filter(belongto=orgs)
-        context['station_list'] = stations_list
-
-        for station in stations_list:
-            pass
-
-        rt_dataset = []
-        def curse_data(s):
-            result = {
-                'chart_id':'chart_{}'.format(s.station_name),
-                'data':[1,2,3,4,5,6],
-                'station_name':s.station_name,
-                'caliber':s.caliber
-            }
-            return result
-
-        jsd=[]
-        for s in stations_list:
-            rt_dataset.append(curse_data(s) )
-            jsd.append({'data':[random.randint(2,13), random.randint(2,13), random.randint(2,13), random.randint(2,13), random.randint(2,13), random.randint(2,13)],
-                'name':'chart_{}'.format(s.station_name)})
-        
-        context['rt_dataset'] = rt_dataset
-        dum=json.dumps(jsd)
-        # print(type(dum),dum)
-
-        data = [random.randint(2,13), 20, 6, 10, 20, 30]
-        context['jsd'] = json.dumps(jsd)
+        station = Stations.objects.filter(belongto=orgs).first()
+        context['station'] = station
 
         
 
         return context        
+
+
+class DailyuseDetailView(TemplateView):
+    """docstring for DailyuseDetailView"""
+    template_name = 'dma/daily_use.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(DailyuseDetailView, self).get_context_data(*args, **kwargs)
+        context['page_title'] = '日用水分析'
+        dma_id = self.kwargs.get('dma_id') or 1
+        orgs = Organization.objects.get(pk=dma_id)
+        station_id = self.kwargs.get('station_id')
+        station = Stations.objects.get(id=station_id)
+        
+        context['station'] = station
+
+        
+
+        return context            
