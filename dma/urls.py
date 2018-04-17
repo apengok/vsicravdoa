@@ -11,6 +11,8 @@ urlpatterns = [
     
     url(r'^$', TemplateView.as_view(template_name='dma/home.html'),name='virvo_home'),
 
+    url(r'^(?P<page>.+\.html)$', views.StaticView.as_view()),
+
     url(r'editform/$', TemplateView.as_view(template_name='dma/edit_form.html'),name='editform'),
     url(r'getstationtree/$',views.get_stationtree,name='getstationtree'),
     url(r'getdmatree/$',views.get_dmatree,name='getdmatree'),
@@ -24,6 +26,9 @@ urlpatterns = [
 
     url(r'^(?P<dma_id>\d+)/daily/$', views.DailyuseView.as_view(), name="daily_use"),
     url(r'^(?P<dma_id>\d+)/daily/(?P<station_id>\d+)$', views.DailyuseDetailView.as_view(), name="daily_use_detail"),
+
+    url(r'^(?P<dma_id>\d+)/monthly/$', views.MonthlyuseView.as_view(), name="monthly_use"),
+    url(r'^(?P<dma_id>\d+)/monthly/(?P<station_id>\d+)$', views.MonthlyuseDetailView.as_view(), name="monthly_use_detail"),
     
     url(r'mnf/$', views.MNFView.as_view(),name='mnf'),
     url(r'^(?P<dma_id>\d+)/mapmonitor/?$', TemplateView.as_view(template_name='dma/map_monitor.html'),name='map_monitor'),

@@ -42,6 +42,15 @@ def i18n_javascript(request):
     return admin.site.i18n_javascript(request)
 
 
+class StaticView(TemplateView):
+    def get(self, request, page, *args, **kwargs):
+        self.template_name = page
+        print(page)
+        response = super(StaticView, self).get(request, *args, **kwargs)
+        try:
+            return response.render()
+        except TemplateDoesNotExist:
+            raise Http404()
 
 def recursive_node_to_dict(node,url_cat):
     result = {
@@ -433,8 +442,76 @@ class StationsAlarmView(DetailView):
         context['qs'] = qs.alarms_set.all()
         return context
 
+'''echarts option 配置'''
+def chart_options():
 
+    options = {}
 
+    options['tooltip'] = {}
+
+    # options['backgroundColor'] = 'rgba(128, 128, 128, 0.5)'
+    options['animation'] = 'false'
+    options['legend'] = {
+        'data':['今日曲线','昨日曲线','2018-01-23','2018-02-23','压力曲线','当日柱状图',] 
+    }
+    options['xAxis'] = {
+        'splitLine': {'show': 'true'},
+        'data':[str(x) for x in range(1,30)]
+    }
+    options['yAxis'] = {
+        'name': 'm3/h'
+    }
+    today_curve = [random.randint(40,60) for x in range(30)]
+    options['series'] = [
+        {
+            'name': '今日曲线',
+            'type': 'line',
+            'smooth':'true',
+            # 'showSymbol': 'false',
+            'data': today_curve
+        },
+        {
+            'name': '昨日曲线',
+            'type': 'line',
+            'smooth':'true',
+            'data': [random.randint(40,60) for x in range(30)]
+        },
+        {
+            'name':'压力曲线',
+            'type':'line',
+            'smooth':'true',
+            'data':[random.randint(40,60) for x in range(30)]
+        },
+        {
+            'name': '2018-01-23',
+            'type': 'line',
+            'smooth':'true',
+            'data': [random.randint(40,60) for x in range(30)]
+        },
+        {
+            'name':'2018-02-23',
+            'type':'line',
+            'smooth':'true',
+            'data':[random.randint(40,60) for x in range(30)]
+        },
+        {
+            'name': '当日柱状图',
+            'type': 'bar',
+            'data': today_curve
+        },
+
+        {
+            'name': '背景显示',
+            'type': 'line',
+            'data': [60,60,60,60,60,60,60],
+            'areaStyle': {}
+        },
+        
+    ]
+
+    return json.dumps(options)
+
+'''日用水分析'''
 class DailyuseView(TemplateView):
     """docstring for DailyuseView"""
     template_name = 'dma/daily_use.html'
@@ -447,11 +524,11 @@ class DailyuseView(TemplateView):
         station = Stations.objects.filter(belongto=orgs).first()
         context['station'] = station
 
-        
+        context['options'] = chart_options()
 
         return context        
 
-
+'''日用水分析 站点显示'''
 class DailyuseDetailView(TemplateView):
     """docstring for DailyuseDetailView"""
     template_name = 'dma/daily_use.html'
@@ -466,6 +543,43 @@ class DailyuseDetailView(TemplateView):
         
         context['station'] = station
 
-        
+        context['options'] = chart_options()
 
         return context            
+
+
+'''月用水分析'''
+class MonthlyuseView(TemplateView):
+    """docstring for MonthlyuseView"""
+    template_name = 'dma/monthly_use.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(MonthlyuseView, self).get_context_data(*args, **kwargs)
+        context['page_title'] = '月用水分析'
+        dma_id = self.kwargs.get('dma_id') or 1
+        orgs = Organization.objects.get(pk=dma_id)
+        station = Stations.objects.filter(belongto=orgs).first()
+        context['station'] = station
+
+        context['options'] = chart_options()
+
+        return context        
+
+'''月用水分析 站点显示'''
+class MonthlyuseDetailView(TemplateView):
+    """docstring for MonthlyuseDetailView"""
+    template_name = 'dma/monthly_use.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(MonthlyuseDetailView, self).get_context_data(*args, **kwargs)
+        context['page_title'] = '月用水分析'
+        dma_id = self.kwargs.get('dma_id') or 1
+        orgs = Organization.objects.get(pk=dma_id)
+        station_id = self.kwargs.get('station_id')
+        station = Stations.objects.get(id=station_id)
+        
+        context['station'] = station
+
+        context['options'] = chart_options()
+
+        return context                    
