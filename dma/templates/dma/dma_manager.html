@@ -7,23 +7,75 @@
 </div>
 {% endblock %}
 
+{% block stylesheet %}
+<style type="text/css">
+  .zone_mapcfg {
+    display: grid;
+    grid-template-columns: 100px 400px 100px 500px;
+    margin-top: 10px;
+    text-align: left;
+}
+
+.map {
+  height: 400px;
+  border: 1px solid black;
+}
+</style>
+  
+{% endblock %}
 
 {% block content %}
 <div class=" context">
 
+<div id="new-form-modal" class="modal fade">
+    <div class="modal-dialog" style="width: 728px;height: 299px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">新建DMA分区</h4>
+            </div>
+            <div id="form-modal-body" class="modal-body">
+                <form id="dma-form" method="POST" class="col2Form">
+                  {% csrf_token %}
+                  
+                  <p>
+                    <label for="{{ dma_form.dma_no.id_for_label }}">{{ dma_form.dma_no.label }} </label>
+                    <input type="text"  id="id_dma_no" name="dma_no" required>
+                  </p>
+                  <p>
+                    <label for="{{ dma_form.dma_name.id_for_label }}">{{ dma_form.dma_name.label }} </label>
+                    <input type="text"  id="id_dma_name" name="dma_name" required>
+                  </p>
+                  <p>
+                    <label for="{{ dma_form.creator.id_for_label }}">{{ dma_form.creator.label }} </label>
+                    <input type="text" name="creator"  id="id_creator" required>
+                  </p>
+                  <p>
 
+                    <label for="{{ dma_form.create_date.id_for_label }}">{{ dma_form.crate_date.label }} </label>
+                    <input type="input" name="create_date" id="id_create_date" placeholder="dd-mm-yyyy">
+                  </p>
+                  <button type="submit">Submit</button>
+                </form>
+            </div>
+            <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div> -->
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal --> 
 
 <!-- Unnamed (表格) -->
 <div  class="ax_default">
 
-  <div class="list-group" role="tab" id="heading">
+  <div class="list-group" role="tab" id="heading1">
       <div>
         <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1" class="list-group-item active ">
           <span class="fa fa-caret-down" title="Toggle dropdown menu"></span> 基本配置
         </a>
       </div>
       
-          <div id="collapse1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading">
+          <div id="collapse1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading1">
             <div>
               <form id="dmainfo-form" method="POST" action='{{ request.build_absolute_uri|safe }}' class="col3Form">
                 {% csrf_token %}
@@ -97,29 +149,29 @@
       
   </div>
 
-  <div class="list-group" role="tab" id="heading">
+  <div class="list-group" role="tab" id="heading2">
       <div>
         <a data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="true" aria-controls="collapse2" class="list-group-item active main-color-bg">
           <span class="fa fa-caret-down" title="Toggle dropdown menu"></span> 站点配置
         </a>
       </div>
       
-          <div id="collapse2" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading">
+          <div id="collapse2" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading2">
             <div>
               <table id="tb_dma_stations" class="table table-bordered">
                 <thead>
                   <tr>
-                    <th class="id orderable"><a href="?sort=id">ID</a></th>
+                    <th >ID</th>
                     
-                    <th class="orderable station_name"><a href="?sort=station_name">站点名称</a></th>
-                    <th class="meter_property orderable"><a href="?sort=meter_property">类型</a></th>
-                    <th class="meter_type orderable"><a href="?sort=meter_type">表具类型</a></th>
-                    <th class="meter_code orderable"><a href="?sort=meter_code">表具编号</a></th>
+                    <th >站点名称</th>
+                    <th >类型</th>
+                    <th >表具类型</th>
+                    <th >表具编号</th>
                     
-                    <th class="caliber orderable"><a href="?sort=caliber">口径</a></th>
-                    <th class="belongto orderable"><a href="?sort=belongto">所属组织</a></th>
+                    <th >口径</th>
+                    <th >所属组织</th>
                     
-                    <th class="installed orderable"><a href="?sort=installed">安装日期</a></th>
+                    <th >安装日期</th>
                     
                     
                   </tr>
@@ -148,45 +200,78 @@
       
   </div>
 
+  <div class="list-group" role="tab" id="heading3">
+      <div>
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="true" aria-controls="collapse3" class="list-group-item active main-color-bg">
+          <span class="fa fa-caret-down" title="Toggle dropdown menu"></span> 区域图形配置
+        </a>
+      </div>
+      
+          <div id="collapse3" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading3">
+            <div class="zone_mapcfg">
+              <div>
+
+                <button id="draw_zone">绘制区域</button>
+                <button>蒙层颜色</button>
+                <button>边框颜色</button>
+              </div>
+              <div>
+                <span>图形预览</span>
+                <div id="js-map" class="map"></div>
+              </div>
+              <div><button>统计</button></div>
+              <div>
+                <span>区域统计信息:</span>
+                <table id="tb_zone_static" class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th >名称</th>
+                    <th >结果</th>
+                    
+                  </tr>
   
+                </thead>
+               
+                <tr>
+                  <td>管线长度（m）</td>
+                  <td> </td>
+                  
+                </tr>
+                <tr>
+                  <td>水表井（个）</td>
+                  <td> </td>
+                  
+                </tr>
+                <tr>
+                  <td>阀门井（个）</td>
+                  <td> </td>
+                  
+                </tr>
+                <tr>
+                  <td>消防栓（个）</td>
+                  <td> </td>
+                  
+                </tr>
+                <tr>
+                  <td>阀门（个）</td>
+                  <td> </td>
+                  
+                </tr>
+                <tr>
+                  <td>接头（个）</td>
+                  <td> </td>
+                  
+                </tr>
+                  
+               
+             </table>
+              </div>
+            </div>
+        </div>
+      
+  </div>
 
-  <div id="new-form-modal" class="modal fade">
-            <div class="modal-dialog" style="width: 728px;height: 299px;">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title">新建DMA分区</h4>
-                    </div>
-                    <div id="form-modal-body" class="modal-body">
-                        <form id="dma-form" method="POST" class="col2Form">
-                          {% csrf_token %}
-                          
-                          <p>
-                            <label for="{{ dma_form.dma_no.id_for_label }}">{{ dma_form.dma_no.label }} </label>
-                            <input type="text"  id="id_dma_no" name="dma_no" required>
-                          </p>
-                          <p>
-                            <label for="{{ dma_form.dma_name.id_for_label }}">{{ dma_form.dma_name.label }} </label>
-                            <input type="text"  id="id_dma_name" name="dma_name" required>
-                          </p>
-                          <p>
-                            <label for="{{ dma_form.creator.id_for_label }}">{{ dma_form.creator.label }} </label>
-                            <input type="text" name="creator"  id="id_creator" required>
-                          </p>
-                          <p>
-
-                            <label for="{{ dma_form.create_date.id_for_label }}">{{ dma_form.crate_date.label }} </label>
-                            <input type="input" name="create_date" id="id_create_date" placeholder="dd-mm-yyyy">
-                          </p>
-                          <button type="submit">Submit</button>
-                        </form>
-                    </div>
-                    <!-- <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div> -->
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div><!-- /.modal --> 
+  
 
 
    
@@ -242,6 +327,296 @@ console.log($(this).serialize());
         }
       })
     })
+
+
+    //map
+    var appLayer = function (options) {
+      var layer = new ol.layer.Tile({
+       extent: ol.proj.transformExtent(options.mapExtent, options.fromProject, options.toProject),
+       source: new ol.source.XYZ({
+            urls: options.urls,
+            tilePixelRatio: options.tilePixelRatio,
+            minZoom: options.mapMinZoom,
+            maxZoom: options.mapMaxZoom
+            })
+       });
+       return layer;
+    }
+
+    var normal_background = new appLayer({
+        urls: ['http://t0.tianditu.com/DataServer?T=vec_w&x={x}&y={y}&l={z}',
+                'http://t1.tianditu.com/DataServer?T=vec_w&x={x}&y={y}&l={z}',
+                'http://t2.tianditu.com/DataServer?T=vec_w&x={x}&y={y}&l={z}',
+                'http://t3.tianditu.com/DataServer?T=vec_w&x={x}&y={y}&l={z}',
+                'http://t4.tianditu.com/DataServer?T=vec_w&x={x}&y={y}&l={z}',
+                'http://t5.tianditu.com/DataServer?T=vec_w&x={x}&y={y}&l={z}',
+                'http://t6.tianditu.com/DataServer?T=vec_w&x={x}&y={y}&l={z}',
+                'http://t7.tianditu.com/DataServer?T=vec_w&x={x}&y={y}&l={z}'],
+        mapExtent: [-2.0037508342787E7, -2.0037508342787E7, 2.0037508342787E7, 2.0037508342787E7],
+        tilePixelRatio: 1,
+        fromProject: "EPSG:102100",
+        toProject: "EPSG:3857"
+    })
+
+    var normal_data = new appLayer({
+        urls: ['http://t0.tianditu.com/DataServer?T=cva_w&x={x}&y={y}&l={z}',
+                'http://t1.tianditu.com/DataServer?T=cva_w&x={x}&y={y}&l={z}',
+                'http://t2.tianditu.com/DataServer?T=cva_w&x={x}&y={y}&l={z}',
+                'http://t3.tianditu.com/DataServer?T=cva_w&x={x}&y={y}&l={z}',
+                'http://t4.tianditu.com/DataServer?T=cva_w&x={x}&y={y}&l={z}',
+                'http://t5.tianditu.com/DataServer?T=cva_w&x={x}&y={y}&l={z}',
+                'http://t6.tianditu.com/DataServer?T=cva_w&x={x}&y={y}&l={z}',
+                'http://t7.tianditu.com/DataServer?T=cva_w&x={x}&y={y}&l={z}'],
+        mapExtent: [-2.0037508342787E7, -2.0037508342787E7, 2.0037508342787E7, 2.0037508342787E7],
+        tilePixelRatio: 1,
+        fromProject: "EPSG:102100",
+        toProject: "EPSG:3857"
+    })
+
+    
+
+    var latitude = 114.3524087439;//22.6942072709,114.3524087439
+    var longitude = 22.6942072709;
+
+    var center = [latitude,longitude];
+
+     
+
+    
+
+
+
+
+var map = new ol.Map({
+        // interactions: ol.interaction.defaults().extend([select, modify]),
+        view: new ol.View({
+            center:  new ol.proj.transform(center,"EPSG:4326","EPSG:3857"),
+            maxZoom : 23,
+            minZoom : 13,
+            zoom: 4
+        }),
+        // controls: ol.control.defaults({ attribution: false }).extend([attribution]),
+        target:"js-map",
+        layers :[normal_background,normal_data]
+    });
+
+var overlayStyle = (function() {
+  var styles = {};
+  styles['Polygon'] = [
+    new ol.style.Style({
+      fill: new ol.style.Fill({
+        color: [255, 255, 255, 0.5]
+      })
+    }),
+    new ol.style.Style({
+      stroke: new ol.style.Stroke({
+        color: [255, 255, 255, 1],
+        width: 5
+      })
+    }),
+    new ol.style.Style({
+      stroke: new ol.style.Stroke({
+        color: [0, 153, 255, 1],
+        width: 3
+      })
+    })
+  ];
+  styles['MultiPolygon'] = styles['Polygon'];
+
+  styles['LineString'] = [
+    new ol.style.Style({
+      stroke: new ol.style.Stroke({
+        color: [255, 255, 255, 1],
+        width: 5
+      })
+    }),
+    new ol.style.Style({
+      stroke: new ol.style.Stroke({
+        color: [0, 153, 255, 1],
+        width: 3
+      })
+    })
+  ];
+  styles['MultiLineString'] = styles['LineString'];
+
+  styles['Point'] = [
+    new ol.style.Style({
+      image: new ol.style.Circle({
+        radius: 7,
+        fill: new ol.style.Fill({
+          color: [0, 153, 255, 1]
+        }),
+        stroke: new ol.style.Stroke({
+          color: [255, 255, 255, 0.75],
+          width: 1.5
+        })
+      }),
+      zIndex: 100000
+    })
+  ];
+  styles['MultiPoint'] = styles['Point'];
+
+  styles['GeometryCollection'] = styles['Polygon'].concat(styles['Point']);
+
+  return function(feature, resolution) {
+    return styles[feature.getGeometry().getType()];
+  };
+})();
+
+var select = new ol.interaction.Select({
+  style: overlayStyle
+});
+
+var modify = new ol.interaction.Modify({
+  features: select.getFeatures(),
+  style: overlayStyle
+});
+
+map.addInteraction(select);
+map.addInteraction(modify);
+
+var features = new ol.Collection();
+var featureOverlay = new ol.layer.Vector({
+  source: new ol.source.Vector({features: features}),
+  style: new ol.style.Style({
+    fill: new ol.style.Fill({
+      color: 'rgba(255, 255, 255, 0.2)'
+    }),
+    stroke: new ol.style.Stroke({
+      color: '3d32ff',
+      width: 2
+    }),
+    image: new ol.style.Circle({
+      radius: 7,
+      fill: new ol.style.Fill({
+        color: '#ffcc33'
+      })
+    })
+  })
+});
+featureOverlay.setMap(map);
+
+// var modify = new ol.interaction.Modify({
+//   features: features,
+//   // the SHIFT key must be pressed to delete vertices, so
+//   // that new vertices can be drawn at the same position
+//   // of existing vertices
+//   deleteCondition: function(event) {
+//     return ol.events.condition.shiftKeyOnly(event) &&
+//         ol.events.condition.singleClick(event);
+//   }
+// });
+// map.addInteraction(modify);
+
+var draw; // global so we can remove it later
+function addInteraction() {
+  draw = new ol.interaction.Draw({
+    features: features,
+    type: /** @type {ol.geom.GeometryType} */ ('Polygon')
+  });
+  map.addInteraction(draw);
+  draw.on('drawend', onFinishSelection);
+
+}
+
+var typeSelect = $('#draw_zone');
+typeSelect.on('click', function(e) {
+  map.removeInteraction(draw);
+  addInteraction();
+});
+
+
+// select.on('drawend', onFinishSelection);
+
+//Setup drawend event handle function
+function onFinishSelection(evt) {
+   //Call to double click zoom control function to deactivate zoom event
+   console.log('onFinishSelection');
+   draw.setActive(false);
+   // controlDoubleClickZoom(false);
+  //Delay execution of activation of double click zoom function
+   // setTimeout(function(){controlDoubleClickZoom(true);},251); 
+}
+
+//Control active state of double click zoom interaction
+function controlDoubleClickZoom(active){
+    //Find double click interaction
+    var interactions = map.getInteractions();
+    for (var i = 0; i < interactions.getLength(); i++) {
+        var interaction = interactions.item(i);                          
+        if (interaction instanceof ol.interaction.DoubleClickZoom) {
+            interaction.setActive(active);
+        }
+    }
+}
+
+/**
+ * Let user change the geometry type.
+ * @param {Event} e Change event.
+ */
+
+// addInteraction();
+
+
+    
+    
+    // var drawControl;
+    // var geometryType = 'Polygon';
+
+    // var updateDrawControl = function() {
+    //     // var geometryType = 'Polygon';
+
+    //     map.removeInteraction(drawControl);
+
+    //     if (geometryType === 'None') return;
+
+    //     drawControl = new ol.interaction.Draw({
+    //         type: geometryType,
+    //         source: window['vector'].getSource()
+    //     });
+
+    //     map.addInteraction(drawControl);
+
+    //     drawControl.on("drawend",function(e){
+    //        var writer = new ol.format.GeoJSON();
+    //        //pass the feature as an array
+    //        var geojsonStr = writer.writeFeatures([e.feature]);
+    //        alert(geojsonStr)
+
+    //        map.addLayer(new ol.layer.Vector({
+    //         editable: true,
+    //         source: new ol.source.Vector({
+    //             // url: '/gis/features.geojson',
+    //             features:geojsonStr,
+    //             format: new ol.format.GeoJSON({defaultDataProjection: 'EPSG:3857'})
+    //         })
+    //       }))
+
+    //        var select = new ol.interaction.Select({
+    //             filter: function(feature, layer) {
+    //                 return layer.get('editable') &&
+    //                     /Polygon|LineString/.test(
+    //                         feature.getGeometry().getType()
+    //                     );
+    //             },
+    //             condition: ol.events.condition.click
+    //         });
+    //         map.addInteraction(select);
+
+    //         map.addInteraction(new ol.interaction.Modify({
+    //             features: select.getFeatures()
+    //         }));
+
+    //         map.addInteraction(new ol.interaction.Translate({
+    //             features: select.getFeatures()
+    //         }));
+    //     });
+    //     geometryType='None';
+    // };
+
+    
+    
+    
         
     </script>
 {% endblock %}
