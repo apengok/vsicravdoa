@@ -14,7 +14,42 @@
   
   
   <div class="box user center">
-    <p><span>viro_user_info</span></p>
+    <!-- <p><span>viro_user_info</span></p> -->
+    {% if request.user.is_authenticated %}
+      <div id="navitem_div" class="ax_default _一级标题" style="cursor: pointer;">
+          
+            <div class="col-md-2" style="top: 20px;">
+              
+              <span class="fa fa-eye"></span>
+              
+            </div>
+            <div class="col-md-8" style="top: 20px;">
+              
+              <p><span>{{ request.user.username }}</span></p>
+              
+            </div>
+            <div class=" dropdown col-md-2" style="top: 20px;">
+              
+              <span class="fa fa-angle-down"></span>
+
+              <!-- dropdown menu -->
+              <ul class="dropdown-menu">
+                  <li><a href="{% url 'dma:map_monitor' dma_id=1 %}">Logout</a></li>
+                  
+              </ul>
+              
+            </div>
+        </div>
+
+       
+      {% else %}
+       <li class="nav-item {% if request.path == register_url %}active{% endif %}">
+        <a class="nav-link" href="{{ register_url }}">Register</a>
+      </li>
+      <li class="nav-item {% if request.path == login_url %}active{% endif %}">
+        <a class="nav-link" href="{{ login_url }}">Login</a>
+      </li>
+      {% endif %}
   </div>
   <div class=" box date_1">
       <div class="w"> 星期一 </div>

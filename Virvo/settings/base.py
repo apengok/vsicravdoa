@@ -119,6 +119,11 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTH_USER_MODEL = 'accounts.User' #change buikld-in user model to us
+LOGIN_URL = '/login/'
+LOGIN_URL_REDIRECT = '/'
+LOGOUT_URL = '/logout/'
+
+LOGOUT_REDIRECT_URL = '/login/'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/

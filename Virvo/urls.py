@@ -19,6 +19,9 @@ from django.contrib import admin
 from dma.views import i18n_javascript,error_404,error_500
 from django.views.generic import TemplateView
 from django.views.generic.base import RedirectView
+from django.contrib.auth.views import LogoutView
+
+from accounts.views import LoginView, RegisterView
 
 urlpatterns = [
     url(r'^favicon\.ico$', RedirectView.as_view(url='/static/images/favicon.ico')),
@@ -26,6 +29,13 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     # url(r'^$',home,name='home'),
     url(r'^$',TemplateView.as_view(template_name='dma/home.html'),name='home'),
+
+
+    url(r'^accounts/$', RedirectView.as_view(url='/account')),
+    url(r'^account/', include("accounts.urls", namespace='account')),
+    url(r'^register/$', RegisterView.as_view(), name='register'),
+    url(r'^login/$', LoginView.as_view(), name='login'),
+    url(r'^logout/$', LogoutView.as_view(), name='logout'),
     
     #dma
     url(r'^dma/', include('dma.urls', namespace='dma')),

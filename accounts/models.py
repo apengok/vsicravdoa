@@ -63,7 +63,7 @@ class User(AbstractBaseUser):
     expire_date  = models.CharField(_('Expired date'), max_length=30, blank=True)
     Role         = models.CharField(_('Role'), max_length=30, blank=True)
 
-    active = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=True)
     staff = models.BooleanField(default=False) # a admin user; non super-user
     admin = models.BooleanField(default=False) # a superuser
     # notice the absence of a "Password field", that's built in.
@@ -104,7 +104,7 @@ class User(AbstractBaseUser):
         "Is the user a admin member?"
         return self.admin
 
-    @property
-    def is_active(self):
-        "Is the user active?"
-        return self.active
+    # @property
+    # def is_active(self):
+    #     "Is the user active?"
+    #     return self.active
