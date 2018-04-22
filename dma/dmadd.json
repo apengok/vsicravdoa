@@ -1,0 +1,180 @@
+[
+{
+    "model": "dma.organization",
+    "pk": 1,
+    "fields": {
+        "name": "\u53cc\u4f73\u6c34\u8868",
+        "parent": null,
+        "lft": 1,
+        "rght": 6,
+        "tree_id": 1,
+        "level": 0
+    }
+},
+{
+    "model": "dma.organization",
+    "pk": 2,
+    "fields": {
+        "name": "\u5e73\u6c5f\u516c\u53f8",
+        "parent": 1,
+        "lft": 2,
+        "rght": 5,
+        "tree_id": 1,
+        "level": 1
+    }
+},
+{
+    "model": "dma.organization",
+    "pk": 3,
+    "fields": {
+        "name": "\u60e0\u9633\u6c34\u53f8",
+        "parent": null,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 2,
+        "level": 0
+    }
+},
+{
+    "model": "dma.organization",
+    "pk": 4,
+    "fields": {
+        "name": "\u957f\u5bff\u6751",
+        "parent": 2,
+        "lft": 3,
+        "rght": 4,
+        "tree_id": 1,
+        "level": 2
+    }
+},
+{
+    "model": "dma.dmabaseinfo",
+    "pk": 1,
+    "fields": {
+        "dma_no": "test0001",
+        "pepoles_num": null,
+        "acreage": null,
+        "user_num": null,
+        "pipe_texture": null,
+        "pipe_length": null,
+        "pipe_links": null,
+        "pipe_years": null,
+        "pipe_private": null,
+        "ifc": null,
+        "aznp": null,
+        "night_use": null,
+        "cxc_value": null,
+        "creator": null,
+        "create_date": null,
+        "dma": 1
+    }
+},
+{
+    "model": "dma.dmabaseinfo",
+    "pk": 2,
+    "fields": {
+        "dma_no": "test0002",
+        "pepoles_num": null,
+        "acreage": null,
+        "user_num": null,
+        "pipe_texture": null,
+        "pipe_length": null,
+        "pipe_links": null,
+        "pipe_years": null,
+        "pipe_private": null,
+        "ifc": null,
+        "aznp": null,
+        "night_use": null,
+        "cxc_value": null,
+        "creator": null,
+        "create_date": null,
+        "dma": 2
+    }
+},
+{
+    "model": "dma.dmabaseinfo",
+    "pk": 3,
+    "fields": {
+        "dma_no": "test0003",
+        "pepoles_num": null,
+        "acreage": null,
+        "user_num": null,
+        "pipe_texture": null,
+        "pipe_length": null,
+        "pipe_links": null,
+        "pipe_years": null,
+        "pipe_private": null,
+        "ifc": null,
+        "aznp": null,
+        "night_use": null,
+        "cxc_value": null,
+        "creator": null,
+        "create_date": null,
+        "dma": 3
+    }
+},
+{
+    "model": "dma.dmabaseinfo",
+    "pk": 4,
+    "fields": {
+        "dma_no": "test0004",
+        "pepoles_num": null,
+        "acreage": null,
+        "user_num": null,
+        "pipe_texture": null,
+        "pipe_length": null,
+        "pipe_links": null,
+        "pipe_years": null,
+        "pipe_private": null,
+        "ifc": null,
+        "aznp": null,
+        "night_use": null,
+        "cxc_value": null,
+        "creator": null,
+        "create_date": null,
+        "dma": 4
+    }
+},
+{
+    "model": "dma.stations",
+    "pk": 1,
+    "fields": {
+        "station_name": "\u5de5\u5382\u6d4b\u8bd5",
+        "station_type": null,
+        "meter_property": null,
+        "meter_type": null,
+        "meter_code": null,
+        "simno": null,
+        "caliber": null,
+        "big_user": false,
+        "focus": false,
+        "installed": "2018-04-21",
+        "belongto": 1,
+        "station_desc": null,
+        "longitude": null,
+        "latitude": null,
+        "geopos": null
+    }
+},
+{
+    "model": "dma.stations",
+    "pk": 2,
+    "fields": {
+        "station_name": "\u5b89\u5b9a-\u5e38\u8054\u5c0f\u5b66",
+        "station_type": null,
+        "meter_property": null,
+        "meter_type": null,
+        "meter_code": null,
+        "simno": null,
+        "caliber": null,
+        "big_user": false,
+        "focus": false,
+        "installed": "2018-04-21",
+        "belongto": 2,
+        "station_desc": null,
+        "longitude": null,
+        "latitude": null,
+        "geopos": null
+    }
+}
+]

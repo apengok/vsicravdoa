@@ -5,41 +5,43 @@ from django.contrib.auth.models import (
 )
 from django.utils.translation import gettext_lazy as _
 
+# python manage.py dumpdata dma --format json --indent 4 > dma/dmadd.json
+# python manage.py loaddata dma/dmadd.json 
 
 class UserManager(BaseUserManager):
-    def create_user(self, email, password=None):
+    def create_user(self, user_name, password=None):
         """
         Creates and saves a User with the given email and password.
         """
-        if not email:
-            raise ValueError('Users must have an email address')
+        if not user_name:
+            raise ValueError('Users must have an user_name')
 
         user = self.model(
-            email=self.normalize_email(email),
+            user_name=user_name #self.normalize_email(email),
         )
 
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_staffuser(self, email, password):
+    def create_staffuser(self, user_name, password):
         """
         Creates and saves a staff user with the given email and password.
         """
         user = self.create_user(
-            email,
+            user_name,
             password=password,
         )
         user.staff = True
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, password):
+    def create_superuser(self, user_name, password):
         """
         Creates and saves a superuser with the given email and password.
         """
         user = self.create_user(
-            email,
+            user_name,
             password=password,
         )
         user.staff = True
@@ -50,12 +52,12 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser):
 
-    email = models.EmailField(
-        verbose_name='email address',
-        max_length=255,
-        unique=True,
-    )
-    user_name   = models.CharField(_('user name'), max_length=30, blank=True)
+    # email = models.EmailField(
+    #     verbose_name='email address',
+    #     max_length=255,
+    #     unique=True,
+    # )
+    user_name   = models.CharField(_('user name'), max_length=30, unique=True)
     real_name    = models.CharField(_('real name'), max_length=30, blank=True)
     sex          = models.CharField(_('Sex'), max_length=30, blank=True)
     phone_number = models.CharField(_('phone number'), max_length=30, blank=True)
@@ -68,21 +70,21 @@ class User(AbstractBaseUser):
     admin = models.BooleanField(default=False) # a superuser
     # notice the absence of a "Password field", that's built in.
 
-    USERNAME_FIELD = 'email'
+    USERNAME_FIELD = 'user_name'
     REQUIRED_FIELDS = [] # Email & Password are required by default.
 
     objects = UserManager()
 
     def get_full_name(self):
         # The user is identified by their email address
-        return self.email
+        return self.user_name
 
     def get_short_name(self):
         # The user is identified by their email address
-        return self.email
+        return self.user_name
 
     def __str__(self):              # __unicode__ on Python 2
-        return self.email
+        return self.user_name
 
     def has_perm(self, perm, obj=None):
         "Does the user have a specific permission?"

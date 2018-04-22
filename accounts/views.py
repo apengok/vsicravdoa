@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate,login,get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
 from django.utils.http import is_safe_url
 from django.views.generic import CreateView,DetailView,UpdateView,FormView
 from .forms import LoginForm,RegisterForm ,UserDetailChangeForm  #,GuestForm
@@ -122,7 +122,10 @@ class LoginView(NextUrlMixin, RequestFormAttachMixin, FormView):
 
     def form_valid(self, form):
         next_path = self.get_next_url()
-        return redirect(next_path)
+        return redirect(to=next_path)
+        # return render(self.request,next_path,{})
+
+
 
 class RegisterView(CreateView):
     form_class = RegisterForm
