@@ -20,12 +20,12 @@
           
             <div class="col-md-2" style="top: 20px;">
               
-              <span class="fa fa-eye"></span>
+              <span class="fa fa-user"></span>
               
             </div>
             <div class="col-md-8" style="top: 20px;">
               
-              <p><span>{{ request.user.username }}</span></p>
+              <p><span>{{ request.user.user_name }}</span></p>
               
             </div>
             <div class=" dropdown col-md-2" style="top: 20px;">
@@ -34,7 +34,7 @@
 
               <!-- dropdown menu -->
               <ul class="dropdown-menu">
-                  <li><a href="{% url 'dma:map_monitor' dma_id=1 %}">Logout</a></li>
+                  <li><a href="{% url 'logout' %}">Logout</a></li>
                   
               </ul>
               
@@ -52,14 +52,44 @@
       {% endif %}
   </div>
   <div class=" box date_1">
-      <div class="w"> 星期一 </div>
-      <div class="d"> 15</div>
-      <div class="m"> 11月 </div>
+      <div id="d_week" class="w"> 星期一 </div>
+      <div id="d_day" class="d"> 15</div>
+      <div id="d_month" class="m"> 11月 </div>
     
   
   </div>
   <div class="box time_1">
-    <div>上午</div>
-    <div>11:04</div>
+    <div id="d_ap">上午</div>
+    <div id="d_time">11:04</div>
   </div>
 </div>
+
+
+<script type="text/javascript">
+
+  var tday=new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
+  var tmonth=new Array("January","February","March","April","May","June","July","August","September","October","November","December");
+  function GetClock(){
+    var d=new Date();
+    // var nmonth=d.getMonth(),ndate=d.getDate(),nyear=d.getFullYear();
+    // var nhour=d.getHours(),nmin=d.getMinutes(),nsec=d.getSeconds();
+    var nday=d.getDay(),nmonth=d.getMonth(),ndate=d.getDate();
+    var nhour=d.getHours(),nmin=d.getMinutes(),nsec=d.getSeconds();
+    if(nmin<=9) nmin="0"+nmin;
+    
+    document.getElementById('d_week').innerHTML=tday[nday];
+    document.getElementById('d_day').innerHTML=ndate;
+    document.getElementById('d_month').innerHTML=tmonth[nmonth];
+    // document.getElementById('d_week').innerHTML=tday[nday];
+    document.getElementById('d_time').innerHTML=nhour+":"+nmin+":"+nsec;
+
+    // document.getElementById('clockbox').innerHTML=""+(nmonth+1)+"-"+ndate+"-"+nyear+" "+nhour+":"+nmin+":"+nsec+"";
+    // document.getElementById('clockbox').innerHTML=""+tday[nday]+", "+tmonth[nmonth]+" "+ndate+" "+nhour+":"+nmin+"";
+  }
+
+  window.onload=function(){
+    GetClock();
+    setInterval(GetClock,1000);
+  }
+</script>
+
