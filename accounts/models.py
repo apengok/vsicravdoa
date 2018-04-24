@@ -1,9 +1,11 @@
 # -*- coding:utf-8 -*-
 from django.db import models
 from django.contrib.auth.models import (
-    BaseUserManager, AbstractBaseUser
+    BaseUserManager, AbstractBaseUser,PermissionsMixin,Group
 )
+
 from django.utils.translation import gettext_lazy as _
+from django.db.models.signals import post_save
 
 # python manage.py dumpdata dma --format json --indent 4 > dma/dmadd.json
 # python manage.py loaddata dma/dmadd.json 
@@ -50,7 +52,7 @@ class UserManager(BaseUserManager):
         return user
 
 
-class User(AbstractBaseUser):
+class User(AbstractBaseUser,PermissionsMixin):
 
     # email = models.EmailField(
     #     verbose_name='email address',
@@ -110,3 +112,20 @@ class User(AbstractBaseUser):
     # def is_active(self):
     #     "Is the user active?"
     #     return self.active
+
+
+
+class Roles(models.Model):
+    group = models.OneToOneField(Group,on_delete=models.CASCADE)
+    notes = models.CharField(max_length=156,blank=True)   
+    perm_op = models.CharField(max_length=5000,blank=True)
+
+
+def post_save_roles_model_receiver(sender,instance,created,*args,**kwargs):
+    if created:
+        try:
+            Roles.objects.create(group=instance)
+        except:
+            pass
+
+post_save.connect(post_save_roles_model_receiver,sender=Group)  

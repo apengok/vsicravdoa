@@ -51,10 +51,11 @@
       </li>
       {% endif %}
   </div>
+  
   <div class=" box date_1">
       <div id="d_week" class="w"> 星期一 </div>
       <div id="d_day" class="d"> 15</div>
-      <div id="d_month" class="m"> 11月 </div>
+      <div id="d_month" class="m"></div>
     
   
   </div>
@@ -67,21 +68,26 @@
 
 <script type="text/javascript">
 
-  var tday=new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
-  var tmonth=new Array("January","February","March","April","May","June","July","August","September","October","November","December");
+  var tday=new Array("星期日","星期一","星期二","星期三","星期四","星期五","星期六");
+  var tmonth=new Array("1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月");
   function GetClock(){
     var d=new Date();
     // var nmonth=d.getMonth(),ndate=d.getDate(),nyear=d.getFullYear();
     // var nhour=d.getHours(),nmin=d.getMinutes(),nsec=d.getSeconds();
     var nday=d.getDay(),nmonth=d.getMonth(),ndate=d.getDate();
     var nhour=d.getHours(),nmin=d.getMinutes(),nsec=d.getSeconds();
+    var ap;
+    if(nhour==0){ap=" 上午";nhour=12;}
+    else if(nhour<12){ap="上午";}
+    else if(nhour==12){ap="下午";}
+    else if(nhour>12){ap="下午";nhour-=12;}
     if(nmin<=9) nmin="0"+nmin;
     
     document.getElementById('d_week').innerHTML=tday[nday];
     document.getElementById('d_day').innerHTML=ndate;
-    document.getElementById('d_month').innerHTML=tmonth[nmonth];
-    // document.getElementById('d_week').innerHTML=tday[nday];
-    document.getElementById('d_time').innerHTML=nhour+":"+nmin+":"+nsec;
+    document.getElementById('d_month').innerHTML="<small>"+tmonth[nmonth]+"</small>";
+    document.getElementById('d_ap').innerHTML=ap;
+    document.getElementById('d_time').innerHTML=nhour+":"+nmin;//+":"+nsec;
 
     // document.getElementById('clockbox').innerHTML=""+(nmonth+1)+"-"+ndate+"-"+nyear+" "+nhour+":"+nmin+":"+nsec+"";
     // document.getElementById('clockbox').innerHTML=""+tday[nday]+", "+tmonth[nmonth]+" "+ndate+" "+nhour+":"+nmin+"";

@@ -1,0 +1,117 @@
+{% extends '_base.html' %}
+
+
+{% block content %}
+<div class=" context">
+    <!-- Modal -->
+    <!-- <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    </div> --><!-- /.modal -->
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document" style="width: 1200px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+      </div>
+      <div class="modal-body">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send message</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div  class="ax_default">
+
+  <div class="list-group" role="tab" id="heading">
+      <div>
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1" class="list-group-item active main-color-bg">
+          <span class="fa fa-caret-down" title="Toggle dropdown menu"></span> 站点管理
+        </a>
+      </div>
+      
+          <div id="collapse1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading">
+            <div>
+              <form>
+                <input type="text" name="sname">
+                <input type="submit" name="btn_seach">
+                
+              </form>
+              <button id="add_station"><a href="{% url 'dma:stations_create_manager' %}" data-toggle="modal" data-target="#modal" class="fa fa-pencil" title="create stations" data-tooltip>新增</a></button>
+              <table id="tb_stations" class="table table-bordered">
+                <thead>
+                  <tr>
+                    
+                    <th >序号</th>
+                    <th>选择</th>
+                    <th></th>
+                    <th >站点名称</th>
+                    <th >用水性质</th>
+                    <th >表具类型</th>
+                    <th >表具编号</th>
+                    <th >SIM卡号</th>
+                    <th >口径</th>
+                    <th >所属组织</th>
+                    <th >大用户</th>
+                    <th >重点关注</th>
+                    <th >安装日期</th>
+                    
+                  </tr>
+  
+                </thead>
+               {% for stations in object_list %}
+                  <tr>
+                    <td>{{ obj.id }} </td>
+                    <td><input type="checkbox"/> </td>
+                    <td class="btn_del">
+                      <div>
+                        <button class="btn alter-button" ><a href="{% url 'dma:stations_edit_manager' stations.id %}" data-toggle="modal" data-target="#modal" class="fa fa-pencil" title="update stations" data-tooltip>修改</a></button>
+                        <button type = "button" class = "btnDelete">删除</button>
+                         
+                      </div>
+                    </td>
+
+                    
+          
+                    <td>{{ stations.station_name }} </td>
+                    <td>{{ stations.meter_property }} </td>
+                    <td>{{ stations.meter_type }} </td>
+                    <td>{{ stations.meter_code }} </td>
+                    <td>{{ stations.simno }} </td>
+                    <td>{{ stations.caliber }} </td>
+                    <td>{{ stations.belongto }} </td>
+                    <td>{{ stations.big_user }} </td>
+                    <td>{{ stations.focus }} </td>
+                    <td>{{ stations.installed|date:'Y-m-d' }} </td>
+                    
+                  </tr>
+                  
+               {% endfor %}
+             </table>
+            </div>
+        </div>
+      
+  </div>
+
+
+
+    
+
+
+    <script>
+        console.log('stations_list_manger...')
+
+        // $(function(){
+        //   load_Tree('station');
+        // });
+
+        $('body').on('hidden.bs.modal', '.modal', function () {
+            console.log('hidden??...')
+            $(this).removeData('bs.modal');
+        });
+    </script>
+</div>
+{% endblock %}

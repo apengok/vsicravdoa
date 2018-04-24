@@ -583,3 +583,8 @@ class MonthlyuseDetailView(TemplateView):
         context['options'] = chart_options()
 
         return context                    
+
+
+
+class RolesMangerView(ListView):
+    pass
