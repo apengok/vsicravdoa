@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from django.shortcuts import get_object_or_404,render
 from django.http import HttpResponse,JsonResponse,HttpResponseRedirect
 from django.contrib import messages
-from . models import Organization,Stations,DMABaseinfo,Alarms
+
 import json
 import random
 from datetime import datetime
@@ -17,20 +17,19 @@ from django.shortcuts import render,HttpResponse
 from django.views import View
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView,FormView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib import admin
 
 from .tables import StationsTable
 from django_tables2 import RequestConfig
 
 from django.urls import reverse_lazy
 from .forms import DMABaseinfoForm,CreateDMAForm,TestForm,StationsCreateManagerForm,StationsForm
+from . models import Organization,Stations,DMABaseinfo,Alarms
+from accounts.models import User,MyRoles
+from accounts.forms import RoleCreateForm,MyRolesForm,RegisterForm,UserDetailChangeForm
 
-import json
-from django.contrib import admin
-from django.http import HttpResponse
-from django.shortcuts import render
-from django.views.generic import FormView, TemplateView
 # from django.core.urlresolvers import reverse_lazy
-from django.contrib.messages.views import SuccessMessageMixin
 
 def error_404(request):
     return render(request,"404.html",{})
@@ -585,6 +584,135 @@ class MonthlyuseDetailView(TemplateView):
         return context                    
 
 
+# 角色管理
+class RolesMangerView(TemplateView):
+    template_name = 'dma/role_manager.html'
 
-class RolesMangerView(ListView):
-    pass
+    def get_context_data(self, *args, **kwargs):
+        context = super(RolesMangerView, self).get_context_data(*args, **kwargs)
+        context['page_title'] = '角色管理'
+        context['role_list'] = MyRoles.objects.all()
+
+        return context  
+
+"""
+Roles creation, manager
+"""
+class RolesCreateMangerView(CreateView):
+    model = MyRoles
+    template_name = 'dma/role_create.html'
+    form_class = RoleCreateForm
+    success_url = reverse_lazy('dma:roles_manager');
+
+    # @method_decorator(permission_required('dma.change_stations'))
+    def dispatch(self, *args, **kwargs):
+        return super(RolesCreateMangerView, self).dispatch(*args, **kwargs)
+
+
+"""
+Roles edit, manager
+"""
+class RolesUpdateManagerView(UpdateView):
+    model = MyRoles
+    form_class = MyRolesForm
+    template_name = 'dma/role_edit_manager.html'
+    success_url = reverse_lazy('dma:roles_manager');
+
+    # @method_decorator(permission_required('dma.change_stations'))
+    def dispatch(self, *args, **kwargs):
+        self.role_id = kwargs['pk']
+        return super(RolesUpdateManagerView, self).dispatch(*args, **kwargs)
+
+    def form_valid(self, form):
+        """
+        If the form is valid, redirect to the supplied URL.
+        """
+        form.save()
+        return super(RolesUpdateManagerView,self).form_valid(form)
+        # role_list = MyRoles.objects.get(id=self.role_id)
+        # return HttpResponse(render_to_string('dma/role_manager.html', {'role_list':role_list}))
+
+    def get_context_data(self, **kwargs):
+        context = super(RolesUpdateManagerView, self).get_context_data(**kwargs)
+        context['page_title'] = '修改角色'
+        return context
+
+
+"""
+组织和用户管理
+"""
+class OrganUserMangerView(TemplateView):
+    template_name = 'dma/organ_user_manager.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(OrganUserMangerView, self).get_context_data(*args, **kwargs)
+        context['page_title'] = '组织和用户管理'
+
+        context['user_list'] = User.objects.all()
+        
+
+        return context  
+
+
+"""
+User creation, manager
+"""
+class UserCreateMangerView(CreateView):
+    model = User
+    template_name = 'dma/user_create.html'
+    form_class = RegisterForm
+    success_url = reverse_lazy('dma:organ_users');
+
+    # @method_decorator(permission_required('dma.change_stations'))
+    def dispatch(self, *args, **kwargs):
+        return super(UserCreateMangerView, self).dispatch(*args, **kwargs)
+
+
+"""
+User edit, manager
+"""
+class UserUpdateManagerView(UpdateView):
+    model = User
+    form_class = UserDetailChangeForm
+    template_name = 'dma/user_edit_manager.html'
+    success_url = reverse_lazy('dma:organ_users');
+
+    # @method_decorator(permission_required('dma.change_stations'))
+    def dispatch(self, *args, **kwargs):
+        self.user_id = kwargs['pk']
+        return super(UserUpdateManagerView, self).dispatch(*args, **kwargs)
+
+    def form_valid(self, form):
+        """
+        If the form is valid, redirect to the supplied URL.
+        """
+        form.save()
+        return super(UserUpdateManagerView,self).form_valid(form)
+        # role_list = MyRoles.objects.get(id=self.role_id)
+        # return HttpResponse(render_to_string('dma/role_manager.html', {'role_list':role_list}))
+
+    def get_context_data(self, **kwargs):
+        context = super(UserUpdateManagerView, self).get_context_data(**kwargs)
+        context['page_title'] = '修改用户'
+        return context
+
+
+class AssignRoleView(TemplateView):
+    """docstring for AssignRoleView"""
+    template_name = 'dma/assign_role.html'
+        
+    def get_context_data(self, **kwargs):
+        context = super(AssignRoleView, self).get_context_data(**kwargs)
+        context['page_title'] = '分配角色'
+        return context
+
+
+
+class AuthStationView(TemplateView):
+    """docstring for AuthStationView"""
+    template_name = 'dma/auth_station.html'
+        
+    def get_context_data(self, **kwargs):
+        context = super(AuthStationView, self).get_context_data(**kwargs)
+        context['page_title'] = '分配角色'
+        return context        

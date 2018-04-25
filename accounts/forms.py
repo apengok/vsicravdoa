@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login, get_user_model
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.urls import reverse
 from django.utils.safestring import mark_safe
-from .models import User
+from .models import User,MyRoles
 
 # User = get_user_model() #another way get user model
 
@@ -40,7 +40,7 @@ class UserAdminCreationForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('user_name',)
+        fields = ('user_name','belongto','is_active','expire_date','real_name','sex','phone_number','email')
 
     def clean_password2(self):
         # Check that the two password entries match
@@ -68,7 +68,7 @@ class UserAdminChangeForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('user_name', 'password', 'is_active', 'admin')
+        fields = ('user_name','belongto','is_active','expire_date','real_name','sex','phone_number','email')
 
     def clean_password(self):
         # Regardless of what the user provides, return the initial value.
@@ -130,7 +130,7 @@ class RegisterForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('user_name',)
+        fields = ('user_name','belongto','is_active','expire_date','real_name','sex','phone_number','email')
 
     def clean_password2(self):
         # Check that the two password entries match
@@ -151,11 +151,11 @@ class RegisterForm(forms.ModelForm):
 
 
 class UserDetailChangeForm(forms.ModelForm):
-    full_name = forms.CharField(label='Name', required=False, widget=forms.TextInput(attrs={"class": 'form-control'}))
+    # full_name = forms.CharField(label='Name', required=False, widget=forms.TextInput(attrs={"class": 'form-control'}))
 
     class Meta:
         model = User
-        fields = ['full_name']
+        fields = ['user_name','belongto','is_active','expire_date','real_name','sex','phone_number','email']
 
 
 # class RegisterForm(forms.Form):
@@ -186,3 +186,27 @@ class UserDetailChangeForm(forms.ModelForm):
     #         raise forms.ValidationError("Passwords must match.")
     #     return data
     #     
+
+
+"""
+Stations creation, manager
+"""
+class RoleCreateForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super(RoleCreateForm, self).__init__(*args, **kwargs)
+        
+
+    class Meta:
+        model = MyRoles
+        fields= '__all__'    
+
+
+
+class MyRolesForm(forms.ModelForm):
+    class Meta:
+        model = MyRoles    
+        fields= '__all__'       
+
+    def __init__(self, *args, **kwargs):
+        super(MyRolesForm, self).__init__(*args, **kwargs)

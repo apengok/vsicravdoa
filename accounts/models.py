@@ -67,6 +67,11 @@ class User(AbstractBaseUser,PermissionsMixin):
     expire_date  = models.CharField(_('Expired date'), max_length=30, blank=True)
     Role         = models.CharField(_('Role'), max_length=30, blank=True)
 
+    email = models.EmailField(
+        verbose_name='email address',
+        max_length=255,
+        blank=True,
+    )
     is_active = models.BooleanField(default=True)
     staff = models.BooleanField(default=False) # a admin user; non super-user
     admin = models.BooleanField(default=False) # a superuser
@@ -113,19 +118,31 @@ class User(AbstractBaseUser,PermissionsMixin):
     #     "Is the user active?"
     #     return self.active
 
+'''
+If you simply subclass the Group object then by default it will create a new database table and the admin site won't pick up any new fields.
 
+You need to inject new fields into the existing Group:
+'''
+# if not hasattr(Group, 'parent'):
+#     field = models.ForeignKey(Group, blank=True, null=True, related_name='children')
+#     field.contribute_to_class(Group, 'parent')
 
-class Roles(models.Model):
-    group = models.OneToOneField(Group,on_delete=models.CASCADE)
+class MyRoles(Group):
     notes = models.CharField(max_length=156,blank=True)   
-    perm_op = models.CharField(max_length=5000,blank=True)
+    # perm_op = models.CharField(max_length=5000,blank=True)
 
+# To add methods to the Group, subclass but tag the model as proxy:
+    # class Meta:
+    #     proxy = True
 
-def post_save_roles_model_receiver(sender,instance,created,*args,**kwargs):
-    if created:
-        try:
-            Roles.objects.create(group=instance)
-        except:
-            pass
+    # def myFunction(self):
+    #     return True
 
-post_save.connect(post_save_roles_model_receiver,sender=Group)  
+# def post_save_roles_model_receiver(sender,instance,created,*args,**kwargs):
+#     if created:
+#         try:
+#             Roles.objects.create(group=instance)
+#         except:
+#             pass
+
+# post_save.connect(post_save_roles_model_receiver,sender=Group)  
