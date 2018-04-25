@@ -1,6 +1,12 @@
 {% extends '_base.html' %}
 
 
+{% block organizationtree %}
+<div class=" treel">
+  {% include 'stationtree.html' %}
+</div>
+{% endblock %}
+
 {% block content %}
 <div class=" context">
     <!-- Modal -->
@@ -104,9 +110,9 @@
 
     <script>
         
-        // $(function(){
-        //   load_Tree('station');
-        // });
+        $(function(){
+          load_Tree('');
+        });
 
         $('body').on('hidden.bs.modal', '.modal', function () {
             console.log('hidden??...')

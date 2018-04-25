@@ -1,11 +1,6 @@
 {% extends '_base.html' %}
 
 
-{% block javascript %}
-{{ block.super }}
-    <script src="http://malsup.github.com/jquery.form.js"></script>
-
-{% endblock %}
 
 {% block organizationtree %}
 <div class=" treel">
@@ -115,7 +110,7 @@
 
 
     <script>
-        console.log('stations_list_manger...')
+        // console.log('stations_list_manger...')
 
         $(function(){
           load_Tree('station');

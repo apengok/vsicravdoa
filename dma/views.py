@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import get_object_or_404,render
+from django.shortcuts import get_object_or_404,render,redirect
 from django.http import HttpResponse,JsonResponse,HttpResponseRedirect
 from django.contrib import messages
 
@@ -675,7 +675,7 @@ class UserUpdateManagerView(UpdateView):
     model = User
     form_class = UserDetailChangeForm
     template_name = 'dma/user_edit_manager.html'
-    success_url = reverse_lazy('dma:organ_users');
+    success_url = reverse_lazy('dma:organ_users')
 
     # @method_decorator(permission_required('dma.change_stations'))
     def dispatch(self, *args, **kwargs):
@@ -704,7 +704,19 @@ class AssignRoleView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(AssignRoleView, self).get_context_data(**kwargs)
         context['page_title'] = '分配角色'
+        context['role_list'] = MyRoles.objects.all()
+        pk = kwargs['pk']
+        context['object_id'] = pk
+        context['user'] = User.objects.get(pk=pk)
         return context
+
+    def post(self,request,*args,**kwargs):
+        print (request.POST)
+        print(kwargs)
+        context = self.get_context_data(**kwargs)
+
+        # return super(AssignRoleView,self).render_to_response(context)
+        return redirect(reverse_lazy('dma:organ_users'))
 
 
 

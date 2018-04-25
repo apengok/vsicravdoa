@@ -2,29 +2,19 @@
 <div class="modal-dialog " style="width: 1200px;">
     <div class="modal-content">
 
-        <form id="assign_role" method='post' class="form" role="form" action='{% url 'dma:assign_role' object.id %}'>
+        <form id="assign_role" method='post' class="form" role="form" action='{% url 'dma:assign_role' object_id %}'>
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                
+                为用户【{{ user.user_name }}】分配角色
               </div>
               <div class="modal-body">
                     
                     {% csrf_token %}
-                    {{ form.non_field_errors }}
-                    {% for field in form %}
-                        <div class="form-group">
-                            {% if field.errors %}
-                                <ul class="form-errors">
-                                {% for error in field.errors %}
-                                    <li><span class="fa fa-exclamation-triangle"></span> <strong>{{ error|escape }}</strong></li>
-                                {% endfor %}
-                                </ul>
-                            {% endif %}
-                            {{ field.label_tag }} {{ field }} 
-                            {% if field.help_text %}<div class="form-helptext">{{ field.help_text }}</div>{% endif %}
-                        </div>
+                    <ul>
+                    {% for r in role_list %}
+                        <li><input type="checkbox" name="checks[]" value="{{ r.name }}">{{ r.name }}</li>
                     {% endfor %}
-                    
+                    </ul>
               </div>
               <div class="modal-footer">
                 <input type="button" class="btn btn-default" data-dismiss="modal" value="close" />

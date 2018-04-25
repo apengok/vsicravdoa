@@ -9,7 +9,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('auth', '0009_group_parent'),
+        # ('auth', '0009_group_parent'),
         ('accounts', '0004_auto_20180422_2314'),
     ]
 
