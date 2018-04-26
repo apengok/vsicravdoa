@@ -120,25 +120,37 @@ class LoginForm(forms.Form):
         self.user = user
         return data   
 
-
+MALE = '男'
+FEMALE = '女'
+SEX = (
+        
+        (MALE, "男"),
+        (FEMALE, "女"),
+    )   
 
 class RegisterForm(forms.ModelForm):
     """A form for creating new users. Includes all the required
     fields, plus a repeated password."""
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Password confirmation', widget=forms.PasswordInput)
+    # password2 = forms.CharField(label='Password confirmation', widget=forms.PasswordInput)
 
     class Meta:
         model = User
-        fields = ('user_name','belongto','is_active','expire_date','real_name','sex','phone_number','email')
+        fields = ('user_name','password1','belongto','is_active','expire_date','real_name','sex','phone_number','email')
 
-    def clean_password2(self):
-        # Check that the two password entries match
-        password1 = self.cleaned_data.get("password1")
-        password2 = self.cleaned_data.get("password2")
-        if password1 and password2 and password1 != password2:
-            raise forms.ValidationError("Passwords don't match")
-        return password2
+    def __init__(self,instance,*args,**kwargs):
+        super(RegisterForm, self).__init__(*args, **kwargs)
+
+        self.fields['sex'].widget = forms.RadioSelect(choices=SEX)
+        # self.fields['sex'].widget.choices = SEX
+
+    # def clean_password2(self):
+    #     # Check that the two password entries match
+    #     password1 = self.cleaned_data.get("password1")
+    #     password2 = self.cleaned_data.get("password2")
+    #     if password1 and password2 and password1 != password2:
+    #         raise forms.ValidationError("Passwords don't match")
+    #     return password2
 
     def save(self, commit=True):
         # Save the provided password in hashed format
@@ -151,12 +163,25 @@ class RegisterForm(forms.ModelForm):
 
 
 class UserDetailChangeForm(forms.ModelForm):
-    # full_name = forms.CharField(label='Name', required=False, widget=forms.TextInput(attrs={"class": 'form-control'}))
-
+    
     class Meta:
         model = User
-        fields = ['user_name','belongto','is_active','expire_date','real_name','sex','phone_number','email']
+        fields = ['user_name','password','belongto','is_active','expire_date','real_name','sex','phone_number','email']
 
+    def __init__(self,*args,**kwargs):
+        super(UserDetailChangeForm, self).__init__(*args, **kwargs)
+
+        self.fields['password'].widget = forms.PasswordInput()
+        self.fields['sex'].widget = forms.RadioSelect(choices=SEX)
+
+    def save(self, commit=True):
+        # Save the provided password in hashed format
+        user = super(UserDetailChangeForm, self).save(commit=False)
+        user.set_password(self.cleaned_data["password"])
+        user.active = False #send confirm email
+        if commit:
+            user.save()
+        return user
 
 # class RegisterForm(forms.Form):
 #     username = forms.CharField()

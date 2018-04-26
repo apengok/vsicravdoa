@@ -1,70 +1,118 @@
 {% extends '_base.html' %}
 
-{% block title %}最小流量分析{% endblock %}
+{% block stylesheet %}
+  <style type="text/css">
 
-{% block breadcrumbs %}首页 / 最小流量分析{% endblock %}
+  .query_div {
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    margin-bottom: 5px;
+  }
+  .query_div > h2 {
+    grid-column: 1/8;
+  }
 
-{% block page_title %}MNF{% endblock %}
+  .stastic {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    background-color: rgba(0, 153, 204, 1);
+  }
+  </style>
+{% endblock %}
+
+
+{% block organizationtree %}
+<div class=" treel">
+  {% include 'stationtree.html' %}
+</div>
+{% endblock %}
+
 
 {% block content %}
-    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-    <div id="main" style="width: 600px;height:400px;"></div>
+<div class=" context">
+    
+
+<div  class="ax_default">
+
+  <div class="query_div">
+    <h2>查询条件</h2>
+    <p>所属组织:{{ station.belongto.name }}</p>
+    <p>站点名称:{{ station.station_name }}</p>
+    
+    <p><button>两月内</button></p>
+    <p><button>三月内</button></p>
+    <p><button>查询</button></p>
+    
+  </div>
+  
+  <div class="list-group" role="tab" id="heading">
+      <div >
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1" class="list-group-item active " style="text-align:left;background-color: rgba(255, 255, 255, 1);border-color:rgba(255, 255, 255, 1);color: black;">
+          <span  title="Toggle dropdown menu"></span> 图形分析
+        </a>
+      </div>
+      
+      <div id="collapse1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading">
+        
+        <div >
+          <div id="chart_station" style="width: 1200px;height:555px;"></div>
+          
+        </div>
+        <div class="stastic">
+          <p>当天用水量: 186 m³ </p>
+          <p>昨日用水量: 206.3 </p>
+          <p>去年同期用水量：206 m³ </p>
+          <p>同比增量：21 m³</p>
+          <p> 环比增量：60 m³</p>
+          <p>最大值: 68 m³   （11：00）</p>
+          <p>最小值: 21 m³   （04：00）</p>
+          <p>平均值: 46 m³   （11：00）</p>
+        </div>
+      </div>
+
+
+      
+      
+  </div>
+
+
+
+    
+
+
+    
+</div>
 {% endblock %}
 
 
 {% block javascript %}
-
 {{ block.super }}
+    
 
-<script type="text/javascript">
-        // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('main'));
-        var server_info;
-        // 指定图表的配置项和数据
-        var option = {
-            title: {
-                text: 'ECharts 入门示例'
-            },
-            tooltip: {},
-            legend: {
-                data:['销量']
-            },
-            xAxis: {
-                data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
-            },
-            yAxis: {},
-            series: [{
-                name: '销量',
-                type: 'bar',
-                data: [5, 20, 36, 10, 10, 20]
-            }]
-        };
+<script>
+        
+  $(function(){
+    load_Tree('mnf');
+  });
 
-        // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
+  
 
-        setInterval( function () {     
- 
-                $.ajax({
-                    type: 'GET',
-                    url: '/dma/getchartd',
-                    dataType: 'json',
-                    success: function (json) {
-                        server_info = json['data'];
-                    }
-                });
- 
-                    
-                option.series[0].data = server_info;
+  // 基于准备好的dom，初始化echarts实例
+  var myChart = echarts.init(document.getElementById('chart_station'));
 
-                myChart.setOption(option, true);
+  // 使用刚指定的配置项和数据显示图表。
+  var opts = {{ options|safe }};
+  option = eval(opts);
+  console.log(option);
+  myChart.setOption(option);
 
-            }, 2000);  
- 
-         window.onresize = function () {
-            myChart.resize();      
-        };
+  
 
-    </script>
+  window.onresize = function () {
+      myChart.resize();      
+  };
+
+        
+</script>
 
 {% endblock %}

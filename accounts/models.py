@@ -72,6 +72,7 @@ class User(AbstractBaseUser,PermissionsMixin):
         max_length=255,
         blank=True,
     )
+    # BOOL_CHOICES = ((True, '启用'), (False, '停止'))
     is_active = models.BooleanField(default=True)
     staff = models.BooleanField(default=False) # a admin user; non super-user
     admin = models.BooleanField(default=False) # a superuser

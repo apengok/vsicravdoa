@@ -88,9 +88,13 @@
                     <td>{{ u.sex }} </td>
                     <td>{{ u.phone_number }} </td>
                     <td>{{ u.belongto }} </td>
-                    <td>{{ u.is_active }} </td>
+                    {% if u.is_active %}
+                    <td>启用 </td>
+                    {% else %}
+                    <td>停止</td>
+                    {% endif %}
                     <td>{{ u.expire_date }} </td>
-                    <td>{{ u.Role }} </td>
+                    <td>{{ u.groups.first }} </td>
                     
                     
                     

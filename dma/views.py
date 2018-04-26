@@ -213,6 +213,67 @@ class rt_dataView(TemplateView):
 
         return context
 
+"""
+夜间最小流量
+"""
+
+def chart_mnf():
+
+    options = {}
+
+    options['tooltip'] = {}
+
+    # options['backgroundColor'] = 'rgba(128, 128, 128, 0.5)'
+    options['animation'] = 'false'
+    options['legend'] = {
+        'data':['MNF','最大流量','平均流量','背景漏损','压力曲线',] 
+    }
+    options['xAxis'] = {
+        'splitLine': {'show': 'true'},
+        'data':[str(x) for x in range(100)]
+    }
+    options['yAxis'] = {
+        'name': 'm3/h'
+    }
+    today_curve = [5 for x in range(100)]
+    options['series'] = [
+        {
+            'name': 'MNF',
+            'type': 'line',
+            'smooth':'true',
+            # 'showSymbol': 'false',
+            'data': today_curve
+        },
+        {
+            'name': '最大流量',
+            'type': 'line',
+            'smooth':'true',
+            'data': [28 for x in range(100)]
+        },
+        {
+            'name':'压力曲线',
+            'type':'line',
+            'smooth':'true',
+            'data':[random.randint(20,50) for x in range(100)]
+        },
+        {
+            'name': '平均流量',
+            'type': 'line',
+            'smooth':'true',
+            'data': [15 for x in range(100)]
+        },
+        {
+            'name':'背景漏损',
+            'type':'line',
+            'smooth':'true',
+            'data':[random.randint(15,30) for x in range(100)]
+        },
+        
+        
+    ]
+
+    return json.dumps(options)
+
 class MNFView(TemplateView):
     """docstring for StationsView"""
 
@@ -223,23 +284,37 @@ class MNFView(TemplateView):
         
         context = super(MNFView, self).get_context_data(*args, **kwargs)
 
-        
-        # if self.request.method == 'POST':
-        #     form = AnalyWaterForm(self.request.POST or None)
-        # else:
-            
-        #     form = AnalyWaterForm()
-            
-        # context['form'] = form
+        context['page_title'] = '夜间最小流量'
+        dma_id = self.kwargs.get('dma_id') or 1
+        orgs = Organization.objects.get(pk=dma_id)
+        station = Stations.objects.filter(belongto=orgs).first()
+        context['station'] = station
 
-        # table = StationsTable(Stations.objects.all())
-        # RequestConfig(self.request, paginate={'per_page': 10}).configure(table)
-        # context['table'] = table
-
+        context['options'] = chart_mnf()
         
                 
         return context                 
 
+
+
+'''夜间最小流量 站点显示'''
+class MNFDetailView(TemplateView):
+    """docstring for MonthlyuseDetailView"""
+    template_name = 'dma/mnf.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(MNFDetailView, self).get_context_data(*args, **kwargs)
+        context['page_title'] = '夜间最小流量'
+        dma_id = self.kwargs.get('dma_id') or 1
+        orgs = Organization.objects.get(pk=dma_id)
+        station_id = self.kwargs.get('station_id')
+        station = Stations.objects.get(id=station_id)
+        
+        context['station'] = station
+
+        context['options'] = chart_mnf()
+
+        return context          
 
 
 def create_dma(request):
@@ -714,6 +789,14 @@ class AssignRoleView(TemplateView):
         print (request.POST)
         print(kwargs)
         context = self.get_context_data(**kwargs)
+
+        role = request.POST.get("checks[]")
+        user = context['user']
+        # user.Role = role
+        group = MyRoles.objects.filter(name__iexact=role).first()
+        print(group)
+        user.groups.add(group)
+        user.save()
 
         # return super(AssignRoleView,self).render_to_response(context)
         return redirect(reverse_lazy('dma:organ_users'))
