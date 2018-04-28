@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'dma',
-    'mptt'
+    'mptt',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -51,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'leakage.urls'
+ROOT_URLCONF = 'Virvo.urls'
 
 TEMPLATES = [
     {
@@ -110,23 +111,31 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+AUTH_USER_MODEL = 'accounts.User' #change buikld-in user model to us
+LOGIN_URL = '/login/'
+LOGIN_URL_REDIRECT = '/'
+LOGOUT_URL = '/logout/'
+
+LOGOUT_REDIRECT_URL = '/login/'
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'    #'UTC'
 
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = False
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
-
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
 STATIC_URL = '/static/'
 
 
