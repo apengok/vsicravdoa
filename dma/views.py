@@ -334,7 +334,10 @@ def create_dma(request):
         # return HttpResponseRedirect("/dma/dma/1/")
     if dma_form.errors:
         print(dma_form.errors)
-    return render(request,'dma/dma_manager.html',{'dma_form':dma_form})
+    response = {'status': 1, 'message': "Ok",'url':"/dma/{}".format(obj.pk)} # for ok
+    return HttpResponse(json.dumps(response), content_type='application/json')
+    # return render(request,'dma/dma_manager.html',{'dma_form':dma_form})
+    # return redirect(reverse_lazy('dma:dma_manager',kwargs={'pk':obj.pk}))
 
 
 class DMABaseView(TemplateView):
@@ -343,17 +346,17 @@ class DMABaseView(TemplateView):
     model = DMABaseinfo
     # success_url = '/dma/dma/1'
 
-    def get_queryset(self):
+    # def get_queryset(self):
         
-        return DMABaseinfo.objects.all()
-        # return get_object_or_404(DMABaseinfo)
+    #     return DMABaseinfo.objects.all()
+    #     # return get_object_or_404(DMABaseinfo)
 
-    def get_form_kwargs(self):
-        print (self.kwargs)
-        kwargs = super(DMABaseView, self).get_form_kwargs()
-        # kwargs['user'] = self.request.user
-        print (kwargs)
-        return kwargs
+    # def get_form_kwargs(self):
+    #     print (self.kwargs)
+    #     kwargs = super(DMABaseView, self).get_form_kwargs()
+    #     # kwargs['user'] = self.request.user
+    #     print (kwargs)
+    #     return kwargs
 
     def get_context_data(self, *args, **kwargs):
         context = super(DMABaseView, self).get_context_data(*args, **kwargs)
@@ -367,7 +370,7 @@ class DMABaseView(TemplateView):
 
         create_dma_form = CreateDMAForm()
         context['dma_form'] = create_dma_form
-        context['form'] = DMABaseinfoForm({'base':True})
+        context['form'] = DMABaseinfoForm()
 
         return context
 
@@ -434,6 +437,22 @@ class StationsCreateMangerView(CreateView):
     # @method_decorator(permission_required('dma.change_stations'))
     def dispatch(self, *args, **kwargs):
         return super(StationsCreateMangerView, self).dispatch(*args, **kwargs)
+
+
+"""
+Stationss , manager
+"""
+class StationsMangerView(ListView):
+    model = Stations
+    template_name = 'dma/stations_list_manager.html'
+
+    
+    def get_context_data(self,**kwargs):
+        context = super(StationsMangerView,self).get_context_data(**kwargs)
+
+        context['object_list'] = Stations.objects.all()
+
+        return context
 
 
 """

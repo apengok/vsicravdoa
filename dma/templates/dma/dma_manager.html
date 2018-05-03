@@ -320,6 +320,7 @@ console.log($(this).serialize());
         success:function(data){
           // console.log(data);
           $('.new-form-error').html('success save');
+          window.location=data.url
         },
         error:function (data) {
           // console.log(data);

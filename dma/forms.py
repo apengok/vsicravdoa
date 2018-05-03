@@ -53,9 +53,10 @@ class DMABaseinfoForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(DMABaseinfoForm, self).__init__(*args, **kwargs)
+        print(args,kwargs)
         print('dma form:',kwargs,self.instance)
         self.fields['orgs'].empty_label = ("威尔沃")
-        if not kwargs.get('base'):
+        if kwargs.get('pk'):
             if self.instance.dma.parent:
                 self.fields['orgs'].initial = self.instance.dma.parent.pk
             else:

@@ -40,9 +40,9 @@
 
               <!-- dropdown menu -->
               <ul class="dropdown-menu">
-                  <li><a href="{% url 'dma:map_monitor' dma_id=1 %}">地图监控</a></li>
-                  <li><a href="{% url 'dma:rt_curve' dma_id=1 %}">实时曲线</a></li>
-                  <li><a href="{% url 'dma:rt_data' dma_id=1 %}">实时数据</a></li>
+                  <li><a href="{% url 'dma:map_monitor_base' %}">地图监控</a></li>
+                  <li><a href="{% url 'dma:rt_curve_base' %}">实时曲线</a></li>
+                  <li><a href="{% url 'dma:rt_data_base' %}">实时数据</a></li>
               </ul>
               
             </div>
@@ -68,9 +68,9 @@
 
               <!-- dropdown menu -->
               <ul class="dropdown-menu">
-                  <li><a href="{% url 'dma:daily_use' dma_id=1 %}">日用水分析</a></li>
-                  <li><a href="{% url 'dma:monthly_use' dma_id=1 %}">月用水分析</a></li>
-                  <li><a href="{% url 'dma:mnf' dma_id=1 %}">夜间最小流量</a></li>
+                  <li><a href="{% url 'dma:daily_use_base'%}">日用水分析</a></li>
+                  <li><a href="{% url 'dma:monthly_use_base'%}">月用水分析</a></li>
+                  <li><a href="{% url 'dma:mnf_base'%}">夜间最小流量</a></li>
                   
               </ul>
               
@@ -118,8 +118,8 @@
 
               <!-- dropdown menu -->
               <ul class="dropdown-menu">
-                  <li><a href="{% url 'dma:dma_manager' pk=1 %}">dma管理</a></li>
-                  <li><a href="{% url 'dma:stations_list_manager' dma_id=1 %}">站点管理</a></li>
+                  <li><a href="{% url 'dma:dma_manager_base' %}">dma管理</a></li>
+                  <li><a href="{% url 'dma:stations_manager'%}">站点管理</a></li>
               </ul>
               
             </div>
