@@ -1,0 +1,152 @@
+@import "lesshat";
+
+/* Optional */
+html,
+body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+table {
+  height: 80%;
+}
+
+
+
+.cell {
+  background: #ddd;
+  border: 5px solid #fff;
+}
+/* Optional */
+
+// 12 columns grid
+[class*="col-"] {float: left;}
+.col-1 	{width: 8.333333%;}
+.col-2 	{width: 16.666666%;}
+.col-3 	{width: 25%;}
+.col-4 	{width: 33.333333%;}
+.col-5 	{width: 41.666666%;}
+.col-6 	{width: 50%;}
+.col-7 	{width: 58.333333%;}
+.col-8 	{width: 66.666666%;}
+.col-9 	{width: 75%;}
+.col-10 {width: 83.333333%;}
+.col-11 {width: 91.666666%;}
+.col-12 {width: 100%;}
+
+// 12 rows grid
+.row-1 	{height: 8.333333%;}
+.row-2 	{height: 16.666666%;}
+.row-3 	{height: 25%;}
+.row-4 	{height: 33.333333%;}
+.row-5 	{height: 41.666666%;}
+.row-6 	{height: 50%;}
+.row-7 	{height: 58.333333%;}
+.row-8 	{height: 66.666666%;}
+.row-9 	{height: 75%;}
+.row-10 {height: 83.333333%;}
+.row-11 {height: 91.666666%;}
+.row-12 {height: 100%;}
+
+
+.sidebarContent {
+    margin-top: 50px;
+    margin-right: 1px;
+    margin-bottom: -5px;
+    margin-left: -10px;
+    height:600px;
+    width:150px;
+    background-color:silver;
+    text-align:center;
+    
+    display:table-cell;
+    vertical-align: middle;
+}
+
+.sidebarContent2 {
+    margin-top: 1px;
+    margin-right: -25px;
+    margin-bottom: 1px;
+    margin-left: -25px;
+    height:300px;
+    width:150px;
+    background-color:silver;
+    text-align:center;
+    
+    display:table-cell;
+    vertical-align: middle;
+}
+
+.sidebarContent3 {
+    margin-top: 1px;
+    margin-right: -30px;
+    margin-bottom: 1px;
+    margin-left: 1px;
+    height:150px;
+    background-color:silver;
+    text-align:center;
+    
+    display:table-cell;
+    vertical-align: middle;
+}
+
+.sidebarContent4 {
+    margin-top: 1px;
+    margin-right: 1px;
+    margin-bottom: 1px;
+    margin-left: 1px;
+    height:75px;
+    background-color:silver;
+    text-align:center;
+    
+    
+}
+
+.sidebarContent5 {
+    margin-top: 1px;
+    margin-right: 1px;
+    margin-bottom: 1px;
+    margin-left: 1px;
+    height:150px;
+    background-color:silver;
+    text-align:center;
+    
+    #display:table-cell;
+    vertical-align: middle;
+}
+
+.sidebarContent6 {
+    margin-top: 1px;
+    margin-right: 1px;
+    margin-bottom: 1px;
+    margin-left: 1px;
+    height:450px;
+    background-color:silver;
+    text-align:center;
+    
+    display:table-cell;
+    vertical-align: middle;
+}
+
+.content {
+    text-align:center;
+}
+
+.tophead {
+    margin-top: 1px;
+    margin-right: 1px;
+    margin-bottom: 1px;
+    margin-left: 1px;
+    height:20px;
+    width:1200px;
+    #background-color:silver;
+    text-align:center;
+    
+    display:table-cell;
+    horizon-align: middle;
+}

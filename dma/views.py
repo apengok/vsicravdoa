@@ -20,8 +20,6 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import admin
 
-from .tables import StationsTable
-from django_tables2 import RequestConfig
 
 from django.urls import reverse_lazy
 from .forms import DMABaseinfoForm,CreateDMAForm,TestForm,StationsCreateManagerForm,StationsForm
@@ -134,20 +132,6 @@ def gettree(request):
     return JsonResponse({'trees':virvo_tree})
     # return JsonResponse({'trees':dicts})
 
-def gettreenode(request):
-    node = request.POST['node']
-    
-    orgs = Organization.objects.filter(name=node).first()
-    
-    table = StationsTable(Stations.objects.filter(belongto=orgs))
-    
-    # table = StationsTable(orgs.station_set.all())
-    
-    RequestConfig(request, paginate={'per_page': 10}).configure(table)
-    
-    vals = {'table':table}
-    return render(request,'dma/table_station.html',vals)
-    # return JsonResponse(vals)    
 
 def getchartd(request):
     data = [random.randint(2,13), 20, 6, 10, 20, 30]
