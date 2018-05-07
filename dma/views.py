@@ -814,3 +814,13 @@ class AuthStationView(TemplateView):
         context = super(AuthStationView, self).get_context_data(**kwargs)
         context['page_title'] = '分配角色'
         return context        
+
+
+class PersonalityView(TemplateView):
+    """docstring for AuthStationView"""
+    template_name = 'dma/personality.html'
+        
+    def get_context_data(self, **kwargs):
+        context = super(PersonalityView, self).get_context_data(**kwargs)
+        context['page_title'] = '个性化设置'
+        return context       

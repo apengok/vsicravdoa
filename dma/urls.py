@@ -67,5 +67,9 @@ urlpatterns = [
     url(r'^user/update/(?P<pk>[0-9]+)/?$', views.UserUpdateManagerView.as_view(), name='user_edit_manager'),
     url(r'^user/assign_role/(?P<pk>[0-9]+)/?$', views.AssignRoleView.as_view(), name='assign_role'),#分配角色
     url(r'^user/auth_station/(?P<pk>[0-9]+)/?$', views.AuthStationView.as_view(), name='auth_station'),#授权站点
+
+
+    # 系统管理 
+    url(r'^sysconfig/personality/?$', views.PersonalityView.as_view(), name='personality'), #平台个性化配置
     
 ]

@@ -142,8 +142,26 @@ font-family: '微软雅黑';
   border-bottom: 1px solid grey;
   width:240px;
   height:60px;
+  /*background:inherit;
+  background-color:rgba(255, 255, 255, 0);*/
+  /*border:1px solid red;*/
+  border-radius:0px;
+  -moz-box-shadow:none;
+  -webkit-box-shadow:none;
+  box-shadow:none;
+  font-family:'微软雅黑 Bold', '微软雅黑 Regular', '微软雅黑';
+  font-weight:700;
+  font-style:normal;
+  font-size:16px;
+  color:#CCCCCC;
+}
+
+#navitem_div.mouseOver {
+  border-bottom: 1px solid grey;
+  width:240px;
+  height:60px;
   background:inherit;
-  background-color:rgba(255, 255, 255, 0);
+  background-color:rgba(0, 153, 204, 1);
   /*border:1px solid red;*/
   border-radius:0px;
   -moz-box-shadow:none;
@@ -175,6 +193,7 @@ font-family: '微软雅黑';
   font-style:normal;
   font-size:16px;
   color:#CCCCCC;*/
+  color:#FFFFFF;
 }
 
 
@@ -493,4 +512,14 @@ font-family: '微软雅黑';
   .col3Form > button {
    grid-column:3; 
     
+  }
+
+
+/*模块导航条样式*/
+  .modal_nav_header {
+    height:49px;
+    text-align:left;
+    background-color: rgba(250, 250, 250, 1);
+    /*border-color:rgba(255, 255, 255, 1);*/
+    color: black;
   }
