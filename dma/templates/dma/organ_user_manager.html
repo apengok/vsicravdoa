@@ -34,34 +34,48 @@
 
   <div class="list-group" role="tab" id="heading">
       <div>
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1" class="list-group-item active main-color-bg" style="text-align:left;background-color: rgba(250, 250, 250, 1);border-color:rgba(255, 255, 255, 1);color: black;">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1" class="list-group-item modal_nav_header" >
            用户信息<span class="fa fa-angle-down pull-right" title="Toggle dropdown menu"></span>
         </a>
       </div>
       
           <div id="collapse1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading" style="text-align:left;background-color: rgba(255, 255, 255, 1);border-color:rgba(255, 255, 255, 1);color: black;">
             <div>
-              <form>
-                <input type="text" name="sname">
-                <input type="submit" name="btn_seach">
+
+              <form class="navbar-form navbar-left" style="padding: 0">
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="请输入用户名/真实姓名/手机/邮箱" style="height: 49px;width: 400px">
+                  </div>
+                  <button type="submit" class="btn btn-default" style="height: 49px;">搜索</button>
+                </form>
                 
-              </form>
-              <button id="add_station"><a href="{% url 'dma:user_create_manager' %}" data-toggle="modal" data-target="#modal" class="fa fa-pencil" title="create stations" data-tooltip>新增</a></button>
+                <div class="dropdown col-sm-4 pull-left" style="top: 10px;">
+                  <button id="add_station" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="height: 49px;">
+                    操作菜单
+                    <span class="fa fa-angle-down pull-right"></span>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="{% url 'dma:user_create_manager' %}" data-toggle="modal" data-target="#modal"  title="create stations" data-tooltip style="padding: 3px 20px;"><span class="fa fa-plus pull-left"></span>新增</a></li>
+                    
+                  </ul>
+                </div>
+
+              
               <table id="tb_stations" class="table table-bordered">
                 <thead>
                   <tr>
                     
-                    <th>序号</th>
-                    <th>选择</th>
-                    <th>操作</th>
-                    <th>用户名</th>
-                    <th>真实姓名</th>
-                    <th>性别</th>
-                    <th>手机</th>
-                    <th>所属组织</th>
-                    <th>状态</th>
-                    <th>授权截止日期</th>
-                    <th>角色</th>
+                    <th style="height: 51px;width: 51px;text-align: center;">序号</th>
+                    <th style="height: 51px;width: 35px;text-align: center;">选择</th>
+                    <th style="height: 51px;width: 320px;text-align: center;">操作</th>
+                    <th style="height: 51px;width: 100px;text-align: center;">用户名</th>
+                    <th style="height: 51px;width: 80px;text-align: center;">真实姓名</th>
+                    <th style="height: 51px;width: 50px;text-align: center;">性别</th>
+                    <th style="height: 51px;width: 120px;text-align: center;">手机</th>
+                    <th style="height: 51px;width: 180px;text-align: center;">所属组织</th>
+                    <th style="height: 51px;width: 50px;text-align: center;">状态</th>
+                    <th style="height: 51px;width: 120px;text-align: center;">授权截止日期</th>
+                    <th style="height: 51px;width: 203px;text-align: center;">角色</th>
                     
                     
                   </tr>
@@ -69,22 +83,24 @@
                 </thead>
                {% for u in user_list %}
                   <tr>
-                    <td>{{ forloop.counter }} </td>
-                    <td><input type="checkbox"/> </td>
+                    <td style="height: 51px;width: 51px;text-align: center;">{{ forloop.counter }} </td>
+                    <td style="height: 51px;width: 51px;text-align: center;"><input type="checkbox"/> </td>
                     <td class="btn_del">
-                      <div>
-                        <button class="btn alter-button" ><a href="{% url 'dma:user_edit_manager' u.id %}" data-toggle="modal" data-target="#modal" class="fa fa-pencil" title="update stations" data-tooltip>修改</a></button>
-                        <button class="btn alter-button" ><a href="{% url 'dma:assign_role' u.id %}" data-toggle="modal" data-target="#modal" class="fa fa-pencil" title="update stations" data-tooltip>分配角色</a></button>
-                        <button class="btn alter-button" ><a href="{% url 'dma:auth_station' u.id %}" data-toggle="modal" data-target="#modal" class="fa fa-pencil" title="update stations" data-tooltip>授权站点</a></button>
-                        <button type = "button" class = "btnDelete">删除</button>
-                         
+                      <div style="height: 51px;width: 320px;text-align: center;">
+                        <a class="btn btn-default" href="{% url 'dma:user_edit_manager' u.id %}" data-toggle="modal" data-target="#modal" title="update stations" style="background-color: #169bd5;width: 50px;height: 35;">修改</a>
+                        <a class="btn btn-default" href="{% url 'dma:assign_role' u.id %}" data-toggle="modal" data-target="#modal" title="update stations" style="background-color: #169bd5;width: 75px;height: 35;">分配角色</a>
+                        <a class="btn btn-default" href="{% url 'dma:auth_station' u.id %}" data-toggle="modal" data-target="#modal" title="update stations" style="background-color: #169bd5;width: 75px;height: 35;">授权站点</a>
+                        <a class="btn btn-default" id = "btnDelete" style="background-color: rgba(153, 153, 153, 1);width: 50px;height: 35;">删除</a>
+
                       </div>
+
+                      
                     </td>
 
                     
           
-                    <td>{{ u.user_name }} </td>
-                    <td>{{ u.real_name }} </td>
+                    <td style="height: 51px;width: 100px;text-align: center;">{{ u.user_name }} </td>
+                    <td style="height: 51px;width: 80px;text-align: center;">{{ u.real_name }} </td>
                     <td>{{ u.sex }} </td>
                     <td>{{ u.phone_number }} </td>
                     <td>{{ u.belongto }} </td>
