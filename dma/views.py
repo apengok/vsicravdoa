@@ -345,6 +345,7 @@ class DMABaseView(TemplateView):
     def get_context_data(self, *args, **kwargs):
         context = super(DMABaseView, self).get_context_data(*args, **kwargs)
         context['title'] = 'DMA 管理'
+        context['page_title'] = 'DMA管理'
         try:
             pk = self.kwargs.get('pk')
             orgs = Organization.objects.get(pk=pk)
@@ -382,6 +383,7 @@ class DMAListView(UpdateView):
     def get_context_data(self, *args, **kwargs):
         context = super(DMAListView, self).get_context_data(*args, **kwargs)
         context['title'] = 'DMA 管理'
+        context['page_title'] = 'DMA 管理'
         try:
             pk = self.kwargs.get('pk')
             orgs = Organization.objects.get(pk=pk)
@@ -435,6 +437,7 @@ class StationsMangerView(ListView):
         context = super(StationsMangerView,self).get_context_data(**kwargs)
 
         context['object_list'] = Stations.objects.all()
+        context['page_title'] = '站点管理'
 
         return context
 
@@ -466,6 +469,7 @@ class StationsListMangerView(ListView):
 
     def get_context_data(self,**kwargs):
         context = super(StationsListMangerView,self).get_context_data(**kwargs)
+        context['page_title'] = '站点管理'
 
         return context
 

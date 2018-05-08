@@ -1,4 +1,4 @@
-{% extends '_base.html' %}
+{% extends 'dma/home.html' %}
 
 {% block stylesheet %}
   <style type="text/css">
@@ -21,18 +21,15 @@
 {% endblock %}
 
 
-{% block organizationtree %}
-<div class=" treel">
-  {% include 'stationtree.html' %}
-</div>
-{% endblock %}
-
+{% block breadcrumbs %}<a href="{% url 'home' %}"><span class="fa fa-home"></span>首页</a> / 数据分析/月用水分析{% endblock %}
 
 {% block content %}
-<div class=" context">
-    
+<div class=" main_content">
+    <div class=" treel">
+      {% include 'stationtree.html' %}
+    </div>
 
-<div  class="ax_default">
+<div  class="ax_default" style="margin-left: 10px;">
 
   <div class="query_div">
     <h2>查询条件</h2>

@@ -1,13 +1,10 @@
-{% extends '_base.html' %}
-
-{% block organizationtree %}
-
-{% endblock %}
+{% extends 'dma/home.html' %}
 
 
+{% block breadcrumbs %}<a href="{% url 'home' %}"><span class="fa fa-home"></span>首页</a> / 企业管理/角色管理{% endblock %}
 
 {% block content %}
-<div class=" context_notree">
+<div >
     <!-- Modal -->
     <!-- <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     </div> --><!-- /.modal -->
@@ -32,7 +29,7 @@
 <div  class="ax_default">
 
   <div class="list-group" role="tab" id="heading">
-      <div >
+      <div style="margin-left: 15px;">
         <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1" class=" list-group-item  modal_nav_header " >
           角色列表<span class="fa fa-angle-down pull-right"></span>
         </a>

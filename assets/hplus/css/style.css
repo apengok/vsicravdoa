@@ -204,7 +204,7 @@ body.body-small .navbar-top-links li:last-child {
 	/*update-begin--Author:scott --- Date:20170609 --- for：h+首页菜单顶部头像缩小/logo改成横的------------------- */
     /*padding: 6px 25px;*/
     /*update-end--Author:scott --- Date:20170609 --- for：h+首页菜单顶部头像缩小/logo改成横的------------------- */
-    background: url("patterns/header-profile.png") no-repeat;
+    /*background: url("patterns/header-profile.png") no-repeat;*/
 }
 
 .pace-done .nav-header {
@@ -234,8 +234,8 @@ body.body-small .navbar-top-links li:last-child {
 }
 
 .minimalize-styl-2 {
-    padding: 4px 12px;
-    margin: 14px 5px 5px 20px;
+    padding: 10px 0 0 10px;
+    /*margin: 14px 5px 5px 20px;*/
     font-size: 14px;
     float: left;
 }
@@ -243,13 +243,14 @@ body.body-small .navbar-top-links li:last-child {
 .navbar-form-custom {
     float: left;
     height: 50px;
-    padding: 0;
-    width: 200px;
+    padding: 10px;
+    width: 400px;
     display: inline-table;
 }
 
 .navbar-form-custom .form-group {
     margin-bottom: 0;
+    padding-top: 25px;
 }
 
 .nav.navbar-top-links a {
@@ -414,12 +415,12 @@ body.mini-navbar .navbar-default .nav > li > .nav-second-level li a {
 }
 
 .fixed-nav #wrapper {
-    padding-top: 60px;
+    padding-top: 80px;
     box-sizing: border-box;
 }
 
 .fixed-nav .minimalize-styl-2 {
-    margin: 14px 5px 5px 15px;
+    margin: 15px 5px 5px 5px;
 }
 
 .body-small .navbar-fixed-top {
@@ -478,7 +479,7 @@ body.fixed-sidebar .navbar-static-side,
 body.canvas-menu .navbar-static-side {
     position: fixed;
     /*update-begin--Author:scott --- Date:20170609 --- for：h+首页菜单顶部头像缩小------------------- */
-    width: 200px;
+    width: 240px;
     /*update-end--Author:scott --- Date:20170609 --- for：h+首页菜单顶部头像缩小------------------- */
     z-index: 2001;
     height: 100%;
@@ -3389,6 +3390,7 @@ body {
 body.full-height-layout #wrapper,
 body.full-height-layout #page-wrapper {
     height: 100%;
+    background-color: rgba(241, 242, 247, 1);
 }
 
 #page-wrapper {
@@ -3560,7 +3562,7 @@ video {
     padding: 0 15px;
     position: inherit;
     /*update-begin--Author:scott --- Date:20170609 --- for：h+首页菜单缩进------------------- */
-    margin: 0 0 0 200px;
+    margin: 0 0 0 240px;
     /*update-end--Author:scott --- Date:20170609 --- for：h+首页菜单缩进------------------- */
 }
 
@@ -6908,7 +6910,7 @@ body.rtls {
 }
 
 body.rtls #page-wrapper {
-    margin: 0 220px 0 0;
+    margin: 0 240px 0 0;
 }
 
 body.rtls .nav-second-level li a {

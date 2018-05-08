@@ -28,7 +28,7 @@ urlpatterns = [
     url(r'^admin/jsi18n', i18n_javascript),
     url(r'^admin/', admin.site.urls),
     # url(r'^$',home,name='home'),
-    url(r'^$',TemplateView.as_view(template_name='dma/home.html'),name='home'),
+    url(r'^$',TemplateView.as_view(template_name='hplus.html'),name='home'),
 
 
     url(r'^accounts/$', RedirectView.as_view(url='/account')),
