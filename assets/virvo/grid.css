@@ -102,8 +102,8 @@ font-family: '微软雅黑';
     height: 980px;
     width: 240px;
     background-color: #32323A;
-    display: grid;
-    grid-template-rows: repeat(10,60px);
+    /*display: grid;*/
+    /*grid-template-rows: repeat(10,60px);*/
 }
 
 .sitem {
@@ -142,8 +142,8 @@ font-family: '微软雅黑';
   border-bottom: 1px solid grey;
   width:240px;
   height:60px;
-  /*background:inherit;
-  background-color:rgba(255, 255, 255, 0);*/
+  background:inherit;
+  background-color:rgba(255, 255, 255, 0);
   /*border:1px solid red;*/
   border-radius:0px;
   -moz-box-shadow:none;
