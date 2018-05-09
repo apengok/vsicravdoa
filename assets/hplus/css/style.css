@@ -70,7 +70,7 @@ a:focus {
 
 .navbar-default .nav > li > a:hover,
 .navbar-default .nav > li > a:focus {
-    background-color: #293846;
+    background-color: #32323a;
     color: white;
 }
 
@@ -213,16 +213,25 @@ body.body-small .navbar-top-links li:last-child {
 }
 
 .nav > li.active {
-    border-left: 4px solid #19aa8d;
-    background: #293846;
+    border-left: 4px solid white;
+    background: #32323a;
+    background-color:rgba(0, 153, 204, 1);
 }
+
+
+
 
 .nav.nav-second-level > li.active {
     border: none;
 }
 
+
+
 .nav.nav-second-level.collapse[style] {
     height: auto !important;
+    border-left: -4px ;
+    margin-left: -4px;
+    background: #32323a;
 }
 
 .nav-header a {
@@ -397,6 +406,7 @@ body.mini-navbar .navbar-default .nav > li > .nav-second-level li a {
 .pace-done .nav-header,
 .pace-done li.active,
 .pace-done #page-wrapper,
+.pace-done #page-wrapper2,
 .pace-done .footer {
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
@@ -466,10 +476,12 @@ body.canvas-menu .nav-header {
     padding: 33px 25px;
 }
 
+body.mini-navbar #page-wrapper2,
 body.mini-navbar #page-wrapper {
     margin: 0 0 0 70px;
 }
 
+body.canvas-menu.mini-navbar #page-wrapper2,
 body.canvas-menu.mini-navbar #page-wrapper,
 body.canvas-menu.mini-navbar .footer {
     margin: 0 0 0 0;
@@ -485,14 +497,27 @@ body.canvas-menu .navbar-static-side {
     height: 100%;
 }
 
+/* pengwl add for map nav by dma tree*/
+body.fixed-sidebar .navbar-dma-side,
+body.canvas-menu .navbar-dma-side {
+    position: fixed;
+    /*update-begin--Author:scott --- Date:20170609 --- for：h+首页菜单顶部头像缩小------------------- */
+    width: 280px;
+    /*update-end--Author:scott --- Date:20170609 --- for：h+首页菜单顶部头像缩小------------------- */
+    z-index: 2002;
+    height: 100%;
+}
+
 body.fixed-sidebar.mini-navbar .navbar-static-side {
     width: 70px;
 }
 
+body.fixed-sidebar.mini-navbar #page-wrapper2,
 body.fixed-sidebar.mini-navbar #page-wrapper {
     margin: 0 0 0 70px;
 }
 
+body.body-small.fixed-sidebar.mini-navbar #page-wrapper2,
 body.body-small.fixed-sidebar.mini-navbar #page-wrapper {
     margin: 0 0 0 70px;
 }
@@ -509,9 +534,15 @@ body.body-small.fixed-sidebar.mini-navbar .navbar-static-side {
     border-left-width: 0;
 }
 
+.nav>li:focus, .nav>li:hover {
+    text-decoration : none;
+    /*background-color: #4688C4;*/
+    background-color:rgba(0, 153, 204, 1);
+}
 .nav>li>a:focus, .nav>li>a:hover {
 	text-decoration : none;
 	background-color: #4688C4;
+    
 }
 
 /** update-begin--Author:yugwu  Date:20170617 for：[TASK #1750]【优化】首页h+风格UI改造树机构调整*/
@@ -577,9 +608,12 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
     width: 70px;
 }
 
+.top-navigation #page-wrapper2,
 .top-navigation #page-wrapper {
     margin-left: 0;
 }
+
+
 
 .top-navigation .navbar-nav .dropdown-menu > .active > a {
     background: white;
@@ -644,6 +678,11 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
     margin-right: 0;
 }
 
+.top-navigation.mini-navbar #page-wrapper2,
+.top-navigation.body-small.fixed-sidebar.mini-navbar #page-wrapper2,
+.mini-navbar .top-navigation #page-wrapper2,
+.body-small.fixed-sidebar.mini-navbar .top-navigation #page-wrapper2,
+.canvas-menu #page-wrapper2,
 .top-navigation.mini-navbar #page-wrapper,
 .top-navigation.body-small.fixed-sidebar.mini-navbar #page-wrapper,
 .mini-navbar .top-navigation #page-wrapper,
@@ -3388,12 +3427,17 @@ body {
 }
 
 body.full-height-layout #wrapper,
+body.full-height-layout #page-wrapper2,
 body.full-height-layout #page-wrapper {
     height: 100%;
     background-color: rgba(241, 242, 247, 1);
 }
 
 #page-wrapper {
+    min-height: auto;
+}
+
+#page-wrapper2 {
     min-height: auto;
 }
 
@@ -3563,6 +3607,14 @@ video {
     position: inherit;
     /*update-begin--Author:scott --- Date:20170609 --- for：h+首页菜单缩进------------------- */
     margin: 0 0 0 240px;
+    /*update-end--Author:scott --- Date:20170609 --- for：h+首页菜单缩进------------------- */
+}
+
+#page-wrapper2 {
+    padding: 0 15px;
+    position: inherit;
+    /*update-begin--Author:scott --- Date:20170609 --- for：h+首页菜单缩进------------------- */
+    margin: 0 0 0 280px;
     /*update-end--Author:scott --- Date:20170609 --- for：h+首页菜单缩进------------------- */
 }
 
@@ -6913,6 +6965,10 @@ body.rtls #page-wrapper {
     margin: 0 240px 0 0;
 }
 
+body.rtls #page-wrapper2 {
+    margin: 0 280px 0 0;
+}
+
 body.rtls .nav-second-level li a {
     padding: 7px 35px 7px 10px;
 }
@@ -7067,18 +7123,22 @@ body.rtls.top-navigation .navbar-toggle {
     float: none;
 }
 
+body.rtls.top-navigation #page-wrapper2,
 body.rtls.top-navigation #page-wrapper {
     margin: 0;
 }
 
+body.rtls.mini-navbar #page-wrapper2
 body.rtls.mini-navbar #page-wrapper {
     margin: 0 70px 0 0;
 }
 
+body.rtls.mini-navbar.fixed-sidebar #page-wrapper2
 body.rtls.mini-navbar.fixed-sidebar #page-wrapper {
     margin: 0 0 0 0;
 }
 
+body.rtls.body-small.fixed-sidebar.mini-navbar #page-wrapper2
 body.rtls.body-small.fixed-sidebar.mini-navbar #page-wrapper {
     margin: 0 220px 0 0;
 }
@@ -7099,6 +7159,9 @@ body.rtls .navbar-top-links li:last-child {
     margin-left: 20px;
 }
 
+body.rtls .top-navigation #page-wrapper2,
+body.rtls.mini-navbar .top-navigation #page-wrapper2,
+body.rtls.mini-navbar.top-navigation #page-wrapper2,
 body.rtls .top-navigation #page-wrapper,
 body.rtls.mini-navbar .top-navigation #page-wrapper,
 body.rtls.mini-navbar.top-navigation #page-wrapper {
@@ -7114,6 +7177,7 @@ body.rtls.top-navigation .footer.fixed {
     body.rtls .navbar-top-links li:last-child {
         margin-left: 20px;
     }
+    .body-small.rtls #page-wrapper2,
     .body-small.rtls #page-wrapper {
         position: inherit;
         margin: 0 0 0 0px;
@@ -7323,6 +7387,7 @@ body.skin-1 {
     padding: 30px 15px;
 }
 
+.skin-1 #page-wrapper2,
 .skin-1 #page-wrapper {
     background: #f4f6fa;
 }
@@ -7476,6 +7541,7 @@ body.skin-3 {
     padding: 30px 15px;
 }
 
+.skin-3 #page-wrapper2,
 .skin-3 #page-wrapper {
     background: #f4f6fa;
 }
@@ -7609,7 +7675,7 @@ body.skin-3 {
 }
 
 .navbar-static-side {
-    background: #2f4050;
+    background: #32323a;
 }
 
 .nav-close {
@@ -7632,6 +7698,7 @@ body.skin-3 {
     .nav-close {
         display: block;
     }
+    #page-wrapper2,
     #page-wrapper {
         margin-left: 0!important;
     }

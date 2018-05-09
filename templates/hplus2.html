@@ -60,10 +60,12 @@
     <div id="wrapper">
     
     <!--左侧导航开始-->
-    {% include '_nav.html' %}
+    <nav class="navbar-default navbar-dma-side" role="navigation">
+        {% include 'dmatree.html' %}
+    </nav>
     <!--左侧导航结束-->
     <!--右侧部分开始-->
-    <div id="page-wrapper" class="white-bg dashbard-1">
+    <div id="page-wrapper2" class="white-bg dashbard-1" >
         <div class="row border-bottom">
             <nav class="navbar navbar-fixed-top" role="navigation" style="margin-bottom: 0">
                 <div class="navbar-header" style="height: 80px;margin-left: 240px;">
@@ -114,11 +116,12 @@
         <div class="row J_mainContent" id="content-main">
             <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="{% url 'dma:virvo_home' %}" frameborder="0" data-id="home.html" seamless></iframe>
         </div>
-        <!-- <div class="footer">
-            <div class="pull-right">&copy; 2014-2015
-                <a href="http://www.zi-han.net/" target="_blank">zihan's blog</a>
+        <div class="footer">
+            <div class="pull-right">&copy;2015-2017 
+                <a href="www.virvo.com.cn" target="_blank">威尔沃自动化设备（深圳）有限公司 </a>
+                <span>京ICP1507429号-1</span>
             </div>
-        </div> -->
+        </div>
     </div>
     <!--右侧部分结束-->
     <!--右侧边栏开始-->

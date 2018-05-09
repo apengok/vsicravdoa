@@ -220,6 +220,19 @@ font-family: '微软雅黑';
   border-radius: 5px;
   width: 98%;
   box-shadow: none;
+  
+  width: 100%;
+  /*color:#999999;*/
+  margin-top:10px;
+  padding-top: 10px;
+}
+
+.breads > a {
+  font-family:'微软雅黑';
+  font-weight:400;
+  font-style:normal;
+  font-size:20px;
+  color:#999999;
 }
 
 .bred_text {
@@ -231,7 +244,7 @@ font-family: '微软雅黑';
   width: 100%;
   color:#999999;
   margin-top:10px;
-  padding-top: 15px;
+  padding-top: 10px;
 }
 
 .page_title {
