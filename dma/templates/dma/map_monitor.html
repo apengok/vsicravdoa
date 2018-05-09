@@ -2,12 +2,9 @@
 
 {% load staticfiles %}
 
-{% block page_title %}
-
-{% endblock %}
 
 
-{% block content %}
+{% block main_content %}
   <div >
       <div id="js-map" class="map"></div>
       <div id="js-overlay" class="overlay">
@@ -35,9 +32,9 @@
     <SCRIPT LANGUAGE="JavaScript">
 
     //load tree
-    $(function(){
-        load_Tree('mapmonitor');
-    });
+    // $(function(){
+    //     load_Tree('mapmonitor');
+    // });
 
     // map
     var appLayer = function (options) {

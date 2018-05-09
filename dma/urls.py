@@ -36,10 +36,13 @@ urlpatterns = [
     url(r'^(?P<dma_id>\d+)/mnf/(?P<station_id>\d+)$', views.MNFDetailView.as_view(), name="mnf_detail"),
 
     # 数据监控 -实时曲线
+    url(r'^h5_mapmonitor/?$', TemplateView.as_view(template_name='dma/h5_mapmonitor.html'),name='map_monitor_hplus'),
     url(r'^mapmonitor/?$', TemplateView.as_view(template_name='dma/map_monitor.html'),name='map_monitor_base'),
     url(r'^(?P<dma_id>\d+)/mapmonitor/?$', TemplateView.as_view(template_name='dma/map_monitor.html'),name='map_monitor'),
+    url(r'^h5_rt_curve/$', TemplateView.as_view(template_name='dma/h5_rt_curve.html'), name="rt_curve_hplus"),
     url(r'^rt_curve/$', views.rt_curveView.as_view(), name="rt_curve_base"),
     url(r'^(?P<dma_id>\d+)/rt_curve/$', views.rt_curveView.as_view(), name="rt_curve"),
+    url(r'^h5_rt_data/$', TemplateView.as_view(template_name='dma/h5_rt_data.html'), name="rt_data_hplus"),
     url(r'^rt_data/$', views.rt_dataView.as_view(), name="rt_data_base"),
     url(r'^(?P<dma_id>\d+)/rt_data/$', views.rt_dataView.as_view(), name="rt_data"),
     url(r'^station/alarms/(?P<pk>[0-9]+)/?$', views.StationsAlarmView.as_view(), name='stations_alarms_message'),

@@ -2,12 +2,7 @@
 
 {% load staticfiles %}
 
-{% block page_title %}
-
-{% endblock %}
-
-
-{% block content %}
+{% block main_content %}
   <div class="curve_content">
     {% for rt in rt_dataset %}
       <div class="curve_item">
@@ -32,9 +27,7 @@
  {{ block.super }}
     <SCRIPT LANGUAGE="JavaScript">
 
-      $(function(){
-          load_Tree('rt_curve');
-      });
+    
 
        // 基于准备好的dom，初始化echarts实例
         // var myChart = echarts.init(document.getElementById('main'));

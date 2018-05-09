@@ -502,10 +502,12 @@ body.fixed-sidebar .navbar-dma-side,
 body.canvas-menu .navbar-dma-side {
     position: fixed;
     /*update-begin--Author:scott --- Date:20170609 --- for：h+首页菜单顶部头像缩小------------------- */
-    width: 280px;
+    width: 315px;
     /*update-end--Author:scott --- Date:20170609 --- for：h+首页菜单顶部头像缩小------------------- */
     z-index: 2002;
     height: 100%;
+
+    background-color: rgba(255, 255, 255, 1);;
 }
 
 body.fixed-sidebar.mini-navbar .navbar-static-side {
@@ -3614,7 +3616,7 @@ video {
     padding: 0 15px;
     position: inherit;
     /*update-begin--Author:scott --- Date:20170609 --- for：h+首页菜单缩进------------------- */
-    margin: 0 0 0 280px;
+    margin: 0 0 0 315px;
     /*update-end--Author:scott --- Date:20170609 --- for：h+首页菜单缩进------------------- */
 }
 
@@ -6966,7 +6968,7 @@ body.rtls #page-wrapper {
 }
 
 body.rtls #page-wrapper2 {
-    margin: 0 280px 0 0;
+    margin: 0 315px 0 0;
 }
 
 body.rtls .nav-second-level li a {

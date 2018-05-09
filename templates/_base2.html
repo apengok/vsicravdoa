@@ -27,17 +27,10 @@
     <script src="{%  static 'gis/assets/js/jquery-ui.js' %} "></script>
     <script src="{% static 'dma/js/bootstrap.min.js' %}"></script>
 
-    <!-- zTree -->
-    <link rel="stylesheet" href="{% static 'zTree/css/demo.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'zTree/css/zTreeStyle/zTreeStyle.css' %}" type="text/css">
-  
-    <script type="text/javascript" src="{% static 'zTree/js/jquery.ztree.core.js' %}"></script>
-
+    
     <!-- echart -->
     <script src="{% static 'virvo/echarts.min.js' %}"></script>
 
-
-    <script src="{% static 'virvo/virvo_app.js' %}"></script>
 
     <script src="{% static 'virvo/jquery.form.js' %}"></script>
 
@@ -143,49 +136,10 @@
     {% endblock %}
 </head>
 <body>
-    <div class="wrapper">
+    
+    {% block main_content %}
 
-      <!-- header -->
-      {% include '_header.html' %}
-
-      
-      <div class="content2">
-        <div class="left2"> 
-            <div class="left-up">
-              <div class="left-head">全部站点(1251)</div>
-              <div>在线(1209)</div>
-              <div>离线(42)</div>
-              <div>报警站点(31)</div>
-              <div>关注站点(66)</div>
-              <div>大用户站点(238)</div>
-
-            </div>
-            <div>
-              {% include 'stationtree.html' %}
-
-            </div>
-
-        </div>
-        <!-- right side content -->
-        <div class="right2">  
-            <!-- page title -->
-            {% block page_title %}
-            <div class="page_title center">
-              <div class="pg_text"><span> 数据监控 | {{ page_title }}</span></div>
-            </div>
-            {% endblock %}
-            <!-- real content -->
-            <div>
-              {% block content %}
-                
-              {% endblock %}
-            </div>
-        </div>
-        
-      </div>
-      
-      
-    </div>
+    {% endblock %}
 
 {% block javascript %}
     <SCRIPT LANGUAGE="JavaScript">
