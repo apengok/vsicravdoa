@@ -159,44 +159,48 @@
 
     // overlay
     var overlay = new ol.Overlay({
-        element:document.getElementById('js-overlay')
+        element:document.getElementById('js-overlay'),
+        positioning: 'bottom-left',
     });
 
-    map.addOverlay(overlay);
-    document.getElementById('js-overlay').style.display = 'block';
+    
 
-    var selectedFeature;
-
-    var select = new ol.interaction.Select({
-        condition:ol.events.condition.click,
-        layers:[vectorLayer]
-    });
-    map.addInteraction(select);
-
-    map.on('pointermove', function(event) {
-
-      if (event.dragging) {
-        return;
-      }
-      // var pixel = map.getEventPixel(evt.originalEvent);
-      // displayFeatureInfo(pixel);
-
-      // selectedFeature = event.selected[0];
-      selectedFeature = map.getEventPixel(event.originalEvent);
-        console.log(selectedFeature);
-        (selectedFeature) ? overlay.setPosition(selectedFeature.getGeometry().getCoordinates()) : overlay.setPosition(undefined);
-    });
-
+overlay.setMap(map);
+map.on(['pointermove', 'singleclick'], function(evt) {
+  var feature = map.forEachFeatureAtPixel(evt.pixel, function(feature) {
+    overlay.setPosition(evt.coordinate);
+    // overlay.getElement().innerHTML = feature.get('name');
+    return feature;
+  });
+  // console.log(feature);
+  overlay.getElement().style.display = 'block';
+  (feature) ? overlay.setPosition(feature.getGeometry().getCoordinates()) : overlay.setPosition(undefined);
+  // overlay.getElement().style.display = feature ? 'block' : 'none';
+  // document.body.style.cursor = feature ? 'pointer' : '';
+});
 
 
     // display popup on click
+
+    // map.addOverlay(overlay);
+    //document.getElementById('js-overlay').style.display = 'block';
+
+    // var selectedFeature;
+
+    // var select = new ol.interaction.Select({
+    //     condition:ol.events.condition.pointerMove,
+    //     // condition:ol.events.condition.click,
+    //     layers:[vectorLayer]
+    // });
+    // map.addInteraction(select);
     
-    select.on('select',function(event) {
-        selectedFeature = event.selected[0];
-        console.log(selectedFeature);
-        (selectedFeature) ? overlay.setPosition(selectedFeature.getGeometry().getCoordinates()) : overlay.setPosition(undefined);
-        
-    });
+    // select.on('select',function(event) {
+    //     //if(event.length > 0){
+    //     selectedFeature = event.selected[0];
+    //     console.log(selectedFeature);
+    //     (selectedFeature) ? overlay.setPosition(selectedFeature.getGeometry().getCoordinates()) : overlay.setPosition(undefined);
+    //     //}
+    // });
 
         
 </SCRIPT>
