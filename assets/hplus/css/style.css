@@ -70,7 +70,7 @@ a:focus {
 
 .navbar-default .nav > li > a:hover,
 .navbar-default .nav > li > a:focus {
-    background-color: #32323a;
+    background-color: rgba(0, 153, 204, 1);
     color: white;
 }
 
@@ -212,12 +212,12 @@ body.body-small .navbar-top-links li:last-child {
     transition: all 0.5s;
 }
 
-.nav > li.active {
+/*.nav > li.active {
     border-left: 4px solid white;
     background: #32323a;
     background-color:rgba(0, 153, 204, 1);
 }
-
+*/
 
 
 
@@ -225,13 +225,19 @@ body.body-small .navbar-top-links li:last-child {
     border: none;
 }
 
+.nav.nav-second-level.collapse > li:hover {
+    border: none;
+    background-color:red;
+}
+
+
 
 
 .nav.nav-second-level.collapse[style] {
     height: auto !important;
-    border-left: -4px ;
+    /*border-left: -4px ;
     margin-left: -4px;
-    background: #32323a;
+    background: #32323a;*/
 }
 
 .nav-header a {
@@ -536,16 +542,17 @@ body.body-small.fixed-sidebar.mini-navbar .navbar-static-side {
     border-left-width: 0;
 }
 
-.nav>li:focus, .nav>li:hover {
+/*.nav>li:focus, .nav>li:hover {
     text-decoration : none;
-    /*background-color: #4688C4;*/
-    background-color:rgba(0, 153, 204, 1);
-}
+*/    /*background-color: #4688C4;*/
+    /*background-color:rgba(0, 153, 204, 1);*/
+/*}*/
 .nav>li>a:focus, .nav>li>a:hover {
 	text-decoration : none;
-	background-color: #4688C4;
-    
+	background-color: red;
+    color:red;
 }
+
 
 /** update-begin--Author:yugwu  Date:20170617 for：[TASK #1750]【优化】首页h+风格UI改造树机构调整*/
 /** update-begin--Author:yugwu  Date:20170617 for：[TASK #1750]【优化】首页h+风格UI改造树机构调整 三级菜单显示*/

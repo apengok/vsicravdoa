@@ -111,14 +111,14 @@
 
     map.addLayer(normal_group);
 
-    var mousePosition = new ol.control.MousePosition({
-        coordinateFormat: ol.coordinate.createStringXY(5),
-        projection: 'EPSG:4326',
-        target: document.getElementById('myposition'),
-        undefinedHTML: '&nbsp;'
-        });
+    // var mousePosition = new ol.control.MousePosition({
+    //     coordinateFormat: ol.coordinate.createStringXY(5),
+    //     projection: 'EPSG:4326',
+    //     target: document.getElementById('myposition'),
+    //     undefinedHTML: '&nbsp;'
+    //     });
 
-    map.addControl(mousePosition);
+    // map.addControl(mousePosition);
 
     // add icon marker
     var createIconStyle = function(country) {
@@ -172,6 +172,22 @@
         layers:[vectorLayer]
     });
     map.addInteraction(select);
+
+    map.on('pointermove', function(event) {
+
+      if (event.dragging) {
+        return;
+      }
+      // var pixel = map.getEventPixel(evt.originalEvent);
+      // displayFeatureInfo(pixel);
+
+      // selectedFeature = event.selected[0];
+      selectedFeature = map.getEventPixel(event.originalEvent);
+        console.log(selectedFeature);
+        (selectedFeature) ? overlay.setPosition(selectedFeature.getGeometry().getCoordinates()) : overlay.setPosition(undefined);
+    });
+
+
 
     // display popup on click
     

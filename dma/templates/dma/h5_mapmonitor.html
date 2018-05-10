@@ -70,14 +70,14 @@
       .left-up {
         height: 200px;
 
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+        /*display: grid;
+        grid-template-columns: 1fr 1fr;*/
 
         font-family: '微软雅黑 Bold', '微软雅黑 Regular', '微软雅黑';
     
       }
       .left-head {
-        grid-column: 1 /3;
+        /*grid-column: 1 /3;*/
         background-color: rgba(0, 153, 204, 1);
         margin-top: 5px;
       }
@@ -87,6 +87,33 @@
 
         background-color: rgba(241, 242, 247, 1);
       }
+
+      .headinfos {
+        font-family: '微软雅黑 Bold', '微软雅黑 Regular', '微软雅黑';
+        font-weight: 700;
+        font-style: normal;
+        font-size: 14px;
+        height: 31px;
+        /*margin: 10px 0px 0 10px;*/
+        margin-top: 10px;
+        text-align: left;
+        
+      }
+
+      .Row
+{
+    display: table;
+    width: 100%; /*Optional*/
+    table-layout: fixed; /*Optional*/
+    border-spacing: 10px; /*Optional*/
+    margin-left: 20px;
+}
+.Column
+{
+    display: table-cell;
+    
+}
+
 </style>
     
 </head>
@@ -98,17 +125,24 @@
     
     <!--左侧导航开始-->
     <nav class="navbar-default navbar-dma-side" role="navigation">
-        <div class="left2"> 
-            <div class="left-up">
-              <div class="left-head" ><div style="font-family: '微软雅黑 Bold', '微软雅黑 Regular', '微软雅黑';font-weight: 700;font-style: normal;font-size: 14px;color: white;margin: 10px 10px 0 20px;">全部站点(1251)</div></div>
-              <div style="font-family: '微软雅黑 Bold', '微软雅黑 Regular', '微软雅黑';font-weight: 700;font-style: normal;font-size: 14px;color: #0099CC;margin: 20px 10px 0 20px;">在线(1209)</div>
-              <div style="font-family: '微软雅黑 Bold', '微软雅黑 Regular', '微软雅黑';font-weight: 700;font-style: normal;font-size: 14px;color: #999999;margin: 20px 10px 0 20px;">离线(42)</div>
-              <div style="font-family: '微软雅黑 Bold', '微软雅黑 Regular', '微软雅黑';font-weight: 700;font-style: normal;font-size: 14px;color: #FF3300;margin: 20px 10px 0 20px;">报警站点(31)</div>
-              <div style="font-family: '微软雅黑 Bold', '微软雅黑 Regular', '微软雅黑';font-weight: 700;font-style: normal;font-size: 14px;color: #008000;margin: 20px 10px 0 20px;">关注站点(66)</div>
-              <div style="font-family: '微软雅黑 Bold', '微软雅黑 Regular', '微软雅黑';font-weight: 700;font-style: normal;font-size: 14px;color: #800080;margin: 20px 10px 0 20px;">大用户站点(238)</div>
+        <div style="border: 1px solid red;"> 
+            <div class="left-up" style="border: 1px solid black;">
+              
+                <div class=" col-md-12" style="background-color: rgba(0, 153, 204, 1);color:white;">全部站点(1251)</div>
+                <div class="Row">
+                    <div class="Column" style="color: #0099CC;">在线(1209)</div>
+                    <div class="Column" style="color: #999999;">离线(42)</div>
+                </div>
+                <div class="Row">
+                    <div class="Column" style="color: #FF3300;">报警站点(31)</div>
+                    <div class="Column" style="color: #008000;">关注站点(66)</div>
+                </div>
+                <div class="Row">
+                    <div class="Column" style="color: #800080;">大用户站点(238)</div>
+                </div>
 
             </div>
-            <div>
+            <div style="border: 1px solid green;">
               {% include 'stationtree.html' %}
 
             </div>
@@ -169,7 +203,7 @@
             <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="{% url 'dma:map_monitor_base' %}" frameborder="0" data-id="map_monitor.html" seamless></iframe>
         </div>
         <div class="footer">
-            <div class="pull-right">&copy;2015-2017 
+            <div style="text-align: center;">&copy;2015-2017 
                 <a href="www.virvo.com.cn" target="_blank">威尔沃自动化设备（深圳）有限公司 </a>
                 <span>京ICP1507429号-1</span>
             </div>

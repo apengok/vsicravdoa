@@ -18,7 +18,19 @@
 
   }
 
-.J_menuItem_h:mouseOver {
+.nav > li.active > #J_menuItem_h {
+    border-left: 4px solid white;
+    background: #32323a;
+    background-color:rgba(0, 153, 204, 1);
+}
+
+.nav .nav-second-level .collapse:hover {
+  background-color:rgba(0, 153, 204, 1);
+  color:red;
+}
+
+
+#J_menuItem_h:hover {
   /*border-width:0px;
   position:absolute;
   left:0px;
@@ -41,6 +53,7 @@
 }
 
 
+
 </style>
 
 <nav class="navbar-default navbar-static-side" role="navigation">
@@ -59,10 +72,10 @@
                     <a id="J_menuItem_h" href="layouts.html" data-index="8"><i class="fa fa-columns"></i>
                         <span class="nav-label">数据监控</span> <span class="fa fa-angle-right "></span>
                     </a> 
-                    <ul class="nav nav-second-level collapse" >
-                      <li><a  href="{% url 'dma:map_monitor_hplus' %}">地图监控</a></li>
-                      <li><a  href="{% url 'dma:rt_curve_hplus' %}">实时曲线</a></li>
-                      <li><a  href="{% url 'dma:rt_data_hplus' %}">实时数据</a></li>
+                    <ul class="nav nav-second-level collapse">
+                      <li ><a  href="{% url 'dma:map_monitor_hplus' %}"><i class="fa fa-location-arrow"></i>地图监控</a></li>
+                      <li><a  href="{% url 'dma:rt_curve_hplus' %}"><i class="fa fa-location-arrow"></i>实时曲线</a></li>
+                      <li><a  href="{% url 'dma:rt_data_hplus' %}"><i class="fa fa-location-arrow"></i>实时数据</a></li>
                     </ul>
                 </li>
                 <li>
@@ -72,9 +85,9 @@
                     </a>
                     <ul class="nav nav-second-level collapse">
 
-                        <li><a class="J_menuItem" href="{% url 'dma:daily_use_base'%}"><i class="fa fa-columns"></i>日用水分析</a></li>
-                        <li><a class="J_menuItem" href="{% url 'dma:monthly_use_base'%}">月用水分析</a></li>
-                        <li><a class="J_menuItem" href="{% url 'dma:mnf_base'%}">夜间最小流量</a></li>
+                        <li><a class="J_menuItem" href="{% url 'dma:daily_use_base'%}"><i class="fa fa-location-arrow"></i>日用水分析</a></li>
+                        <li><a class="J_menuItem" href="{% url 'dma:monthly_use_base'%}"><i class="fa fa-location-arrow"></i>月用水分析</a></li>
+                        <li><a class="J_menuItem" href="{% url 'dma:mnf_base'%}"><i class="fa fa-location-arrow"></i>夜间最小流量</a></li>
                     </ul>
                 </li>
 
@@ -89,8 +102,8 @@
                     <a id="J_menuItem_h" href="#"><i class="fa fa-edit"></i>
                         <span class="nav-label">基础管理</span><span class="fa fa-angle-right"></span></a>
                     <ul class="nav nav-second-level collapse">
-                        <li><a class="J_menuItem" href="{% url 'dma:dma_manager_base' %}">dma管理</a></li>
-                        <li><a class="J_menuItem" href="{% url 'dma:stations_manager'%}">站点管理</a></li>
+                        <li><a class="J_menuItem" href="{% url 'dma:dma_manager_base' %}"><i class="fa fa-location-arrow"></i>dma管理</a></li>
+                        <li><a class="J_menuItem" href="{% url 'dma:stations_manager'%}"><i class="fa fa-location-arrow"></i>站点管理</a></li>
                     </ul>
                 </li>
                 <li>
@@ -104,8 +117,8 @@
                     <a id="J_menuItem_h" href="#"><i class="fa fa-flask"></i>
                         <span class="nav-label">企业管理</span><span class="fa fa-angle-right"></span></a>
                     <ul class="nav nav-second-level collapse">
-                        <li><a class="J_menuItem" href="{% url 'dma:roles_manager'%}">角色管理</a></li>
-                        <li><a class="J_menuItem" href="{% url 'dma:organ_users'  %}">组织和用户管理</a></li>
+                        <li><a class="J_menuItem" href="{% url 'dma:roles_manager'%}"><i class="fa fa-location-arrow"></i>角色管理</a></li>
+                        <li><a class="J_menuItem" href="{% url 'dma:organ_users'  %}"><i class="fa fa-location-arrow"></i>组织和用户管理</a></li>
                     </ul>
                 </li>
                 <li>
@@ -126,7 +139,7 @@
                     <a id="J_menuItem_h" href="css_animation.html" data-index="86"><i class="fa fa-magic"></i> <span class="nav-label">系统管理</span><span class="fa fa-angle-right"></span>
                     </a>
                     <ul class="nav nav-second-level collapse">
-                        <li><a class="J_menuItem" href="{% url 'dma:personality'%}">平台个性化配置</a></li>
+                        <li><a class="J_menuItem" href="{% url 'dma:personality'%}"><i class="fa fa-location-arrow"></i>平台个性化配置</a></li>
                     </ul>
                 </li>
                 
