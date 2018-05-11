@@ -70,9 +70,11 @@ a:focus {
 
 .navbar-default .nav > li > a:hover,
 .navbar-default .nav > li > a:focus {
-    background-color: rgba(0, 153, 204, 1);
+    background-color: rgba(0, 153, 204, 1);  /*左部导航hover颜色 pengwl*/
     color: white;
 }
+
+
 
 .nav .open > a,
 .nav .open > a:hover,
@@ -212,25 +214,21 @@ body.body-small .navbar-top-links li:last-child {
     transition: all 0.5s;
 }
 
-/*.nav > li.active {
-    border-left: 4px solid white;
-    background: #32323a;
-    background-color:rgba(0, 153, 204, 1);
+.nav > li.active {
+    /*border-left: 4px solid white;*/
+    background: #293846;
 }
-*/
 
+.navbar-default .nav-second-level > li.active {
+    background-color: rgba(0, 153, 204, 1);  /*左部导航hover颜色 pengwl*/
+    color: red;
+}
 
 
 .nav.nav-second-level > li.active {
     border: none;
-}
-
-.nav.nav-second-level.collapse > li:hover {
-    border: none;
     background-color:red;
 }
-
-
 
 
 .nav.nav-second-level.collapse[style] {
@@ -315,10 +313,11 @@ body.body-small .navbar-top-links li:last-child {
     content: "\f107";
 }
 
-
+/*左部导航栏子栏 pengwl */
 .nav-second-level li,
 .nav-third-level li {
     border-bottom: none !important;
+    
 }
 
 .nav-second-level li a {
@@ -341,6 +340,7 @@ body:not(.fixed-sidebar):not(.canvas-menu).mini-navbar .nav li:hover > .nav-seco
     border-radius: 0 2px 2px 0;
     min-width: 140px;
     height: auto;
+
 }
 
 body.mini-navbar .navbar-default .nav > li > .nav-second-level li a {
@@ -542,17 +542,10 @@ body.body-small.fixed-sidebar.mini-navbar .navbar-static-side {
     border-left-width: 0;
 }
 
-/*.nav>li:focus, .nav>li:hover {
-    text-decoration : none;
-*/    /*background-color: #4688C4;*/
-    /*background-color:rgba(0, 153, 204, 1);*/
-/*}*/
 .nav>li>a:focus, .nav>li>a:hover {
-	text-decoration : none;
-	background-color: red;
-    color:red;
+    text-decoration : none;
+    background-color: red;
 }
-
 
 /** update-begin--Author:yugwu  Date:20170617 for：[TASK #1750]【优化】首页h+风格UI改造树机构调整*/
 /** update-begin--Author:yugwu  Date:20170617 for：[TASK #1750]【优化】首页h+风格UI改造树机构调整 三级菜单显示*/
