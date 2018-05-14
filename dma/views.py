@@ -72,7 +72,7 @@ def recursive_node_to_dict(node,url_cat):
                     'url':'/dma/{}/{}/{}'.format(node.pk,url_cat,s.id),
                     'target':'_self',
                     'icon':"/static/virvo/images/u3672.png",
-                    'class':"J_menuItem",
+                    # 'class':"J_menuItem",
                 })
             # children.append({'name':})
         except:

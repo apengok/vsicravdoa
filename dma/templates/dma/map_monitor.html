@@ -2,24 +2,46 @@
 
 {% load staticfiles %}
 
+{% block stylesheet %}
+    {{ block.super }}
+<style type="text/css">
+    .overlay {
+    display: none;
+    position: absolute;
+    background: rgba(255,255,255,0.9);
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.25);
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid black;
+    width: 194px;
+    top: -76px;
+    left: -90px;
+    user-select: none;
+}
 
+.map_span {
+    margin-left: 20px;
+}
+</style>
 
+{% endblock %}
 {% block main_content %}
   <div >
       <div id="js-map" class="map"></div>
-      <div id="js-overlay" class="overlay">
-          <div>站点名称:东门小学</div>
-          <div>所属组织:龙岗分公司</div>
-          <div>关联表具:170524</div>
-          <div>表具类型:电池水表</div>
-          <div>表均口径:DN200</div>
-          <div>状态:在线</div>
-          <hr>
-          <div>采集时间:2018-04-11</div>
-          <div>瞬时流量:12.54 m3/h</div>
-          <div>累积流量:546521 m3</div>
-          <div>管网压力:0.054MPa</div>
-          <div>信号强度:25</div>
+      <div id="js-overlay" class="overlay" >
+          <div>站点名称:<span class="map_span" style="color: #0099CC;">东门小学</span></div>
+          <div>所属组织:<span class="map_span">龙岗分公司</span></div>
+          <div>关联表具:<span class="map_span">170524</span></div>
+          <div>表具类型:<span class="map_span">电池水表</span></div>
+          <div>表均口径:<span class="map_span">DN600</span></div>
+          <div>状 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;态：<span class="map_span" style="color: #008000;">在线</span></div>
+          <!-- <hr style="color: #ccc;background-color: #ccc;height: 1px;"> -->
+          <div style=";margin-left: -17px;"><img  src="{% static 'virvo/images/u3922.png' %}"></div>
+          <div>采集时间:<span class="map_span">2018-04-11</span></div>
+          <div>瞬时流量:<span class="map_span">12.54 m3/h</span></div>
+          <div>累积流量:<span class="map_span">546521 m3</span></div>
+          <div>管网压力:<span class="map_span">0.054MPa</span></div>
+          <div>信号强度:<span class="map_span">25</span></div>
       </div>
 
   </div>

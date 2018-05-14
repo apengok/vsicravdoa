@@ -398,9 +398,10 @@ font-family: '微软雅黑';
     padding: 15px;
     border-radius: 10px;
     border: 1px solid #ccc;
-    width: 180px;
+    width: 394px;
     top: -76px;
     left: -90px;
+    user-select: none;
 }
 
 .overlay:after {

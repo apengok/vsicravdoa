@@ -4,6 +4,12 @@
 
 {% block main_content %}
   <div class="curve_content">
+    
+      <div  class="curve_head">
+        <div style="padding-top: 10px;margin-left: 10px;"><span >实时曲线</span><span class="fa fa-angle-down pull-right" style="margin-top: 5px;margin-right: 15px;"></span></div>
+      </div>
+      
+
     {% for rt in rt_dataset %}
       <div class="curve_item">
         <div id="{{ rt.chart_id }}" style="width: 300px;height:220px;"></div>
@@ -11,15 +17,11 @@
         <div>{{ rt.caliber }}</div>
       </div>
     {% endfor %}
-      <!-- <div class="curve_item">
-        <div id="main2" style="width: 300px;height:220px;"></div>
-        <div >沙田水厂淡水</div>
-        <div>DN200</div>
-      </div> -->
+    
       
 
   </div>
-  <div id="myposition"></div>
+  
 {% endblock %}
 
 

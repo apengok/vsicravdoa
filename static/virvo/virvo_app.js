@@ -7,6 +7,9 @@ function load_Tree(page_name)
         fontCss: getFont,
         nameIsHTML: true,
       },
+      callback: {
+        onNodeCreated: zTreeOnNodeCreated
+      }
       // callback:{
       //   onClick:function(){_this.slotSelectChanged();}
       // },
@@ -15,6 +18,10 @@ function load_Tree(page_name)
           enable: true
         }
       }
+    };
+
+    function zTreeOnNodeCreated(event, treeId, treeNode) {
+        alert(treeNode.tId + ", " + treeNode.name);
     };
 
     function getFont(treeId, node) {
