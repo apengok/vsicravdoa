@@ -68,13 +68,20 @@
       }
 
       .left-up {
-        height: 150px;
+        height: 175px;
+        /*border: 1px solid red;*/
+        margin-top: 10px;
+        /*position: absolute;*/
 
         /*display: grid;
         grid-template-columns: 1fr 1fr;*/
 
         font-family: '微软雅黑 Bold', '微软雅黑 Regular', '微软雅黑';
-    
+        font-weight: 700;
+        font-style: normal;
+        font-size: 14px;
+        
+        user-select: none;
       }
       .left-head {
         /*grid-column: 1 /3;*/
@@ -110,7 +117,7 @@
         }
         .Column
         {
-            display: table-cell;
+            /*display: table-cell;*/
             font-family: '微软雅黑 Bold', '微软雅黑 Regular', '微软雅黑';
             font-weight: 700;
             font-style: normal;
@@ -134,6 +141,21 @@
             padding-left: 10px;
         }
 
+        .col_online {
+            position: absolute;
+            left: 0;
+            margin-left: 30px;
+        }
+
+        .col_offline {
+            position: absolute;
+            left: 165px;
+        }
+        .row1 {
+            /*border: 1px dashed black;*/
+            margin-top: 5px;
+            height: 35px;
+        }
 
 </style>
     
@@ -148,11 +170,24 @@
     <nav class="navbar-default navbar-dma-side" role="navigation">
         <div > 
             <div class="left-up" >
-              
                 <div class=" Column_hed" >全部站点(1251)</div>
+                <div class="row1">
+                    <div class="col_online" style="color: #0099CC;">在线(1209)</div>
+                    <div class="col_offline" style="color: #999999;">离线(42)</div>
+                </div>
+                <div class="row1">
+                    <div class="col_online" style="color: #FF3300;">报警站点(31)</div>
+                    <div class="col_offline" style="color: #008000;">关注站点(66)</div>
+                </div>
+                <div class="row1">
+                    <div class="col_online"  style="color: #800080;">大用户站点(238)</div>
+                </div>
+                
+              
+                <!-- <div class=" Column_hed" >全部站点(1251)</div>
                 <div class="Row">
-                    <div class="Column" style="color: #0099CC;">在线(1209)</div>
-                    <div class="Column" style="color: #999999;">离线(42)</div>
+                    <div class="Column" style="color: #0099CC;margin-right: 20px;">在线(1209)</div>
+                    <div class="Column" style="color: #999999;margin-left: 20px;">离线(42)</div>
                 </div>
                 <div class="Row">
                     <div class="Column" style="color: #FF3300;">报警站点(31)</div>
@@ -161,7 +196,7 @@
                 <div class="Row">
                     <div class="Column" style="color: #800080;">大用户站点(238)</div>
                 </div>
-
+ -->
             </div>
             <div style="margin-top: 5px;">
               {% include 'stationtree.html' %}
