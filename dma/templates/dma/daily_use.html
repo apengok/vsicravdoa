@@ -1,36 +1,77 @@
-{% extends 'dma/home.html' %}
+  {% load staticfiles %}<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block title %} {{ title }} {% endblock %}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    
+    <script src="{%  static 'gis/assets/js/jquery.js' %} "></script>
+    <script src="{%  static 'gis/assets/js/jquery-ui.js' %} "></script>
+    
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.staticfile.org/font-awesome/4.4.0/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- virvo provider -->
+    <link href="{% static 'virvo/data/styles.css' %}" type="text/css" rel="stylesheet"/>
+    <link href="{% static 'virvo/state_content.css' %}" type="text/css" rel="stylesheet"/>
 
-{% block stylesheet %}
-  <style type="text/css">
+    
+    
+    <script src="{% static 'virvo/virvo_app.js' %}"></script>
 
-  .query_div {
-    display: grid;
-    grid-template-columns: repeat(7,1fr);
-    margin-bottom: 5px;
-  }
-  .query_div > h2 {
-    grid-column: 1/8;
-  }
-
-  .stastic {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    background-color: rgba(0, 153, 204, 1);
-  }
-  </style>
-{% endblock %}
+    <!-- zTree -->
+    <link rel="stylesheet" href="{% static 'zTree/css/demo.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'zTree/css/zTreeStyle/zTreeStyle.css' %}" type="text/css">
+  
+    <script type="text/javascript" src="{% static 'zTree/js/jquery.ztree.core.js' %}"></script>
 
 
-{% block breadcrumbs %}<a href="{% url 'home' %}"><span class="fa fa-home"></span>首页</a> / 数据分析/日用水分析{% endblock %}
+    <!-- hplus -->
+    <link rel="stylesheet" type="text/css" href="{% static 'hplus/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'hplus/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'hplus/css/plugins/sweetalert/sweetalert.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'hplus/css/animate.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'hplus/css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'hplus/smartMenu.css' %}">
+    
+    <!-- <script src="https://cdn.staticfile.org/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
 
 
-{% block content %}
-<div class="main_content">
-    <div class=" treel ">
-      {% include 'stationtree.html' %}
-    </div>
+    
 
-<div  class="ax_default " style="margin-left: 10px;">
+    
+    <!-- hplus -->
+    <script src="{% static 'hplus/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'hplus/js/plugins/metisMenu/jquery.metisMenu.js' %}"></script>
+    <script src="{% static 'hplus/js/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+    <script src="{% static 'hplus/js/plugins/layer/layer.min.js' %}"></script>
+    <script src="{% static 'hplus/js/hplus.js' %}"></script>
+    <script src="{% static 'hplus/contabs.js' %}"></script>
+
+    <script src="{% static 'hplus/jquery-smartMenu.js' %}"></script>
+    <script src="{% static 'hplus/hplus-tab.js' %}"></script>
+    <script src="{% static 'hplus/context.js' %}"></script>
+    <script src="{% static 'hplus/hplus-tab.js' %}"></script>
+    <script src="{% static 'hplus/contabs.js' %}"></script>
+    <script src="{% static 'hplus/js/plugins/pace/pace.min.js' %}"></script>
+
+
+    
+</head>
+<body class="gray-bg">
+    <div class="wrapper wrapper-content">
+      {% block breadcrumbs %}<a href="{% url 'dma:virvo_home' %}"><span class="fa fa-home" style="margin-left: 5px;margin-right: 10px;"></span>&nbsp;&nbsp;首页&nbsp;&nbsp;</a> / 数据分析/日用水分析 {% endblock %}
+        <div class="row animated fadeInDown">
+            <div class="col-sm-3">
+                {% include 'stationtree.html' %}
+                
+            </div>
+            <div class="col-sm-9">
+                <div  class="ax_default " style="margin-left: 10px;">
 
   <div class="query_div">
     <h2>查询条件</h2>
@@ -80,18 +121,12 @@
     
 
 </div>
-    
-</div>
-{% endblock %}
+            </div>
+        </div>
+    </div>
 
-
-{% block javascript %}
-{{ block.super }}
-    
-
-<script>
-        
-  $(function(){
+<script type="text/javascript">
+    $(function(){
     load_Tree('daily');
   });
 
@@ -120,8 +155,6 @@
   window.onresize = function () {
       myChart.resize();      
   };
-
-        
 </script>
-
-{% endblock %}
+</body>
+</html>
