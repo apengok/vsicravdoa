@@ -6,8 +6,7 @@
         <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
         <meta name="apple-mobile-web-app-capable" content="yes"/>
         
-        <script src="{%  static 'gis/assets/js/jquery.js' %} "></script>
-        <script src="{%  static 'gis/assets/js/jquery-ui.js' %} "></script>
+        
         
         <link rel="shortcut icon" href="favicon.ico">
         <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -19,10 +18,13 @@
         <link href="{% static 'virvo/state_content.css' %}" type="text/css" rel="stylesheet"/>
 
         
-        
+        <link rel="stylesheet" href="{% static 'gis/assets/css/ol.css' %}" type = "text/css"/>
+        <link rel="stylesheet" href="{% static 'gis/assets/css/jquery-ui.css' %}" type = "text/css"/>
         
 
-        
+        <script src="{%  static 'gis/assets/js/ol-debug.js' %} "></script>
+        <script src="{%  static 'gis/assets/js/jquery.js' %} "></script>
+        <script src="{%  static 'gis/assets/js/jquery-ui.js' %} "></script>
         
         
         
@@ -150,7 +152,7 @@
       }
 
       label {
-        margin-top: 10px;
+        /*margin-top: 10px;*/
         margin-left: 5px;
         font-family: '微软雅黑 Bold', '微软雅黑';
         font-weight: 700;
@@ -193,6 +195,46 @@
         font-size: 14px;
         color: #1E1E1E;
       }
+
+      
+.btn_form1 {
+  width: 50px;
+  height: 35px;
+  background-color: rgba(22, 155, 213, 1);
+  font-family: '微软雅黑 Bold', '微软雅黑 Regular', '微软雅黑';
+  font-weight: 700;
+  font-style: normal;
+  font-size: 14px;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  margin-bottom: 20px;
+
+    
+}
+
+.btn_form2 {
+  width: 50px;
+  height: 35px;
+  background-color: rgba(153, 153, 153, 1);
+  font-family: '微软雅黑 Bold', '微软雅黑 Regular', '微软雅黑';
+  font-weight: 700;
+  font-style: normal;
+  font-size: 14px;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  margin-bottom: 20px;
+
+    
+}
+
 
         </style>
     {% endblock %}

@@ -9,9 +9,37 @@
 
 
 .map {
-  height: 400px;
+  height: 390px;
   border: 1px solid black;
 }
+
+.col1 {
+  width: 100px;
+}
+
+.col5 {
+  width: 350px;
+}
+
+.btn_dma {
+  width: 98px;
+  background-color: rgba(22, 155, 213, 1);
+  font-family: '微软雅黑 Bold', '微软雅黑 Regular', '微软雅黑';
+  font-weight: 700;
+  font-style: normal;
+  font-size: 14px;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  margin-bottom: 20px;
+
+    
+}
+
+
 </style>
   
 {% endblock %}
@@ -34,27 +62,59 @@
                     <h4 class="modal-title">新建DMA分区</h4>
                 </div>
                 <div id="form-modal-body" class="modal-body">
-                    <form id="dma-form" method="POST" class="col2Form">
+                    <form id="dma-form" method="POST" class="form-horizontal">
                       {% csrf_token %}
-                      
-                      <p>
-                        <label for="{{ dma_form.dma_no.id_for_label }}">{{ dma_form.dma_no.label }} </label>
-                        <input type="text"  id="id_dma_no" name="dma_no" required>
-                      </p>
-                      <p>
-                        <label for="{{ dma_form.dma_name.id_for_label }}">{{ dma_form.dma_name.label }} </label>
-                        <input type="text"  id="id_dma_name" name="dma_name" required>
-                      </p>
-                      <p>
-                        <label for="{{ dma_form.creator.id_for_label }}">{{ dma_form.creator.label }} </label>
-                        <input type="text" name="creator"  id="id_creator" required>
-                      </p>
-                      <p>
 
-                        <label for="{{ dma_form.create_date.id_for_label }}">{{ dma_form.crate_date.label }} </label>
-                        <input type="input" name="create_date" id="id_create_date" placeholder="dd-mm-yyyy">
-                      </p>
-                      <button type="submit">Submit</button>
+                      <div class="row">
+                        <div class="form-group col-sm-6"  >
+                            <label class="col-sm-4 control-label" >{{ dma_form.dma_no.label }}：</label>
+
+                            <div class="col-sm-6" >
+                                <input type="text"  id="id_dma_no" name="dma_no"  class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label class="col-sm-4 control-label">{{ dma_form.dma_name.label }}：</label>
+
+                            <div class="col-sm-6">
+                                <input type="text"  id="id_dma_name" name="dma_name"  class="form-control" required>
+                            </div>
+                        </div>
+                        
+                      </div>
+
+                      <div class="row">
+                        <div class="form-group col-sm-6"  >
+                            <label class="col-sm-4 control-label" >{{ dma_form.creator.label }}：</label>
+
+                            <div class="col-sm-6" >
+                                <input type="text"  id="id_creator" name="creator"  class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label class="col-sm-4 control-label">{{ dma_form.create_date.label }}：</label>
+
+                            <div class="col-sm-6">
+                                <input type="text"  id="id_crate_date" name="create_date"  class="form-control" required>
+                            </div>
+                        </div>
+                        
+                      </div>
+
+                      <div class="row">
+                        <div class="form-group col-sm-6"  >
+                            
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <div class="col-sm-offset-6">
+                            <button class=" btn_form1" type="submit">保存</button>
+                            <button class=" btn_form2" type="submit">取消</button>
+                        </div>
+                        </div>
+                        
+                      </div>
+                      
+                    
                     </form>
                 </div>
                 <!-- <div class="modal-footer">
@@ -62,7 +122,7 @@
                 </div> -->
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
-    </div><!-- /.modal --> 
+      </div><!-- /.modal --> 
     
 
       <div class="col-sm-10" style="margin-left: -10px;">
@@ -107,7 +167,11 @@
                         <label class="col-sm-5 control-label" >{{ form.orgs.label }}：</label>
 
                         <div class="col-sm-5" >
-                            {{ form.orgs }}
+                            <select name="orgs" class="form-control m-b"  id="id_orgs">
+                              {% for org in form.orgs.field.queryset %}
+                              <option value="{{ org.id }}" selected>{{ org.name }}</option>
+                              {% endfor %}
+                            </select>
                         </div>
                     </div>
                     <div class="form-group col-sm-4">
@@ -193,9 +257,9 @@
                     </div>
                     <div class="form-group col-sm-4">
                         <div class="col-sm-offset-5">
-                            <button class="btn btn-sm btn-primary" type="submit">修改</button>
-                            <button class="btn btn-sm btn-primary" type="submit">提交</button>
-                            <button class="btn btn-sm btn-white" type="submit">恢复</button>
+                            <button class=" btn_form1" type="submit">修改</button>
+                            <button class=" btn_form1" type="submit">提交</button>
+                            <button class=" btn_form2" type="submit">恢复</button>
                         </div>
                     </div>
                     
@@ -271,29 +335,29 @@
               </div>
               <div class="ibox-content">
                 <div class="row">
-                  <div class="col-sm-1"></div>
-                  <div class="col-sm-5">图形预览</div>
-                  <div class="col-sm-1"></div>
-                  <div class="col-sm-5">区域统计信息</div>
+                  <div class="col-sm-1 col1"></div>
+                  <div class="col-sm-5 col5" style="margin-left: 20px;"><label>图形预览</label></div>
+                  <div class="col-sm-1 col1"></div>
+                  <div class="col-sm-5 col5" style="margin-left: 20px;"><label>区域统计信息</label></div>
                 </div>
-                <div class="row">
-                  <div class="col-sm-1" >
-                      <div style="margin-left: 0px;margin-right: -10px;margin-bottom: 20px;"><button id="draw_zone">绘制区域</button></div>
-                      <div style="margin-left: 0px;margin-right: -10px;margin-bottom: 20px;"><button>蒙层颜色</button></div>
-                      <div style="margin-left: 0px;margin-right: -10px;margin-bottom: 20px;"><button>边框颜色</button></div>
+                <div class="row" style="margin-top: 5px;">
+                  <div class="col-sm-1 col1" >
+                      <div ><button class="btn_dma" id="draw_zone">绘制区域</button></div>
+                      <div ><button class="btn_dma">蒙层颜色</button></div>
+                      <div ><button class="btn_dma">边框颜色</button></div>
                   </div>
-                  <div class="col-sm-5">
+                  <div class="col-sm-5 col5" style="margin-left: 20px;">
                     <div id="js-map" class="map"></div>
                   </div>
-                  <div class="col-sm-1">
-                    <div style="margin-top: 47px;"><button>统计</button></div>
+                  <div class="col-sm-1 col1" style="width: 100px;">
+                    <div style="margin-top: 47px;"><button id="statistic" class="btn_dma">统计</button></div>
                   </div>
-                  <div class="col-sm-5">
-                    <table id="tb_zone_static" class="table table-bordered" style="height: 400px;">
-                      <thead>
-                        <tr>
-                          <th >名称</th>
-                          <th >结果</th>
+                  <div class="col-sm-5 col5" style="margin-left: 20px;">
+                    <table id="tb_zone_static" class="table table-bordered" style="height: 400px;text-align: center;">
+                      <thead >
+                        <tr >
+                          <th style="width: 150px;text-align: center;">名称</th>
+                          <th style="text-align: center;">结果</th>
                           
                         </tr>
         
@@ -301,32 +365,32 @@
                      
                       <tr>
                         <td>管线长度（m）</td>
-                        <td> </td>
+                        <td id="res_pipe_length"> </td>
                         
                       </tr>
                       <tr>
                         <td>水表井（个）</td>
-                        <td> </td>
+                        <td id="res_meter_num"> </td>
                         
                       </tr>
                       <tr>
                         <td>阀门井（个）</td>
-                        <td> </td>
+                        <td id="res_valv"> </td>
                         
                       </tr>
                       <tr>
                         <td>消防栓（个）</td>
-                        <td> </td>
+                        <td id="res_well"> </td>
                         
                       </tr>
                       <tr>
                         <td>阀门（个）</td>
-                        <td> </td>
+                        <td id="res_valv"> </td>
                         
                       </tr>
                       <tr>
                         <td>接头（个）</td>
-                        <td> </td>
+                        <td id="res_joint"> </td>
                         
                       </tr>
                         
@@ -370,6 +434,20 @@
         var $newformmodal = $("#new-form-modal");
 
         $newformmodal.modal();
+        
+        
+    });
+
+    $('#statistic').click(function() {
+
+       var table = document.getElementById('tb_zone_static');
+       table.rows[1].cells[1].innerHTML = 2018.05;
+       table.rows[2].cells[1].innerHTML = 12;
+       table.rows[3].cells[1].innerHTML = 22;
+       table.rows[4].cells[1].innerHTML = 7;
+       table.rows[5].cells[1].innerHTML = 5;
+       table.rows[6].cells[1].innerHTML = 20;
+      
         
         
     });

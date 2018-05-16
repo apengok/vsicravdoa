@@ -1,11 +1,15 @@
 {% extends 'dma/home.html' %}
 
 
-{% block breadcrumbs %}<a href="{% url 'dma:virvo_home' %}"><span class="fa fa-home"></span>首页</a> / 基础管理/站点管理{% endblock %}
+{% block breadcrumbs %} / 基础管理/站点管理{% endblock %}
 
 
-{% block content %}
-<div class=" main_content">
+{% block main_content %}
+  <div class="row ">
+    <div class="col-sm-2" style="margin-right: -10px;">
+        {% include 'stationtree.html' %}
+    </div>
+
     <!-- Modal -->
     <!-- <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     </div> --><!-- /.modal -->
@@ -26,100 +30,103 @@
         </div>
       </div>
   </div>
-<div class=" treel">
-  {% include 'stationtree.html' %}
-</div>
-<div  class="ax_default" style="margin-left: 10px;">
 
-  <div class="list-group" role="tab" id="heading">
-      <div>
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1" class="list-group-item active main-color-bg" style="text-align:left;background-color: rgba(250, 250, 250, 1);border-color:rgba(255, 255, 255, 1);color: black;">
-           站点管理<span class="fa fa-angle-down pull-right"></span>
-        </a>
-      </div>
-      
-          <div id="collapse1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading">
-            <div>
-              <form class="navbar-form navbar-left" style="padding: 0">
-                  <div class="form-group">
-                    <input type="text" class="form-control" placeholder="请输入角色名称" style="height: 49px;width: 400px">
-                  </div>
-                  <button type="submit" class="btn btn-default" style="height: 49px;">搜索</button>
-                </form>
-                
-                <div class="dropdown col-sm-4 pull-left" style="top: 10px;">
-                  <button id="add_station" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="height: 49px;">
-                    操作菜单
-                    
-                  </button>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="{% url 'dma:stations_create_manager' %}" data-toggle="modal" data-target="#modal"  title="create stations" data-tooltip style="padding: 3px 20px;"><span class="fa fa-plus pull-left"></span>新增</a></li>
-                    
-                  </ul>
-                </div>
-
-              
-              <table id="tb_stations" class="table table-bordered">
-                <thead>
-                  <tr>
-                    
-                    <th >序号</th>
-                    <th>选择</th>
-                    <th></th>
-                    <th >站点名称</th>
-                    <th >用水性质</th>
-                    <th >表具类型</th>
-                    <th >表具编号</th>
-                    <th >SIM卡号</th>
-                    <th >口径</th>
-                    <th >所属组织</th>
-                    <th >大用户</th>
-                    <th >重点关注</th>
-                    <th >安装日期</th>
-                    
-                  </tr>
-  
-                </thead>
-               {% for stations in object_list %}
-                  <tr>
-                    <td>{{ obj.id }} </td>
-                    <td><input type="checkbox"/> </td>
-                    <td class="btn_del">
-                      <div>
-                        <button class="btn alter-button" ><a href="{% url 'dma:stations_edit_manager' stations.id %}" data-toggle="modal" data-target="#modal" class="fa fa-pencil" title="update stations" data-tooltip>修改</a></button>
-                        <button type = "button" class = "btnDelete">删除</button>
-                         
-                      </div>
-                    </td>
-
-                    
+    <div class="col-sm-10" style="margin-left: -10px;">
           
-                    <td>{{ stations.station_name }} </td>
-                    <td>{{ stations.meter_property }} </td>
-                    <td>{{ stations.meter_type }} </td>
-                    <td>{{ stations.meter_code }} </td>
-                    <td>{{ stations.simno }} </td>
-                    <td>{{ stations.caliber }} </td>
-                    <td>{{ stations.belongto }} </td>
-                    <td>{{ stations.big_user }} </td>
-                    <td>{{ stations.focus }} </td>
-                    <td>{{ stations.installed|date:'Y-m-d' }} </td>
+
+          <div class="ibox float-e-margins">
+              <div class="ibox-title modal_head">
+                  <h5>站点管理 </h5>
+                  <div class="ibox-tools">
+                      <a class="collapse-link">
+                          <i class="fa fa-angle-down"></i>
+                      </a>
+                      
+                  </div>
+              </div>
+              <div class="ibox-content">
+                  <div>
+                    <form class="navbar-form navbar-left" style="padding: 0">
+                        <div class="form-group">
+                          <input type="text" class="form-control" placeholder="请输入角色名称" style="height: 49px;width: 400px">
+                        </div>
+                        <button type="submit" class="btn btn-default" style="height: 49px;">搜索</button>
+                      </form>
+                      
+                      <div class="dropdown col-sm-4 pull-left" style="top: 10px;">
+                        <button id="add_station" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="height: 49px;">
+                          操作菜单
+                          
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                          <li><a href="{% url 'dma:stations_create_manager' %}" data-toggle="modal" data-target="#modal"  title="create stations" data-tooltip style="padding: 3px 20px;"><span class="fa fa-plus pull-left"></span>新增</a></li>
+                          
+                        </ul>
+                      </div>
+
                     
-                  </tr>
-                  
-               {% endfor %}
-             </table>
-            </div>
-        </div>
+                    <table id="tb_stations" class="table table-bordered">
+                      <thead>
+                        <tr>
+                          
+                          <th >序号</th>
+                          <th>选择</th>
+                          <th></th>
+                          <th >站点名称</th>
+                          <th >用水性质</th>
+                          <th >表具类型</th>
+                          <th >表具编号</th>
+                          <th >SIM卡号</th>
+                          <th >口径</th>
+                          <th >所属组织</th>
+                          <th >大用户</th>
+                          <th >重点关注</th>
+                          <th >安装日期</th>
+                          
+                        </tr>
+        
+                      </thead>
+                     {% for stations in object_list %}
+                        <tr>
+                          <td>{{ forloop.counter }} </td>
+                          <td><input type="checkbox"/> </td>
+                          <td class="btn_del">
+                            <div>
+                              <button class="btn alter-button btn_form1" ><a href="{% url 'dma:stations_edit_manager' stations.id %}" data-toggle="modal" data-target="#modal"  title="update stations" data-tooltip>修改</a></button>
+                              <button type = "button" class = "btnDelete btn_form2">删除</button>
+                               
+                            </div>
+                          </td>
+
+                          
+                
+                          <td>{{ stations.station_name }} </td>
+                          <td>{{ stations.meter_property }} </td>
+                          <td>{{ stations.meter_type }} </td>
+                          <td>{{ stations.meter_code }} </td>
+                          <td>{{ stations.simno }} </td>
+                          <td>{{ stations.caliber }} </td>
+                          <td>{{ stations.belongto }} </td>
+                          <td>{{ stations.big_user }} </td>
+                          <td>{{ stations.focus }} </td>
+                          <td>{{ stations.installed|date:'Y-m-d' }} </td>
+                          
+                        </tr>
+                        
+                     {% endfor %}
+                   </table>
+                  </div>
+              </div>
+          </div>
       
+          
+      </div> 
+
   </div>
 
-
-
-    
-
-
-    <script>
+{% block javascript %}
+   {{ block.super }}
+  <script>
         // console.log('stations_list_manger...')
 
         $(function(){
@@ -131,6 +138,6 @@
             $(this).removeData('bs.modal');
         });
     </script>
-</div>
-</div>
+    {% endblock %}
+
 {% endblock %}
