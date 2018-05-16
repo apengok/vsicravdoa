@@ -6,54 +6,202 @@
         <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
         <meta name="apple-mobile-web-app-capable" content="yes"/>
         
+        <script src="{%  static 'gis/assets/js/jquery.js' %} "></script>
+        <script src="{%  static 'gis/assets/js/jquery-ui.js' %} "></script>
         
+        <link rel="shortcut icon" href="favicon.ico">
+        <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdn.staticfile.org/font-awesome/4.4.0/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+        <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
         
-        <link rel="stylesheet" type="text/css" href="{% static 'dma/css/bootstrap.min.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'dma/css/font-awesome.min.css' %}">
-        <link rel="stylesheet" href="{% static 'gis/assets/css/ol.css' %}" type = "text/css"/>
-        <link rel="stylesheet" href="{% static 'gis/assets/css/jquery-ui.css' %}" type = "text/css"/>
-
-         <!-- virvo provider -->
+        <!-- virvo provider -->
         <link href="{% static 'virvo/data/styles.css' %}" type="text/css" rel="stylesheet"/>
         <link href="{% static 'virvo/state_content.css' %}" type="text/css" rel="stylesheet"/>
 
-        <link href="{% static 'virvo/grid.css' %}" type="text/css" rel="stylesheet"/>
-
-        <!-- openlayer -->
         
-        <script src="{%  static 'gis/assets/js/ol-debug.js' %} "></script>
+        
+        
 
-        <script src="{%  static 'gis/assets/js/jquery.js' %} "></script>
-        <script src="{%  static 'gis/assets/js/jquery-ui.js' %} "></script>
-        <script src="{% static 'dma/js/bootstrap.min.js' %}"></script>
+        
+        
+        
+        
+        <!-- hplus master-->
+        <link href="{% static 'hplus-master/css/bootstrap.min14ed.css' %}" rel="stylesheet">
+        <link href="{% static 'hplus-master/css/font-awesome.min93e3.css' %}" rel="stylesheet">
+
+        <link href="{% static 'hplus-master/css/plugins/iCheck/custom.css' %}" rel="stylesheet">
+
+        <link href="{% static 'hplus-master/css/plugins/fullcalendar/fullcalendar.css' %}" rel="stylesheet">
+        <link href="{% static 'hplus-master/css/plugins/fullcalendar/fullcalendar.print.css' %}" rel="stylesheet">
+
+        <link href="{% static 'hplus-master/css/animate.min.css' %}" rel="stylesheet">
+        <link href="{% static 'hplus-master/css/style.min.css' %}" rel="stylesheet">
+
+        <script src="{% static 'hplus-master/js/jquery.min.js' %}"></script>
+        <script src="{% static 'hplus-master/js/bootstrap.min.js' %}"></script>
+        
+        <script src="{% static 'hplus-master/js/jquery-ui.custom.min.js' %}"></script>
+        <script src="{% static 'hplus-master/js/plugins/iCheck/icheck.min.js' %}"></script>
+        <script src="{% static 'hplus-master/js/plugins/fullcalendar/fullcalendar.min.js' %}"></script>
+
+
+
+        
 
         <!-- zTree -->
         <link rel="stylesheet" href="{% static 'zTree/css/demo.css' %}" type="text/css">
         <link rel="stylesheet" href="{% static 'zTree/css/zTreeStyle/zTreeStyle.css' %}" type="text/css">
-      
+        
+        <script src="https://cdn.staticfile.org/jquery/2.1.4/jquery.min.js"></script>
+        <script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
         <script type="text/javascript" src="{% static 'zTree/js/jquery.ztree.core.js' %}"></script>
 
         <!-- echart -->
         <script src="{% static 'virvo/echarts.min.js' %}"></script>
 
-
         <script src="{% static 'virvo/virvo_app.js' %}"></script>
 
-        <script src="{% static 'virvo/jquery.form.js' %}"></script>
-
-        <!-- jQuery Modal -->
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
-     -->
-        {% block stylesheet %}
+    {% block stylesheet %}
         <style type="text/css">
-        </style>
-        {% endblock %}
-    </head>
-    <body style="background-color: rgba(241, 242, 247, 1);">
-        <div >
+          .page_breads {
+            /*margin-left: 20px;*/
+            border:1px solid transparent;
+            text-align: left;
+            height: 49px;
+            background-color: rgba(255, 255, 255, 1);
+            border-radius: 5px;
+            box-shadow: none;
+            
+            color:#999999;
+            /*margin-top:10px;
+            padding-top: 10px;*/
+          }
 
           
+
+          .bred_text {
+            /*border:1px solid red;*/
+            margin-top:10px;
+          }
+
+          .bred_text > a {
+            /*margin-top: 10px;*/
+            font-family:'微软雅黑';
+            font-weight:400;
+            font-style:normal;
+            font-size:16px;
+            color:#999999;
+          }
+
+    .page_title {
+      /*margin-left: 20px;*/
+      margin-top:10px;
+      /*border:1px solid green;*/
+      text-align: left;
+      height: 49px;
+      /*background-color: #fafafa;*/
+    }
+
+    .pg_text {
+      
+      font-family:'微软雅黑 Bold', '微软雅黑 Regular', '微软雅黑';
+      font-weight:700;
+      font-style:normal;
+      font-size:24px;
+      text-decoration:none;
+      color:#666666;
+      text-align:left;
+      border-color:transparent;
+      outline-style:none;
+    }
+
+      .autoUpdate {
+        height: 100px;
+        display: none;
+        background-color:rgba(255, 255, 255, 1); 
+        margin-top: 1px;
+      }
+
+      .btn_tempo {
+        /*margin:0;
+        padding: 0;*/
+        width: 100%;
+        background-color: rgba(22, 155, 213, 1);
+        font-family: '微软雅黑 Bold', '微软雅黑 Regular', '微软雅黑';
+        font-weight: 700;
+        font-style: normal;
+        font-size: 14px;
+        color: #ffffff;
+      }
+      .btn_tempo:hover {
+        /*margin:0;
+        padding: 0;*/
+        /*width: 95px;*/
+        background-color: #0099cc;
+        color: #ffffff;
+      }
+      .btn_tempo:active {
+        /*margin:0;
+        padding: 0;*/
+        width: 95px;
+        background-color: #0099cc;
+      }
+
+      label {
+        margin-top: 10px;
+        margin-left: 5px;
+        font-family: '微软雅黑 Bold', '微软雅黑';
+        font-weight: 700;
+        font-style: normal;
+        font-size: 14px;
+        text-decoration: none;
+        color: #1E1E1E;
+      }
+
+      p {
+        margin-top: 10px;
+        font-family: '微软雅黑 Bold', '微软雅黑';
+        font-weight: 700;
+        font-style: normal;
+        font-size: 14px;
+        text-decoration: none;
+        color: #1E1E1E;
+      }
+
+      .stastic_info {
+        background-color: rgba(22, 155, 213, 1);
+        font-family: '微软雅黑 Bold', '微软雅黑 Regular', '微软雅黑';
+        font-weight: 700;
+        font-style: normal;
+        font-size: 14px;
+        color: #ffffff;
+      }
+
+      .stastic_info div {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .modal_head {
+        height: 49px;
+        background-color: #fafafa;
+        font-family: '微软雅黑 Bold', '微软雅黑 Regular', '微软雅黑';
+        font-weight: 700;
+        font-style: normal;
+        font-size: 14px;
+        color: #1E1E1E;
+      }
+
+        </style>
+    {% endblock %}
+    </head>
+
+    <body class="gray-bg">
+        <div class="wrapper wrapper-content">
+
+
             {% if messages %}
             <div class="alert alert-success messages">
                   {% for message in messages %}
@@ -65,23 +213,25 @@
             </div>
             {% endif %}
 
-        
-            <!-- breadcrumbs -->
-            <div class="breads ">
-                {% block breadcrumbs %}<a href="{% url 'dma:virvo_home' %}"><span class="fa fa-home" style="margin-left: 5px;margin-right: 10px;"></span>&nbsp;&nbsp;首页&nbsp;&nbsp;</a>{% endblock %}
-                
-            </div>
-              <!-- page title -->
-            <div class="page_title center">
-                <div class="pg_text"><span>{% block page_title %}{% if page_title %}{{ page_title }}{% else %}首页{% endif %}{% endblock %}</span>
-                </div>
-            </div>
             
-            <!-- main contents -->
+            <div class="page_breads" >
+            
+                <div class="bred_text">
+                    <a href="{% url 'dma:virvo_home' %}"><span class="fa fa-home" style="margin-left: 5px;margin-right: 10px;"></span>&nbsp;&nbsp;首页&nbsp;&nbsp;</a> {% block breadcrumbs %} {% endblock %}
+                </div>
+            
+            </div>
             
 
-            {% block content %}
-            <div style="margin-left: 20px;">
+            <div class="page_title center">
+                <div class="pg_text">
+                    <span>{% block page_title %}{% if page_title %}{{ page_title }}{% else %}首页{% endif %}{% endblock %}</span>
+                </div>
+            </div>
+
+            {% block main_content %}
+            
+            <div >
                 <div class="panel panel-default">
                   
                   <div class="panel-body">
@@ -143,20 +293,21 @@
                 </div>
 
             </div>
+         
+
             {% endblock %}
-              
-        </div> 
+        </div>
+
         
+        <script src="{% static 'hplus-master/js/content.min.js' %}"></script>
+        <script src="{% static 'hplus-master/js/jquery-ui.custom.min.js' %}"></script>
+        <script src="{% static 'hplus-master/js/plugins/iCheck/icheck.min.js' %}"></script>
+        <script src="{% static 'hplus-master/js/plugins/fullcalendar/fullcalendar.min.js' %}"></script>
+    <!-- echart -->
+        <script src="{% static 'virvo/echarts.min.js' %}"></script>
+
         {% block javascript %}
-            <SCRIPT LANGUAGE="JavaScript">
-
-            // $(function(){
-            //     load_dmaTree();
-            // });
-
-            
-
-
+        <script type="text/javascript">
              // using jQuery This is directly from the Django docs. Put this code before any jQuery that uses AJAX as a catch-all for cross site request forgery protection (CSRF).
             function getCookie(name) {
                 var cookieValue = null;
@@ -187,11 +338,7 @@
                     }
                 }
             });
-
-                
-                    
-            </SCRIPT>
+        </script>
         {% endblock %}
-
     </body>
 </html>

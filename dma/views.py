@@ -583,12 +583,12 @@ def chart_options():
             'data': today_curve
         },
 
-        {
-            'name': '背景显示',
-            'type': 'line',
-            'data': [60,60,60,60,60,60,60],
-            'areaStyle': {}
-        },
+        # {
+        #     'name': '背景显示',
+        #     'type': 'line',
+        #     'data': [60,60,60,60,60,60,60],
+        #     'areaStyle': {}
+        # },
         
     ]
 

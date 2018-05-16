@@ -4,13 +4,9 @@
 
 
 {% block stylesheet %}
+{{ block.super }}
 <style type="text/css">
-  .zone_mapcfg {
-    display: grid;
-    grid-template-columns: 100px 400px 100px 500px;
-    margin-top: 10px;
-    text-align: left;
-}
+
 
 .map {
   height: 400px;
@@ -20,264 +16,333 @@
   
 {% endblock %}
 
-{% block content %}
-<div class=" main_content">
+{% block breadcrumbs %} / 基础管理/dma管理{% endblock %}
 
-  <div class=" treel">
-  {% include 'dmatree.html' %}
-</div>
 
-<div id="new-form-modal" class="modal fade">
-    <div class="modal-dialog" style="width: 728px;height: 299px;">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">新建DMA分区</h4>
-            </div>
-            <div id="form-modal-body" class="modal-body">
-                <form id="dma-form" method="POST" class="col2Form">
-                  {% csrf_token %}
-                  
-                  <p>
-                    <label for="{{ dma_form.dma_no.id_for_label }}">{{ dma_form.dma_no.label }} </label>
-                    <input type="text"  id="id_dma_no" name="dma_no" required>
-                  </p>
-                  <p>
-                    <label for="{{ dma_form.dma_name.id_for_label }}">{{ dma_form.dma_name.label }} </label>
-                    <input type="text"  id="id_dma_name" name="dma_name" required>
-                  </p>
-                  <p>
-                    <label for="{{ dma_form.creator.id_for_label }}">{{ dma_form.creator.label }} </label>
-                    <input type="text" name="creator"  id="id_creator" required>
-                  </p>
-                  <p>
+{% block main_content %}
+  <div class="row ">
+      <div class="col-sm-2" style="margin-right: -10px;">
+          {% include 'dmatree.html' %}
+      </div>    
 
-                    <label for="{{ dma_form.create_date.id_for_label }}">{{ dma_form.crate_date.label }} </label>
-                    <input type="input" name="create_date" id="id_create_date" placeholder="dd-mm-yyyy">
-                  </p>
-                  <button type="submit">Submit</button>
-                </form>
-            </div>
-            <!-- <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div> -->
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal --> 
 
-<!-- Unnamed (表格) -->
-<div  class="ax_default">
+      <div id="new-form-modal" class="modal fade">
+        <div class="modal-dialog" style="width: 728px;height: 299px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">新建DMA分区</h4>
+                </div>
+                <div id="form-modal-body" class="modal-body">
+                    <form id="dma-form" method="POST" class="col2Form">
+                      {% csrf_token %}
+                      
+                      <p>
+                        <label for="{{ dma_form.dma_no.id_for_label }}">{{ dma_form.dma_no.label }} </label>
+                        <input type="text"  id="id_dma_no" name="dma_no" required>
+                      </p>
+                      <p>
+                        <label for="{{ dma_form.dma_name.id_for_label }}">{{ dma_form.dma_name.label }} </label>
+                        <input type="text"  id="id_dma_name" name="dma_name" required>
+                      </p>
+                      <p>
+                        <label for="{{ dma_form.creator.id_for_label }}">{{ dma_form.creator.label }} </label>
+                        <input type="text" name="creator"  id="id_creator" required>
+                      </p>
+                      <p>
 
-  <div class="list-group" role="tab" id="heading1">
-      <div>
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1" class="list-group-item  " style="text-align:left;background-color: rgba(250, 250, 250, 1);border-color:rgba(255, 255, 255, 1);color: black;">
-           基本配置<span class="fa fa-angle-down pull-right"></span>
-        </a>
-      </div>
-      
-          <div id="collapse1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading1">
-            <div>
-              <form id="dmainfo-form" method="POST" action='{{ request.build_absolute_uri|safe }}' class="col3Form">
-                {% csrf_token %}
-                
-                <p>
-                  <label for="{{ form.dma_no.id_for_label }}">{{ form.dma_no.label }} </label>
-                  <input type="text"  id="id_dma_no" name="dma_no" value="{{ form.dma_no.value }}" required>
-                </p>
-                <p>
-                  <label for="{{ form.pipe_texture.id_for_label }}">{{ form.pipe_texture.label }} </label>
-                  <input type="text"  id="id_pipe_texture" name="pipe_texture" value="{{ form.pipe_texture.value|default:'' }}">
-                </p>
-                <p>
-                  <label for="{{ form.ifc.id_for_label }}">{{ form.ifc.label }} </label>
-                  <input type="text" name="ifc"  id="id_ifc" value="{{ form.ifc.value|default:'' }}">
-                </p>
+                        <label for="{{ dma_form.create_date.id_for_label }}">{{ dma_form.crate_date.label }} </label>
+                        <input type="input" name="create_date" id="id_create_date" placeholder="dd-mm-yyyy">
+                      </p>
+                      <button type="submit">Submit</button>
+                    </form>
+                </div>
+                <!-- <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div> -->
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal --> 
+    
 
-                <p>
-                  <label for="{{ form.orgs.id_for_label }}">{{ form.orgs.label }} </label>
-                  {{ form.orgs }}
-                  
-                </p>
-                <p>
-                  <label for="{{ form.pipe_length.id_for_label }}">{{ form.pipe_length.label }} </label>
-                  <input type="text"  id="id_pipe_length" name="pipe_length" value="{{ form.pipe_length.value|default:'' }}">
-                </p>
-                <p>
-                  <label for="{{ form.aznp.id_for_label }}">{{ form.aznp.label }} </label>
-                  <input type="text" name="aznp"  id="id_aznp" value="{{ form.aznp.value|default:'' }}">
-                </p>
-                <p>
-                  <label for="{{ form.pepoles_num.id_for_label }}">{{ form.pepoles_num.label }} </label>
-                  <input type="text"  id="id_pepoles_num" name="pepoles_num" value="{{ form.pepoles_num.value|default:'' }}">
-                </p>
-                
-                <p>
-                  <label for="{{ form.pipe_links.id_for_label }}">{{ form.pipe_links.label }} </label>
-                  <input type="text"  id="id_pipe_links" name="pipe_links" value="{{ form.pipe_links.value|default:'' }}">
-                </p>
-                <p>
-                  <label for="{{ form.night_use.id_for_label }}">{{ form.night_use.label }} </label>
-                  <input type="text" name="night_use"  id="id_night_use" value="{{ form.night_use.value|default:'' }}">
-                </p>
-                <p>
-                  <label for="{{ form.acreage.id_for_label }}">{{ form.acreage.label }} </label>
-                  <input type="text"  id="id_acreage" name="acreage" value="{{ form.acreage.value|default:'' }}">
-                </p>
-                <p>
-                  <label for="{{ form.pipe_years.id_for_label }}">{{ form.pipe_years.label }} </label>
-                  <input type="text"  id="id_pipe_years" name="pipe_years" value="{{ form.pipe_years.value|default:'' }}">
-                </p>
-                <p>
-                  <label for="{{ form.cxc_value.id_for_label }}">{{ form.cxc_value.label }} </label>
-                  <input type="text" name="cxc_value"  id="id_cxc_value" value="{{ form.cxc_value.value|default:'' }}">
-                </p>
-                <p>
-                  <label for="{{ form.user_num.id_for_label }}">{{ form.user_num.label }} </label>
-                  <input type="text"  id="id_user_num" name="user_num" value="{{ form.user_num.value|default:'' }}">
-                </p>
-                <p>
-                  <label for="{{ form.pipe_private.id_for_label }}">{{ form.pipe_private.label }} </label>
-                  <input type="text"  id="id_pipe_private" name="pipe_private" value="{{ form.pipe_private.value|default:'' }}">
-                </p>
-                
-                <button type="submit">Submit</button>
+      <div class="col-sm-10" style="margin-left: -10px;">
+          <div class="ibox float-e-margins">
+              <div class="ibox-title modal_head">
+                  <h5>基本信息 </h5>
+                  <div class="ibox-tools">
+                      <a class="collapse-link">
+                          <i class="fa fa-angle-down"></i>
+                      </a>
+                      
+                  </div>
+              </div>
+              <div class="ibox-content">
+                <form class="form-horizontal">
+                  <div class="row">
+                    <div class="form-group col-sm-4"  >
+                        <label class="col-sm-5 control-label" >{{ form.dma_no.label }}：</label>
+
+                        <div class="col-sm-5" >
+                            <input type="text"  id="id_dma_no" name="dma_no" value="{{ form.dma_no.value|default:''  }}" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label class="col-sm-6 control-label">{{ form.pipe_texture.label }}：</label>
+
+                        <div class="col-sm-5">
+                            <input type="text"  id="id_pipe_texture" name="pipe_texture" value="{{ form.pipe_texture.value|default:''  }}" class="form-control" >
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label class="col-sm-5 control-label">{{ form.ifc.label }}：</label>
+
+                        <div class="col-sm-5">
+                            <input type="text"  id="id_ifc" name="ifc" value="{{ form.ifc.value|default:''  }}" class="form-control" >
+                        </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="form-group col-sm-4"  >
+                        <label class="col-sm-5 control-label" >{{ form.orgs.label }}：</label>
+
+                        <div class="col-sm-5" >
+                            {{ form.orgs }}
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label class="col-sm-6 control-label">{{ form.pipe_length.label }}：</label>
+
+                        <div class="col-sm-5">
+                            <input type="text"  id="id_pipe_length" name="pipe_length" value="{{ form.pipe_length.value|default:''  }}" class="form-control" >
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label class="col-sm-5 control-label">{{ form.aznp.label }}：</label>
+
+                        <div class="col-sm-5">
+                            <input type="text"  id="id_aznp" name="aznp" value="{{ form.aznp.value|default:''  }}" class="form-control" >
+                        </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="form-group col-sm-4">
+                        <label class="col-sm-5 control-label">{{ form.pepoles_num.label }}：</label>
+
+                        <div class="col-sm-5">
+                            <input type="text"  id="id_pepoles_num" name="pepoles_num" value="{{ form.pepoles_num.value|default:''  }}" class="form-control" >
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-4"  >
+                        <label class="col-sm-6 control-label" >{{ form.pipe_links.label }}：</label>
+
+                        <div class="col-sm-5" >
+                            <input type="text"  id="id_pipe_links" name="pipe_links" value="{{ form.pipe_links.value|default:''  }}" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label class="col-sm-5 control-label">{{ form.night_use.label }}：</label>
+
+                        <div class="col-sm-5">
+                            <input type="text"  id="id_night_use" name="night_use" value="{{ form.night_use.value|default:''  }}" class="form-control" >
+                        </div>
+                    </div>
+                    
+                  </div>
+
+                  <div class="row">
+                    <div class="form-group col-sm-4">
+                        <label class="col-sm-5 control-label">{{ form.acreage.label }}：</label>
+
+                        <div class="col-sm-5">
+                            <input type="text"  id="id_acreage" name="acreage" value="{{ form.acreage.value|default:''  }}" class="form-control" >
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-4"  >
+                        <label class="col-sm-6 control-label" >{{ form.pipe_years.label }}：</label>
+
+                        <div class="col-sm-5" >
+                            <input type="text"  id="id_pipe_years" name="pipe_years" value="{{ form.pipe_years.value|default:''  }}" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-4"  >
+                        <label class="col-sm-5 control-label" >{{ form.cxc_value.label }}：</label>
+
+                        <div class="col-sm-5" >
+                            <input type="text"  id="id_cxc_value" name="cxc_value" value="{{ form.cxc_value.value|default:''  }}" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                  </div>
+
+                  <div class="row">
+                    <div class="form-group col-sm-4">
+                        <label class="col-sm-5 control-label">{{ form.user_num.label }}：</label>
+
+                        <div class="col-sm-5">
+                            <input type="text"  id="id_user_num" name="user_num" value="{{ form.user_num.value|default:''  }}" class="form-control" >
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label class="col-sm-6 control-label">{{ form.pipe_private.label }}：</label>
+
+                        <div class="col-sm-5">
+                            <input type="text"  id="id_pipe_private" name="pipe_private" value="{{ form.pipe_private.value|default:''  }}" class="form-control" >
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <div class="col-sm-offset-5">
+                            <button class="btn btn-sm btn-primary" type="submit">修改</button>
+                            <button class="btn btn-sm btn-primary" type="submit">提交</button>
+                            <button class="btn btn-sm btn-white" type="submit">恢复</button>
+                        </div>
+                    </div>
+                    
+                  </div>
               </form>
-
-                
-            </div>
-        </div>
-      
-  </div>
-
-  <div class="list-group" role="tab" id="heading2">
-      <div>
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="true" aria-controls="collapse2" class="list-group-item " style="text-align:left;background-color: rgba(250, 250, 250, 1);border-color:rgba(255, 255, 255, 1);color: black;">
-           站点配置<span class="fa fa-angle-down pull-right"></span>
-        </a>
-      </div>
-      
-          <div id="collapse2" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading2">
-            <div>
-              <table id="tb_dma_stations" class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th >ID</th>
-                    
-                    <th >站点名称</th>
-                    <th >类型</th>
-                    <th >表具类型</th>
-                    <th >表具编号</th>
-                    
-                    <th >口径</th>
-                    <th >所属组织</th>
-                    
-                    <th >安装日期</th>
-                    
-                    
-                  </tr>
-  
-                </thead>
-               {% for obj in station_list %}
-                  <tr>
-                    <td>{{ obj.id }} </td>
-                    <td>{{ obj.station_name }} </td>
-                    <td>{{ obj.meter_property }} </td>
-                    <td>{{ obj.meter_type }} </td>
-                    <td>{{ obj.meter_code }} </td>
-                    
-                    <td>{{ obj.caliber }} </td>
-                    <td>{{ obj.belongto }} </td>
-                    
-                    <td>{{ obj.installed }} </td>
-                    
-                    
-                  </tr>
                   
-               {% endfor %}
-             </table>
-            </div>
-        </div>
-      
-  </div>
-
-  <div class="list-group" role="tab" id="heading3">
-      <div>
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="true" aria-controls="collapse3" class="list-group-item " style="text-align:left;background-color: rgba(250, 250, 250, 1);border-color:rgba(255, 255, 255, 1);color: black;">
-           区域图形配置<span class="fa fa-angle-down pull-right"></span>
-        </a>
-      </div>
-      
-          <div id="collapse3" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading3">
-            <div class="zone_mapcfg">
-              <div>
-
-                <button id="draw_zone">绘制区域</button>
-                <button>蒙层颜色</button>
-                <button>边框颜色</button>
+                  
               </div>
-              <div>
-                <span>图形预览</span>
-                <div id="js-map" class="map"></div>
+          </div>
+
+          <div class="ibox float-e-margins">
+              <div class="ibox-title modal_head">
+                  <h5>站点配置 </h5>
+                  <div class="ibox-tools">
+                      <a class="collapse-link">
+                          <i class="fa fa-angle-down"></i>
+                      </a>
+                      
+                  </div>
               </div>
-              <div><button>统计</button></div>
-              <div>
-                <span>区域统计信息:</span>
-                <table id="tb_zone_static" class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th >名称</th>
-                    <th >结果</th>
-                    
-                  </tr>
-  
-                </thead>
-               
-                <tr>
-                  <td>管线长度（m）</td>
-                  <td> </td>
-                  
-                </tr>
-                <tr>
-                  <td>水表井（个）</td>
-                  <td> </td>
-                  
-                </tr>
-                <tr>
-                  <td>阀门井（个）</td>
-                  <td> </td>
-                  
-                </tr>
-                <tr>
-                  <td>消防栓（个）</td>
-                  <td> </td>
-                  
-                </tr>
-                <tr>
-                  <td>阀门（个）</td>
-                  <td> </td>
-                  
-                </tr>
-                <tr>
-                  <td>接头（个）</td>
-                  <td> </td>
-                  
-                </tr>
-                  
-               
-             </table>
+              <div class="ibox-content">
+                  <div>
+                    <table id="tb_dma_stations" class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th >序号</th>
+                          
+                          <th >站点名称</th>
+                          <th >类型</th>
+                          <th >表具类型</th>
+                          <th >表具编号</th>
+                          
+                          <th >口径</th>
+                          <th >所属组织</th>
+                          
+                          <th >安装日期</th>
+                          
+                          
+                        </tr>
+        
+                      </thead>
+                     {% for obj in station_list %}
+                        <tr>
+                          <td>{{ obj.id }} </td>
+                          <td>{{ obj.station_name }} </td>
+                          <td>{{ obj.meter_property }} </td>
+                          <td>{{ obj.meter_type }} </td>
+                          <td>{{ obj.meter_code }} </td>
+                          
+                          <td>{{ obj.caliber }} </td>
+                          <td>{{ obj.belongto }} </td>
+                          
+                          <td>{{ obj.installed }} </td>
+                          
+                          
+                        </tr>
+                        
+                     {% endfor %}
+                   </table>
+                  </div>
               </div>
-            </div>
-        </div>
+          </div>
       
+          <div class="ibox float-e-margins">
+              <div class="ibox-title modal_head">
+                  <h5>区域图形配置 </h5>
+                  <div class="ibox-tools">
+                      <a class="collapse-link">
+                          <i class="fa fa-angle-down"></i>
+                      </a>
+                      
+                  </div>
+              </div>
+              <div class="ibox-content">
+                <div class="row">
+                  <div class="col-sm-1"></div>
+                  <div class="col-sm-5">图形预览</div>
+                  <div class="col-sm-1"></div>
+                  <div class="col-sm-5">区域统计信息</div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-1" >
+                      <div style="margin-left: 0px;margin-right: -10px;margin-bottom: 20px;"><button id="draw_zone">绘制区域</button></div>
+                      <div style="margin-left: 0px;margin-right: -10px;margin-bottom: 20px;"><button>蒙层颜色</button></div>
+                      <div style="margin-left: 0px;margin-right: -10px;margin-bottom: 20px;"><button>边框颜色</button></div>
+                  </div>
+                  <div class="col-sm-5">
+                    <div id="js-map" class="map"></div>
+                  </div>
+                  <div class="col-sm-1">
+                    <div style="margin-top: 47px;"><button>统计</button></div>
+                  </div>
+                  <div class="col-sm-5">
+                    <table id="tb_zone_static" class="table table-bordered" style="height: 400px;">
+                      <thead>
+                        <tr>
+                          <th >名称</th>
+                          <th >结果</th>
+                          
+                        </tr>
+        
+                      </thead>
+                     
+                      <tr>
+                        <td>管线长度（m）</td>
+                        <td> </td>
+                        
+                      </tr>
+                      <tr>
+                        <td>水表井（个）</td>
+                        <td> </td>
+                        
+                      </tr>
+                      <tr>
+                        <td>阀门井（个）</td>
+                        <td> </td>
+                        
+                      </tr>
+                      <tr>
+                        <td>消防栓（个）</td>
+                        <td> </td>
+                        
+                      </tr>
+                      <tr>
+                        <td>阀门（个）</td>
+                        <td> </td>
+                        
+                      </tr>
+                      <tr>
+                        <td>接头（个）</td>
+                        <td> </td>
+                        
+                      </tr>
+                        
+                     
+                   </table>
+                  </div>
+                </div>
+
+                  
+              </div>
+          </div>
+      </div> 
   </div>
+  {% endblock %}
 
-  
 
-
-   
-
-</div>  
-{% endblock content %}
 
 
 

@@ -1,151 +1,130 @@
-  {% load staticfiles %}<!DOCTYPE html>
-<html>
-  <head>
-    <title>{% block title %} {{ title }} {% endblock %}</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <meta name="apple-mobile-web-app-capable" content="yes"/>
-    
-    <script src="{%  static 'gis/assets/js/jquery.js' %} "></script>
-    <script src="{%  static 'gis/assets/js/jquery-ui.js' %} "></script>
-    
-    <link rel="shortcut icon" href="favicon.ico">
-    <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.staticfile.org/font-awesome/4.4.0/css/font-awesome.css?v=4.4.0" rel="stylesheet">
-    <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- virvo provider -->
-    <link href="{% static 'virvo/data/styles.css' %}" type="text/css" rel="stylesheet"/>
-    <link href="{% static 'virvo/state_content.css' %}" type="text/css" rel="stylesheet"/>
+{% extends 'dma/home.html' %}
 
-    
-    
-    
+{% block stylesheet %}
+{{ block.super }}
+  <style type="text/css">
 
-    
-    
-    
-    
-    <!-- hplus master-->
-    <link href="{% static 'hplus-master/css/bootstrap.min14ed.css' %}" rel="stylesheet">
-    <link href="{% static 'hplus-master/css/font-awesome.min93e3.css' %}" rel="stylesheet">
+  .query_div {
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    margin-bottom: 5px;
+  }
+  .query_div > h2 {
+    grid-column: 1/8;
+  }
 
-    <link href="{% static 'hplus-master/css/plugins/iCheck/custom.css' %}" rel="stylesheet">
-
-    <link href="{% static 'hplus-master/css/plugins/fullcalendar/fullcalendar.css' %}" rel="stylesheet">
-    <link href="{% static 'hplus-master/css/plugins/fullcalendar/fullcalendar.print.css' %}" rel="stylesheet">
-
-    <link href="{% static 'hplus-master/css/animate.min.css' %}" rel="stylesheet">
-    <link href="{% static 'hplus-master/css/style.min.css' %}" rel="stylesheet">
-
-    <script src="{% static 'hplus-master/js/jquery.min.js' %}"></script>
-    <script src="{% static 'hplus-master/js/bootstrap.min.js' %}"></script>
-    
-    <script src="{% static 'hplus-master/js/jquery-ui.custom.min.js' %}"></script>
-    <script src="{% static 'hplus-master/js/plugins/iCheck/icheck.min.js' %}"></script>
-    <script src="{% static 'hplus-master/js/plugins/fullcalendar/fullcalendar.min.js' %}"></script>
+  .stastic {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    background-color: rgba(0, 153, 204, 1);
+  }
+  </style>
+{% endblock %}
 
 
+{% block breadcrumbs %} / 数据分析/日用水分析{% endblock %}
 
+{% block main_content %}
+  <div class="row ">
+      <div class="col-sm-2" style="margin-right: -10px;">
+          {% include 'stationtree.html' %}
+      </div>    
     
 
-    <!-- zTree -->
-    <link rel="stylesheet" href="{% static 'zTree/css/demo.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'zTree/css/zTreeStyle/zTreeStyle.css' %}" type="text/css">
-    
-    <script src="https://cdn.staticfile.org/jquery/2.1.4/jquery.min.js"></script>
-<script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-    <script type="text/javascript" src="{% static 'zTree/js/jquery.ztree.core.js' %}"></script>
-
-    <!-- echart -->
-    <script src="{% static 'virvo/echarts.min.js' %}"></script>
-
-    <script src="{% static 'virvo/virvo_app.js' %}"></script>
-
-</head>
-<body class="gray-bg">
-    <div class="wrapper wrapper-content">
-      <div class="row animated fadeInDown">
-        <div class="col-sm-3">
+      <div class="col-sm-10" style="margin-left: -10px;">
           <div class="ibox float-e-margins">
-            <div class="ibox-title">
-              <h5>站点信息</h5>
-              <div class="ibox-tools">
-                  <a class="collapse-link">
-                      <i class="fa fa-angle-down"></i>
-                  </a>
-                  
+              <div class="ibox-title modal_head">
+                  <h5>查询条件 </h5>
+                  <div class="ibox-tools">
+                      <a class="collapse-link">
+                          <i class="fa fa-angle-down"></i>
+                      </a>
+                      
+                  </div>
               </div>
               <div class="ibox-content">
-                <div id='external-events'>
-                    <!-- Unnamed (文本框) -->
-                  <div class="ax_default _输入框 center" >
-                    <input style="width: 246px;height: 32px;" type="text" value="请输入组织名称"/>
+                  <div class="row m-b-sm m-t-sm">
+                      <div class="col-md-1">
+                          <label>所属组织:</label>
+                      </div>
+                      <div class="col-md-2">
+                          <div class="input-group">
+                              <input type="text" placeholder="{{ station.belongto.name }}" class="input-sm " style="height: 40px;"> <span class="input-group-btn">
+                                 
+                          </div>
+                      </div>
+                      <div class="col-md-1">
+                          <label>站点名称:</label>
+                      </div>
+                      <div class="col-md-2">
+                          <div class="input-group">
+                              <input type="text" placeholder="{{ station.station_name }}" class="input-sm " style="height: 40px;"> <span class="input-group-btn">
+                                 
+                          </div>
+                      </div>
+                      <div class="col-md-2">
+                        <p style="margin-top: 10px; margin-left: 10px;   color: #1E1E1E;"><input type="checkbox" id="checkbox1" name="compare_date" >多日期对比分析</p>
+                      </div>
+                      <div class="col-md-1">
+                          <button type="button" id="loading-example-btn" class="btn  btn-sm btn_tempo"> 昨天</button>
+                      </div>
+                      <div class="col-md-1">
+                          <button type="button" id="loading-example-btn" class="btn  btn-sm btn_tempo"> 三天内</button>
+                      </div>
+                      <div class="col-md-1" >
+                          <button type="button" id="loading-example-btn" class="btn  btn-sm btn_tempo"> 七天内</button>
+                      </div>
+                      <div class="col-md-1" >
+                          <button type="button" id="loading-example-btn" class="btn  btn-sm btn_tempo"> 查询</button>
+                      </div>
                   </div>
-
-                  <!-- Unnamed (树状菜单) -->
-                    <div  >
-                      <ul id="station_tree" class="ztree"></ul>
-                    </div>
-                  </div>
-                </div> <!-- ibox-content end -->
+                  
               </div>
-            </div>
-          </div>    
-          
+          </div>
 
-          <div class="col-sm-9">
-            
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <h5>图形分析 </h5>
-                        <div class="ibox-tools">
-                            <a class="collapse-link">
-                                <i class="fa fa-angle-down"></i>
-                            </a>
-                            
-                        </div>
-                    </div>
-                    <div class="ibox-content">
-                        <div id="chart_station" style="width: 100%;height:555px;" ></div>
-                        <!-- <div >
-                          <p>当天用水量: 186 m³ </p>
-                          <p>昨日用水量: 206.3 </p>
-                          <p>前日用水量: 206 </p>
-                          <p>最大值: 68 m³   （11：00）</p>
-                          <p>最小值: 21 m³   （04：00）</p>
-                          <p>平均值: 46 m³   （11：00）</p>
-                        </div> -->
-                    </div>
-                </div>
-            </div> 
-        </div>
-    </div>
+          <div id="autoUpdate" class="autoUpdate " >
+              content
+          </div>
+      
+          <div class="ibox float-e-margins">
+              <div class="ibox-title modal_head">
+                  <h5>图形分析 </h5>
+                  <div class="ibox-tools">
+                      <a class="collapse-link">
+                          <i class="fa fa-angle-down"></i>
+                      </a>
+                      
+                  </div>
+              </div>
+              <div class="ibox-content">
+                  <div id="chart_station" style="width: 100%;height:555px;" ></div>
+                  <div class="row stastic_info">
+                    <div class="col-sm-3">当天用水量: 186 m³ </div>
+                    <div class="col-sm-3">昨日用水量: 206.3 </div>
+                    <div class="col-sm-6">前日用水量: 206 </div>
+                    <div class="col-sm-3">最大值: 68 m³   （11：00）</div>
+                    <div class="col-sm-3">最小值: 21 m³   （04：00）</div>
+                    <div class="col-sm-6">平均值: 46 m³   （11：00）</div>
+                  </div>
+              </div>
+          </div>
+      </div> 
+  </div>
+  {% endblock %}
 
+
+
+{% block javascript %}
+{{ block.super }}
     
-    <script src="{% static 'hplus-master/js/content.min.js' %}"></script>
-    <script src="{% static 'hplus-master/js/jquery-ui.custom.min.js' %}"></script>
-    <script src="{% static 'hplus-master/js/plugins/iCheck/icheck.min.js' %}"></script>
-    <script src="{% static 'hplus-master/js/plugins/fullcalendar/fullcalendar.min.js' %}"></script>
-<!-- echart -->
-    <script src="{% static 'virvo/echarts.min.js' %}"></script>
 
-<script type="text/javascript">
-    $(function(){
+<script>
+        
+  $(function(){
     load_Tree('daily');
   });
 
-  $(document).ready(function(){
-    $('#checkbox1').change(function(){
-      if($(this).is(":checked") == true)
-        $('#autoUpdate').show();
-      else
-        $('#autoUpdate').hide();
-
-    });
-  });
-
+  
 
   // 基于准备好的dom，初始化echarts实例
   var myChart = echarts.init(document.getElementById('chart_station'));
@@ -161,6 +140,8 @@
   window.onresize = function () {
       myChart.resize();      
   };
+
+        
 </script>
-</body>
-</html>
+
+{% endblock %}

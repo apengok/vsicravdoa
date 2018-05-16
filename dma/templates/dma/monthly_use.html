@@ -1,85 +1,97 @@
 {% extends 'dma/home.html' %}
 
 {% block stylesheet %}
+{{ block.super }}
   <style type="text/css">
 
-  .query_div {
-    display: grid;
-    grid-template-columns: repeat(7,1fr);
-    margin-bottom: 5px;
-  }
-  .query_div > h2 {
-    grid-column: 1/8;
-  }
-
-  .stastic {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    background-color: rgba(0, 153, 204, 1);
-  }
   </style>
 {% endblock %}
 
 
-{% block breadcrumbs %}<a href="{% url 'dma:virvo_home' %}"><span class="fa fa-home"></span>首页</a> / 数据分析/月用水分析{% endblock %}
+{% block breadcrumbs %} / 数据分析/月用水分析{% endblock %}
 
-{% block content %}
-<div class=" main_content">
-    <div class=" treel">
-      {% include 'stationtree.html' %}
-    </div>
-
-<div  class="ax_default" style="margin-left: 10px;">
-
-  <div class="query_div">
-    <h2>查询条件</h2>
-    <p>所属组织:{{ station.belongto.name }}</p>
-    <p>站点名称:{{ station.station_name }}</p>
+{% block main_content %}
+  <div class="row ">
+      <div class="col-sm-2" style="margin-right: -10px;">
+          {% include 'stationtree.html' %}
+      </div>    
     
-    <p><button>两月内</button></p>
-    <p><button>三月内</button></p>
-    <p><button>查询</button></p>
-    
-  </div>
-  
-  <div class="list-group" role="tab" id="heading">
-      <div >
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1" class="list-group-item active " style="text-align:left;background-color: rgba(255, 255, 255, 1);border-color:rgba(255, 255, 255, 1);color: black;">
-          <span  title="Toggle dropdown menu"></span> 图形分析
-        </a>
-      </div>
-      
-      <div id="collapse1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading">
-        
-        <div >
-          <div id="chart_station" style="width: 1200px;height:555px;"></div>
+
+      <div class="col-sm-10" style="margin-left: -10px;">
+          <div class="ibox float-e-margins">
+              <div class="ibox-title modal_head">
+                  <h5>查询条件 </h5>
+                  <div class="ibox-tools">
+                      <a class="collapse-link">
+                          <i class="fa fa-angle-down"></i>
+                      </a>
+                      
+                  </div>
+              </div>
+              <div class="ibox-content">
+                  <div class="row m-b-sm m-t-sm">
+                      <div class="col-md-1">
+                          <label>所属组织:</label>
+                      </div>
+                      <div class="col-md-2">
+                          <div class="input-group">
+                              <input type="text" placeholder="{{ station.belongto.name }}" class="input-sm " style="height: 40px;"> <span class="input-group-btn">
+                                 
+                          </div>
+                      </div>
+                      <div class="col-md-1">
+                          <label>站点名称:</label>
+                      </div>
+                      <div class="col-md-2">
+                          <div class="input-group">
+                              <input type="text" placeholder="{{ station.station_name }}" class="input-sm " style="height: 40px;"> <span class="input-group-btn">
+                                 
+                          </div>
+                      </div>
+                      <div class="col-md-3"></div>
+                      <div class="col-md-1">
+                          <button type="button" id="loading-example-btn" class="btn  btn-sm btn_tempo pull-right"> 两月内</button>
+                      </div>
+                      <div class="col-md-1">
+                          <button type="button" id="loading-example-btn" class="btn  btn-sm btn_tempo pull-right"> 三月内</button>
+                      </div>
+                      
+                      <div class="col-md-1" >
+                          <button type="button" id="loading-example-btn" class="btn  btn-sm btn_tempo pull-right"> 查询</button>
+                      </div>
+                  </div>
+                  
+              </div>
+          </div>
+
           
-        </div>
-        <div class="stastic">
-          <p>当天用水量: 186 m³ </p>
-          <p>昨日用水量: 206.3 </p>
-          <p>去年同期用水量：206 m³ </p>
-          <p>同比增量：21 m³</p>
-          <p> 环比增量：60 m³</p>
-          <p>最大值: 68 m³   （11：00）</p>
-          <p>最小值: 21 m³   （04：00）</p>
-          <p>平均值: 46 m³   （11：00）</p>
-        </div>
-      </div>
-
-
       
-      
+          <div class="ibox float-e-margins">
+              <div class="ibox-title modal_head">
+                  <h5>图形分析 </h5>
+                  <div class="ibox-tools">
+                      <a class="collapse-link">
+                          <i class="fa fa-angle-down"></i>
+                      </a>
+                      
+                  </div>
+              </div>
+              <div class="ibox-content">
+                  <div id="chart_station" style="width: 100%;height:555px;" ></div>
+                  <div class="row stastic_info">
+                    <div class="col-sm-3">当天用水量: 186 m³ </div>
+                    <div class="col-sm-3">昨日用水量: 206.3 </div>
+                    <div class="col-sm-6">前日用水量: 206 </div>
+                    <div class="col-sm-3">最大值: 68 m³   （11：00）</div>
+                    <div class="col-sm-3">最小值: 21 m³   （04：00）</div>
+                    <div class="col-sm-6">平均值: 46 m³   （11：00）</div>
+                  </div>
+              </div>
+          </div>
+      </div> 
   </div>
+  {% endblock %}
 
-
-
-    
-
-
-    
-</div>
-{% endblock %}
 
 
 {% block javascript %}
