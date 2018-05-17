@@ -225,10 +225,10 @@ body.body-small .navbar-top-links li:last-child {
 }
 
 
-.nav.nav-second-level > li.active {
+/*.nav.nav-second-level > li.active {
     border: none;
     background-color:red;
-}
+}*/
 
 
 .nav.nav-second-level.collapse[style] {
@@ -325,14 +325,21 @@ body.body-small .navbar-top-links li:last-child {
     padding-left: 52px;
 }
 
+.nav-second-level li a:active {
+    padding: 7px 15px 7px 10px;
+    padding-left: 52px;
+    color: red;
+}
+
 .nav-third-level li a {
     padding-left: 62px;
 }
 
-.nav-second-level li:last-child {
+/*pengwl remove beacuse this bring gap*/
+/*.nav-second-level li:last-child {
 	margin-top: 5px;
     margin-bottom: 5px;
-}
+}*/
 
 body:not(.fixed-sidebar):not(.canvas-menu).mini-navbar .nav li:hover > .nav-second-level,
 .mini-navbar .nav li:focus > .nav-second-level {

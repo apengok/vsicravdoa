@@ -124,6 +124,16 @@
     load_Tree('daily');
   });
 
+  // show hiddened content 多日期对比分析
+  $(document).ready(function(){
+    $('#checkbox1').change(function(){
+      if($(this).is(":checked") == true)
+        $('#autoUpdate').show();
+      else
+        $('#autoUpdate').hide();
+
+    });
+  });
   
 
   // 基于准备好的dom，初始化echarts实例
@@ -132,7 +142,7 @@
   // 使用刚指定的配置项和数据显示图表。
   var opts = {{ options|safe }};
   option = eval(opts);
-  console.log(option);
+  // console.log(option);
   myChart.setOption(option);
 
   

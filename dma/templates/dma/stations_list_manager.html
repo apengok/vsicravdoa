@@ -35,14 +35,15 @@
           
 
           <div class="ibox float-e-margins">
-              <div class="ibox-title modal_head">
-                  <h5>站点管理 </h5>
-                  <div class="ibox-tools">
-                      <a class="collapse-link">
+              <div class="ibox-title modal_head collapse-link" >
+                <h5>站点管理 </h5>
+                  <div class="ibox-tools" >
+                      <a >
                           <i class="fa fa-angle-down"></i>
                       </a>
                       
                   </div>
+                  
               </div>
               <div class="ibox-content">
                   <div>
@@ -134,7 +135,7 @@
         });
 
         $('body').on('hidden.bs.modal', '.modal', function () {
-            console.log('hidden??...')
+            // console.log('hidden??...')
             $(this).removeData('bs.modal');
         });
     </script>
