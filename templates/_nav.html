@@ -21,7 +21,7 @@
 .nav > li.active > .J_menuItem_h {
     border-left: 4px solid white;
     
-    background-color:rgba(0, 153, 204, 1);
+    /*background-color:rgba(0, 153, 204, 1);*/
 }
 
 
@@ -48,6 +48,14 @@
   color:#FFFFFF;
 }
 
+.label_text {
+  margin-left: 30px;
+  /*text-align: center;*/
+  /*font-family:'微软雅黑 Bold', '微软雅黑 Regular', '微软雅黑';
+  font-weight:700;
+  font-style:normal;
+  font-size:16px;*/
+}
 
 
 </style>
@@ -65,8 +73,10 @@
 
                 </li>
                 <li>
-                    <a class="J_menuItem_h" href="layouts.html" data-index="8"><i class="fa fa-columns"></i>
-                        <span class="nav-label">数据监控</span> <span class="fa fa-angle-right "></span>
+                    <a class="J_menuItem_h" href="layouts.html" data-index="8">
+                        <i class="fa fa-columns"></i>
+                        <span class="nav-label label_text" >数据监控</span> 
+                        <span class="fa fa-angle-right "></span>
                     </a> 
                     <ul class="nav nav-second-level collapse">
                       <li ><a  href="{% url 'dma:map_monitor_hplus' %}"><i class="fa fa-location-arrow"></i>地图监控</a></li>
@@ -77,7 +87,7 @@
                 </li>
                 <li>
                     <a class="J_menuItem_h" href="#">
-                        <i class="fa fa fa-bar-chart-o"></i> <span class="nav-label">数据分析</span>
+                        <i class="fa fa fa-bar-chart-o"></i> <span class="nav-label label_text">数据分析</span>
                         <span class="fa fa-angle-right"></span> 
                     </a>
                     <ul class="nav nav-second-level collapse">
@@ -90,14 +100,14 @@
 
                 <li>
                     <a class="J_menuItem_h" href="#"><i class="fa fa-envelope"></i>
-                        <span class="nav-label">报警中心 </span><span class="fa fa-angle-right"></span></a>
+                        <span class="nav-label label_text">报警中心 </span><span class="fa fa-angle-right"></span></a>
                     <ul class="nav nav-second-level collapse">
                         
                     </ul>
                 </li>
                 <li>
                     <a class="J_menuItem_h" href="#"><i class="fa fa-edit"></i>
-                        <span class="nav-label">基础管理</span><span class="fa fa-angle-right"></span></a>
+                        <span class="nav-label label_text">基础管理</span><span class="fa fa-angle-right"></span></a>
                     <ul class="nav nav-second-level collapse">
                         <li><a class="J_menuItem" href="{% url 'dma:dma_manager_base' %}"><i class="fa fa-location-arrow"></i>dma管理</a></li>
                         <li><a class="J_menuItem" href="{% url 'dma:stations_manager'%}"><i class="fa fa-location-arrow"></i>站点管理</a></li>
@@ -105,14 +115,14 @@
                 </li>
                 <li>
                     <a class="J_menuItem_h" href="#"><i class="fa fa-desktop"></i>
-                        <span class="nav-label">设备管理</span><span class="fa fa-angle-right"></span></a>
+                        <span class="nav-label label_text">设备管理</span><span class="fa fa-angle-right"></span></a>
                     <ul class="nav nav-second-level collapse">
                         
                     </ul>
                 </li>
                 <li>
                     <a class="J_menuItem_h" href="#"><i class="fa fa-flask"></i>
-                        <span class="nav-label">企业管理</span><span class="fa fa-angle-right"></span></a>
+                        <span class="nav-label label_text">企业管理</span><span class="fa fa-angle-right"></span></a>
                     <ul  class="nav nav-second-level ">
                         <li><a class="J_menuItem" href="{% url 'dma:roles_manager'%}"><i class="fa fa-location-arrow"></i>角色管理</a></li>
                         <li ><a class="J_menuItem" href="{% url 'dma:organ_users'  %}"><i class="fa fa-location-arrow"></i>组织和用户管理</a></li>
@@ -120,20 +130,20 @@
                 </li>
                 <li>
                     <a class="J_menuItem_h" href="#"><i class="fa fa-table"></i>
-                        <span class="nav-label">基准分析</span><span class="fa fa-angle-right"></span></a>
+                        <span class="nav-label label_text">基准分析</span><span class="fa fa-angle-right"></span></a>
                     <ul class="nav nav-second-level collapse">
                         
                     </ul>
                 </li>
                 <li class="">
                     <a class="J_menuItem_h" href="#"><i class="fa fa-picture-o"></i>
-                        <span class="nav-label">报表统计</span><span class="fa fa-angle-right"></span></a>
+                        <span class="nav-label label_text">报表统计</span><span class="fa fa-angle-right"></span></a>
                     <ul class="nav nav-second-level collapse" aria-expanded="false" style="height: 0px;">
                         
                     </ul>
                 </li>
                 <li>
-                    <a class="J_menuItem_h" href="css_animation.html" data-index="86"><i class="fa fa-magic"></i> <span class="nav-label">系统管理</span><span class="fa fa-angle-right"></span>
+                    <a class="J_menuItem_h" href="css_animation.html" data-index="86"><i class="fa fa-magic"></i> <span class="nav-label label_text">系统管理</span><span class="fa fa-angle-right"></span>
                     </a>
                     <ul class="nav nav-second-level collapse">
                         <li><a class="J_menuItem" href="{% url 'dma:personality'%}"><i class="fa fa-location-arrow"></i>平台个性化配置</a></li>

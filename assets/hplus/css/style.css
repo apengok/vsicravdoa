@@ -49,10 +49,16 @@ a:focus {
     outline: none;
 }
 
+/*pengwl*/
 .nav > li > a {
     color: #a7b1c2;
-    font-weight: 600;
+    font-weight: 700;
     padding: 14px 20px 14px 25px;
+    font-size: 20px;
+}
+
+.nav li ul li a {
+    font-size: 16px;
 }
 
 .nav li>a {
@@ -216,19 +222,19 @@ body.body-small .navbar-top-links li:last-child {
 
 .nav > li.active {
     /*border-left: 4px solid white;*/
-    background: #293846;
+    background: #32323a; /*#293846*/
 }
 
 .navbar-default .nav-second-level > li.active {
     background-color: rgba(0, 153, 204, 1);  /*左部导航hover颜色 pengwl*/
-    color: red;
+    color: #fff;
 }
 
-
-/*.nav.nav-second-level > li.active {
+/*二级子菜单 li*/
+.nav.nav-second-level > li {
     border: none;
-    background-color:red;
-}*/
+    background-color:#293846;
+}
 
 
 .nav.nav-second-level.collapse[style] {
@@ -321,25 +327,25 @@ body.body-small .navbar-top-links li:last-child {
 }
 
 .nav-second-level li a {
-    padding: 7px 15px 7px 10px;
-    padding-left: 52px;
+    /*padding: 7px 15px 7px 10px;*/
+    padding-left: 72px;
 }
 
 .nav-second-level li a:active {
-    padding: 7px 15px 7px 10px;
-    padding-left: 52px;
-    color: red;
+    /*padding: 7px 15px 7px 10px;*/
+    padding-left: 72px;
+    color: #fff;
 }
 
 .nav-third-level li a {
-    padding-left: 62px;
+    padding-left: 82px;
 }
 
 /*pengwl remove beacuse this bring gap*/
-/*.nav-second-level li:last-child {
-	margin-top: 5px;
+.nav-second-level li:last-child {   
+    /*margin-top: 5px;*/
     margin-bottom: 5px;
-}*/
+}
 
 body:not(.fixed-sidebar):not(.canvas-menu).mini-navbar .nav li:hover > .nav-second-level,
 .mini-navbar .nav li:focus > .nav-second-level {

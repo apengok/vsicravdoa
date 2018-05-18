@@ -25,206 +25,26 @@
   </head>
   <body>
 
-    <div class="list-group " role="tab" id="heading">
-      <div>
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1" class="list-group-item active ">
-          <span class="fa fa-caret-down" title="Toggle dropdown menu"></span> 基本配置
-        </a>
-      </div>
-      
-          <div id="collapse1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading">
-            <div>
-              <form class = "form-horizontal" role = "form">
-
-                <div class = "form-group">
-                  <label class = "col-sm-2 control-label">分区编号：</label>
-                  
-                  <div class = "col-sm-10">
-                     <input class = "form-control" id = "dma_no" type = "text" value = "scada001">
-                  </div>
+    <div class="dropdown col-sm-4 pull-left" style="top: 10px;">
+                  <button id="add_station" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="height: 49px;">
+                    操作菜单
+                    <span class="fa fa-angle-down pull-right"></span>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="{% url 'dma:role_create_manager' %}" data-toggle="modal" data-target="#modal"  title="create stations" data-tooltip style="padding: 3px 20px;"><span class="fa fa-plus pull-left"></span>新增</a></li>
+                    
+                  </ul>
                 </div>
 
-                <div class = "form-group">
-                  <label class = "col-sm-2 control-label">所属组织</label>
-                  
-                  <div class = "col-sm-10">
-                     <input class = "form-control" id = "dma_belongto" type = "text" value = "深圳水务局">
-                  </div>
-                </div>
-
-                <div class = "form-group">
-                  <label class = "col-sm-2 control-label">服务人口</label>
-                  
-                  <div class = "col-sm-10">
-                     <input class = "form-control" id = "peoples" type = "text" value = "2000000">
-                  </div>
-                </div>
-
-                <div class = "form-group">
-                  <label class = "col-sm-2 control-label">服务面积</label>
-                  
-                  <div class = "col-sm-10">
-                     <input class = "form-control" id = "acrage" type = "text" value = "2000">
-                  </div>
-                </div>
-
-                <div class = "form-group">
-                  <label class = "col-sm-2 control-label">用户数量</label>
-                  
-                  <div class = "col-sm-10">
-                     <input class = "form-control" id = "users_num" type = "text" value = "180w">
-                  </div>
-                </div>
-
-                <div class = "form-group">
-                  <label class = "col-sm-2 control-label">管道材质</label>
-                  
-                  <div class = "col-sm-10">
-                     <input class = "form-control" id = "pipe_stuff" type = "text" value = "PVC ">
-                  </div>
-                </div>
-
-                <div class = "form-group">
-                  <label class = "col-sm-2 control-label">管道总长度（m）</label>
-                  
-                  <div class = "col-sm-10">
-                     <input class = "form-control" id = "pipe_line" type = "text" value = "57056">
-                  </div>
-                </div>
-
-                <div class = "form-group">
-                  <label class = "col-sm-2 control-label">管道连接总数（个）</label>
-                  
-                  <div class = "col-sm-10">
-                     <input class = "form-control" id = "pipe_link_num" type = "text" value = "100">
-                  </div>
-                </div>
-
-                <div class = "form-group">
-                  <label class = "col-sm-2 control-label">管道最长服务年限（年）</label>
-                  
-                  <div class = "col-sm-10">
-                     <input class = "form-control" id = "pipe_years_max" type = "text" value = "50">
-                  </div>
-                </div>
-
-                <div class = "form-group">
-                  <label class = "col-sm-2 control-label">私人拥有水管长度（m）</label>
-                  
-                  <div class = "col-sm-10">
-                     <input class = "form-control" id = "pipe_private" type = "text" value = "3000">
-                  </div>
-                </div>
-
-                <div class = "form-group">
-                  <label class = "col-sm-2 control-label">IFC参数：</label>
-                  
-                  <div class = "col-sm-10">
-                     <input class = "form-control" id = "ifc" type = "text" value = "">
-                  </div>
-                </div>
-
-                <div class = "form-group">
-                  <label class = "col-sm-2 control-label">AZNP</label>
-                  
-                  <div class = "col-sm-10">
-                     <input class = "form-control" id = "azmp" type = "text" value = "">
-                  </div>
-                </div>
-
-                <div class = "form-group">
-                  <label class = "col-sm-2 control-label">正常夜间用水量</label>
-                  
-                  <div class = "col-sm-10">
-                     <input class = "form-control" id = "night_use" type = "text" value = "20">
-                  </div>
-                </div>
-
-                <div class = "form-group">
-                  <label class = "col-sm-2 control-label">产销差目标值</label>
-                  
-                  <div class = "col-sm-10">
-                     <input class = "form-control" id = "cxc" type = "text" value = "0.98">
-                  </div>
-                </div>
-               
-               
-                
-            </form>
-
-                
-            </div>
-        </div>
-      
-  </div>
-
-  <div class="list-group " role="tab" id="heading">
-      <div>
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1" class="list-group-item active ">
-          <span class="fa fa-caret-down" title="Toggle dropdown menu"></span> 站点信息
-        </a>
-      </div>
-      
-          <div id="collapse1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading">
-            <div>
-              <table class = "table table-bordered">
-                <tr>
-                   <th>站点名称</th>
-                   <th>类型 </th>
-                   <th>表具类型</th>
-                   <th>表具编号 </th>
-                   <th>口径</th>
-                   <th>所属组织 </th>
-                   <th>安装日期</th>
-                   
-                </tr>
-                
-                <tr>
-                   <td>电力局</td>
-                   <td>流入</td>
-                   <td>水表</td>
-                   <td>1709526</td>
-                   <td>200</td>
-                   <td>平江水司</td>
-                   <td>2018 04-14</td>
-                </tr>
-                
-                <tr>
-                   <td>富丽园社区</td>
-                   <td>流出</td>
-                   <td>流量计</td>
-                   <td>1709526</td>
-                   <td>200</td>
-                   <td>平江水司</td>
-                   <td>2018 04-14</td>
-                </tr>
-
-                <tr>
-                   <td>邦和材料</td>
-                   <td>大用户</td>
-                   <td>水表</td>
-                   <td>1709526</td>
-                   <td>200</td>
-                   <td>平江水司</td>
-                   <td>2018 04-14</td>
-                </tr>
-
-                <tr>
-                   <td>克罢纺织厂</td>
-                   <td>管网检测</td>
-                   <td>水表</td>
-                   <td>1709526</td>
-                   <td>200</td>
-                   <td>平江水司</td>
-                   <td>2018 04-14</td>
-                </tr>
-             </table>
-
-                
-            </div>
-        </div>
-      
-  </div>
+  
+  <div class="dropdown pull-left">
+                          <button class="btn btn-default dropdown-toggle"  data-toggle="dropdown" >操作菜单<span class="caret"></span>
+                          </button>
+                          <ul class="dropdown-menu" >
+                              <li><a href="/clbs/c/role/add" id="addId" data-toggle="modal" data-target="#commonSmWin"><i class="glyphicon glyphicon-plus icoPaddingLeft"></i>新增</a></li>
+                              <li><a href="javascript:void(0);" id="del_model"><i class="glyphicon glyphicon-trash icoPaddingLeft"></i>批量删除</a></li>
+                          </ul>
+                      </div>
 
     
 
