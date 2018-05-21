@@ -1,69 +1,106 @@
-<!-- logo -->
-<div class=" logo"><p><span>VIRVO</span></p></div>
+<style type="text/css">
+        .user-nav{ float:right;padding-top:8px;padding-right:20px;margin-right: 10px;}
+        .user-nav ul{margin:0px;}
+        .user-nav ul li{display:inline-block;vertical-align:middle;font-size:15px}
+.user-nav ul li .profile-photo{display:inline-block;overflow:hidden;vertical-align:middle}
+.user-nav ul li.dropdown.messages .dropdown-menu{width:350px}
+.user-nav ul li.dropdown.settings .dropdown-menu{width:125px}
+.dropdown.settings .dropdown-menu>li>a:active,.dropdown.settings .dropdown-menu>li>a:hover{background-color:#37b2e3;color:#fff}
+.dropdown.settings .dropdown-menu>li>a:hover .badge.badge-danager{background-color:#fff;color:#1abc9c}
+.user-nav ul li.dropdown.messages .dropdown-menu>li>a:hover,.user-nav ul li.dropdown.messages .dropdown-menu>li>a:hover .message-info .time{background:#1abc9c;color:#fff}
+.user-nav ul li.dropdown.messages .dropdown-menu{-webkit-border-radius:3px;-moz-border-radius:3px;-ms-border-radius:3px;-o-border-radius:3px;border-radius:3px;left:-150px;top:48px;background-color:#F6F6F6;border:none;-webkit-box-shadow:0 0 5px rgba(0,0,0,.1);-moz-box-shadow:0 0 5px rgba(0,0,0,.1);-o-box-shadow:0 0 5px rgba(0,0,0,.1);box-shadow:0 0 5px rgba(0,0,0,.1);padding:0}
+.user-nav ul li.dropdown.messages .dropdown-menu:before{bottom:100%;left:48%;border:solid transparent;content:" ";height:0;width:0;position:absolute;pointer-events:none;border-color:rgba(238,238,238,0);border-bottom-color:#e84c3d;border-width:8px;margin-left:-8px}
+.messages{margin:0 15px}
+.messages .badge{position:absolute;top:-10px;left:-5px}
+.options i{color:#797979;font-size:1.1em}
+.user-nav ul li.dropdown.settings{line-height:39px;margin-right:10px;padding:0 10px}
+.user-nav ul li.dropdown.settings .dropdown-menu>li>a{padding:5px 10px;font-size:12px}
+.user-controls ul li.dropdown.settings .dropdown-menu>li{display:block}
+.user-nav ul li.dropdown.settings .dropdown-menu{-webkit-border-radius:3px;-moz-border-radius:3px;-ms-border-radius:3px;-o-border-radius:3px;border-radius:3px;left:-65px;top:48px;background-color:#F6F6F6;border-color:#e7e8ec;-webkit-box-shadow:0 0 5px rgba(0,0,0,.1);-moz-box-shadow:0 0 5px rgba(0,0,0,.1);-o-box-shadow:0 0 5px rgba(0,0,0,.1);box-shadow:0 0 5px rgba(0,0,0,.1)}
+.user-nav ul li.dropdown.settings .dropdown-menu:after{bottom:100%;left:78%;border:solid transparent;content:" ";height:0;width:0;position:absolute;pointer-events:none;border-color:rgba(238,238,238,0);border-bottom-color:#F6F6F6;border-width:8px;margin-left:-8px}
+.user-nav ul li.dropdown.settings .dropdown-menu:before{bottom:100%;left:78%;border:solid transparent;content:" ";height:0;width:0;position:absolute;pointer-events:none;border-color:rgba(238,238,238,0);border-bottom-color:#e7e8ec;border-width:8px;margin-left:-8px;top:-17px}
+.dropdown.messages .dropdown-menu>li,.dropdown.settings .dropdown-menu>li{display:block}
+li.dropdown ul.dropdown-menu.alert>li h1{-webkit-border-radius:3px 3px 0 0;-moz-border-radius:3px 3px 0 0;-ms-border-radius:3px 3px 0 0;-o-border-radius:3px 3px 0 0;border-radius:3px 3px 0 0;background-color:#e84c3d;margin:0;font-size:13px;padding:10px;font-weight:400;color:#fff}
+.user-nav ul li.dropdown.messages .dropdown-menu>li:last-child a{background-color:#fff;font-weight:400;font-size:12px;margin:0;-webkit-border-radius:0 0 3px 3px;-moz-border-radius:0 0 3px 3px;-ms-border-radius:0 0 3px 3px;-o-border-radius:0 0 3px 3px;border-radius:0 0 3px 3px;text-align:right;padding:10px 15px}
+.user-nav ul li.dropdown.messages .dropdown-menu>li:last-child a:hover{background:#1abc9c;color:#fff}
+.user-nav ul li.dropdown.messages .dropdown-menu>li>a{margin:10px;-webkit-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;-o-border-radius:5px;border-radius:5px;background-color:#fcfcfc;color:#797979}
+.user-nav ul li.dropdown.messages .dropdown-menu>li>a .message-info{vertical-align:top;display:inline-block;font-size:11px;margin-left:5px;width:225px}
+.user-nav ul li.dropdown.messages .dropdown-menu>li>a .message-info .sender{font-weight:500}
+.user-nav ul li.dropdown.messages .dropdown-menu>li>a .message-info .time{font-weight:300;font-size:9px;color:#b2b2b2}
+.user-nav ul li.dropdown.messages .dropdown-menu>li>a .message-info .message-content{white-space:normal;margin-top:5px}
+.user-nav ul li .data-time{display:inline-block;overflow:hidden;vertical-align:middle}
+.user-nav ul li .dataClock{padding-right:15px;font:15px/1.3 Microsoft JhengHei,Century gothic,Arial;background:#fff;border:1px solid #cfcfcf;position:relative;top:-2px}
+#clockBox{float:left;padding-left:15px}
+#clockBox #clockAP{position:relative;top:5px;left:0;text-align:left}
+#monthsDay{float:left;background:#6dcff6;padding:4px 10px}
+#monthsDay h1{display:inline}
+#monthsDay span{padding-left:10px}
+.clockBoxCon{margin:0;padding:0}
+.sidebar-toggle{margin-left:-240px}
+    </style>
 
-<!-- header -->
-<div class="box header">
-  <div class="box center">
-    <img   src="/static/virvo/images/表具管理/u2.png">
-  </div>
-  
-  <div class="box center" >
-    <label class="brand_input"> | 智慧水务一体化平台</label>
-  </div>
-  
-  
-  
-  <div class="box user center">
-    <!-- <p><span>viro_user_info</span></p> -->
-    {% if request.user.is_authenticated %}
-      <div id="navitem_div" class="ax_default _一级标题" style="cursor: pointer;">
-          
-            <div class="col-md-2" style="top: 20px;">
-              
-              <span class="fa fa-user"></span>
-              
-            </div>
-            <div class="col-md-8" style="top: 20px;">
-              
-              <p><span>{{ request.user.user_name }}</span></p>
-              
-            </div>
-            <div class=" dropdown col-md-2" style="top: 20px;">
-              
-              <span class="fa fa-angle-down"></span>
 
-              <!-- dropdown menu -->
-              <ul class="dropdown-menu">
-                  <li><a href="{% url 'logout' %}">Logout</a></li>
-                  
-              </ul>
-              
-            </div>
+<nav class="navbar navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+    <div style="background-color:#0099cb;z-index: 99999;position:absolute; float: left;left: 0; top: 0;">
+        <div class=" logo" ><p style="margin-left: 30px;"><span>VIRVO</span></p></div>
+    </div>
+    <div class="navbar-header" style="height: 80px;margin-left: 240px;width: 87%;">
+        <div class="minimalize-styl-2"><img src="/static/virvo/images/表具管理/u2.png">
+        </div>
+        <div class="minimalize-styl-2"><img src="/static/virvo/images/表具管理/u13.png">
+        </div>
+        
+        <div class="navbar-form-custom " >
+            
+            <input type="text" value="智慧水务一体化平台" class="form-control " name="top-search" id="top-search" disabled="disabled" style="font-family:'微软雅黑';font-weight:700;font-size:36px;">
         </div>
 
-       
-      {% else %}
-       <li class="nav-item {% if request.path == register_url %}active{% endif %}">
-        <a class="nav-link" href="{% url 'register' %}">Register</a>
-      </li>
-      <li class="nav-item {% if request.path == login_url %}active{% endif %}">
-        <a class="nav-link" href="{% url 'login' %}">Login</a>
-      </li>
-      {% endif %}
-  </div>
-  
-  <div class=" box date_1">
-      <div id="d_week" class="w"> 星期一 </div>
-      <div id="d_day" class="d"> 15</div>
-      <div id="d_month" class="m"></div>
+        <!-- head right start -->
+        <div class="user-nav ">
+            <ul>
+                
+                <li class="profile-photo">
+                    <button type="button" class="btn btn-default dropdown-toggle options">
+                        <i class="fa fa-user"></i>
+                    </button>
+                </li>
+                <li class="dropdown settings">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <span id="userName">{% if request.user.user_name %}{{ request.user.user_name }}{% else %}1371234567 {% endif %}</span>
+                        <i class="fa fa-angle-down"></i>
+                    </a>
+                    <ul class="dropdown-menu animated fadeInDown">
+                        <li><a href="#"><i class="fa fa-user"></i>&nbsp;&nbsp;用户个人信息</a></li>
+                        <li id="editPwd"><a href="#"><i class="fa fa-pencil-square-o"></i> 修改密码</a></li>
+                        <!-- <li><a href="javascript:void(0);" id="updateFontSize"><i class="fa fa-font"></i> 修改字体大小</a></li> -->
+                        <li><a href="{% url 'logout' %}" ><i class="fa fa-power-off"></i> 退出</a></li>
+                    </ul>
+                </li>
+                <!--dataClock start-->
+                <li class="data-time">
+                    <div class="dataClock clearfix">
+                        <div id="monthsDay">
+                            <p id="d_week" class="clockBoxCon"><font color="#ffffff">星期一</font></p>
+                            <h1 id="d_day" class="clockBoxCon"><font color="#ffffff">21</font></h1>
+                            <span id="d_month"><font color="#ffffff">5月</font></span>
+                        </div>
+                        <div id="clockBox">
+                            <p  style="font-size: 15px; color: grey; background: rgb(255, 255, 255) none repeat scroll 0% 0%; font-weight: bold;" class="clockBoxCon"><span id="clockAP" class="PTclock"> 上午</span></p>
+                            <p id="clock" style="font-size: 32px; color: grey; background: rgb(255, 255, 255) none repeat scroll 0% 0%; font-weight: bold;" class="clockBoxCon">09:55</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            
+            
+            </div>
+        </div>
+        <!-- header right end -->
+        
+    </div>
     
-  
-  </div>
-  <div class="box time_1">
-    <div id="d_ap">上午</div>
-    <div id="d_time">11:04</div>
-  </div>
-</div>
+</nav>
+
 
 
 <script type="text/javascript">
@@ -83,11 +120,11 @@
     else if(nhour>12){ap="下午";nhour-=12;}
     if(nmin<=9) nmin="0"+nmin;
     
-    document.getElementById('d_week').innerHTML=tday[nday];
-    document.getElementById('d_day').innerHTML=ndate;
-    document.getElementById('d_month').innerHTML="<small>"+tmonth[nmonth]+"</small>";
-    document.getElementById('d_ap').innerHTML=ap;
-    document.getElementById('d_time').innerHTML=nhour+":"+nmin;//+":"+nsec;
+    document.getElementById('d_week').innerHTML='<font color="#ffffff">'+tday[nday]+'</font>';
+    document.getElementById('d_day').innerHTML='<font color="#ffffff">'+ndate+'</font>';
+    document.getElementById('d_month').innerHTML='<font color="#ffffff">'+tmonth[nmonth]+'</font>';
+    document.getElementById('clockAP').innerHTML=ap;
+    document.getElementById('clock').innerHTML=nhour+":"+nmin;//+":"+nsec;
 
     // document.getElementById('clockbox').innerHTML=""+(nmonth+1)+"-"+ndate+"-"+nyear+" "+nhour+":"+nmin+":"+nsec+"";
     // document.getElementById('clockbox').innerHTML=""+tday[nday]+", "+tmonth[nmonth]+" "+ndate+" "+nhour+":"+nmin+"";

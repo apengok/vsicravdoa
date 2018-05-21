@@ -18,6 +18,9 @@ urlpatterns = [
     url(r'getdmatree/$',views.get_dmatree,name='getdmatree'),
 
     url(r'gettree/$',views.gettree,name='gettree'),
+
+    url(r'^role/choicePermissionTree/$',views.choicePermissionTree,name='choicePermissionTree'),
+
     url(r'getchartd/$',views.getchartd,name='getchartd'),
 
     

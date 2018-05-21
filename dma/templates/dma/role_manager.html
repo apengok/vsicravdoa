@@ -8,26 +8,7 @@
   <div class="row ">
     
 
-    <!-- Modal -->
-    <!-- <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    </div> --><!-- /.modal -->
-    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-      <div class="modal-dialog" role="document" style="width: 1200px;">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="exampleModalLabel">New message</h4>
-          </div>
-          <div class="modal-body">
-            
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Send message</button>
-          </div>
-        </div>
-      </div>
-  </div>
+    
 
     <div class="col-sm-12" style="margin-left: -10px;">
           
@@ -60,7 +41,7 @@
                           <button class="btn btn-default dropdown-toggle"  data-toggle="dropdown" >操作菜单<span class="caret"></span>
                           </button>
                           <ul class="dropdown-menu" >
-                              <li><a href="{% url 'dma:role_create_manager' %}" id="addId" data-toggle="modal" data-target="#modal"><i class="glyphicon glyphicon-plus icoPaddingLeft"></i>新增</a></li>
+                              <li><a href="{% url 'dma:role_create_manager' %}" id="addId" data-toggle="modal" data-target="#commonSmWin"><i class="glyphicon glyphicon-plus icoPaddingLeft"></i>新增</a></li>
                               <li><a href="javascript:void(0);" id="del_model"><i class="glyphicon glyphicon-trash icoPaddingLeft"></i>批量删除</a></li>
                           </ul>
                       </div>
@@ -92,7 +73,7 @@
                           <td><input type="checkbox"/> </td>
                           <td class="ax_default _查询按钮">
                             <div >
-                              <a class="btn btn-default" href="{% url 'dma:role_edit_manager' r.id %}" data-toggle="modal" data-target="#modal" title="update stations" style="background-color: #169bd5;width: 60px;height: 35;">修改</a>
+                              <a class="btn btn-default" href="{% url 'dma:role_edit_manager' r.id %}" data-toggle="modal" data-target="#commonSmWin" title="update stations" style="background-color: #169bd5;width: 60px;height: 35;">修改</a>
                               <a class="btn btn-default" id = "btnDelete" style="background-color: rgba(153, 153, 153, 1);width: 60px;height: 35;">删除</a>
 
                             </div>
@@ -146,6 +127,15 @@
   </div>
 
 
+<!-- Modal -->
+    
+
+<div id="commonSmWin" class="modal fade" aria-hidden="true" data-keyboard="false" data-backdrop="static" >
+  <div class="modal-dialog" style="max-height: 726px; height: auto;">
+    <div class="modal-content"></div>
+  </div>
+  
+</div>
     
 
 {% endblock %}
