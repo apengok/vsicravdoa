@@ -8,16 +8,6 @@
   <div class="row ">
     
 
-    <!-- Modal -->
-    
-    <div id="commonSmWin" class="modal fade" aria-hidden="true" data-keyboard="false" data-backdrop="static">
-      <div class="modal-dialog">
-        <div class="modal-content"></div>
-      </div>
-      
-    </div>
-
-
     <div class="col-sm-12" style="margin-left: -10px;">
           
 
@@ -81,7 +71,7 @@
                           <td><input type="checkbox"/> </td>
                           <td class="ax_default _查询按钮">
                             <div >
-                              <a class="btn btn-default" href="{% url 'dma:role_edit_manager' r.id %}" data-toggle="modal" data-target="#modal" title="update stations" style="background-color: #169bd5;width: 60px;height: 35;">修改</a>
+                              <a class="btn btn-default" href="{% url 'dma:role_edit_manager' r.id %}" data-toggle="modal" data-target="#commonSmWin" title="update stations" style="background-color: #169bd5;width: 60px;height: 35;">修改</a>
                               <a class="btn btn-default" id = "btnDelete" style="background-color: rgba(153, 153, 153, 1);width: 60px;height: 35;">删除</a>
 
                             </div>
@@ -135,6 +125,15 @@
   </div>
 
 
+<!-- Modal -->
+    
+
+<div id="commonSmWin" class="modal fade" aria-hidden="true" data-keyboard="false" data-backdrop="static" >
+  <div class="modal-dialog" style="max-height: 726px; height: auto;">
+    <div class="modal-content"></div>
+  </div>
+  
+</div>
     
 
 {% endblock %}

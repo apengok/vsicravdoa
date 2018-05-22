@@ -28,8 +28,8 @@
     <link rel="stylesheet" type="text/css" href="{% static 'hplus/css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'hplus/smartMenu.css' %}">
     
-    <script src="https://cdn.staticfile.org/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+   <!--  <script src="https://cdn.staticfile.org/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
 
 
     <script type="text/javascript" src="js/contabs.min.js"></script>
@@ -50,12 +50,15 @@
     <script src="{% static 'hplus/contabs.js' %}"></script>
     <script src="{% static 'hplus/js/plugins/pace/pace.min.js' %}"></script>
 
+    
+
 
     
 </head>
 <body class="fixed-sidebar full-height-layout gray-bg fixed-nav  pace-done" style="overflow:hidden">
-    <div style="background-color:#0099cb;z-index: 99999;position:absolute; float: left;left: 0; top: 0;">
-        <div class=" logo" ><p style="margin-left: 30px;"><span>VIRVO</span></p></div>
+    
+    <div class="row border-bottom">
+        {% include '_header.html' %}
     </div>
     <div id="wrapper">
     
@@ -64,23 +67,7 @@
     <!--左侧导航结束-->
     <!--右侧部分开始-->
     <div id="page-wrapper" class="white-bg dashbard-1">
-        <div class="row border-bottom">
-            <nav class="navbar navbar-fixed-top" role="navigation" style="margin-bottom: 0">
-                <div class="navbar-header" style="height: 80px;margin-left: 240px;">
-                    <div class="minimalize-styl-2"><img src="/static/virvo/images/表具管理/u2.png">
-                    </div>
-                    <div class="minimalize-styl-2"><img src="/static/virvo/images/表具管理/u13.png">
-                    </div>
-                    
-                    <div class="navbar-form-custom " >
-                        
-                        <input type="text" value="智慧水务一体化平台" class="form-control " name="top-search" id="top-search" disabled="disabled" style="font-family:'微软雅黑';font-weight:700;font-size:36px;">
-                    </div>
-                    
-                </div>
-                
-            </nav>
-        </div>
+        
 
         <!-- <div class="row content-tabs">
             <button class="roll-nav roll-left J_tabLeft"><i class="fa fa-backward"></i>
@@ -111,7 +98,7 @@
             </div>
             <a href="login.html" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
         </div> -->
-        <div class="row J_mainContent" id="content-main">
+        <div class="row J_mainContent" id="content-main" style="height: calc(100% - 40px);">
             <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="{% url 'dma:virvo_home' %}" frameborder="0" data-id="home.html" seamless></iframe>
         </div>
         <div class="footer">
