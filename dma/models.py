@@ -63,6 +63,10 @@ class DMABaseinfo(models.Model):
         unique_together = ('dma_no', )
         db_table = 'dmabaseinfo'
 
+        permissions = (
+            ('view_dmabaseinfo', 'View dmabaseinfo'),
+        )
+
     def get_absolute_url(self): #get_absolute_url
         # return "/organ/{}".format(self.pk)
         return reverse('dma:dma_manager', kwargs={'pk': self.pk})
