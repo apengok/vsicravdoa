@@ -8,8 +8,6 @@
   <div class="row ">
     
 
-    
-
     <div class="col-sm-12" style="margin-left: -10px;">
           
 
@@ -144,7 +142,14 @@
       {{ block.super }}
       <script>
         // console.log('stations_list_manger...')
-
+/*<![CDATA[*/
+        $(function() {
+            var windowId = "commonSmWin";
+            $("#" + windowId).on("hidden.bs.modal", function() {
+                $(this).removeData("bs.modal");
+            });
+        });
+        /*]]>*/
         
 
         $('body').on('hidden.bs.modal', '.modal', function () {
@@ -153,3 +158,4 @@
         });
       </script>
     {% endblock %}
+
