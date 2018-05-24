@@ -92,6 +92,7 @@
                     }
                 }
             }
+            console.log("do submit?");
             $("#permissionTree").val(JSON.stringify(list));
             if(roleAdd.validates()){
                 $("#addForm").ajaxSubmit(function(data) {

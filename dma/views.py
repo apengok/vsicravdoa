@@ -136,24 +136,117 @@ def gettree(request):
 
 def choicePermissionTree(request):
 
-    ctree = [{"name":"信息配置","pId":"0","id":"b46de828-6a8e-11e6-8b77-86f30ca893d3"},{"name":"企业管理","pId":"0","id":"e8d23fb4-64a9-44c5-9ed6-4836d7c2f9uj"},{"name":"监控对象","pId":"0","id":"96327be0-6aab-11e6-8b77-86f30ca893d3"},{"name":"设备管理","pId":"0","id":"96327f6e-6aab-11e6-8b77-86f30ca893d3"},{"name":"监控管理","pId":"0","id":"84113afa-df07-4247-8666-f164a7acbefa"},{"name":"报警中心","pId":"0","id":"9122dbfa-6a8c-11e6-8b77-86f30ca893d3"},{"name":"应用管理","pId":"0","id":"9f5ea704-6a90-11e6-8b77-86f30ca893d3"},{"name":"能源管理","pId":"0","id":"fc87ab62-7d62-11e6-ae22-56b6b6499611"},{"name":"信息列表","pId":"b46de828-6a8e-11e6-8b77-86f30ca893d3","id":"b46dec1a-6a8e-11e6-8b77-86f30ca893d3"},{"name":"可写","pId":"b46dec1a-6a8e-11e6-8b77-86f30ca893d3","id":"b46dec1a-6a8e-11e6-8b77-86f30ca893d3edit","type":"premissionEdit"},{"name":"系统管理","pId":"0","id":"f9c65d06-f40e-11e6-bc64-92361f002671"},{"name":"报表管理","pId":"0","id":"f9c65d06-f40e-11e6-bc64-92361f006689"},{"name":"山西报表","pId":"0","id":"eac86c12-25a0-11e8-b467-0ed5f89f718b"},{"chkDisabled":"true","name":"组织与用户管理","pId":"e8d23fb4-64a9-44c5-9ed6-4836d7c2f9uj","id":"186a9eac-855c-4c52-995c-8af38bd2453b"},{"chkDisabled":"true","name":"可写","pId":"186a9eac-855c-4c52-995c-8af38bd2453b","id":"186a9eac-855c-4c52-995c-8af38bd2453bedit","type":"premissionEdit"},{"name":"分组管理","pId":"e8d23fb4-64a9-44c5-9ed6-4836d7c2f9uj","id":"ad23fb4-64a9-623c-9ed6-4836d7c2f9uj"},{"name":"可写","pId":"ad23fb4-64a9-623c-9ed6-4836d7c2f9uj","id":"ad23fb4-64a9-623c-9ed6-4836d7c2f9ujedit","type":"premissionEdit"},{"chkDisabled":"true","name":"角色管理","pId":"e8d23fb4-64a9-44c5-9ed6-4836d7c2f9uj","id":"a9f91a9a-f29a-4380-8751-16e1af38c31f"},{"chkDisabled":"true","name":"可写","pId":"a9f91a9a-f29a-4380-8751-16e1af38c31f","id":"a9f91a9a-f29a-4380-8751-16e1af38c31fedit","type":"premissionEdit"},{"name":"从业人员管理","pId":"e8d23fb4-64a9-44c5-9ed6-4836d7c2f9uj","id":"af69c3e3-037c-4e5e-ba23-ba04bc06ab2f"},{"name":"可写","pId":"af69c3e3-037c-4e5e-ba23-ba04bc06ab2f","id":"af69c3e3-037c-4e5e-ba23-ba04bc06ab2fedit","type":"premissionEdit"},{"name":"车辆信息","pId":"96327be0-6aab-11e6-8b77-86f30ca893d3","id":"963283ce-6aab-11e6-8b77-86f30ca893d3"},{"name":"人员信息","pId":"96327be0-6aab-11e6-8b77-86f30ca893d3","id":"963285e0-6aab-11e6-8b77-86f30ca893d3"},{"name":"可写","pId":"963285e0-6aab-11e6-8b77-86f30ca893d3","id":"963285e0-6aab-11e6-8b77-86f30ca893d3edit","type":"premissionEdit"},{"name":"物品信息","pId":"96327be0-6aab-11e6-8b77-86f30ca893d3","id":"963289c8-6aab-11e6-8b77-86f30ca893d3"},{"name":"可写","pId":"963289c8-6aab-11e6-8b77-86f30ca893d3","id":"963289c8-6aab-11e6-8b77-86f30ca893d3edit","type":"premissionEdit"},{"name":"终端管理","pId":"96327f6e-6aab-11e6-8b77-86f30ca893d3","id":"238286ce-6aad-11e6-8b77-86f30ca893d3"},{"name":"可写","pId":"238286ce-6aad-11e6-8b77-86f30ca893d3","id":"238286ce-6aad-11e6-8b77-86f30ca893d3edit","type":"premissionEdit"},{"name":"SIM卡管理","pId":"96327f6e-6aab-11e6-8b77-86f30ca893d3","id":"23828bb0-6aad-11e6-8b77-86f30ca893d3"},{"name":"可写","pId":"23828bb0-6aad-11e6-8b77-86f30ca893d3","id":"23828bb0-6aad-11e6-8b77-86f30ca893d3edit","type":"premissionEdit"},{"name":"报警参数设置","pId":"9122dbfa-6a8c-11e6-8b77-86f30ca893d3","id":"026607f0-6a8e-11e6-8b77-86f30ca893d3"},{"name":"可写","pId":"026607f0-6a8e-11e6-8b77-86f30ca893d3","id":"026607f0-6a8e-11e6-8b77-86f30ca893d3edit","type":"premissionEdit"},{"name":"报警查询","pId":"9122dbfa-6a8c-11e6-8b77-86f30ca893d3","id":"0266048a-6a8e-11e6-8b77-86f30ca893d3"},{"name":"可写","pId":"0266048a-6a8e-11e6-8b77-86f30ca893d3","id":"0266048a-6a8e-11e6-8b77-86f30ca893d3edit","type":"premissionEdit"},{"name":"传感器配置","pId":"9f5ea704-6a90-11e6-8b77-86f30ca893d3","id":"b296585a-339c-11e7-a919-92ebcb67fe33"},{"name":"油量管理","pId":"9f5ea704-6a90-11e6-8b77-86f30ca893d3","id":"a03ff712-9755-11e6-ae22-56b6b6499611"},{"name":"油耗管理","pId":"9f5ea704-6a90-11e6-8b77-86f30ca893d3","id":"fc87a5b8-7d62-11e6-ae22-56b6b6499611"},{"name":"里程监测","pId":"9f5ea704-6a90-11e6-8b77-86f30ca893d3","id":"80f558ba-391d-11e7-a919-92ebcb67fe33"},{"name":"工时管理","pId":"9f5ea704-6a90-11e6-8b77-86f30ca893d3","id":"81649806-838d-11e6-ae22-56b6b6499611"},{"name":"开关信号监测","pId":"9f5ea704-6a90-11e6-8b77-86f30ca893d3","id":"7d561544-5661-11e7-907b-a6006ad3dba0"},{"name":"温度监测","pId":"9f5ea704-6a90-11e6-8b77-86f30ca893d3","id":"32e16952-622b-11e7-907b-a6006ad3dba0"},{"name":"湿度监测","pId":"9f5ea704-6a90-11e6-8b77-86f30ca893d3","id":"32e16bc8-622b-11e7-907b-a6006ad3dba0"},{"name":"正反转管理","pId":"9f5ea704-6a90-11e6-8b77-86f30ca893d3","id":"32e16f92-622b-11e7-907b-a6006ad3dba0"},{"name":"移动源基础管理","pId":"fc87ab62-7d62-11e6-ae22-56b6b6499611","id":"fc87ab62-7d62-11e6-lb10-56b6b6499611"},{"name":"可写","pId":"fc87ab62-7d62-11e6-lb10-56b6b6499611","id":"fc87ab62-7d62-11e6-lb10-56b6b6499611edit","type":"premissionEdit"},{"name":"移动源基准管理","pId":"fc87ab62-7d62-11e6-ae22-56b6b6499611","id":"fc87ab62-7d62-11e6-lb13-56b6b6499611"},{"name":"移动源能耗报表","pId":"fc87ab62-7d62-11e6-ae22-56b6b6499611","id":"fc87ade2-7d62-11e6-lb02-56b6b6499611"},{"name":"808平台转发配置","pId":"f9c65d06-f40e-11e6-bc64-92361f002671","id":"f9c660e4-f40e-11e6-bc64-92361f002671"},{"name":"转发平台连接","pId":"f9c6629c-f40e-11e6-bc64-92368f002671","id":"f9c6629c-f40e-11e6-bc64-92361f002671"},{"name":"可写","pId":"f9c6629c-f40e-11e6-bc64-92361f002671","id":"f9c6629c-f40e-11e6-bc64-92361f002671edit","type":"premissionEdit"},{"name":"809平台转发配置","pId":"f9c65d06-f40e-11e6-bc64-92361f002671","id":"f9c6629c-f40e-11e6-bc64-92368f002671"},{"name":"对讲平台配置","pId":"f9c65d06-f40e-11e6-bc64-92361f002671","id":"6f720d14-095b-11e7-93ae-92361f002671"},{"name":"平台个性化配置","pId":"f9c65d06-f40e-11e6-bc64-92361f002671","id":"b2b25f96-3a09-11e7-a919-92ebcb67fe33"},{"name":"日志查询","pId":"f9c65d06-f40e-11e6-bc64-92361f002671","id":"f89767c1-6396-4819-8434-07f0229c8a83"},{"name":"可写","pId":"f89767c1-6396-4819-8434-07f0229c8a83","id":"f89767c1-6396-4819-8434-07f0229c8a83edit","type":"premissionEdit"},{"name":"大数据报表","pId":"f9c65d06-f40e-11e6-bc64-92361f006689","id":"f9c65d06-f40e-11e6-bc64-92361f668901"},{"name":"可写","pId":"f9c65d06-f40e-11e6-bc64-92361f668901","id":"f9c65d06-f40e-11e6-bc64-92361f668901edit","type":"premissionEdit"},{"name":"行驶里程报表","pId":"f9c65d06-f40e-11e6-bc64-92361f006689","id":"9aa9af12-1510-11e7-93ae-92361f002671"},{"name":"可写","pId":"9aa9af12-1510-11e7-93ae-92361f002671","id":"9aa9af12-1510-11e7-93ae-92361f002671edit","type":"premissionEdit"},{"name":"停驶报表","pId":"f9c65d06-f40e-11e6-bc64-92361f006689","id":"9e503d5e-2963-11e7-93ae-92361f002671"},{"name":"可写","pId":"9e503d5e-2963-11e7-93ae-92361f002671","id":"9e503d5e-2963-11e7-93ae-92361f002671edit","type":"premissionEdit"},{"name":"上线率报表","pId":"f9c65d06-f40e-11e6-bc64-92361f006689","id":"9aa9b110-1510-11e7-93ae-92361f002671"},{"name":"可写","pId":"9aa9b110-1510-11e7-93ae-92361f002671","id":"9aa9b110-1510-11e7-93ae-92361f002671edit","type":"premissionEdit"},{"name":"报警信息报表","pId":"f9c65d06-f40e-11e6-bc64-92361f006689","id":"9aa9aba2-1510-11e7-93ae-92361f002671"},{"name":"可写","pId":"9aa9aba2-1510-11e7-93ae-92361f002671","id":"9aa9aba2-1510-11e7-93ae-92361f002671edit","type":"premissionEdit"},{"name":"超速报表","pId":"f9c65d06-f40e-11e6-bc64-92361f006689","id":"9e503aca-2963-11e7-93ae-92361f002671"},{"name":"可写","pId":"9e503aca-2963-11e7-93ae-92361f002671","id":"9e503aca-2963-11e7-93ae-92361f002671edit","type":"premissionEdit"},{"name":"超速报警报表","pId":"f9c65d06-f40e-11e6-bc64-92361f006689","id":"9e503e62-2963-11e7-93ae-92361f002671"},{"name":"可写","pId":"9e503e62-2963-11e7-93ae-92361f002671","id":"9e503e62-2963-11e7-93ae-92361f002671edit","type":"premissionEdit"},{"name":"工时报表","pId":"f9c65d06-f40e-11e6-bc64-92361f006689","id":"81649b30-838d-11e6-ae22-56b6b6499611"},{"name":"可写","pId":"81649b30-838d-11e6-ae22-56b6b6499611","id":"81649b30-838d-11e6-ae22-56b6b6499611edit","type":"premissionEdit"},{"name":"油量报表","pId":"f9c65d06-f40e-11e6-bc64-92361f006689","id":"304b30c4-a00c-11e6-80f5-76304dec7eb7"},{"name":"可写","pId":"304b30c4-a00c-11e6-80f5-76304dec7eb7","id":"304b30c4-a00c-11e6-80f5-76304dec7eb7edit","type":"premissionEdit"},{"name":"油耗报表","pId":"f9c65d06-f40e-11e6-bc64-92361f006689","id":"fc87aa90-7d62-11e6-ae22-56b6b6499611"},{"name":"可写","pId":"fc87aa90-7d62-11e6-ae22-56b6b6499611","id":"fc87aa90-7d62-11e6-ae22-56b6b6499611edit","type":"premissionEdit"},{"name":"里程报表","pId":"f9c65d06-f40e-11e6-bc64-92361f006689","id":"f8bbe8a8-281f-49e1-ad34-7a111f9115e0"},{"name":"可写","pId":"f8bbe8a8-281f-49e1-ad34-7a111f9115e0","id":"f8bbe8a8-281f-49e1-ad34-7a111f9115e0edit","type":"premissionEdit"},{"name":"温度报表","pId":"f9c65d06-f40e-11e6-bc64-92361f006689","id":"a1775bd8-13db-45e8-8514-d48664bec8f6"},{"name":"可写","pId":"a1775bd8-13db-45e8-8514-d48664bec8f6","id":"a1775bd8-13db-45e8-8514-d48664bec8f6edit","type":"premissionEdit"},{"name":"湿度报表","pId":"f9c65d06-f40e-11e6-bc64-92361f006689","id":"a8141c4a-6549-45d5-9a82-5fc9ffa5996a"},{"name":"可写","pId":"a8141c4a-6549-45d5-9a82-5fc9ffa5996a","id":"a8141c4a-6549-45d5-9a82-5fc9ffa5996aedit","type":"premissionEdit"},{"name":"正反转报表","pId":"f9c65d06-f40e-11e6-bc64-92361f006689","id":"56bf8dee-34c0-4064-acad-a8688ffd2430"},{"name":"可写","pId":"56bf8dee-34c0-4064-acad-a8688ffd2430","id":"56bf8dee-34c0-4064-acad-a8688ffd2430edit","type":"premissionEdit"},{"name":"多媒体管理","pId":"f9c65d06-f40e-11e6-bc64-92361f006689","id":"0d8162bb-4722-48bc-b321-456dbbd5540b"},{"name":"可写","pId":"0d8162bb-4722-48bc-b321-456dbbd5540b","id":"0d8162bb-4722-48bc-b321-456dbbd5540bedit","type":"premissionEdit"},{"name":"音视频日志查询","pId":"f9c65d06-f40e-11e6-bc64-92361f006689","id":"43b4dc62-3315-11e8-b467-0ed5f89f718b"},{"name":"可写","pId":"43b4dc62-3315-11e8-b467-0ed5f89f718b","id":"43b4dc62-3315-11e8-b467-0ed5f89f718bedit","type":"premissionEdit"},{"name":"音视频流量报表","pId":"f9c65d06-f40e-11e6-bc64-92361f006689","id":"edf5a182-eb7d-11e7-8c3f-9a214cf093ae"},{"name":"可写","pId":"edf5a182-eb7d-11e7-8c3f-9a214cf093ae","id":"edf5a182-eb7d-11e7-8c3f-9a214cf093aeedit","type":"premissionEdit"},{"name":"离线查询报表","pId":"f9c65d06-f40e-11e6-bc64-92361f006689","id":"7d515b16-25a1-11e8-b467-0ed5f89f718b"},{"name":"可写","pId":"7d515b16-25a1-11e8-b467-0ed5f89f718b","id":"7d515b16-25a1-11e8-b467-0ed5f89f718bedit","type":"premissionEdit"},{"name":"客流量报表","pId":"f9c65d06-f40e-11e6-bc64-92361f006689","id":"554e7242-2da9-11e8-b467-0ed5f89f718b"},{"name":"可写","pId":"554e7242-2da9-11e8-b467-0ed5f89f718b","id":"554e7242-2da9-11e8-b467-0ed5f89f718bedit","type":"premissionEdit"},{"name":"车辆管理","pId":"963283ce-6aab-11e6-8b77-86f30ca893d3","id":"a1cf4672-6f4c-11e6-8b77-86f30ca893d3"},{"name":"可写","pId":"a1cf4672-6f4c-11e6-8b77-86f30ca893d3","id":"a1cf4672-6f4c-11e6-8b77-86f30ca893d3edit","type":"premissionEdit"},{"name":"车型管理","pId":"963283ce-6aab-11e6-8b77-86f30ca893d3","id":"a1cf4258-6f4c-11e6-8b77-86f30ca893d3"},{"name":"可写","pId":"a1cf4258-6f4c-11e6-8b77-86f30ca893d3","id":"a1cf4258-6f4c-11e6-8b77-86f30ca893d3edit","type":"premissionEdit"},{"name":"燃料管理","pId":"963283ce-6aab-11e6-8b77-86f30ca893d3","id":"fc87ab62-7d62-11e6-lb12-56b6b6499611"},{"name":"可写","pId":"fc87ab62-7d62-11e6-lb12-56b6b6499611","id":"fc87ab62-7d62-11e6-lb12-56b6b6499611edit","type":"premissionEdit"},{"name":"实时监控","pId":"84113afa-df07-4247-8666-f164a7acbefa","id":"2d253408-18d9-4bc3-971b-a3a737f9f5fb"},{"name":"可写","pId":"2d253408-18d9-4bc3-971b-a3a737f9f5fb","id":"2d253408-18d9-4bc3-971b-a3a737f9f5fbedit","type":"premissionEdit"},{"name":"油位传感器管理","pId":"a03ff712-9755-11e6-ae22-56b6b6499611","id":"3c8b8c7e-6aad-11e6-8b77-86f30ca893d3"},{"name":"可写","pId":"3c8b8c7e-6aad-11e6-8b77-86f30ca893d3","id":"3c8b8c7e-6aad-11e6-8b77-86f30ca893d3edit","type":"premissionEdit"},{"name":"油箱管理","pId":"a03ff712-9755-11e6-ae22-56b6b6499611","id":"3c8b8c7e-6aad-11e6-8b77-86f30ca893d4"},{"name":"可写","pId":"3c8b8c7e-6aad-11e6-8b77-86f30ca893d4","id":"3c8b8c7e-6aad-11e6-8b77-86f30ca893d4edit","type":"premissionEdit"},{"name":"油量车辆设置","pId":"a03ff712-9755-11e6-ae22-56b6b6499611","id":"a66ee712-9755-11e6-ae22-56b6b6499611"},{"name":"可写","pId":"a66ee712-9755-11e6-ae22-56b6b6499611","id":"a66ee712-9755-11e6-ae22-56b6b6499611edit","type":"premissionEdit"},{"name":"油量标定","pId":"a03ff712-9755-11e6-ae22-56b6b6499611","id":"a66ee712-9755-11e6-ae22-56b6b6499654"},{"name":"可写","pId":"a66ee712-9755-11e6-ae22-56b6b6499654","id":"a66ee712-9755-11e6-ae22-56b6b6499654edit","type":"premissionEdit"},{"name":"流量传感器管理","pId":"fc87a5b8-7d62-11e6-ae22-56b6b6499611","id":"fc87a98c-7d62-11e6-ae22-56b6b6499611"},{"name":"可写","pId":"fc87a98c-7d62-11e6-ae22-56b6b6499611","id":"fc87a98c-7d62-11e6-ae22-56b6b6499611edit","type":"premissionEdit"},{"name":"油耗车辆设置","pId":"fc87a5b8-7d62-11e6-ae22-56b6b6499611","id":"94712ca2-7d7a-11e6-ae22-56b6b6499611"},{"name":"可写","pId":"94712ca2-7d7a-11e6-ae22-56b6b6499611","id":"94712ca2-7d7a-11e6-ae22-56b6b6499611edit","type":"premissionEdit"},{"name":"外设管理","pId":"b296585a-339c-11e7-a919-92ebcb67fe33","id":"11941ebe-339d-11e7-a919-92ebcb67fe33"},{"name":"可写","pId":"11941ebe-339d-11e7-a919-92ebcb67fe33","id":"11941ebe-339d-11e7-a919-92ebcb67fe33edit","type":"premissionEdit"},{"name":"外设轮询","pId":"b296585a-339c-11e7-a919-92ebcb67fe33","id":"cdc11c04-339d-11e7-a919-92ebcb67fe33"},{"name":"可写","pId":"cdc11c04-339d-11e7-a919-92ebcb67fe33","id":"cdc11c04-339d-11e7-a919-92ebcb67fe33edit","type":"premissionEdit"},{"name":"轮速传感器管理","pId":"80f558ba-391d-11e7-a919-92ebcb67fe33","id":"f619da4e-391d-11e7-a919-92ebcb67fe33"},{"name":"可写","pId":"f619da4e-391d-11e7-a919-92ebcb67fe33","id":"f619da4e-391d-11e7-a919-92ebcb67fe33edit","type":"premissionEdit"},{"name":"轮胎规格管理","pId":"80f558ba-391d-11e7-a919-92ebcb67fe33","id":"23b38a2a-3a0b-11e7-a919-92ebcb67fe33"},{"name":"可写","pId":"23b38a2a-3a0b-11e7-a919-92ebcb67fe33","id":"23b38a2a-3a0b-11e7-a919-92ebcb67fe33edit","type":"premissionEdit"},{"name":"里程监测设置","pId":"80f558ba-391d-11e7-a919-92ebcb67fe33","id":"f619de0e-391d-11e7-a919-92ebcb67fe33"},{"name":"可写","pId":"f619de0e-391d-11e7-a919-92ebcb67fe33","id":"f619de0e-391d-11e7-a919-92ebcb67fe33edit","type":"premissionEdit"},{"name":"里程标定","pId":"80f558ba-391d-11e7-a919-92ebcb67fe33","id":"f03d2138-b043-4ac0-b7fc-46725c1b9ae5"},{"name":"可写","pId":"f03d2138-b043-4ac0-b7fc-46725c1b9ae5","id":"f03d2138-b043-4ac0-b7fc-46725c1b9ae5edit","type":"premissionEdit"},{"name":"振动传感器管理","pId":"81649806-838d-11e6-ae22-56b6b6499611","id":"81649a36-838d-11e6-ae22-56b6b6499611"},{"name":"可写","pId":"81649a36-838d-11e6-ae22-56b6b6499611","id":"81649a36-838d-11e6-ae22-56b6b6499611edit","type":"premissionEdit"},{"name":"工时车辆设置","pId":"81649806-838d-11e6-ae22-56b6b6499611","id":"7a4fc0c6-838e-11e6-ae22-56b6b6499611"},{"name":"可写","pId":"7a4fc0c6-838e-11e6-ae22-56b6b6499611","id":"7a4fc0c6-838e-11e6-ae22-56b6b6499611edit","type":"premissionEdit"},{"name":"检测功能类型","pId":"7d561544-5661-11e7-907b-a6006ad3dba0","id":"7d5617ba-5661-11e7-907b-a6006ad3dba0"},{"name":"可写","pId":"7d5617ba-5661-11e7-907b-a6006ad3dba0","id":"7d5617ba-5661-11e7-907b-a6006ad3dba0edit","type":"premissionEdit"},{"name":"开关信号管理","pId":"7d561544-5661-11e7-907b-a6006ad3dba0","id":"7d5618be-5661-11e7-907b-a6006ad3dba0"},{"name":"可写","pId":"7d5618be-5661-11e7-907b-a6006ad3dba0","id":"7d5618be-5661-11e7-907b-a6006ad3dba0edit","type":"premissionEdit"},{"name":"温度传感器管理","pId":"32e16952-622b-11e7-907b-a6006ad3dba0","id":"3d128b3a-622c-11e7-907b-a6006ad3dba0"},{"name":"可写","pId":"3d128b3a-622c-11e7-907b-a6006ad3dba0","id":"3d128b3a-622c-11e7-907b-a6006ad3dba0edit","type":"premissionEdit"},{"name":"温度监测设置","pId":"32e16952-622b-11e7-907b-a6006ad3dba0","id":"3d128dc4-622c-11e7-907b-a6006ad3dba0"},{"name":"可写","pId":"3d128dc4-622c-11e7-907b-a6006ad3dba0","id":"3d128dc4-622c-11e7-907b-a6006ad3dba0edit","type":"premissionEdit"},{"name":"湿度传感器管理","pId":"32e16bc8-622b-11e7-907b-a6006ad3dba0","id":"d842fa18-622c-11e7-907b-a6006ad3dba0"},{"name":"可写","pId":"d842fa18-622c-11e7-907b-a6006ad3dba0","id":"d842fa18-622c-11e7-907b-a6006ad3dba0edit","type":"premissionEdit"},{"name":"湿度监测设置","pId":"32e16bc8-622b-11e7-907b-a6006ad3dba0","id":"d842fcac-622c-11e7-907b-a6006ad3dba0"},{"name":"可写","pId":"d842fcac-622c-11e7-907b-a6006ad3dba0","id":"d842fcac-622c-11e7-907b-a6006ad3dba0edit","type":"premissionEdit"},{"name":"正反转传感器管理","pId":"32e16f92-622b-11e7-907b-a6006ad3dba0","id":"9722ba04-622d-11e7-907b-a6006ad3dba0"},{"name":"可写","pId":"9722ba04-622d-11e7-907b-a6006ad3dba0","id":"9722ba04-622d-11e7-907b-a6006ad3dba0edit","type":"premissionEdit"},{"name":"正反转车辆设置","pId":"32e16f92-622b-11e7-907b-a6006ad3dba0","id":"9722bc7a-622d-11e7-907b-a6006ad3dba0"},{"name":"可写","pId":"9722bc7a-622d-11e7-907b-a6006ad3dba0","id":"9722bc7a-622d-11e7-907b-a6006ad3dba0edit","type":"premissionEdit"},{"name":"行驶能耗基准管理","pId":"fc87ab62-7d62-11e6-lb13-56b6b6499611","id":"fc87ab62-7d62-11e6-lb22-56b6b6499611"},{"name":"可写","pId":"fc87ab62-7d62-11e6-lb22-56b6b6499611","id":"fc87ab62-7d62-11e6-lb22-56b6b6499611edit","type":"premissionEdit"},{"name":"怠速能耗基准管理","pId":"fc87ab62-7d62-11e6-lb13-56b6b6499611","id":"fc87ab62-7d62-11e6-lb23-56b6b6499611"},{"name":"可写","pId":"fc87ab62-7d62-11e6-lb23-56b6b6499611","id":"fc87ab62-7d62-11e6-lb23-56b6b6499611edit","type":"premissionEdit"},{"name":"能耗对比报表","pId":"fc87ade2-7d62-11e6-lb02-56b6b6499611","id":"fc87ab62-7d62-11e6-lb24-56b6b6499611"},{"name":"可写","pId":"fc87ab62-7d62-11e6-lb24-56b6b6499611","id":"fc87ab62-7d62-11e6-lb24-56b6b6499611edit","type":"premissionEdit"},{"name":"轨迹回放","pId":"84113afa-df07-4247-8666-f164a7acbefa","id":"7df146e0-6a8f-11e6-8b77-86f30ca893d3"},{"name":"可写","pId":"7df146e0-6a8f-11e6-8b77-86f30ca893d3","id":"7df146e0-6a8f-11e6-8b77-86f30ca893d3edit","type":"premissionEdit"},{"name":"实时指令","pId":"84113afa-df07-4247-8666-f164a7acbefa","id":"5609426a-1f4b-11e7-93ae-92361f002671"},{"name":"可写","pId":"5609426a-1f4b-11e7-93ae-92361f002671","id":"5609426a-1f4b-11e7-93ae-92361f002671edit","type":"premissionEdit"},{"name":"实时视频","pId":"84113afa-df07-4247-8666-f164a7acbefa","id":"828985c2-eb7c-11e7-8c3f-9a214cf093ae"},{"name":"可写","pId":"828985c2-eb7c-11e7-8c3f-9a214cf093ae","id":"828985c2-eb7c-11e7-8c3f-9a214cf093aeedit","type":"premissionEdit"},{"name":"视频回放","pId":"84113afa-df07-4247-8666-f164a7acbefa","id":"8289884c-eb7c-11e7-8c3f-9a214cf093ae"},{"name":"可写","pId":"8289884c-eb7c-11e7-8c3f-9a214cf093ae","id":"8289884c-eb7c-11e7-8c3f-9a214cf093aeedit","type":"premissionEdit"},{"name":"视频参数设置","pId":"84113afa-df07-4247-8666-f164a7acbefa","id":"828989fa-eb7c-11e7-8c3f-9a214cf093ae"},{"name":"可写","pId":"828989fa-eb7c-11e7-8c3f-9a214cf093ae","id":"828989fa-eb7c-11e7-8c3f-9a214cf093aeedit","type":"premissionEdit"},{"name":"转发平台IP管理","pId":"f9c660e4-f40e-11e6-bc64-92361f002671","id":"f9c66436-f40e-11e6-bc64-92361f002671"},{"name":"可写","pId":"f9c66436-f40e-11e6-bc64-92361f002671","id":"f9c66436-f40e-11e6-bc64-92361f002671edit","type":"premissionEdit"},{"name":"接入平台IP管理","pId":"f9c660e4-f40e-11e6-bc64-92361f002671","id":"11f6b351-853b-40c1-a1b5-8bdc483d890a"},{"name":"可写","pId":"11f6b351-853b-40c1-a1b5-8bdc483d890a","id":"11f6b351-853b-40c1-a1b5-8bdc483d890aedit","type":"premissionEdit"},{"name":"监控对象转发管理","pId":"f9c660e4-f40e-11e6-bc64-92361f002671","id":"f9c6671a-f40e-11e6-bc64-92361f002671"},{"name":"可写","pId":"f9c6671a-f40e-11e6-bc64-92361f002671","id":"f9c6671a-f40e-11e6-bc64-92361f002671edit","type":"premissionEdit"},{"name":"监控对象转发管理","pId":"f9c6629c-f40e-11e6-bc64-92368f002671","id":"f9c6629c-f40e-11e6-bc64-92361f003671"},{"name":"可写","pId":"f9c6629c-f40e-11e6-bc64-92361f003671","id":"f9c6629c-f40e-11e6-bc64-92361f003671edit","type":"premissionEdit"},{"name":"对讲地址配置","pId":"6f720d14-095b-11e7-93ae-92361f002671","id":"6f72102a-095b-11e7-93ae-92361f002671"},{"name":"可写","pId":"6f72102a-095b-11e7-93ae-92361f002671","id":"6f72102a-095b-11e7-93ae-92361f002671edit","type":"premissionEdit"},{"name":"对讲设备配置","pId":"6f720d14-095b-11e7-93ae-92361f002671","id":"6f72126e-095b-11e7-93ae-92361f002671"},{"name":"可写","pId":"6f72126e-095b-11e7-93ae-92361f002671","id":"6f72126e-095b-11e7-93ae-92361f002671edit","type":"premissionEdit"},{"name":"平台信息设置","pId":"b2b25f96-3a09-11e7-a919-92ebcb67fe33","id":"753e4754-5635-11e7-907b-a6006ad3dba0"},{"name":"可写","pId":"753e4754-5635-11e7-907b-a6006ad3dba0","id":"753e4754-5635-11e7-907b-a6006ad3dba0edit","type":"premissionEdit"},{"name":"监控对象图标","pId":"b2b25f96-3a09-11e7-a919-92ebcb67fe33","id":"753e4a9c-5635-11e7-907b-a6006ad3dba0"},{"name":"可写","pId":"753e4a9c-5635-11e7-907b-a6006ad3dba0","id":"753e4a9c-5635-11e7-907b-a6006ad3dba0edit","type":"premissionEdit"},{"name":"疲劳驾驶报警明细","pId":"eac86c12-25a0-11e8-b467-0ed5f89f718b","id":"7d515dbe-25a1-11e8-b467-0ed5f89f718b"},{"name":"可写","pId":"7d515dbe-25a1-11e8-b467-0ed5f89f718b","id":"7d515dbe-25a1-11e8-b467-0ed5f89f718bedit","type":"premissionEdit"},{"name":"疲劳驾驶违章统计","pId":"eac86c12-25a0-11e8-b467-0ed5f89f718b","id":"7d515efe-25a1-11e8-b467-0ed5f89f718b"},{"name":"可写","pId":"7d515efe-25a1-11e8-b467-0ed5f89f718b","id":"7d515efe-25a1-11e8-b467-0ed5f89f718bedit","type":"premissionEdit"},{"name":"超速报警明细","pId":"eac86c12-25a0-11e8-b467-0ed5f89f718b","id":"7d51602a-25a1-11e8-b467-0ed5f89f718b"},{"name":"可写","pId":"7d51602a-25a1-11e8-b467-0ed5f89f718b","id":"7d51602a-25a1-11e8-b467-0ed5f89f718bedit","type":"premissionEdit"},{"name":"超速违章统计","pId":"eac86c12-25a0-11e8-b467-0ed5f89f718b","id":"7d516156-25a1-11e8-b467-0ed5f89f718b"},{"name":"可写","pId":"7d516156-25a1-11e8-b467-0ed5f89f718b","id":"7d516156-25a1-11e8-b467-0ed5f89f718bedit","type":"premissionEdit"},{"name":"定位数据合格率","pId":"eac86c12-25a0-11e8-b467-0ed5f89f718b","id":"7d516480-25a1-11e8-b467-0ed5f89f718b"},{"name":"可写","pId":"7d516480-25a1-11e8-b467-0ed5f89f718b","id":"7d516480-25a1-11e8-b467-0ed5f89f718bedit","type":"premissionEdit"},{"name":"漂移数据报表","pId":"eac86c12-25a0-11e8-b467-0ed5f89f718b","id":"7d5165c0-25a1-11e8-b467-0ed5f89f718b"},{"name":"可写","pId":"7d5165c0-25a1-11e8-b467-0ed5f89f718b","id":"7d5165c0-25a1-11e8-b467-0ed5f89f718bedit","type":"premissionEdit"},{"name":"凌晨2-5点运行报表","pId":"eac86c12-25a0-11e8-b467-0ed5f89f718b","id":"7d5166e2-25a1-11e8-b467-0ed5f89f718b"},{"name":"可写","pId":"7d5166e2-25a1-11e8-b467-0ed5f89f718b","id":"7d5166e2-25a1-11e8-b467-0ed5f89f718bedit","type":"premissionEdit"},{"name":"异常轨迹报表","pId":"eac86c12-25a0-11e8-b467-0ed5f89f718b","id":"1162a82c-25a3-11e8-b467-0ed5f89f718b"},{"name":"可写","pId":"1162a82c-25a3-11e8-b467-0ed5f89f718b","id":"1162a82c-25a3-11e8-b467-0ed5f89f718bedit","type":"premissionEdit"}]
+    ctree = [
+        {"name":"数据监控","pId":"0","id":"perms_datamonitor"},
+        {"name":"数据分析","pId":"0","id":"perms_datanalys"},
+        {"name":"报警中心","pId":"0","id":"perms_alarmcenter"},
+        {"name":"基础管理","pId":"0","id":"perms_basemanager"},
+        {"name":"设备管理","pId":"0","id":"perms_devicemanager"},
+        {"name":"企业管理","pId":"0","id":"perms_firmmanager"},
+        {"name":"基准分析","pId":"0","id":"perms_basenalys"},
+        {"name":"报表统计","pId":"0","id":"perms_reporttable"},
+        {"name":"系统管理","pId":"0","id":"perms_systemconfig"},
 
-    # ctree =[
-    #         { id:1, pId:0, name:"随意勾选 1", open:true},
-    #         { id:11, pId:1, name:"随意勾选 1-1", open:true},
-    #         { id:111, pId:11, name:"随意勾选 1-1-1"},
-    #         { id:112, pId:11, name:"随意勾选 1-1-2"},
-    #         { id:12, pId:1, name:"随意勾选 1-2", open:true},
-    #         { id:121, pId:12, name:"随意勾选 1-2-1"},
-    #         { id:122, pId:12, name:"随意勾选 1-2-2"},
-    #         { id:2, pId:0, name:"随意勾选 2", checked:true, open:true},
-    #         { id:21, pId:2, name:"随意勾选 2-1"},
-    #         { id:22, pId:2, name:"随意勾选 2-2", open:true},
-    #         { id:221, pId:22, name:"随意勾选 2-2-1", checked:true},
-    #         { id:222, pId:22, name:"随意勾选 2-2-2"},
-    #         { id:23, pId:2, name:"随意勾选 2-3"}
-    #     ]
+        # 数据监控 sub
+        {"name":"地图监控","pId":"perms_datamonitor","id":"mapmonitor_perms_datamonitor"},
+        {"name":"可写","pId":"mapmonitor_perms_datamonitor","id":"mapmonitor_perms_datamonitor_edit","type":"premissionEdit"},
+        {"name":"实时曲线","pId":"perms_datamonitor","id":"realcurlv_perms_datamonitor"},
+        {"name":"可写","pId":"realcurlv_perms_datamonitor","id":"realcurlv_perms_datamonitor_edit","type":"premissionEdit"},
+        {"name":"实时数据","pId":"perms_datamonitor","id":"realdata_perms_datamonitor"},
+        {"name":"可写","pId":"realdata_perms_datamonitor","id":"realdata_perms_datamonitor_edit","type":"premissionEdit"},
+        {"name":"DMA在线监控","pId":"perms_datamonitor","id":"dmaonline_perms_datamonitor"},
+        {"name":"可写","pId":"dmaonline_perms_datamonitor","id":"dmaonline_perms_datamonitor_edit","type":"premissionEdit"},
 
+        # 数据分析 sub
+        {"name":"日用水分析","pId":"perms_datanalys","id":"dailyuse_perms_datanalys"},
+        {"name":"可写","pId":"dailyuse_perms_datanalys","id":"dailyuse_perms_datanalys_edit","type":"premissionEdit"},
+        {"name":"月用水分析","pId":"perms_datanalys","id":"monthlyuse_perms_datanalys"},
+        {"name":"可写","pId":"monthlyuse_perms_datanalys","id":"monthlyuse_perms_datanalys_edit","type":"premissionEdit"},
+        {"name":"DMA产销差分析","pId":"perms_datanalys","id":"dmacxc_perms_datanalys"},
+        {"name":"可写","pId":"dmacxc_perms_datanalys","id":"dmacxc_perms_datanalys_edit","type":"premissionEdit"},
+        {"name":"流量分析","pId":"perms_datanalys","id":"flownalys_perms_datanalys"},
+        {"name":"可写","pId":"flownalys_perms_datanalys","id":"flownalys_perms_datanalys_edit","type":"premissionEdit"},
+        {"name":"对比分析","pId":"perms_datanalys","id":"comparenalys_perms_datanalys"},
+        {"name":"可写","pId":"comparenalys_perms_datanalys","id":"comparenalys_perms_datanalys_edit","type":"premissionEdit"},
+        {"name":"配表分析","pId":"perms_datanalys","id":"peibiao_perms_datanalys"},
+        {"name":"可写","pId":"peibiao_perms_datanalys","id":"peibiao_perms_datanalys_edit","type":"premissionEdit"},
+        {"name":"原始数据","pId":"perms_datanalys","id":"rawdata_perms_datanalys"},
+        {"name":"可写","pId":"rawdata_perms_datanalys","id":"rawdata_perms_datanalys_edit","type":"premissionEdit"},
+        {"name":"夜间最小流量","pId":"perms_datanalys","id":"mnf_perms_datanalys"},
+        {"name":"可写","pId":"mnf_perms_datanalys","id":"mnf_perms_datanalys_edit","type":"premissionEdit"},
+
+        # 报警中心 sub
+        {"name":"站点报警设置","pId":"perms_alarmcenter","id":"stationalarm_perms_alarmcenter"},
+        {"name":"可写","pId":"stationalarm_perms_alarmcenter","id":"stationalarm_perms_alarmcenter_edit","type":"premissionEdit"},
+        {"name":"DMA报警设置","pId":"perms_alarmcenter","id":"dmaalarm_perms_alarmcenter"},
+        {"name":"可写","pId":"dmaalarm_perms_alarmcenter","id":"dmaalarm_perms_alarmcenter_edit","type":"premissionEdit"},
+        {"name":"报警查询","pId":"perms_alarmcenter","id":"queryalarm_perms_alarmcenter"},
+        {"name":"可写","pId":"queryalarm_perms_alarmcenter","id":"queryalarm_perms_alarmcenter_edit","type":"premissionEdit"},
+        
+
+        # 基础管理 sub
+        {"name":"dma管理","pId":"perms_basemanager","id":"dmamanager_perms_basemanager"},
+        {"name":"可写","pId":"dmamanager_perms_basemanager","id":"dmamanager_perms_basemanager_edit","type":"premissionEdit"},
+        {"name":"站点管理","pId":"perms_basemanager","id":"stationmanager_perms_basemanager"},
+        {"name":"可写","pId":"stationmanager_perms_basemanager","id":"stationmanager_perms_basemanager_edit","type":"premissionEdit"},
+
+        # 企业管理 sub
+        {"name":"角色管理","pId":"perms_firmmanager","id":"rolemanager_perms_firmmanager"},
+        {"name":"可写","pId":"rolemanager_perms_firmmanager","id":"rolemanager_perms_firmmanager_edit","type":"premissionEdit"},
+        {"name":"组织和用户管理","pId":"perms_firmmanager","id":"organusermanager_perms_basemanager"},
+        {"name":"可写","pId":"organusermanager_perms_basemanager","id":"organusermanager_perms_basemanager_edit","type":"premissionEdit"},
+
+        # 设备管理 sub
+        {"name":"表具管理","pId":"perms_devicemanager","id":"meters_perms_devicemanager"},
+        {"name":"可写","pId":"meters_perms_devicemanager","id":"meters_perms_devicemanager_edit","type":"premissionEdit"},
+        {"name":"SIM卡管理","pId":"perms_devicemanager","id":"simcard_perms_devicemanager"},
+        {"name":"可写","pId":"simcard_perms_devicemanager","id":"simcard_perms_devicemanager_edit","type":"premissionEdit"},
+        {"name":"参数指令","pId":"perms_devicemanager","id":"params_perms_devicemanager"},
+        {"name":"可写","pId":"params_perms_devicemanager","id":"params_perms_devicemanager_edit","type":"premissionEdit"},
+        
+        # 基准分析 sub
+        {"name":"DMA基准分析","pId":"perms_basenalys","id":"dma_perms_basenalys"},
+        {"name":"可写","pId":"dma_perms_basenalys","id":"dma_perms_basenalys_edit","type":"premissionEdit"},
+        {"name":"最小流量分析","pId":"perms_basenalys","id":"mf_perms_basenalys"},
+        {"name":"可写","pId":"mf_perms_basenalys","id":"mf_perms_basenalys_edit","type":"premissionEdit"},
+        {"name":"日基准流量分析","pId":"perms_basenalys","id":"day_perms_basenalys"},
+        {"name":"可写","pId":"day_perms_basenalys","id":"day_perms_basenalys_edit","type":"premissionEdit"},
+        
+        # 统计报表 sub
+        {"name":"日志查询","pId":"perms_reporttable","id":"querylog_perms_reporttable"},
+        {"name":"可写","pId":"querylog_perms_reporttable","id":"querylog_perms_reporttable_edit","type":"premissionEdit"},
+        {"name":"报警报表","pId":"perms_reporttable","id":"alarm_perms_reporttable"},
+        {"name":"可写","pId":"alarm_perms_reporttable","id":"alarm_perms_reporttable_edit","type":"premissionEdit"},
+        {"name":"DMA统计报表","pId":"perms_reporttable","id":"dmastatics_perms_reporttable"},
+        {"name":"可写","pId":"dmastatics_perms_reporttable","id":"dmastatics_perms_reporttable_edit","type":"premissionEdit"},
+        {"name":"大用户报表","pId":"perms_reporttable","id":"biguser_perms_reporttable"},
+        {"name":"可写","pId":"biguser_perms_reporttable","id":"biguser_perms_reporttable_edit","type":"premissionEdit"},
+        {"name":"流量报表","pId":"perms_reporttable","id":"flows_perms_reporttable"},
+        {"name":"可写","pId":"flows_perms_reporttable","id":"flows_perms_reporttable_edit","type":"premissionEdit"},
+        {"name":"水量报表","pId":"perms_reporttable","id":"waters_perms_reporttable"},
+        {"name":"可写","pId":"waters_perms_reporttable","id":"waters_perms_reporttable_edit","type":"premissionEdit"},
+        {"name":"表务报表","pId":"perms_reporttable","id":"biaowu_perms_reporttable"},
+        {"name":"可写","pId":"biaowu_perms_reporttable","id":"biaowu_perms_reporttable_edit","type":"premissionEdit"},
+        {"name":"大数据报表","pId":"perms_reporttable","id":"bigdata_perms_reporttable"},
+        {"name":"可写","pId":"bigdata_perms_reporttable","id":"bigdata_perms_reporttable_edit","type":"premissionEdit"},
+        
+
+
+        
+        # 系统管理 sub
+        {"name":"平台个性化管理","pId":"perms_systemconfig","id":"personality_perms_systemconfig"},
+        {"name":"可写","pId":"personality_perms_systemconfig","id":"personality_perms_systemconfig_edit","type":"premissionEdit"},
+        {"name":"系统设置","pId":"perms_systemconfig","id":"system_perms_systemconfig"},
+        {"name":"可写","pId":"system_perms_systemconfig","id":"system_perms_systemconfig_edit","type":"premissionEdit"},
+        {"name":"转发设置","pId":"perms_systemconfig","id":"retransit_perms_systemconfig"},
+        {"name":"可写","pId":"retransit_perms_systemconfig","id":"retransit_perms_systemconfig_edit","type":"premissionEdit"},
+        {"name":"图标配置","pId":"perms_systemconfig","id":"icons_perms_systemconfig"},
+        {"name":"可写","pId":"icons_perms_systemconfig","id":"icons_perms_systemconfig_edit","type":"premissionEdit"},
+        {"name":"日志查询","pId":"perms_systemconfig","id":"querylog_perms_systemconfig"},
+        {"name":"可写","pId":"querylog_perms_systemconfig","id":"querylog_perms_systemconfig_edit","type":"premissionEdit"},
+    ]
+
+    
     
 
     # return JsonResponse(dicts,safe=False)
@@ -703,6 +796,15 @@ class RolesMangerView(TemplateView):
 
         return context  
 
+    def post(self,request,*args,**kwargs):
+        print('do you been here?')
+        print (request.POST)
+        print(kwargs)
+        
+
+        # return super(AssignRoleView,self).render_to_response(context)
+        return redirect(reverse_lazy('dma:roles_manager'))
+
 """
 Roles creation, manager
 """
@@ -715,6 +817,21 @@ class RolesCreateMangerView(CreateView):
     # @method_decorator(permission_required('dma.change_stations'))
     def dispatch(self, *args, **kwargs):
         return super(RolesCreateMangerView, self).dispatch(*args, **kwargs)
+
+    def form_valid(self,form):
+        print('role create form_valid:')
+
+        return super(RolesCreateMangerView,self).form_valid(form)
+
+    def post(self,request,*args,**kwargs):
+        print('do you been here 123?')
+        print (request.POST)
+        print(kwargs)
+        
+
+        # return super(AssignRoleView,self).render_to_response(context)
+        return redirect(reverse_lazy('dma:roles_manager'))
+
 
 
 """

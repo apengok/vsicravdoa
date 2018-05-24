@@ -1,44 +1,71 @@
-<div class="modal-dialog " style="width: 1200px;">
-    <div class="modal-content">
 
-        <form id="role_update_form" method='post' class="form" role="form" action='{% url 'dma:role_edit_manager' object.id %}'>
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                
-              </div>
-              <div class="modal-body">
-                    
-                    {% csrf_token %}
-                    {{ form.non_field_errors }}
-                    {% for field in form %}
-                        <div class="form-group">
-                            {% if field.errors %}
-                                <ul class="form-errors">
-                                {% for error in field.errors %}
-                                    <li><span class="fa fa-exclamation-triangle"></span> <strong>{{ error|escape }}</strong></li>
-                                {% endfor %}
-                                </ul>
-                            {% endif %}
-                            {{ field.label_tag }} {{ field }} 
-                            {% if field.help_text %}<div class="form-helptext">{{ field.help_text }}</div>{% endif %}
+{% load staticfiles %}
+<style type="text/css">
+    .modal .modal-body.modal-scroll{max-height:300px;overflow-y:auto}
+    .modal-body-overflow{overflow-y:auto;overflow-x:hidden;}
+</style>
+
+<form id="role_update_form" role="form" action="{% url 'dma:role_edit_manager' object.id %}" method="post" class="form-horizontal">{% csrf_token %}
+    <div class="modal-header">
+        <button type="button" id="doXAdd" class="close" data-dismiss="modal"
+            aria-hidden="true">&times;</button>
+        <h4 class="modal-title">新增角色</h4>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="col-md-3 control-label"><label
+                        class="text-danger">*</label> 角色名称： </label>
+                    <div class="col-md-7">
+                        <input name="roleName"  type="text" value="{{ form.name.value }}" 
+                            class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">备注：</label>
+                    <div class="col-md-7">
+                        <textarea name="description" rows="4" class="form-control" 
+                            value="{{ form.notes.value }}"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-7">
+                        <input id="permissionTree" name="permissionTree" type="text"
+                            hidden="true" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label"> 操作权限：</label>
+                    <div class="col-md-7">
+                        <div class="treeArea">
+                            <ul id="permissionDemo" name="fenceTree" class="ztree"></ul>
                         </div>
-                    {% endfor %}
-                    
-              </div>
-              <div class="modal-footer">
-                <input type="button" class="btn btn-default" data-dismiss="modal" value="close" />
-                <input type="submit" class="btn btn-primary" value="submit" style="margin-bottom: 5px;" />
-              </div>
-        </form>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button id="doSubmitAdd" class="btn btn-primary" type="button">
+            <strong>提 交</strong>
+        </button>
+        <button id="doCloseAdd" type="button" class="btn btn-default" data-dismiss="modal">
+            <strong>关 闭</strong>
+        </button>
+    </div>
+</form>
+<script src="{% static 'virvo/roleAdd.js' %}"></script>
+<script>
+    // jQuery('.modal-content .calendar').datepicker({ dateFormat: "yy-mm-dd" });
 
-    <script>
-        // jQuery('.modal-content .calendar').datepicker({ dateFormat: "yy-mm-dd" });
 
-        var form_options = {
-            target: '#modal',
-            success: function() {  }
-        }
-        $('#role_update_form').ajaxForm(form_options);
-    </script>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
+    var form_options = {
+        target: '#modal',
+        success: function() { console.log('create success...'); }
+    }
+    $('#addForm').ajaxForm(form_options);
+</script>
+
+
