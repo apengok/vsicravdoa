@@ -130,7 +130,7 @@ You need to inject new fields into the existing Group:
 
 class MyRoles(Group):
     notes = models.CharField(max_length=156,blank=True)   
-    # perm_op = models.CharField(max_length=5000,blank=True)
+    permissionTree = models.CharField(max_length=5000,blank=True)
 
 # To add methods to the Group, subclass but tag the model as proxy:
     # class Meta:

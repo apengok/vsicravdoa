@@ -5,12 +5,11 @@
             //操作权限 
             var setpermission = {
                 async : {
-                    url : "role/choicePermissionTree",
-                    type : "get",
+                    url : "/clbs/c/role/choicePermissionTree",
+                    type : "post",
                     enable : true,
                     autoParam : [ "id" ],
                     dataType : "json",
-                    // data:{'csrfmiddlewaretoken': '{{ csrf_token }}'},
                 },
                 check : {
                     enable : true,
@@ -39,15 +38,15 @@
             $(".modal-body").addClass("modal-body-overflow");
         },
         zTreeBeforeCheck: function(treeId, treeNode){
-            var flag;
-            var zTree = $.fn.zTree.getZTreeObj("permissionDemo");
-            if(treeNode.isParent){
-                flag = true;
-            }else{
-                flag = false;
-                zTree.checkNode(treeNode, !treeNode.checked, !treeNode.checked);
-            };
-            return flag;
+        	var flag;
+        	var zTree = $.fn.zTree.getZTreeObj("permissionDemo");
+        	if(treeNode.isParent){
+        		flag = true;
+        	}else{
+        		flag = false;
+        		zTree.checkNode(treeNode, !treeNode.checked, !treeNode.checked);
+        	};
+        	return flag;
         },
         beforeClickPermission: function(treeId, treeNode){
             var zTree = $.fn.zTree.getZTreeObj("permissionDemo");
@@ -55,9 +54,9 @@
             return false;
         },
         onCheckPermission: function(e, treeId, treeNode){
-            if(!treeNode.isParent){
-                return false;
-            };
+        	if(!treeNode.isParent){
+        		return false;
+        	};
             var zTree = $.fn.zTree.getZTreeObj("permissionDemo");
             var nodes = zTree.getCheckedNodes(true);
             var v = "";
@@ -92,53 +91,44 @@
                     }
                 }
             }
-            console.log("do submit?");
             $("#permissionTree").val(JSON.stringify(list));
-
-            $('#addForm').ajaxSubmit(function(data){
-                $("#commonSmWin").modal("hide");
-            });
-
-            // if(roleAdd.validates()){
-
-                
-
-            //     $("#addForm").ajaxSubmit(function(data) {
-            //         if (data != null) {
-            //             var result = $.parseJSON(data);
-            //             if (result.success) {
-            //                 if (result.obj.flag == 1){
-            //                     $("#commonSmWin").modal("hide");
-            //                     layer.msg("添加成功！",{move:false});
-            //                     myTable.requestData();
-            //                 }else{
-            //                     layer.msg(result.obj.errMsg,{move:false});
-            //                 }
-            //             }else{
-            //                 layer.msg(result.msg,{move:false});
-            //             }
-            //         }
-            //     });
-            // }
+            if(roleAdd.validates()){
+                $("#addForm").ajaxSubmit(function(data) {
+                    if (data != null) {
+                        var result = $.parseJSON(data);
+                        if (result.success) {
+                            if (result.obj.flag == 1){
+                                $("#commonSmWin").modal("hide");
+                                layer.msg("添加成功！",{move:false});
+                                myTable.requestData();
+                            }else{
+                                layer.msg(result.obj.errMsg,{move:false});
+                            }
+                        }else{
+                            layer.msg(result.msg,{move:false});
+                        }
+                    }
+                });
+            }
         },
         //校验
         validates: function(){
             return $("#addForm").validate({
                 rules : {
-                    name : {
+                    roleName : {
                         required : true,
                         maxlength : 20
                     },
-                    notes : {
+                    description : {
                         maxlength : 140
                     }
                 },
                 messages : {
-                    name : {
+                    roleName : {
                         required : roleNameNull,
                         maxlength : publicSize20
                     },
-                    notes : {
+                    description : {
                         maxlength : publicSize140
                     }
                 }
@@ -147,13 +137,13 @@
     }
     $(function(){
         roleAdd.init();
-        // $('input').inputClear();
+        $('input').inputClear();
 
-        // //优先级策略单选组选择
-        // $(".priority-group").on("click","input",function () {
-        //     $(".priority-group input").prop("checked",false);
-        //     $(this).prop("checked",true)
-        // });
+        //优先级策略单选组选择
+        $(".priority-group").on("click","input",function () {
+            $(".priority-group input").prop("checked",false);
+            $(this).prop("checked",true)
+        });
         
         $("#doSubmitAdd").on("click",roleAdd.doSubmit);
     })

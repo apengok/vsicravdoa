@@ -141,7 +141,7 @@ def choicePermissionTree(request):
         {"name":"数据分析","pId":"0","id":"perms_datanalys"},
         {"name":"报警中心","pId":"0","id":"perms_alarmcenter"},
         {"name":"基础管理","pId":"0","id":"perms_basemanager"},
-        {"name":"设备管理","pId":"0","id":"perms_devicemanager"},
+        {"name":"设备管理","pId":"0","id":"perms_devicemanager","checked":"true"},
         {"name":"企业管理","pId":"0","id":"perms_firmmanager"},
         {"name":"基准分析","pId":"0","id":"perms_basenalys"},
         {"name":"报表统计","pId":"0","id":"perms_reporttable"},
@@ -796,14 +796,7 @@ class RolesMangerView(TemplateView):
 
         return context  
 
-    def post(self,request,*args,**kwargs):
-        print('do you been here?')
-        print (request.POST)
-        print(kwargs)
-        
-
-        # return super(AssignRoleView,self).render_to_response(context)
-        return redirect(reverse_lazy('dma:roles_manager'))
+    
 
 """
 Roles creation, manager
@@ -818,15 +811,19 @@ class RolesCreateMangerView(CreateView):
     def dispatch(self, *args, **kwargs):
         return super(RolesCreateMangerView, self).dispatch(*args, **kwargs)
 
-    def form_valid(self,form):
-        print('role create form_valid:')
-
-        return super(RolesCreateMangerView,self).form_valid(form)
+    
 
     def post(self,request,*args,**kwargs):
         print('do you been here 123?')
         print (request.POST)
         print(kwargs)
+
+        form = self.get_form()
+        instance = form.save(commit=False)
+        print(form.cleaned_data['permissionTree'])
+        
+        form.save()
+            
         
 
         # return super(AssignRoleView,self).render_to_response(context)
@@ -852,6 +849,8 @@ class RolesUpdateManagerView(UpdateView):
         """
         If the form is valid, redirect to the supplied URL.
         """
+        print('role update here?:',self.request.POST)
+        print(form)
         form.save()
         return super(RolesUpdateManagerView,self).form_valid(form)
         # role_list = MyRoles.objects.get(id=self.role_id)

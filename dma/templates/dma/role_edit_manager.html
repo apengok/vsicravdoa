@@ -56,7 +56,16 @@
         </button>
     </div>
 </form>
-<script src="{% static 'virvo/roleAdd.js' %}"></script>
+
+<link rel="stylesheet" href="{% static 'zTree/css/demo.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'zTree/css/zTreeStyle/zTreeStyle.css' %}" type="text/css">
+        
+<script src="{% static 'hplus-master/js/jquery.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'zTree/js/jquery.ztree.core.js' %}"></script>
+        <script type="text/javascript" src="{% static 'zTree/js/jquery.ztree.excheck.js' %}"></script>
+<script src="{% static 'virvo/jquery.form.js' %}"></script>
+        <script src="{% static 'virvo/jquery.validate.min.js' %}"></script>
+
 <script>
     // jQuery('.modal-content .calendar').datepicker({ dateFormat: "yy-mm-dd" });
 
@@ -65,7 +74,12 @@
         target: '#modal',
         success: function() { console.log('create success...'); }
     }
-    $('#addForm').ajaxForm(form_options);
+    // $('#role_update_form').ajaxForm(form_options);
+    $("#doSubmitAdd").on("click",function(){
+        $('#role_update_form').ajaxSubmit(function(data){
+            console.log(data);
+        });
+    });
 </script>
 
 
