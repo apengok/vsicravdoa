@@ -19,7 +19,7 @@ from django.views.generic import TemplateView, ListView, DetailView, CreateView,
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import admin
-
+from django.contrib.auth.models import Permission
 
 from django.urls import reverse_lazy
 from .forms import DMABaseinfoForm,CreateDMAForm,TestForm,StationsCreateManagerForm,StationsForm
@@ -136,12 +136,28 @@ def gettree(request):
 
 def choicePermissionTree(request):
 
+    roleid = request.POST.get('roleId') or -1
+
+    print('get role id :',roleid)
+    instance = MyRoles.objects.get(id=roleid)
+    permissiontree = instance.permissionTree
+    ptree = json.loads(permissiontree)
+    
+
+    for pt in ptree:
+        pname = pt['id']
+        p_edit = pt['edit']
+        
+        if p_edit:
+            for c in ctree:
+                pass
+
     ctree = [
         {"name":"数据监控","pId":"0","id":"perms_datamonitor"},
         {"name":"数据分析","pId":"0","id":"perms_datanalys"},
         {"name":"报警中心","pId":"0","id":"perms_alarmcenter"},
         {"name":"基础管理","pId":"0","id":"perms_basemanager"},
-        {"name":"设备管理","pId":"0","id":"perms_devicemanager","checked":"true"},
+        {"name":"设备管理","pId":"0","id":"perms_devicemanager"},
         {"name":"企业管理","pId":"0","id":"perms_firmmanager"},
         {"name":"基准分析","pId":"0","id":"perms_basenalys"},
         {"name":"报表统计","pId":"0","id":"perms_reporttable"},
@@ -850,11 +866,47 @@ class RolesUpdateManagerView(UpdateView):
         If the form is valid, redirect to the supplied URL.
         """
         print('role update here?:',self.request.POST)
-        print(form)
-        form.save()
+        # print(form)
+        # do something
+        permissiontree = form.cleaned_data.get('permissionTree')
+        ptree = json.loads(permissiontree)
+        instance = self.object
+        old_permissions = instance.permissions.all()
+        instance.permissions.clear()
+
+        for pt in ptree:
+            pname = pt['id']
+            p_edit = pt['edit']
+            perms = Permission.objects.get(codename=pname)
+            
+            if p_edit:
+                instance.permissions.add(perms)
+                print pname,p_edit,perms
+
+
         return super(RolesUpdateManagerView,self).form_valid(form)
-        # role_list = MyRoles.objects.get(id=self.role_id)
-        # return HttpResponse(render_to_string('dma/role_manager.html', {'role_list':role_list}))
+        
+
+    # def post(self,request,*args,**kwargs):
+    #     print('role update ?')
+    #     print (request.POST)
+    #     print(kwargs)
+
+    #     form = self.get_form()
+    #     if form.is_valid():
+    #         print(form)
+    #         print(form.cleaned_data['permissionTree'])
+    #         # instance = form.save(commit=False)
+    #         return self.form_valid(form)
+            
+    #     else:
+    #         print(form.errors)
+            
+            
+        
+
+    #     # return super(AssignRoleView,self).render_to_response(context)
+    #     return redirect(reverse_lazy('dma:roles_manager'))
 
     def get_context_data(self, **kwargs):
         context = super(RolesUpdateManagerView, self).get_context_data(**kwargs)

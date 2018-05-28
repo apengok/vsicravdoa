@@ -224,14 +224,14 @@ class RoleCreateForm(forms.ModelForm):
 
     class Meta:
         model = MyRoles
-        fields= '__all__'    
+        fields= ('name','notes','permissionTree')    
 
 
 
 class MyRolesForm(forms.ModelForm):
     class Meta:
         model = MyRoles    
-        fields= '__all__'       
+        fields= ('name','notes','permissionTree')    
 
     def __init__(self, *args, **kwargs):
         super(MyRolesForm, self).__init__(*args, **kwargs)

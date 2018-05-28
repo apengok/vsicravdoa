@@ -6,7 +6,7 @@
             //操作权限 
             var setpermissionEdit = {
                 async : {
-                    url : "role/choicePermissionTree",
+                    url : "role/choicePermissionTree/",
                     type : "post",
                     enable : true,
                     autoParam : [ "id" ],
@@ -91,25 +91,26 @@
                     }
                 }
             }
-            $("#permissionEditTree").val(JSON.stringify(list));
-            $("#editForm").ajaxSubmit(function(data) {
-                if (data != null) {
-                    var result = $.parseJSON(data);
-                    $("#commonSmWin").modal("hide");
-                    
-                    // if (result.success) {
-                    //     if (result.obj.flag == 1){
-                    //         $("#commonSmWin").modal("hide");
-                    //         layer.msg("修改成功！",{move:false});
-                    //         myTable.refresh()
-                    //     }else{
-                    //         layer.msg(result.obj.errMsg,{move:false});
-                    //     }
-                    // }else{
-                    //     layer.msg(result.msg,{move:false});
-                    // }
-                }
-            });
+            $("#permissionTree").val(JSON.stringify(list));
+            $("#role_update_form").ajaxSubmit(function(data) {
+                    if (data != null) {
+                        //var result = $.parseJSON(data);
+                        $("#commonSmWin").modal("hide");
+                        console.log(result);
+                        // if (result.success) {
+                        //     if (result.obj.flag == 1){
+                        //         $("#commonSmWin").modal("hide");
+                        //         layer.msg("修改成功！",{move:false});
+                        //         myTable.refresh()
+                        //     }else{
+                        //         layer.msg(result.obj.errMsg,{move:false});
+                        //     }
+                        // }else{
+                        //     layer.msg(result.msg,{move:false});
+                        // }
+                    }
+                });
+            
             // if(roleEdit.validates()){
             //     $("#editForm").ajaxSubmit(function(data) {
             //         if (data != null) {

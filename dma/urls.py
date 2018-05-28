@@ -19,7 +19,7 @@ urlpatterns = [
 
     url(r'gettree/$',views.gettree,name='gettree'),
 
-    url(r'^role/choicePermissionTree/$',views.choicePermissionTree,name='choicePermissionTree'),
+    url(r'^role/choicePermissionTree/',views.choicePermissionTree,name='choicePermissionTree'),
 
     url(r'getchartd/$',views.getchartd,name='getchartd'),
 
