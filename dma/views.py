@@ -29,130 +29,8 @@ from accounts.forms import RoleCreateForm,MyRolesForm,RegisterForm,UserDetailCha
 
 # from django.core.urlresolvers import reverse_lazy
 
-def error_404(request):
-    return render(request,"404.html",{})
 
-def error_500(request):
-    return render(request,"500.html",{})
-
-def i18n_javascript(request):
-    return admin.site.i18n_javascript(request)
-
-
-class StaticView(TemplateView):
-    def get(self, request, page, *args, **kwargs):
-        self.template_name = page
-        print(page)
-        response = super(StaticView, self).get(request, *args, **kwargs)
-        try:
-            return response.render()
-        except TemplateDoesNotExist:
-            raise Http404()
-
-def recursive_node_to_dict(node,url_cat):
-    result = {
-        'id':node.pk,
-        'name': node.name,
-        'open':'true',
-        'url':'/dma/{}/{}'.format(node.pk,url_cat),
-        'target':'_self',
-        'icon':"/static/virvo/images/站点管理/u842_1.png",
-        'class':"J_menuItem",
-    }
-    
-    children = [recursive_node_to_dict(c,url_cat) for c in node.get_children()]
-    
-    # get each node's station if exist
-    if url_cat != '':
-        try:
-            sats = node.station.all()
-            for s in sats:
-                children.append({
-                    'name':s.station_name,
-                    'url':'/dma/{}/{}/{}'.format(node.pk,url_cat,s.id),
-                    'target':'_self',
-                    'icon':"/static/virvo/images/u3672.png",
-                    # 'class':"J_menuItem",
-                })
-            # children.append({'name':})
-        except:
-            pass
-
-    if children:
-        result['children'] = children
-    
-    return result
-
-def get_stationtree(request):
-    organs = Organization.objects.all()
-    
-    top_nodes = get_cached_trees(organs)
-
-    dicts = []
-    for n in top_nodes:
-        dicts.append(recursive_node_to_dict(n,'station'))
-
-    
-    # print json.dumps(dicts, indent=4)
-
-    
-    
-    return JsonResponse({'trees':dicts})
-
-
-def get_dmatree(request):
-    # page_name = request.GET.get('page_name') or ''
-    '''只获取分区结构，不获取站点信息'''
-    organs = Organization.objects.all()
-    
-    top_nodes = get_cached_trees(organs)
-
-    dicts = []
-    for n in top_nodes:
-        dicts.append(recursive_node_to_dict(n,''))
-
-    virvo_tree = [{'name':'威尔沃','open':'true','children':dicts}]
-    return JsonResponse({'trees':virvo_tree})
-    
-    # return JsonResponse({'trees':dicts})
-
-def gettree(request):
-    page_name = request.GET.get('page_name') or ''
-    print(page_name)
-    organs = Organization.objects.all()
-    
-    top_nodes = get_cached_trees(organs)
-
-    dicts = []
-    for n in top_nodes:
-        dicts.append(recursive_node_to_dict(n,page_name))
-
-    
-    # print json.dumps(dicts, indent=4)
-
-    virvo_tree = [{'name':'威尔沃','open':'true','children':dicts}]
-    return JsonResponse({'trees':virvo_tree})
-    # return JsonResponse({'trees':dicts})
-
-def choicePermissionTree(request):
-
-    roleid = request.POST.get('roleId') or -1
-
-    print('get role id :',roleid)
-    instance = MyRoles.objects.get(id=roleid)
-    permissiontree = instance.permissionTree
-    ptree = json.loads(permissiontree)
-    
-
-    for pt in ptree:
-        pname = pt['id']
-        p_edit = pt['edit']
-        
-        if p_edit:
-            for c in ctree:
-                pass
-
-    ctree = [
+PERMISSION_TREE = [
         {"name":"数据监控","pId":"0","id":"perms_datamonitor"},
         {"name":"数据分析","pId":"0","id":"perms_datanalys"},
         {"name":"报警中心","pId":"0","id":"perms_alarmcenter"},
@@ -262,7 +140,146 @@ def choicePermissionTree(request):
         {"name":"可写","pId":"querylog_perms_systemconfig","id":"querylog_perms_systemconfig_edit","type":"premissionEdit"},
     ]
 
+
+def error_404(request):
+    return render(request,"404.html",{})
+
+def error_500(request):
+    return render(request,"500.html",{})
+
+def i18n_javascript(request):
+    return admin.site.i18n_javascript(request)
+
+
+class StaticView(TemplateView):
+    def get(self, request, page, *args, **kwargs):
+        self.template_name = page
+        print(page)
+        response = super(StaticView, self).get(request, *args, **kwargs)
+        try:
+            return response.render()
+        except TemplateDoesNotExist:
+            raise Http404()
+
+def recursive_node_to_dict(node,url_cat):
+    result = {
+        'id':node.pk,
+        'name': node.name,
+        'open':'true',
+        'url':'/dma/{}/{}'.format(node.pk,url_cat),
+        'target':'_self',
+        'icon':"/static/virvo/images/站点管理/u842_1.png",
+        'class':"J_menuItem",
+    }
     
+    children = [recursive_node_to_dict(c,url_cat) for c in node.get_children()]
+    
+    # get each node's station if exist
+    if url_cat != '':
+        try:
+            sats = node.station.all()
+            for s in sats:
+                children.append({
+                    'name':s.station_name,
+                    'url':'/dma/{}/{}/{}'.format(node.pk,url_cat,s.id),
+                    'target':'_self',
+                    'icon':"/static/virvo/images/u3672.png",
+                    # 'class':"J_menuItem",
+                })
+            # children.append({'name':})
+        except:
+            pass
+
+    if children:
+        result['children'] = children
+    
+    return result
+
+def get_stationtree(request):
+    organs = Organization.objects.all()
+    
+    top_nodes = get_cached_trees(organs)
+
+    dicts = []
+    for n in top_nodes:
+        dicts.append(recursive_node_to_dict(n,'station'))
+
+    
+    # print json.dumps(dicts, indent=4)
+
+    
+    
+    return JsonResponse({'trees':dicts})
+
+
+def get_dmatree(request):
+    # page_name = request.GET.get('page_name') or ''
+    '''只获取分区结构，不获取站点信息'''
+    organs = Organization.objects.all()
+    
+    top_nodes = get_cached_trees(organs)
+
+    dicts = []
+    for n in top_nodes:
+        dicts.append(recursive_node_to_dict(n,''))
+
+    virvo_tree = [{'name':'威尔沃','open':'true','children':dicts}]
+    return JsonResponse({'trees':virvo_tree})
+    
+    # return JsonResponse({'trees':dicts})
+
+def gettree(request):
+    page_name = request.GET.get('page_name') or ''
+    print(page_name)
+    organs = Organization.objects.all()
+    
+    top_nodes = get_cached_trees(organs)
+
+    dicts = []
+    for n in top_nodes:
+        dicts.append(recursive_node_to_dict(n,page_name))
+
+    
+    # print json.dumps(dicts, indent=4)
+
+    virvo_tree = [{'name':'威尔沃','open':'true','children':dicts}]
+    return JsonResponse({'trees':virvo_tree})
+    # return JsonResponse({'trees':dicts})
+
+def choicePermissionTree(request):
+
+    roleid = request.POST.get('roleId') or -1
+
+    if roleid < 0:
+        return HttpResponse(json.dumps(PERMISSION_TREE))
+
+    
+    instance = MyRoles.objects.get(id=roleid)
+    permissiontree = instance.permissionTree
+    ctree = PERMISSION_TREE[:]
+
+    print(permissiontree)
+    
+    if len(permissiontree) > 0:
+        ptree = json.loads(permissiontree)
+        
+
+        for pt in ptree:
+            nodeid = pt['id']
+            node_edit = '{}_edit'.format(nodeid)
+            p_edit = pt['edit']
+
+            node = [n for n in ctree if n['id']==nodeid][0]
+            if p_edit:
+                node['checked'] = 'true'
+                node_sub = [n for n in ctree if n['id']==node_edit][0]
+                node_sub['checked'] = 'true'
+            else:
+                node['checked'] = 'true'
+            
+                
+
+
     
 
     # return JsonResponse(dicts,safe=False)
@@ -827,23 +844,49 @@ class RolesCreateMangerView(CreateView):
     def dispatch(self, *args, **kwargs):
         return super(RolesCreateMangerView, self).dispatch(*args, **kwargs)
 
-    
+    def form_valid(self, form):
+        """
+        If the form is valid, redirect to the supplied URL.
+        """
+        print('role create here?:',self.request.POST)
+        # print(form)
+        # do something
+        permissiontree = form.cleaned_data.get('permissionTree')
+        ptree = json.loads(permissiontree)
+        instance = form.save()
+        # old_permissions = instance.permissions.all()
+        # instance.permissions.clear()
 
-    def post(self,request,*args,**kwargs):
-        print('do you been here 123?')
-        print (request.POST)
-        print(kwargs)
+        for pt in ptree:
+            pname = pt['id']
+            p_edit = pt['edit']
+            perms = Permission.objects.get(codename=pname)
+            
+            if p_edit:
+                node_edit = '{}_edit'.format(pname)
+                perms_edit = Permission.objects.get(codename=node_edit)
+                instance.permissions.add(perms)
+                instance.permissions.add(perms_edit)
+                print pname,p_edit,perms,perms_edit
 
-        form = self.get_form()
-        instance = form.save(commit=False)
-        print(form.cleaned_data['permissionTree'])
+
+        return super(RolesCreateMangerView,self).form_valid(form)
+
+    # def post(self,request,*args,**kwargs):
+    #     print('do you been here 123?')
+    #     print (request.POST)
+    #     print(kwargs)
+
+    #     form = self.get_form()
+    #     instance = form.save(commit=False)
+    #     print(form.cleaned_data['permissionTree'])
         
-        form.save()
+    #     form.save()
             
         
 
-        # return super(AssignRoleView,self).render_to_response(context)
-        return redirect(reverse_lazy('dma:roles_manager'))
+    #     # return super(AssignRoleView,self).render_to_response(context)
+    #     return redirect(reverse_lazy('dma:roles_manager'))
 
 
 
@@ -880,8 +923,11 @@ class RolesUpdateManagerView(UpdateView):
             perms = Permission.objects.get(codename=pname)
             
             if p_edit:
+                node_edit = '{}_edit'.format(pname)
+                perms_edit = Permission.objects.get(codename=node_edit)
                 instance.permissions.add(perms)
-                print pname,p_edit,perms
+                instance.permissions.add(perms_edit)
+                print pname,p_edit,perms,perms_edit
 
 
         return super(RolesUpdateManagerView,self).form_valid(form)

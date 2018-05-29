@@ -74,29 +74,38 @@
                     var obj = {};
                     if (checkNodes[i].type == "premissionEdit") { // 可写 
                         editlist.push(checkNodes[i].pId); 
-                    }else{
+                        console.log(checkNodes[i].id,checkNodes[i].name);
+                    }
+                    else{
                         obj.id = checkNodes[i].id;
                         obj.edit = false;
                         list.push(obj);
+                        console.log(checkNodes[i].id,checkNodes[i].name);
                     }
+                    
                 }
             }
-            // 重组可写的权限 
+            console.log('editlist:',editlist);
+            console.log('list:',list);
+            //重组可写的权限 
             if (list.length > 0 && editlist.length >0) {
                 for (var i = 0; i < list.length; i++) {
                     for (var j =0; j< editlist.length; j++) {
                         if (list[i].id == editlist[j]) {
                             list[i].edit = true;
+                            // console.log(checkNodes[i].name);
                         }
                     }
                 }
             }
+            console.log('list after:',list);
             $("#permissionTree").val(JSON.stringify(list));
+            console.log(JSON.stringify(list));
             $("#role_update_form").ajaxSubmit(function(data) {
                     if (data != null) {
                         //var result = $.parseJSON(data);
                         $("#commonSmWin").modal("hide");
-                        console.log(result);
+                        
                         // if (result.success) {
                         //     if (result.obj.flag == 1){
                         //         $("#commonSmWin").modal("hide");
