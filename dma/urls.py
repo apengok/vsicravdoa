@@ -20,6 +20,7 @@ urlpatterns = [
     url(r'gettree/$',views.gettree,name='gettree'),
 
     url(r'^role/choicePermissionTree/',views.choicePermissionTree,name='choicePermissionTree'),
+    url(r'^role/rolelist/',views.rolelist,name='rolelist'),
 
     url(r'getchartd/$',views.getchartd,name='getchartd'),
 

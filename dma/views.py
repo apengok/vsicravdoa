@@ -285,6 +285,24 @@ def choicePermissionTree(request):
     # return JsonResponse(dicts,safe=False)
     return HttpResponse(json.dumps(ctree))
 
+from django.core import serializers
+
+def rolelist(request):
+
+    draw = int(request.GET.get('draw', None)[0])
+    length = int(request.GET.get('length', None)[0])
+    start = int(request.GET.get('start', None)[0])
+    search_value = request.GET.get('search[value]', None)[0]
+    order_column = request.GET.get('order[0][column]', None)[0]
+    order = request.GET.get('order[0][dir]', None)[0]
+
+    print('get rolelist:',draw,length,start,search_value,order_column,order)
+    rolel = MyRoles.objects.all()
+
+    json = serializers.serialize('json', rolel)
+    output = [{"draw":draw,"recordsTotal":rolel.count(),"data":json}]
+    return HttpResponse(output)
+
 def getchartd(request):
     data = [random.randint(2,13), 20, 6, 10, 20, 30]
 
@@ -867,7 +885,6 @@ class RolesCreateMangerView(CreateView):
                 perms_edit = Permission.objects.get(codename=node_edit)
                 instance.permissions.add(perms)
                 instance.permissions.add(perms_edit)
-                print pname,p_edit,perms,perms_edit
 
 
         return super(RolesCreateMangerView,self).form_valid(form)
@@ -927,8 +944,7 @@ class RolesUpdateManagerView(UpdateView):
                 perms_edit = Permission.objects.get(codename=node_edit)
                 instance.permissions.add(perms)
                 instance.permissions.add(perms_edit)
-                print pname,p_edit,perms,perms_edit
-
+                
 
         return super(RolesUpdateManagerView,self).form_valid(form)
         
