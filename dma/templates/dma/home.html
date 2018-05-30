@@ -71,8 +71,10 @@
 
         
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
-        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
-
+        <!-- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script> -->
+        <script src="{% static 'virvo/resources/js/toastr.min.js' %}"></script>
+        <script src="{% static 'virvo/resources/js/layui/layer.js' %}"></script>
+        <script src="{% static 'virvo/wro/common-footer.js' %}"></script>
 
     {% block stylesheet %}
         <style type="text/css">

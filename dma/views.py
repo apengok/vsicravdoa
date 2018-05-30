@@ -292,16 +292,26 @@ def rolelist(request):
     draw = int(request.GET.get('draw', None)[0])
     length = int(request.GET.get('length', None)[0])
     start = int(request.GET.get('start', None)[0])
-    search_value = request.GET.get('search[value]', None)[0]
-    order_column = request.GET.get('order[0][column]', None)[0]
-    order = request.GET.get('order[0][dir]', None)[0]
+    search_value = request.GET.get('search[value]', None)
+    # order_column = request.GET.get('order[0][column]', None)[0]
+    # order = request.GET.get('order[0][dir]', None)[0]
 
-    print('get rolelist:',draw,length,start,search_value,order_column,order)
+    print('get rolelist:',draw,length,start,search_value)
     rolel = MyRoles.objects.all()
+    data = []
+    for r in rolel:
+        data.append({'id':r.pk,'name':r.name,'notes':r.notes})
+    # json = serializers.serialize('json', rolel)
+    output = [{"draw":draw,"recordsTotal":rolel.count(),"length":length,"start":start,"records":data}]
 
-    json = serializers.serialize('json', rolel)
-    output = [{"draw":draw,"recordsTotal":rolel.count(),"data":json}]
-    return HttpResponse(output)
+    result = dict()
+    result['data'] = data
+    result['draw'] = draw
+    result['recordsTotal'] = rolel.count()
+    # result['recordsFiltered'] = music['count']
+    print result
+    return HttpResponse(json.dumps(result))
+    # return JsonResponse(output,safe=False)
 
 def getchartd(request):
     data = [random.randint(2,13), 20, 6, 10, 20, 30]

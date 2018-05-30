@@ -21645,39 +21645,40 @@ function checkBrands(id){
         	$(this).trigger("focus");        	
         })
 })(jQuery); 
-$(function(){	
-		var userGroupId=$("#userGroupId").val();
-		var data={"uuid":userGroupId};
-		var url="/clbs/m/intercomplatform/personalized/find";
-     	json_ajax("POST", url, "json", false,data,function(data){
-     		if(data.success==true){
-     			var list =data.obj.list;
-     			var topTitleMsg=list.topTitle;
-     			$("#personalizedTitle").html(topTitleMsg);
+
+// $(function(){	
+// 		var userGroupId=$("#userGroupId").val();
+// 		var data={"uuid":userGroupId};
+// 		var url="/clbs/m/intercomplatform/personalized/find";
+//      	json_ajax("POST", url, "json", false,data,function(data){
+//      		if(data.success==true){
+//      			var list =data.obj.list;
+//      			var topTitleMsg=list.topTitle;
+//      			$("#personalizedTitle").html(topTitleMsg);
      			
-     			var copyright=list.copyright;
-				var websiteName=list.websiteName;
-				var recordNumber=list.recordNumber;
-				$("#copyRight").html(copyright);
-				$("#website").html(websiteName);
-				$("#website").attr("href","http://"+websiteName);
-				$("#record").html(recordNumber);
-     			var homeLogo="/clbs/resources/img/logo/"+list.homeLogo;
-     			$(".brand").attr("style","background:url("+homeLogo+") no-repeat 0px 0px !important;");
-     			var webIco=list.webIco;
-     			$("#icoLink").attr("href","/clbs/resources/img/logo/"+webIco+"");
-     		}
-     	});  
-     	$(".panel-heading").bind("click",function(){
-             	var id=$(this).context.id;
-            	if($("#"+id+"-body").is(":hidden")){
-            		$("#"+ id + "-body").slideDown();
-             		//$("#"+id+"-body").css("display","block");
-             		$("#"+id+"-chevron").removeClass("chevron-up").addClass("chevron-down");
-             	}else{
-             		$("#"+ id + "-body").slideUp();
-               		//$("#"+id+"-body").css("display","none");
-               		$("#"+id+"-chevron").removeClass("chevron-down").addClass("chevron-up");
-               	}
-     	});
-});
+//      			var copyright=list.copyright;
+// 				var websiteName=list.websiteName;
+// 				var recordNumber=list.recordNumber;
+// 				$("#copyRight").html(copyright);
+// 				$("#website").html(websiteName);
+// 				$("#website").attr("href","http://"+websiteName);
+// 				$("#record").html(recordNumber);
+//      			var homeLogo="/clbs/resources/img/logo/"+list.homeLogo;
+//      			$(".brand").attr("style","background:url("+homeLogo+") no-repeat 0px 0px !important;");
+//      			var webIco=list.webIco;
+//      			$("#icoLink").attr("href","/clbs/resources/img/logo/"+webIco+"");
+//      		}
+//      	});  
+//      	$(".panel-heading").bind("click",function(){
+//              	var id=$(this).context.id;
+//             	if($("#"+id+"-body").is(":hidden")){
+//             		$("#"+ id + "-body").slideDown();
+//              		//$("#"+id+"-body").css("display","block");
+//              		$("#"+id+"-chevron").removeClass("chevron-up").addClass("chevron-down");
+//              	}else{
+//              		$("#"+ id + "-body").slideUp();
+//                		//$("#"+id+"-body").css("display","none");
+//                		$("#"+id+"-chevron").removeClass("chevron-down").addClass("chevron-up");
+//                	}
+//      	});
+// });

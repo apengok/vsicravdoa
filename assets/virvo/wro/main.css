@@ -42,30 +42,30 @@ footer .defaultFootBg-left{width:100%;}
 #videoCameraParameters,#baseStationParameters,.timeline-item.left:before,#dataTableBoxlist2,#dataTableBoxlist3,
 #dataTableBoxlist4,#dataTableBoxlist5,.ToolPanel .layDateBox1,.dd-collapsed .dd-list{display:none}
 .modal-body-per{position: relative;padding: 20px;}
-.info-isCompany{background-image:url("/clbs/resources/js/zTree/css/img/zTreeStandard.svg");background-position: -110px 0;height:16px;width:16px;display: inline-block;vertical-align: sub;}
-.info-isGroup{background-image:url("/clbs/resources/js/zTree/css/img/group.svg") ;background-repeat:no-repeat;background-position:2px 1px;height:16px;width:16px;display: inline-block;vertical-align: text-bottom;}
+.info-isCompany{background-image:url("/static/virvo/resources/js/zTree/css/img/zTreeStandard.svg");background-position: -110px 0;height:16px;width:16px;display: inline-block;vertical-align: sub;}
+.info-isGroup{background-image:url("/static/virvo/resources/js/zTree/css/img/group.svg") ;background-repeat:no-repeat;background-position:2px 1px;height:16px;width:16px;display: inline-block;vertical-align: text-bottom;}
 .modal-body-overflow{overflow-y:auto;overflow-x:hidden;}
 .main-content-wrapper-white{background-color:#fff !important;}
 .fence-enterprise-select{position: absolute;top: 0px;right: 16px;width: 34px;height: 35px;text-align: center;line-height: 35px;}
 .ioStateShow{height:36px;line-height:36px;}
-.ioStateInfo{background:url(/clbs/resources/img/ioState.svg) no-repeat;width:117px;height:30px;background-position:0px -64px;display: inline-block;vertical-align: middle;}/* 默认 无 */
-.iostateinfoOn{background:url(/clbs/resources/img/ioState.svg) no-repeat;width:117px;height:30px;background-position:0px -32px;display: inline-block;vertical-align: middle;}/* 开 */
-.iostateinfoOff{background:url(/clbs/resources/img/ioState.svg) no-repeat;width:117px;height:30px;background-position:0px 0px;display: inline-block;vertical-align: middle;}/* 关 */
-.OpenandclosOn{background:url(/clbs/resources/img/Openandclos.svg) no-repeat;width:117px;height:30px;background-position:0 0;display: inline-block;vertical-align: middle;}
-.OpenandclosOff{background:url(/clbs/resources/img/Openandclos.svg) no-repeat;width:117px;height:30px;background-position:0px -32px;display: inline-block;vertical-align: middle;}
+.ioStateInfo{background:url(/static/virvo/resources/img/ioState.svg) no-repeat;width:117px;height:30px;background-position:0px -64px;display: inline-block;vertical-align: middle;}/* 默认 无 */
+.iostateinfoOn{background:url(/static/virvo/resources/img/ioState.svg) no-repeat;width:117px;height:30px;background-position:0px -32px;display: inline-block;vertical-align: middle;}/* 开 */
+.iostateinfoOff{background:url(/static/virvo/resources/img/ioState.svg) no-repeat;width:117px;height:30px;background-position:0px 0px;display: inline-block;vertical-align: middle;}/* 关 */
+.OpenandclosOn{background:url(/static/virvo/resources/img/Openandclos.svg) no-repeat;width:117px;height:30px;background-position:0 0;display: inline-block;vertical-align: middle;}
+.OpenandclosOff{background:url(/static/virvo/resources/img/Openandclos.svg) no-repeat;width:117px;height:30px;background-position:0px -32px;display: inline-block;vertical-align: middle;}
 #vehicleIcoShow .container-area{padding:0px 10px 0px 10px}
 #vIcoManagement #vlength{padding:0px}
 #vIcoManagement #vIcoTypeNum{overflow-x:auto;height:365px;padding:0px;}
 #vIcoManagement .vicopadd{padding:0px;}
 #vIcoManagement #vIcoTypeNum .vIcoTypePages{width:100%;display:inline-block;}
-#vIcoManagement .vIcoContainer{width:96px;height:96px;float:left;background:url(/clbs/resources/img/vico/vBorder.png) no-repeat;margin:10px 10px 0px 0px;text-align:center;}
-#vIcoManagement .vIcoCChecked{background:url(/clbs/resources/img/vico/vClickCheck.png) no-repeat !important;}
-#vIcoManagement .vIcoContainer:hover{background:url(/clbs/resources/img/vico/vBorderHover.png) no-repeat;}
+#vIcoManagement .vIcoContainer{width:96px;height:96px;float:left;background:url(/static/virvo/resources/img/vico/vBorder.png) no-repeat;margin:10px 10px 0px 0px;text-align:center;}
+#vIcoManagement .vIcoCChecked{background:url(/static/virvo/resources/img/vico/vClickCheck.png) no-repeat !important;}
+#vIcoManagement .vIcoContainer:hover{background:url(/static/virvo/resources/img/vico/vBorderHover.png) no-repeat;}
 #vIcoManagement .vIcoContainer .vico{width:96px;height:96px;display: table-cell;vertical-align: middle;text-align: center;}
 #vIcoManagement .vIcoContainer .vicoDel{position:relative;right: -30px;top: -30px;display:none;}
 .vIcoPages{margin:26px 0px 0px 0px;}
 .inpVicoPhoto{width:96px;height:96px;position:relative;margin: 10px 0px 10px 0px;float: left;}
-.thisVIcoInfo{width:96px;height:96px;float:left;background:url(/clbs/resources/img/vico/vIcoDefault.png) no-repeat;margin:10px 10px 0px 10px;text-align:center;}
+.thisVIcoInfo{width:96px;height:96px;float:left;background:url(/static/virvo/resources/img/vico/vIcoDefault.png) no-repeat;margin:10px 10px 0px 10px;text-align:center;}
 .thisVIcoInfo .vico{width: 96px;height: 96px;display: table-cell;vertical-align: middle;text-align: center;}  
 .inpVicoPhoto input[type=file]{height: 96px;width: 96px;position: absolute;top: 0px;left: 0;z-index: 9;opacity:0;filter:alpha(opacity=0);}
 .warningTypeArea{max-height:100px;overflow:auto}
@@ -77,14 +77,14 @@ footer .defaultFootBg-left{width:100%;}
 .amap-menu .amap-menu-outer .menu-icon.menu-icon-from{background-position:-95px -39px}
 .amap-menu .amap-menu-outer .menu-icon.menu-icon-via{background-position:-126px -39px}
 .amap-menu .amap-menu-outer .menu-icon.menu-icon-to{background-position:-158px -39px}
-.amap-menu .amap-menu-outer .menu-icon{background:url(/clbs/resources/img/icon_dir.png) no-repeat;background-size:281px 219px;display:inline-block;width:22px;height:22px;vertical-align:middle;margin-top:-4px}
-.icon-clearmap{background:url(/clbs/resources/img/clear.svg) no-repeat;width:22px;height:22px;background-size:19px 19px;display:inline-block;vertical-align:middle}
+.amap-menu .amap-menu-outer .menu-icon{background:url(/static/virvo/resources/img/icon_dir.png) no-repeat;background-size:281px 219px;display:inline-block;width:22px;height:22px;vertical-align:middle;margin-top:-4px}
+.icon-clearmap{background:url(/static/virvo/resources/img/clear.svg) no-repeat;width:22px;height:22px;background-size:19px 19px;display:inline-block;vertical-align:middle}
 .amap-menu-outer li:last-child{border-top:1px solid #ccc;margin-top:5px}
 .realTimeCanArea{border-bottom-right-radius: 8px;box-shadow: 1px 1px 3px #ccc;display:none;background-color:#fff;width:355px;z-index: 1;position: relative;top:338px;padding: 20px 20px 5px 20px;border:1px solid #6dcff6;-webkit-transition: all .3s ease-in-out;-moz-transition: all .3s ease-in-out;-o-transition: all .3s ease-in-out;transition: all .3s ease-in-out;}
 .rtcaHidden{margin-left: -357px;}
 .areaTool{box-shadow: 1px 1px 3px #ccc;position: absolute;right: -44px;top: -1px;background-color: #6dcff6;color:#fff;padding:20px 15px 20px 15px;border-top-right-radius: 8px;border-bottom-right-radius: 8px;}
 .areaTool .fa-search{position: relative;top: -25px;left: -3px;}
-.areaTool .fa-search::before{content:"";position:absolute;display:inline-block;background-image:url(/clbs/resources/img/tcSearch.svg) !important;width:20px;height:20px;background-size: 20px 20px;}
+.areaTool .fa-search::before{content:"";position:absolute;display:inline-block;background-image:url(/static/virvo/resources/img/tcSearch.svg) !important;width:20px;height:20px;background-size: 20px 20px;}
 .areaTool span{position: relative;top: 10px;}
 #administrativeArea .modal-dialog, #drivenRoute .modal-dialog{margin: 90px 325px;}
 #showAlarmPoint,#showStopPoint{margin: 10px 0px 0px 20px;display:none;}
@@ -97,10 +97,10 @@ footer .defaultFootBg-left{width:100%;}
 /*  修改定制列下拉框位置*/
 .keep-open.btn-group.open>ul{margin-top:-2px!important;}
 /*人或车切换图片*/
-.selectCar{background:url(/clbs/resources/img/Car.svg) no-repeat;width:40px;height:40px;background-size: 40px 40px;}
-.selectCar.activeIcon{background:url(/clbs/resources/img/CCar.svg) no-repeat;width:40px;height:40px;background-size: 40px 40px;}
-.selectPeople{background:url(/clbs/resources/img/People.svg) no-repeat;width:40px;height:40px;background-size: 40px 40px;}
-.selectPeople.activeIcon{background:url(/clbs/resources/img/CPeople.svg) no-repeat;width:40px;height:40px;background-size: 40px 40px;}
+.selectCar{background:url(/static/virvo/resources/img/Car.svg) no-repeat;width:40px;height:40px;background-size: 40px 40px;}
+.selectCar.activeIcon{background:url(/static/virvo/resources/img/CCar.svg) no-repeat;width:40px;height:40px;background-size: 40px 40px;}
+.selectPeople{background:url(/static/virvo/resources/img/People.svg) no-repeat;width:40px;height:40px;background-size: 40px 40px;}
+.selectPeople.activeIcon{background:url(/static/virvo/resources/img/CPeople.svg) no-repeat;width:40px;height:40px;background-size: 40px 40px;}
 /*人或车切换图片*/
 #chooseCar{position: absolute;filter:alpha(opacity=0);-moz-opacity:0;-khtml-opacity:0;opacity: 0;}
 #choosePeople{position: absolute;filter:alpha(opacity=0);-moz-opacity:0;-khtml-opacity:0;opacity: 0;}
@@ -135,7 +135,7 @@ input::-webkit-contacts-auto-fill-button {
 #dropdownMenu809Param>li>a{color:#a1a7a9!important;text-align:left;padding: 3px 5px}
 #dropdownMenu809Param>li>a:hover{background-color:#a1a7a9;color:#fff!important}
 .btn-oc-width{width:100%}
-.fa-more::before{content:"";background-image:url(/clbs/resources/img/fa-more.svg);width:15px;height:15px;display:block;position:absolute;top:8px;left:8px;margin-right:13px}
+.fa-more::before{content:"";background-image:url(/static/virvo/resources/img/fa-more.svg);width:15px;height:15px;display:block;position:absolute;top:8px;left:8px;margin-right:13px}
 .btn-setting-width{width:69.45px}
 #customizeColumns{border-radius:3px}
 .report-para-footer,.report-para-footer-control,.report-para-footer-control-1{border:none;margin:0!important;display:none}
@@ -151,10 +151,10 @@ input::-webkit-contacts-auto-fill-button {
 .original-handle{ padding: 4px 8px !important; background: #f7f7f9 !important; color: #8a8686 !important; }
 .original-handle:hover{ background: #6dcff6 !important; color: #ffffff !important;  }
 .carNameContent{width:76px;height:22px;color:#000;background:#fff;text-align:center;line-height:22px;border-radius:2px;border:1px solid #000}
-.carNameShowRD{background:url(/clbs/resources/img/carNameShowRD.svg) no-repeat;width:90px;height:38px;line-height:38px;text-align:center;color:#fff;background-size:90px 38px;font-size:12px!important}
-.carNameShowRU{background:url(/clbs/resources/img/carNameShowRU.svg) no-repeat;width:90px;height:38px;line-height:38px;text-align:center;color:#fff;background-size:90px 38px;font-size:12px!important}
-.carNameShowLU{background:url(/clbs/resources/img/carNameShowLU.svg) no-repeat;width:90px;height:38px;line-height:38px;text-align:center;color:#fff;background-size:90px 38px;font-size:12px!important}
-.carNameShowLD{background:url(/clbs/resources/img/carNameShowLD.svg) no-repeat;width:90px;height:38px;line-height:38px;text-align:center;color:#fff;background-size:90px 38px;font-size:12px!important}
+.carNameShowRD{background:url(/static/virvo/resources/img/carNameShowRD.svg) no-repeat;width:90px;height:38px;line-height:38px;text-align:center;color:#fff;background-size:90px 38px;font-size:12px!important}
+.carNameShowRU{background:url(/static/virvo/resources/img/carNameShowRU.svg) no-repeat;width:90px;height:38px;line-height:38px;text-align:center;color:#fff;background-size:90px 38px;font-size:12px!important}
+.carNameShowLU{background:url(/static/virvo/resources/img/carNameShowLU.svg) no-repeat;width:90px;height:38px;line-height:38px;text-align:center;color:#fff;background-size:90px 38px;font-size:12px!important}
+.carNameShowLD{background:url(/static/virvo/resources/img/carNameShowLD.svg) no-repeat;width:90px;height:38px;line-height:38px;text-align:center;color:#fff;background-size:90px 38px;font-size:12px!important}
 .carStateStop{display:inline-block;width:10px;height:10px;border-radius:50%;background-color:#c80002;border:1px solid #fba7a7;}
 .carStateRun{display:inline-block;width:10px;height:10px;border-radius:50%;background-color:#78af3a;border:1px solid #b9fd6f;}
 .carStateAlarm{display:inline-block;width:10px;height:10px;border-radius:50%;background-color:#ffab2d;border:1px solid #fedba7;}
@@ -168,7 +168,7 @@ input::-webkit-contacts-auto-fill-button {
 #recentlyC{margin-top:1px;max-height:200px;background-color:#fff;width:165px;overflow:auto}
 .carStateShow{color:#464644;height:25px;line-height:25px;margin:0;text-align:left;padding-left:20px}
 .firstState{background-color:#6dcff6;color:#fff;height:30px;line-height:30px;margin:0;width:150px;display:none;text-align:center}
-.sectionPointIcon{background:url(/clbs/resources/img/sectionMarker.png);background-repeat:no-repeat;width:19px;height:25px;color:#fff;font-weight:800;text-align:center}
+.sectionPointIcon{background:url(/static/virvo/resources/img/sectionMarker.png);background-repeat:no-repeat;width:19px;height:25px;color:#fff;font-weight:800;text-align:center}
 #panDefLeft .panel-heading{padding:10px 15px 0 15px;border-bottom:none}
 #areaSearchCar .form-horizontal{height:500px;overflow:auto}
 .fenceTc-realtime{text-align:center}
@@ -180,18 +180,18 @@ input::-webkit-contacts-auto-fill-button {
 /* wjk */
 .toolOperateClick.tool-phoneCall{margin-right:-776px}
 
-.toolOperateClick .map-magnify::before{content:"";position:relative;display:inline-block;top:4px;left:0;width:19px;height:19px;background-image:url(/clbs/resources/img/magnify.svg)!important;background-size:19px 19px}
-.toolOperateClick .map-magnify.active::before{content:"";position:relative;display:inline-block;top:4px;left:0;width:19px;height:19px;background-image:url(/clbs/resources/img/magnifyActive.svg)!important;background-size:19px 19px}
-.toolOperateClick .map-shrink::before{content:"";position:relative;display:inline-block;top:4px;left:0;width:19px;height:19px;background-image:url(/clbs/resources/img/shrink.svg)!important;background-size:19px 19px}
-.toolOperateClick .map-shrink.active::before{content:"";position:relative;display:inline-block;top:4px;left:0;width:19px;height:19px;background-image:url(/clbs/resources/img/shrinkActive.svg)!important;background-size:19px 19px}
-.toolOperateClick .map-count::before{content:"";position:relative;display:inline-block;top:4px;left:0;width:19px;height:19px;background-image:url(/clbs/resources/img/count.svg)!important;background-size:19px 19px}
-.toolOperateClick .map-count.active::before{content:"";position:relative;display:inline-block;top:4px;left:0;width:19px;height:19px;background-image:url(/clbs/resources/img/countActive.svg)!important;background-size:19px 19px}
-.toolOperateClick .map-query::before{content:"";position:relative;display:inline-block;top:4px;left:0;width:19px;height:19px;background-image:url(/clbs/resources/img/query.svg)!important;background-size:19px 19px}
-.toolOperateClick .map-query.active::before{content:"";position:relative;display:inline-block;top:4px;left:0;width:19px;height:19px;background-image:url(/clbs/resources/img/queryActive.svg)!important;background-size:19px 19px}
-.toolOperateClick .map-video::before{content:"";position:relative;display:inline-block;top:6px;left:0;width:22px;height:22px;background-image:url(/clbs/resources/img/realTimeVideo.svg)!important;background-size:22px 22px}
-.toolOperateClick .map-video.active::before{content:"";position:relative;display:inline-block;top:6px;left:0;width:22px;height:22px;background-image:url(/clbs/resources/img/realTimeVideoActive.svg)!important;background-size:22px 22px}
-.toolOperateClick .map-displaySetting::before{content:"";position:relative;display:inline-block;top:4px;left:0;width:19px;height:19px;background-image:url(/clbs/resources/img/displaySett.svg)!important;background-size:19px 19px}
-.toolOperateClick .map-drop-sett::before{content:"";position:relative;display:inline-block;top:4px;left:0;width:19px;height:19px;background-image:url(/clbs/resources/img/map-drop-sett.svg)!important;background-size:19px 19px}
+.toolOperateClick .map-magnify::before{content:"";position:relative;display:inline-block;top:4px;left:0;width:19px;height:19px;background-image:url(/static/virvo/resources/img/magnify.svg)!important;background-size:19px 19px}
+.toolOperateClick .map-magnify.active::before{content:"";position:relative;display:inline-block;top:4px;left:0;width:19px;height:19px;background-image:url(/static/virvo/resources/img/magnifyActive.svg)!important;background-size:19px 19px}
+.toolOperateClick .map-shrink::before{content:"";position:relative;display:inline-block;top:4px;left:0;width:19px;height:19px;background-image:url(/static/virvo/resources/img/shrink.svg)!important;background-size:19px 19px}
+.toolOperateClick .map-shrink.active::before{content:"";position:relative;display:inline-block;top:4px;left:0;width:19px;height:19px;background-image:url(/static/virvo/resources/img/shrinkActive.svg)!important;background-size:19px 19px}
+.toolOperateClick .map-count::before{content:"";position:relative;display:inline-block;top:4px;left:0;width:19px;height:19px;background-image:url(/static/virvo/resources/img/count.svg)!important;background-size:19px 19px}
+.toolOperateClick .map-count.active::before{content:"";position:relative;display:inline-block;top:4px;left:0;width:19px;height:19px;background-image:url(/static/virvo/resources/img/countActive.svg)!important;background-size:19px 19px}
+.toolOperateClick .map-query::before{content:"";position:relative;display:inline-block;top:4px;left:0;width:19px;height:19px;background-image:url(/static/virvo/resources/img/query.svg)!important;background-size:19px 19px}
+.toolOperateClick .map-query.active::before{content:"";position:relative;display:inline-block;top:4px;left:0;width:19px;height:19px;background-image:url(/static/virvo/resources/img/queryActive.svg)!important;background-size:19px 19px}
+.toolOperateClick .map-video::before{content:"";position:relative;display:inline-block;top:6px;left:0;width:22px;height:22px;background-image:url(/static/virvo/resources/img/realTimeVideo.svg)!important;background-size:22px 22px}
+.toolOperateClick .map-video.active::before{content:"";position:relative;display:inline-block;top:6px;left:0;width:22px;height:22px;background-image:url(/static/virvo/resources/img/realTimeVideoActive.svg)!important;background-size:22px 22px}
+.toolOperateClick .map-displaySetting::before{content:"";position:relative;display:inline-block;top:4px;left:0;width:19px;height:19px;background-image:url(/static/virvo/resources/img/displaySett.svg)!important;background-size:19px 19px}
+.toolOperateClick .map-drop-sett::before{content:"";position:relative;display:inline-block;top:4px;left:0;width:19px;height:19px;background-image:url(/static/virvo/resources/img/map-drop-sett.svg)!important;background-size:19px 19px}
 .disSetMenu{display:none;z-index: 99999999999;position: absolute;top: 50px;right: 52px;width: 100px;background: #fff;border: 1px solid #c4c4c4;border-radius: 3px;}
 .mapDropSettingMenu{display:none;z-index: 99;position: absolute;top: 50px;right: 654px;width: 100px;background: #fff;border: 1px solid #c4c4c4;border-radius: 3px;}
 .disSetMenu p,.mapDropSettingMenu p{text-align:center;margin: 5px;}
@@ -234,10 +234,10 @@ to{transform:rotate(90deg)}}
 .carStateList li{display:inline-block;padding-right:15px}
 #objectForwarding .control-label{font-weight:700!important}
 .container-area{position:relative}
-.container-area i.left-btn{position:absolute;top:25px;left:-36px;width:104px;height:550px;background-image:url(/clbs/resources/img/left_icon_1.svg);background-repeat:no-repeat;background-position:35px center;display:inline-block;background-size: 65px 55px}
-.container-area i.left-btn:hover{background-image:url(/clbs/resources/img/hover_left_3.png);width:104px;height:550px;background-position:left center;background-size: 100%}
-.container-area i.right-btn{position:absolute;top:25px;right:-30px;width:104px;height:550px;background-image:url(/clbs/resources/img/right_icon_1.svg);background-repeat:no-repeat;background-position:5px center;display:inline-block;background-size: 65px 55px}
-.container-area i.right-btn:hover{background-image:url(/clbs/resources/img/hover_right_3.png);width:104px;height:550px;background-position:left center;background-size: 100%}
+.container-area i.left-btn{position:absolute;top:25px;left:-36px;width:104px;height:550px;background-image:url(/static/virvo/resources/img/left_icon_1.svg);background-repeat:no-repeat;background-position:35px center;display:inline-block;background-size: 65px 55px}
+.container-area i.left-btn:hover{background-image:url(/static/virvo/resources/img/hover_left_3.png);width:104px;height:550px;background-position:left center;background-size: 100%}
+.container-area i.right-btn{position:absolute;top:25px;right:-30px;width:104px;height:550px;background-image:url(/static/virvo/resources/img/right_icon_1.svg);background-repeat:no-repeat;background-position:5px center;display:inline-block;background-size: 65px 55px}
+.container-area i.right-btn:hover{background-image:url(/static/virvo/resources/img/hover_right_3.png);width:104px;height:550px;background-position:left center;background-size: 100%}
 .toopTip-btn-left{display:none;font-size:24px;width:200px;height:47px;text-align:right;line-height:47px;background-repeat:no-repeat;background-position:181px 11px}
 .toopTip-btn-left:hover{background:-webkit-linear-gradient(left,rgba(196,225,245,0),rgba(196,225,245,.6));background:-o-linear-gradient(left,rgba(196,225,245,0),rgba(196,225,245,.6));background:-moz-linear-gradient(left,rgba(196,225,245,0),rgba(196,225,245,.6));background:linear-gradient(left,rgba(196,225,245,0),rgba(196,225,245,.6))}
 .toopTip-btn-right:hover{background:-webkit-linear-gradient(right,rgba(196,225,245,0),rgba(196,225,245,.6));background:-o-linear-gradient(right,rgba(196,225,245,0),rgba(196,225,245,.6));background:-moz-linear-gradient(right,rgba(196,225,245,0),rgba(196,225,245,.6));background:linear-gradient(right,rgba(196,225,245,0),rgba(196,225,245,.6))}
@@ -245,7 +245,7 @@ to{transform:rotate(90deg)}}
 .container-area i.echart-left-btn,.container-area i.echart-right-btn{top:82px}
 .carName{position:absolute;margin:0 auto;text-align:center;width:100%;height:47px;line-height:47px;top:0;left:0}
 .carName>span{display:inline-block;width:98px;text-align:center;}
-.delIcon{background-image:url("/clbs/resources/img/delIcon1.svg") !important;position:absolute;width:16px;height:16px;z-index:999;top:10px;right: 19px;}
+.delIcon{background-image:url("/static/virvo/resources/img/delIcon1.svg") !important;position:absolute;width:16px;height:16px;z-index:999;top:10px;right: 19px;}
 .delType1{right:45px;top:10px}
 .delType2{right:66px;top:10px}
 .delType3{right:20px;top:10px}
@@ -254,9 +254,9 @@ to{transform:rotate(90deg)}}
 table.table-hover thead tr th{white-space:nowrap;text-align:center;font-size:15px;}
 table.table-hover tbody tr td{text-align:center;vertical-align:middle}
 table.table-hover tbody tr .dataTables_empty{text-align:left!important}
-.main-content-wrapper #main-content .fa-pencil::before{content:"";background-image:url(/clbs/resources/img/edit.svg);width:14px;height:14px;display:block;position:absolute;top:8px;left:8px;background-size: 14px 14px}
-.fa-sun-o::before{content:"";background-image:url(/clbs/resources/img/detail.svg);width:14px;height:14px;display:block;position:absolute;top:8px;left:8px;background-size: 14px 14px;}
-.fa-trash-o::before{content:"";background-image:url(/clbs/resources/img/delete.svg);width:14px;height:14px;display:block;position:absolute;top:8px;left:10px;background-size: 14px 14px}
+.main-content-wrapper #main-content .fa-pencil::before{content:"";background-image:url(/static/virvo/resources/img/edit.svg);width:14px;height:14px;display:block;position:absolute;top:8px;left:8px;background-size: 14px 14px}
+.fa-sun-o::before{content:"";background-image:url(/static/virvo/resources/img/detail.svg);width:14px;height:14px;display:block;position:absolute;top:8px;left:8px;background-size: 14px 14px;}
+.fa-trash-o::before{content:"";background-image:url(/static/virvo/resources/img/delete.svg);width:14px;height:14px;display:block;position:absolute;top:8px;left:10px;background-size: 14px 14px}
 .editBtn-info{position:relative;color:#fff;background-color:#6dcff6;padding-left:23px!important}
 .disableClick{background-color:#ccc;color:#444;position:relative;padding-left:23px!important}
 .editBtn-info:hover{color:#fff;background-color:#26a2e4}
@@ -264,23 +264,23 @@ table.table-hover tbody tr .dataTables_empty{text-align:left!important}
 .deleteButton{position:relative;padding-left:23px!important}
 .deleteButton:hover{background-color:#ababab;}
 .default-icon{padding-left:12px!important}
-.addIcon .glyphicon-plus::before{content:"";background-image:url(/clbs/resources/img/add.svg);width:15px;height:15px;display:block;position:absolute;top:-13px;left:-17px;background-size: 15px 15px}
-.glyphicon-eye-open::before{content:"";background-image:url(/clbs/resources/img/detail.svg);width:15px;height:15px;display:block;position:absolute;top:-13px;left:-16px;background-size: 15px 15px}
-.glyphiconPlus::before{content:"";background-image:url(/clbs/resources/img/addLg.svg);width:17px;height:17px;display:block;position:absolute;top:-15px;left:-15px}
-.deleteIcon .glyphicon-trash::before{content:"";background-image:url(/clbs/resources/img/deleteLg.svg);width:16px;height:20px;display:block;position:absolute;top:-16px;left:-15px}
-.fa-edit::before{content:"";background-image:url(/clbs/resources/img/distribution.svg);width:14px;height:14px;display:block;position:absolute;top:8px;left:8px;background-size: 14px 14px}
-.faEdit::before{content:"";background-image:url(/clbs/resources/img/impower.svg);width:14px;height:14px;display:block;position:absolute;top:8px;left:8px;background-size: 14px 14px}
-.fa-object::before{content:"";background-image:url(/clbs/resources/img/object.svg);width:14px;height:14px;display:block;position:absolute;top:8px;left:8px;background-size: 14px 14px}
-.fa-eye::before{content:"";background-image:url(/clbs/resources/img/detail.svg);width:14px;height:14px;display:block;position:absolute;top:8px;left:8px;background-size: 14px 14px}
+.addIcon .glyphicon-plus::before{content:"";background-image:url(/static/virvo/resources/img/add.svg);width:15px;height:15px;display:block;position:absolute;top:-13px;left:-17px;background-size: 15px 15px}
+.glyphicon-eye-open::before{content:"";background-image:url(/static/virvo/resources/img/detail.svg);width:15px;height:15px;display:block;position:absolute;top:-13px;left:-16px;background-size: 15px 15px}
+.glyphiconPlus::before{content:"";background-image:url(/static/virvo/resources/img/addLg.svg);width:17px;height:17px;display:block;position:absolute;top:-15px;left:-15px}
+.deleteIcon .glyphicon-trash::before{content:"";background-image:url(/static/virvo/resources/img/deleteLg.svg);width:16px;height:20px;display:block;position:absolute;top:-16px;left:-15px}
+.fa-edit::before{content:"";background-image:url(/static/virvo/resources/img/distribution.svg);width:14px;height:14px;display:block;position:absolute;top:8px;left:8px;background-size: 14px 14px}
+.faEdit::before{content:"";background-image:url(/static/virvo/resources/img/impower.svg);width:14px;height:14px;display:block;position:absolute;top:8px;left:8px;background-size: 14px 14px}
+.fa-object::before{content:"";background-image:url(/static/virvo/resources/img/object.svg);width:14px;height:14px;display:block;position:absolute;top:8px;left:8px;background-size: 14px 14px}
+.fa-eye::before{content:"";background-image:url(/static/virvo/resources/img/detail.svg);width:14px;height:14px;display:block;position:absolute;top:8px;left:8px;background-size: 14px 14px}
 .add-button-left,.add-button-right{width: 35px;height: 35px;margin-bottom: 5px;}
-.glyphicon-chevron-right::before{content:"";background-image:url(/clbs/resources/img/leftIcon.svg);width: 35px;height: 35px;display: block;background-size: 35px 35px}
-.glyphicon-chevron-left::before{content: "";background-image: url(/clbs/resources/img/rightIcon.svg);width: 35px;height: 35px;display: block;background-size: 35px 35px}
-.editBtn .glyphicon-circle-arrow-down::before{content:"";background-image:url(/clbs/resources/img/issue.svg);width:14px;height:14px;display:block;position:absolute;top:-13px;left:-16px;background-size: 14px 14px}
-.fa-issue::before{content:"";background-image:url(/clbs/resources/img/issue.svg);width:14px;height:14px;display:block;position:absolute;top:8px;left:8px;background-size:14px 14px}
-.fa-ban::before{content:"";background-image:url(/clbs/resources/img/ban.svg);width:14px;height:14px;display:block;position:absolute;top:8px;left:8px;background-size: 14px 14px}
-.fa-set::before{content:"";background-image:url(/clbs/resources/img/set.svg);width:14px;height:14px;display:block;position:absolute;top:8px;left:8px;background-size: 14px 14px}
-.glyphicon-search::before{content:"";background-image:url(/clbs/resources/img/search.svg);width:14px;height:14px;display:block;position:absolute;top:-13px;left:-14px;background-size: 14px 14px}
-.ToolPanellable .glyphicon-log-out::before,.alarmSearchToolPanel .glyphicon-log-out::before{content:"";background-image:url(/clbs/resources/img/export.svg);width:14px;height:14px;display:block;position:absolute;top:-13px;left:-14px;background-size: 14px 14px;}
+.glyphicon-chevron-right::before{content:"";background-image:url(/static/virvo/resources/img/leftIcon.svg);width: 35px;height: 35px;display: block;background-size: 35px 35px}
+.glyphicon-chevron-left::before{content: "";background-image: url(/static/virvo/resources/img/rightIcon.svg);width: 35px;height: 35px;display: block;background-size: 35px 35px}
+.editBtn .glyphicon-circle-arrow-down::before{content:"";background-image:url(/static/virvo/resources/img/issue.svg);width:14px;height:14px;display:block;position:absolute;top:-13px;left:-16px;background-size: 14px 14px}
+.fa-issue::before{content:"";background-image:url(/static/virvo/resources/img/issue.svg);width:14px;height:14px;display:block;position:absolute;top:8px;left:8px;background-size:14px 14px}
+.fa-ban::before{content:"";background-image:url(/static/virvo/resources/img/ban.svg);width:14px;height:14px;display:block;position:absolute;top:8px;left:8px;background-size: 14px 14px}
+.fa-set::before{content:"";background-image:url(/static/virvo/resources/img/set.svg);width:14px;height:14px;display:block;position:absolute;top:8px;left:8px;background-size: 14px 14px}
+.glyphicon-search::before{content:"";background-image:url(/static/virvo/resources/img/search.svg);width:14px;height:14px;display:block;position:absolute;top:-13px;left:-14px;background-size: 14px 14px}
+.ToolPanellable .glyphicon-log-out::before,.alarmSearchToolPanel .glyphicon-log-out::before{content:"";background-image:url(/static/virvo/resources/img/export.svg);width:14px;height:14px;display:block;position:absolute;top:-13px;left:-14px;background-size: 14px 14px;}
 .btn-white{background-color:#fafafa;border:1px solid #ccc!important;padding:7px 12px!important}
 .alarmSet{margin-top:7px;padding-left:0;padding-right:0}
 .alarmLeftPadding{padding-left:0}
@@ -316,7 +316,7 @@ input.inputStyleHide,select.inputStyleHide{border:none;background-color:#fff!imp
 input.inputStyleHide:focus,textarea.inputStyleHide,input.inpOrganizationDetails{box-shadow: none !important;-moz-box-shadow: none !important;-webkit-box-shadow: none !important;outline: none !important;}
 .start-input .error{color:#fff!important}
 .blockTitleList{margin-bottom:27px}
-.noChoseIcon{background:url(/clbs/resources/img/noChoseIcon.png) center center no-repeat;background-size:50px 50px}
+.noChoseIcon{background:url(/static/virvo/resources/img/noChoseIcon.png) center center no-repeat;background-size:50px 50px}
 .block{font-size:24px;font-weight:700;margin:2px;padding:2px;width:100%;height:129px;text-align:center;background-color:#f1f1f1;border-radius:5px;box-shadow:0 0 4px #f1f1f1}
 .innerShadowGrey span{text-shadow:1px 1px 2px #FFF,0 0 0 #000;line-height:129px;color:rgba(200,200,200,.5);letter-spacing:3px}
 .paddingLeft{padding-left:0}
@@ -327,7 +327,7 @@ input.inputStyleHide:focus,textarea.inputStyleHide,input.inpOrganizationDetails{
 .btn-image div{width:28px;height:28px}
 .btnAccording{background-position:0 0}
 .offlineIconArea span,.onlineDrivingArea span,.onlineNotPositioningArea span,.onlineParkingArea span,.speedLimitWarningArea span,.warningArea span{vertical-align:middle}
-#thetree .vehicleSkin_ico_docu, #thetree .peopleSkin_ico_docu, #vTreeList .vehicleSkin_ico_open, #vTreeList .vehicleSkin_ico_close, #vTreeList .peopleSkin_ico_close, #vTreeList .peopleSkin_ico_open, #vTreeList .icon-offline_ico_close, #vTreeList .icon-offline_ico_open{background-image: url(/clbs/resources/img/offlineIcon_ico.svg) !important;width:14px !important;height:12px !important;background-size: 12px 12px;background-position: bottom;margin-right:0px;vertical-align: middle}
+#thetree .vehicleSkin_ico_docu, #thetree .peopleSkin_ico_docu, #vTreeList .vehicleSkin_ico_open, #vTreeList .vehicleSkin_ico_close, #vTreeList .peopleSkin_ico_close, #vTreeList .peopleSkin_ico_open, #vTreeList .icon-offline_ico_close, #vTreeList .icon-offline_ico_open{background-image: url(/static/virvo/resources/img/offlineIcon_ico.svg) !important;width:14px !important;height:12px !important;background-size: 12px 12px;background-position: bottom;margin-right:0px;vertical-align: middle}
 #thetree .vehicleSkin_ico_docu+span, #thetree .peopleSkin_ico_docu+span, #vTreeList .vehicleSkin_ico_close+span, #vTreeList .vehicleSkin_ico_open+span{color:#b6b6b6}
 .onlyShowTop{background-position:0 -76px}
 .allShow{background-position:0 -114px}
@@ -339,21 +339,21 @@ input.inputStyleHide:focus,textarea.inputStyleHide,input.inpOrganizationDetails{
 .hiddenBottom-none{background-position:0 -228px}
 .hiddenAll-none{background-position:0 -304px}
 /*实时监控  车辆树 状态*/
-.offlineIcon_ico_docu{background-image: url(/clbs/resources/img/offlineIcon_ico.svg) !important;width:14px !important;height:12px !important;background-size: 12px 12px;}
-.onlineDriving_ico_docu{background-image: url(/clbs/resources/img/onlineDriving_ico.svg) !important;width:14px !important;height:12px !important;background-size: 12px 12px;}
-.onlineNotPositioning_ico_docu{background-image: url(/clbs/resources/img/onlineNotPositioning_ico.svg) !important;width:14px !important;height:12px !important;background-size: 12px 12px;}
-.warning_ico_docu{background-image: url(/clbs/resources/img/warning_ico.svg) !important;width:14px !important;height:14px !important;background-size: 12px 11px;}
-.onlineParking_ico_docu{background-image: url(/clbs/resources/img/onlineParking_ico.svg) !important;width:14px !important;height:12px !important;background-size: 12px 12px;}
-.speedLimitWarning_ico_docu{background-image: url(/clbs/resources/img/speedLimitWarning_ico.svg) !important;width:14px !important;height:12px !important;background-size: 12px 12px;}
+.offlineIcon_ico_docu{background-image: url(/static/virvo/resources/img/offlineIcon_ico.svg) !important;width:14px !important;height:12px !important;background-size: 12px 12px;}
+.onlineDriving_ico_docu{background-image: url(/static/virvo/resources/img/onlineDriving_ico.svg) !important;width:14px !important;height:12px !important;background-size: 12px 12px;}
+.onlineNotPositioning_ico_docu{background-image: url(/static/virvo/resources/img/onlineNotPositioning_ico.svg) !important;width:14px !important;height:12px !important;background-size: 12px 12px;}
+.warning_ico_docu{background-image: url(/static/virvo/resources/img/warning_ico.svg) !important;width:14px !important;height:14px !important;background-size: 12px 11px;}
+.onlineParking_ico_docu{background-image: url(/static/virvo/resources/img/onlineParking_ico.svg) !important;width:14px !important;height:12px !important;background-size: 12px 12px;}
+.speedLimitWarning_ico_docu{background-image: url(/static/virvo/resources/img/speedLimitWarning_ico.svg) !important;width:14px !important;height:12px !important;background-size: 12px 12px;}
 .heartBeatWarning_ico_docu{background-position:0px -110px}
 /*实时监控  底部  状态*/
-.offlineIcon_ico::before{content: "";background-image: url(/clbs/resources/img/offlineIcon_ico.svg);width: 12px;height: 12px;position: absolute;top: 4px;left: 3px;background-size: 12px 12px;}
-.onlineDriving_ico::before{content: "";background-image: url(/clbs/resources/img/onlineDriving_ico.svg);width: 12px;height: 12px;position: absolute;top: 4px;left: 3px;background-size: 12px 12px;}
-.onlineNotPositioning_ico::before{content: "";background-image: url(/clbs/resources/img/onlineNotPositioning_ico.svg);width: 12px;height: 12px;position: absolute;top: 4px;left: 3px;background-size: 12px 12px;}
-.heartbeat_ico::before{content: "";background-image: url(/clbs/resources/js/zTree/css/img/zTreeStandard.svg);width: 16px;height: 12px;position: absolute;top: 4px;left: 3px; background-position: -163px 40px}
-.warning_ico::before{content: "";background-image: url(/clbs/resources/img/warning_ico.svg);width: 16px;height: 12px;position: absolute;top: 4px;left: 3px;background-size: 16px 12px;}
-.onlineParking_ico::before{content: "";background-image: url(/clbs/resources/img/onlineParking_ico.svg);width: 11px;height: 11px;position: absolute;top: 4px;left: 3px;background-size: 11px 11px;}
-.speedLimitWarning_ico::before{content: "";background-image: url(/clbs/resources/img/speedLimitWarning_ico.svg);width: 13px;height: 13px;position: absolute;top: 4px;left: 3px;background-size: 13px 13px;}
+.offlineIcon_ico::before{content: "";background-image: url(/static/virvo/resources/img/offlineIcon_ico.svg);width: 12px;height: 12px;position: absolute;top: 4px;left: 3px;background-size: 12px 12px;}
+.onlineDriving_ico::before{content: "";background-image: url(/static/virvo/resources/img/onlineDriving_ico.svg);width: 12px;height: 12px;position: absolute;top: 4px;left: 3px;background-size: 12px 12px;}
+.onlineNotPositioning_ico::before{content: "";background-image: url(/static/virvo/resources/img/onlineNotPositioning_ico.svg);width: 12px;height: 12px;position: absolute;top: 4px;left: 3px;background-size: 12px 12px;}
+.heartbeat_ico::before{content: "";background-image: url(/static/virvo/resources/js/zTree/css/img/zTreeStandard.svg);width: 16px;height: 12px;position: absolute;top: 4px;left: 3px; background-position: -163px 40px}
+.warning_ico::before{content: "";background-image: url(/static/virvo/resources/img/warning_ico.svg);width: 16px;height: 12px;position: absolute;top: 4px;left: 3px;background-size: 16px 12px;}
+.onlineParking_ico::before{content: "";background-image: url(/static/virvo/resources/img/onlineParking_ico.svg);width: 11px;height: 11px;position: absolute;top: 4px;left: 3px;background-size: 11px 11px;}
+.speedLimitWarning_ico::before{content: "";background-image: url(/static/virvo/resources/img/speedLimitWarning_ico.svg);width: 13px;height: 13px;position: absolute;top: 4px;left: 3px;background-size: 13px 13px;}
 #promptMessage{height:200px}
 .original-title-list{padding-left: 30px;}
 .original-title-list li{display: inline-block; padding-right: 30px;}
@@ -381,20 +381,20 @@ img{max-width:100%}
 .fastCarUrl h2,.fenceUrl h2,.fenceUrl2 h2,.fenceUrl3 h2,.fenceUrl4 h2{margin-top:0;padding-bottom:24px;margin-bottom:15px;font-size:28px;padding-top:5px}
 .fenceUrl{background:#69c0ff;padding:0;box-shadow:0 0 4px #f1f1f1;border-radius:3px;margin-left:3px;}
 .fenceUrl:hover{background:#4db4ff}
-.fastCarUrl .IcocarBG{height:144px;background:url(/clbs/resources/img/fastCar.svg) center 20px no-repeat;background-size:120px 120px}
-.fenceUrl .IcoBG{height:144px;background:url(/clbs/resources/img/home/realtimewatch.svg) center 20px no-repeat;background-size:120px 120px}
+.fastCarUrl .IcocarBG{height:144px;background:url(/static/virvo/resources/img/fastCar.svg) center 20px no-repeat;background-size:120px 120px}
+.fenceUrl .IcoBG{height:144px;background:url(/static/virvo/resources/img/home/realtimewatch.svg) center 20px no-repeat;background-size:120px 120px}
 
 .fenceUrl2{background:#ba88f0;padding:0;box-shadow:0 0 4px #f1f1f1;border-radius:3px;margin-left:3px;}
 .fenceUrl2:hover{background:#ab70eb}
-.fenceUrl2 .IcoBG{height:144px;background:url(/clbs/resources/img/home/trackback.svg) center 20px no-repeat;background-size:120px 120px}
+.fenceUrl2 .IcoBG{height:144px;background:url(/static/virvo/resources/img/home/trackback.svg) center 20px no-repeat;background-size:120px 120px}
 
 .fenceUrl3{background:#95de64;padding:0;box-shadow:0 0 4px #f1f1f1;border-radius:3px;margin-left:3px;}
 .fenceUrl3:hover{background:#73d13d}
-.fenceUrl3 .IcoBG{height:144px;background:url(/clbs/resources/img/home/realtimevideo.svg) center 20px no-repeat;background-size:120px 120px}
+.fenceUrl3 .IcoBG{height:144px;background:url(/static/virvo/resources/img/home/realtimevideo.svg) center 20px no-repeat;background-size:120px 120px}
 
 .fenceUrl4{background:#faad14;padding:0;box-shadow:0 0 4px #f1f1f1;border-radius:3px;margin-left:3px;}
 .fenceUrl4:hover{background:#f79e31}
-.fenceUrl4 .IcoBG{height:144px;background:url(/clbs/resources/img/home/videoback.svg) center 20px no-repeat;background-size:120px 120px}
+.fenceUrl4 .IcoBG{height:144px;background:url(/static/virvo/resources/img/home/videoback.svg) center 20px no-repeat;background-size:120px 120px}
 
 
 #header{z-index:200;background:#fff;min-height:80px;-webkit-transition:all .3s ease-in-out;-moz-transition:all .3s ease-in-out;-o-transition:all .3s ease-in-out;transition:all .3s ease-in-out;margin-right:0}
@@ -637,7 +637,7 @@ a.btn-info:active,a.btn-info:hover{color:#fff;background-color:#5dade2}
 .btn-info+.dropdown-menu>li>a:focus,.btn-info+.dropdown-menu>li>a:hover{text-decoration:none;background-color:#2C81BA;color:#fff}
 .btn-warning+.dropdown-menu>li>a:focus,.btn-warning+.dropdown-menu>li>a:hover{text-decoration:none;background-color:#CDA70D;color:#fff}
 .btn-danger+.dropdown-menu>li>a:focus,.btn-danger+.dropdown-menu>li>a:hover{text-decoration:none;background-color:#c1392b;color:#fff}
-.breadcrumb{background:#fff url(/clbs/resources/img/Titlehome.svg) no-repeat 10px 10px;padding-left:40px;background-size: 15px 15px;}
+.breadcrumb{background:#fff url(/static/virvo/resources/img/Titlehome.svg) no-repeat 10px 10px;padding-left:40px;background-size: 15px 15px;}
 .breadcrumb>li a{font-size:14px;color:#5D5F63}
 .modal-footer .btn+.btn{margin:0 0 2px 0}
 .modal .modal-body.modal-scroll{max-height:300px;overflow-y:auto}
@@ -764,7 +764,7 @@ a.btn-info:active,a.btn-info:hover{color:#fff;background-color:#5dade2}
 #login-container{width:100%;height:100%;position:absolute;-webkit-transition:all .3s ease-in-out;-moz-transition:all .3s ease-in-out;-o-transition:all .3s ease-in-out;transition:all .3s ease-in-out}
 #login-wrapper{margin:100px auto;float:none}
 #login-wrapper .logo{color:#fff;font-size:1.7em;text-transform:uppercase;display:inline-block}
-#login-wrapper .logo:before{background-image:url(/clbs/resources/img/logo.png);background-position:left center;background-repeat:no-repeat;padding:0 20px;content:"\00a0"}
+#login-wrapper .logo:before{background-image:url(/static/virvo/resources/img/logo.png);background-position:left center;background-repeat:no-repeat;padding:0 20px;content:"\00a0"}
 #login-wrapper .form-group i{position:absolute;left:27px;top:11px}
 #login-wrapper #email,#login-wrapper #password{padding-left:32px}
 #error-container{width:100%;height:100%;position:absolute;-webkit-transition:all .3s ease-in-out;-moz-transition:all .3s ease-in-out;-o-transition:all .3s ease-in-out;transition:all .3s ease-in-out;color:#fff;background:#405d8c;background:-moz-radial-gradient(center,ellipse cover,#405d8c 0,#293949 100%);background:-webkit-gradient(radial,center center,0,center center,100%,color-stop(0,#405d8c),color-stop(100%,#293949));background:-webkit-radial-gradient(center,ellipse cover,#405d8c 0,#293949 100%);background:-o-radial-gradient(center,ellipse cover,#405d8c 0,#293949 100%);background:-ms-radial-gradient(center,ellipse cover,#405d8c 0,#293949 100%);background:radial-gradient(ellipse at center,#405d8c 0,#293949 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#405d8c',
@@ -882,12 +882,12 @@ h3.timeline-title{color:#C8CCD7;font-size:20px;font-weight:400;margin:0 0 5px;te
 #mintFar{color:#c80002;font-size:16px}
 #safe{color:#78af3a;font-size:16px}
 #danger{color:#960ba3;font-size:16px}
-.heroRanking li:nth-child(1){background: #fafafa url(/clbs/resources/img/mostDiligent.svg) no-repeat;background-size: 28px 28px;}
-.heroRanking li:nth-child(2){background: #fafafa url(/clbs/resources/img/mostLazy.svg) no-repeat;background-size: 28px 28px;}
-.heroRanking li:nth-child(3){background: #fafafa url(/clbs/resources/img/mostFar.svg) no-repeat;background-size: 28px 28px;}
-.heroRanking li:nth-child(4){background: #fafafa url(/clbs/resources/img/mintFar.svg) no-repeat;background-size: 28px 28px;}
-.heroRanking li:nth-child(5){background: #fafafa url(/clbs/resources/img/safe.svg) no-repeat;background-size: 28px 28px;}
-.heroRanking li:nth-child(6){background: #fafafa url(/clbs/resources/img/danger.svg) no-repeat;background-size: 28px 28px;}
+.heroRanking li:nth-child(1){background: #fafafa url(/static/virvo/resources/img/mostDiligent.svg) no-repeat;background-size: 28px 28px;}
+.heroRanking li:nth-child(2){background: #fafafa url(/static/virvo/resources/img/mostLazy.svg) no-repeat;background-size: 28px 28px;}
+.heroRanking li:nth-child(3){background: #fafafa url(/static/virvo/resources/img/mostFar.svg) no-repeat;background-size: 28px 28px;}
+.heroRanking li:nth-child(4){background: #fafafa url(/static/virvo/resources/img/mintFar.svg) no-repeat;background-size: 28px 28px;}
+.heroRanking li:nth-child(5){background: #fafafa url(/static/virvo/resources/img/safe.svg) no-repeat;background-size: 28px 28px;}
+.heroRanking li:nth-child(6){background: #fafafa url(/static/virvo/resources/img/danger.svg) no-repeat;background-size: 28px 28px;}
 .cityStayTime{position:absolute;top:20%;right:0;width:30%;font-size:12px;font-weight:700}
 .cityStayTime ul{text-align:right;display:inline;line-height:24px}
 .toThePlace{position:absolute;bottom:15%;left:0;width:30%;font-size:12px;font-weight:700}
@@ -960,14 +960,14 @@ position: relative!important;
 .slide-code{width:100%;height:40px;position:relative;border:1px solid #cfcfcf;background-color:#f5f5f5;overflow:hidden;text-align:center;user-select:none;-moz-user-select:none;-webkit-user-select:none;border-radius:3px}
 .slide-code-bg{height:100%;background-color:#e8e8e8;z-index:1}
 .slide-code-label,.slide-code-bg{position:absolute;left:0;top:0}
-.slide-code-label{width:40px;height:40px;line-height:40px;border-right:1px solid #cfcfcf;border-top:none;border-bottom:none;border-left:none;background:#fff;z-index:3;cursor:move;background:#fff url(/clbs/resources/img/codee.png) no-repeat center}
+.slide-code-label{width:40px;height:40px;line-height:40px;border-right:1px solid #cfcfcf;border-top:none;border-bottom:none;border-left:none;background:#fff;z-index:3;cursor:move;background:#fff url(/static/virvo/resources/img/codee.png) no-repeat center}
 .slide-code-labeltip{position:absolute;left:0;width:100%;height:100%;font-size:13px;color:#787878;line-height:40px;text-align:center;z-index:2}
 .slide-code-labeltip,.login_msg{font-family:"Microsoft Yahei",微软雅黑}
 /*------------------------*/
 .Inlinesearch{width:300px;}
 /* -- 终端管理 -- */
-.terminal-video-yes{background: url(/clbs/resources/img/terminal_video_yes.svg) no-repeat;width: 23px;height: 14px;margin: 0px auto}
-.terminal-video-no{background: url(/clbs/resources/img/terminal_video_no.svg); no-repeat;width: 23px;height: 14px;margin: 0px auto}
+.terminal-video-yes{background: url(/static/virvo/resources/img/terminal_video_yes.svg) no-repeat;width: 23px;height: 14px;margin: 0px auto}
+.terminal-video-no{background: url(/static/virvo/resources/img/terminal_video_no.svg); no-repeat;width: 23px;height: 14px;margin: 0px auto}
 
 @media only screen and (max-width:767px) and (min-width:480px){#main-content .h1{font-size:35px}
 .report-group,.report-speed,.report-stoptime,.report-time{width:100%}
@@ -1001,12 +1001,12 @@ footer .defaultFootBg{width:100%}
 @media only screen and (max-width:479px){.toggle-left-h2 h2{font-size:18px}
 @media only screen and (max-width:479px){.carTree h1{font-size:26px}
 #header .dropdown.messages{display:none}
-.container-area i.left-btn{background-image:url(/clbs/resources/img/hover_left_2.png);background-position:0 center;top:104px;left:0;width:52px;height:387px}
-.container-area i.right-btn{background-image:url(/clbs/resources/img/hover_right_2.png);right:0;top:104px;background-position:0 center;width:52px;height:387px}
+.container-area i.left-btn{background-image:url(/static/virvo/resources/img/hover_left_2.png);background-position:0 center;top:104px;left:0;width:52px;height:387px}
+.container-area i.right-btn{background-image:url(/static/virvo/resources/img/hover_right_2.png);right:0;top:104px;background-position:0 center;width:52px;height:387px}
 .toopTip-btn-right{width:40px;margin-left:-11px}
 .toopTip-btn-left{margin-left:-187px}
-.container-area i.left-btn:hover{background-image:url(/clbs/resources/img/hover_left_2.png);width:52px;height:387px;background-position:0 center}
-.container-area i.right-btn:hover{background-image:url(/clbs/resources/img/hover_right_2.png);width:52px;height:387px;background-position:0 center}
+.container-area i.left-btn:hover{background-image:url(/static/virvo/resources/img/hover_left_2.png);width:52px;height:387px;background-position:0 center}
+.container-area i.right-btn:hover{background-image:url(/static/virvo/resources/img/hover_right_2.png);width:52px;height:387px;background-position:0 center}
 .toopTip-btn-left:hover{background:-webkit-linear-gradient(left,rgba(196,225,245,0),rgba(196,225,245,0));background:-o-linear-gradient(left,rgba(196,225,245,0),rgba(196,225,245,0));background:-moz-linear-gradient(left,rgba(196,225,245,0),rgba(196,225,245,0));background:linear-gradient(left,rgba(196,225,245,0),rgba(196,225,245,0))}
 .toopTip-btn-right:hover{background:-webkit-linear-gradient(right,rgba(196,225,245,0),rgba(196,225,245,0));background:-o-linear-gradient(right,rgba(196,225,245,0),rgba(196,225,245,0));background:-moz-linear-gradient(right,rgba(196,225,245,0),rgba(196,225,245,0));background:linear-gradient(right,rgba(196,225,245,0),rgba(196,225,245,0))}
 .real-time-command-list{float:none!important}}
