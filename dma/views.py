@@ -309,7 +309,7 @@ def rolelist(request):
     result['draw'] = draw
     result['recordsTotal'] = rolel.count()
     # result['recordsFiltered'] = music['count']
-    print result
+    
     return HttpResponse(json.dumps(result))
     # return JsonResponse(output,safe=False)
 

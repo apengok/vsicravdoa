@@ -398,7 +398,11 @@ img{max-width:100%}
 
 
 #header{z-index:200;background:#fff;min-height:80px;-webkit-transition:all .3s ease-in-out;-moz-transition:all .3s ease-in-out;-o-transition:all .3s ease-in-out;transition:all .3s ease-in-out;margin-right:0}
-#header .brand{float:left;width:240px;min-height:80px;padding:0 0 0 10px;position:relative;background:#28282e}
+#header .brand{float:left;width:240px;min-height:80px;padding:0 0 0 10px;position:relative;background:#28282e;font-family:'Berlin Sans FB Demi Bold', 'Berlin Sans FB Normal', 'Berlin Sans FB';
+    font-weight:600;
+    font-style:normal;
+    font-size:60px;
+    color:#FFFFFF;}
 #header .logo{color:#fff;font-size:1.7em;text-transform:uppercase;padding:23px 0 0 63px;display:inline-block}
 #header .logo span{font-weight:700}
 #header .toggle-navigation button:active,#header .toggle-navigation button:hover,#header button#toggle-mail:active,#header button#toggle-mail:hover{background:#6dcff6}
