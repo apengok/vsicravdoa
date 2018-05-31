@@ -29,9 +29,7 @@
                     "data" : null,
                     "class" : "text-center",
                     render : function(data, type, row, meta) {
-                        var arrayObj = row.id.all;
-                        arrayObj.reverse();
-                        var idStr = arrayObj.join(",");
+                        var idStr = row.id;
                         var result = '';
                         result += '<input  type="checkbox" name="subChk"  value="' + idStr + '" />';
                         return result;
@@ -39,11 +37,10 @@
                 },
                 {
                     "data" : null,
-                    "class" : "text-center", //最后一列，操作按钮
+                    "class" : "text-center", //操作按钮
                     render : function(data, type, row, meta) {
-                        var arrayObj = row.id.all;
-                        var idStr = arrayObj.join(",");
-                        var editUrlPath = myTable.editUrl + idStr + ".gsp"; //修改地址
+                        var idStr = row.id;
+                        var editUrlPath = myTable.editUrl + idStr + "/"; //修改地址
                         var result = '';
                         //修改按钮
                         var isAdminStr = $("#isAdmin").attr("value");
@@ -65,17 +62,16 @@
                         return result;
                     }
                 }, {
-                    "data" : "roleName",
+                    "data" : "name",
                     "class" : "text-center"
                 },  {
-                    "data" : "description",
+                    "data" : "notes",
                     "class" : "text-center"
                 }, {
                     "data" : null,
                     "class" : "text-center", //最后一列，操作按钮
                     render : function(data, type, row, meta) {
-                        var arrayObj = row.id.all;
-                        var idStr = arrayObj.join(",");
+                        var idStr = row.id;
                         return "<a onclick='roleList.showPermission(\"" + idStr
                         + "\")'>预览</a>";
                     }
@@ -87,8 +83,8 @@
             };
             //表格setting
             var setting = {
-                listUrl : '/clbs/c/role/list',
-                editUrl : '/clbs/c/role/edit_',
+                listUrl : 'role/rolelist/',
+                editUrl : 'roles/update/',
                 deleteUrl : '/clbs/c/role/delete_',
                 deletemoreUrl : '/clbs/c/role/deletemore',
                 enableUrl : '/clbs/c/user/enable_',
@@ -109,7 +105,8 @@
                     type: "post",
                     enable: true,
                     autoParam: ["id"],
-                    dataType: "json"
+                    dataType: "json",
+                    // data:{'csrfmiddlewaretoken': '{{ csrf_token }}'},
                 },
                 check: {
                     enable: true,
@@ -174,7 +171,7 @@
         //点击预览 
         showPermission: function(id){
             $('#showPermissionDiv').modal('show');
-            var url="permissionTree";
+            var url="role/choicePermissionTree/";
             var parameter={ "roleId": id};
             json_ajax("POST",url,"json",true,parameter, roleList.showPermissionCallback);
         },

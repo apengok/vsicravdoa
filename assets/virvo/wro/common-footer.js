@@ -19629,6 +19629,7 @@ function tg_createTable(tg_table) {
             "url": tg_table.listUrl,
             "type": "POST", // post方式请求
             "data": tg_table.ajaxDataParamFun,
+            // data:{'csrfmiddlewaretoken': '{{ csrf_token }}'},
             "complete": function (r) {
                 if (r.responseText.indexOf("<form id=\"loginForm") > 0) {
                     window.location.replace("/clbs/login?type=expired");
@@ -21386,7 +21387,14 @@ function error(XMLHttpRequest, textStatus, errorThrown){
     }
     layer.msg("系统的情绪不稳定，并向你扔了一个错误~");
 }
+
+
 function beforeSend(XMLHttpRequest){
+    
+    console.log('beforeSend?sdf');
+    var csrftoken = getCookie('csrftoken');
+    XMLHttpRequest.setRequestHeader("X-CSRFToken", csrftoken);
+    
     layer.load(2);
 }
 function complete(XMLHttpRequest, textStatus){
@@ -21588,8 +21596,39 @@ function checkBrands(id){
     }
 }
 
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
 
 (function($){  
+
+    var csrftoken = getCookie('csrftoken');
+
+    function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+
+    $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+        }
+    });
     //备份jquery的ajax方法  
     var _ajax=$.ajax;  
       
@@ -21646,39 +21685,39 @@ function checkBrands(id){
         })
 })(jQuery); 
 
-// $(function(){	
-// 		var userGroupId=$("#userGroupId").val();
-// 		var data={"uuid":userGroupId};
-// 		var url="/clbs/m/intercomplatform/personalized/find";
-//      	json_ajax("POST", url, "json", false,data,function(data){
-//      		if(data.success==true){
-//      			var list =data.obj.list;
-//      			var topTitleMsg=list.topTitle;
-//      			$("#personalizedTitle").html(topTitleMsg);
+$(function(){	
+		// var userGroupId=$("#userGroupId").val();
+		// var data={"uuid":userGroupId};
+		// var url="/clbs/m/intercomplatform/personalized/find";
+  //    	json_ajax("POST", url, "json", false,data,function(data){
+  //    		if(data.success==true){
+  //    			var list =data.obj.list;
+  //    			var topTitleMsg=list.topTitle;
+  //    			$("#personalizedTitle").html(topTitleMsg);
      			
-//      			var copyright=list.copyright;
-// 				var websiteName=list.websiteName;
-// 				var recordNumber=list.recordNumber;
-// 				$("#copyRight").html(copyright);
-// 				$("#website").html(websiteName);
-// 				$("#website").attr("href","http://"+websiteName);
-// 				$("#record").html(recordNumber);
-//      			var homeLogo="/clbs/resources/img/logo/"+list.homeLogo;
-//      			$(".brand").attr("style","background:url("+homeLogo+") no-repeat 0px 0px !important;");
-//      			var webIco=list.webIco;
-//      			$("#icoLink").attr("href","/clbs/resources/img/logo/"+webIco+"");
-//      		}
-//      	});  
-//      	$(".panel-heading").bind("click",function(){
-//              	var id=$(this).context.id;
-//             	if($("#"+id+"-body").is(":hidden")){
-//             		$("#"+ id + "-body").slideDown();
-//              		//$("#"+id+"-body").css("display","block");
-//              		$("#"+id+"-chevron").removeClass("chevron-up").addClass("chevron-down");
-//              	}else{
-//              		$("#"+ id + "-body").slideUp();
-//                		//$("#"+id+"-body").css("display","none");
-//                		$("#"+id+"-chevron").removeClass("chevron-down").addClass("chevron-up");
-//                	}
-//      	});
-// });
+  //    			var copyright=list.copyright;
+		// 		var websiteName=list.websiteName;
+		// 		var recordNumber=list.recordNumber;
+		// 		$("#copyRight").html(copyright);
+		// 		$("#website").html(websiteName);
+		// 		$("#website").attr("href","http://"+websiteName);
+		// 		$("#record").html(recordNumber);
+  //    			var homeLogo="/clbs/resources/img/logo/"+list.homeLogo;
+  //    			$(".brand").attr("style","background:url("+homeLogo+") no-repeat 0px 0px !important;");
+  //    			var webIco=list.webIco;
+  //    			$("#icoLink").attr("href","/clbs/resources/img/logo/"+webIco+"");
+  //    		}
+  //    	});  
+     	$(".panel-heading").bind("click",function(){
+             	var id=$(this).context.id;
+            	if($("#"+id+"-body").is(":hidden")){
+            		$("#"+ id + "-body").slideDown();
+             		//$("#"+id+"-body").css("display","block");
+             		$("#"+id+"-chevron").removeClass("chevron-up").addClass("chevron-down");
+             	}else{
+             		$("#"+ id + "-body").slideUp();
+               		//$("#"+id+"-body").css("display","none");
+               		$("#"+id+"-chevron").removeClass("chevron-down").addClass("chevron-up");
+               	}
+     	});
+});

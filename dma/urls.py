@@ -19,8 +19,7 @@ urlpatterns = [
 
     url(r'gettree/$',views.gettree,name='gettree'),
 
-    url(r'^role/choicePermissionTree/',views.choicePermissionTree,name='choicePermissionTree'),
-    url(r'^role/rolelist/',views.rolelist,name='rolelist'),
+    
 
     url(r'getchartd/$',views.getchartd,name='getchartd'),
 
@@ -65,10 +64,13 @@ urlpatterns = [
     url(r'^(?P<pk>\d+)/$', views.DMAListView.as_view(),name='dma_manager'),
 
     # 企业管理 --角色管理
+    url(r'^role/choicePermissionTree/',views.choicePermissionTree,name='choicePermissionTree'),
+    url(r'^role/rolelist/',views.rolelist,name='rolelist'),
     url(r'^roles/?$', views.RolesMangerView.as_view(), name='roles_manager'),
     url(r'^roles/create/?$', views.RolesCreateMangerView.as_view(), name='role_create_manager'),
     url(r'^roles/update/(?P<pk>[0-9]+)/?$', views.RolesUpdateManagerView.as_view(), name='role_edit_manager'),
 
+    url(r'^user/userlist/',views.userlist,name='userlist'),
     url(r'^organ_users/?$', views.OrganUserMangerView.as_view(), name='organ_users'),#组织和用户管理
     url(r'^user/create/?$', views.UserCreateMangerView.as_view(), name='user_create_manager'),
     url(r'^user/update/(?P<pk>[0-9]+)/?$', views.UserUpdateManagerView.as_view(), name='user_edit_manager'),

@@ -79,7 +79,7 @@
                             // 授权
                             result += '<button href="'
                                     + VehicleUrlPre.replace("{id}", idStr)
-                                    + '" data-target="#commonSmWin" class="editBtn editBtn-info" type="button" data-toggle="modal"><i class="fa faEdit"></i>分配分组</button>&nbsp;'
+                                    + '" data-target="#commonSmWin" class="editBtn editBtn-info" type="button" data-toggle="modal"><i class="fa faEdit"></i>授权站点</button>&nbsp;'
                             // 删除按钮
                             result += '<button type="button" onclick="groupUserManage.deleteRole(\''+idStr+'\')" class="deleteButton editBtn disableClick"><i class="fa fa-trash-o"></i>删除</button>';
                         }else {
@@ -90,7 +90,7 @@
                             // 授权
                             result += '<button disabled href="'
                                     + VehicleUrlPre.replace("{id}", idStr)
-                                    + '" data-target="#commonSmWin" class="editBtn btn-default deleteButton" type="button" data-toggle="modal"><i class="fa fa-ban"></i>分配分组</button>&nbsp;'
+                                    + '" data-target="#commonSmWin" class="editBtn btn-default deleteButton" type="button" data-toggle="modal"><i class="fa fa-ban"></i>授权站点</button>&nbsp;'
                             // 删除按钮
                             result += '<button disabled type="button" onclick="groupUserManage.deleteRole(\''+idStr+'\')" class="btn-default editBtn deleteButton"><i class="fa fa-ban"></i>删除</button>';
                         }
@@ -98,11 +98,11 @@
                     }
                 },
                 {
-                    "data" : "username",
+                    "data" : "user_name",
                     "class" : "text-center"
                 },
                 {
-                    "data" : "fullName",
+                    "data" : "real_Name",
                     "class" : "text-center",
                     render : function (data,type,row,meta) {
                         if(data == "null" || data == null || data == undefined){
@@ -112,7 +112,7 @@
                     }
                 },
                 {
-                    "data" : "gender",
+                    "data" : "sex",
                     "class" : "text-center",
                     render : function(data, type, row, meta) {
                         if (data == "1") {
@@ -125,7 +125,7 @@
                     }
                 },
                 {
-                    "data" : "mobile",
+                    "data" : "phone_number",
                     "class" : "text-center",
                     render : function (data,type,row,meta) {
                         if(data == "null" || data == null || data == undefined){
@@ -135,7 +135,7 @@
                     }
                 },
                 {
-                    "data" : "mail",
+                    "data" : "email",
                     "class" : "text-center",
                     render : function (data,type,row,meta) {
                         if(data == "null" || data == null || data == undefined){
@@ -145,7 +145,7 @@
                     }
                 } ,
                 {
-                    "data" : "state",
+                    "data" : "is_active",
                     "class" : "text-center",
                     render : function(data, type, row, meta) {
                         if (data == "1") {
@@ -158,7 +158,7 @@
                     }
                 } ,
                 {
-                    "data" : "authorizationDate",
+                    "data" : "expire_date",
                     "class" : "text-center",
                     render : function (data,type,row,meta) {
                         if(data == "null" || data == null || data == undefined){
@@ -178,8 +178,8 @@
             ];
             // 表格setting
             setting = {
-                listUrl : "/clbs/c/user/list",
-                editUrl : "/clbs/c/user/edit_",
+                listUrl : "user/userlist/",
+                editUrl : "user/update/",
                 deleteUrl : "/clbs/c/user/delete_",
                 deletemoreUrl : "/clbs/c/user/deletemore",
                 enableUrl : "/clbs/c/user/enable_",
@@ -201,7 +201,7 @@
             // 初始化文件树
             treeSetting = {
                 async : {
-                    url : "/clbs/m/basicinfo/enterprise/professionals/tree",
+                    url : "gettree/",
                     type : "post",
                     enable : true,
                     autoParam : [ "id" ],
@@ -894,7 +894,7 @@
         groupUserManage.userTree();
         getTable('dataTables');
         groupUserManage.init();
-        groupUserManage.findOperation();
+        // groupUserManage.findOperation();
         // IE9
         if(navigator.appName=="Microsoft Internet Explorer" && navigator.appVersion.split(";")[1].replace(/[ ]/g,"")=="MSIE9.0") {
         	groupUserManage.refreshTable();

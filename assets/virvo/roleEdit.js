@@ -105,6 +105,8 @@
                     if (data != null) {
                         //var result = $.parseJSON(data);
                         $("#commonSmWin").modal("hide");
+                        layer.msg("修改成功！",{move:false});
+                        myTable.refresh();
                         
                         // if (result.success) {
                         //     if (result.obj.flag == 1){

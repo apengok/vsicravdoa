@@ -126,6 +126,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# CSRF_USE_SESSIONS = False
+
 AUTH_USER_MODEL = 'accounts.User' #change buikld-in user model to us
 LOGIN_URL = '/login/'
 LOGIN_URL_REDIRECT = '/'

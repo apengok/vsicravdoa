@@ -1,169 +1,126 @@
-{% extends 'dma/home.html' %}
+{% extends '_vbase.html' %}
 
 
-{% block breadcrumbs %} / 企业管理/角色管理{% endblock %}
 
 {% load staticfiles %}
 
 {% block main_content %}
-  <div class="row ">
-    
 
-    <div class="col-sm-12" style="margin-left: -10px;">
-          
-
-          <div class="ibox float-e-margins">
-              <div class="ibox-title modal_head collapse-link" >
-                <h5>角色列表 </h5>
-                  <div class="ibox-tools" >
-                      <a >
-                          <i class="fa fa-angle-down"></i>
-                      </a>
-                      
-                  </div>
-                  
-              </div>
-              <div class="ibox-content">
-                  
-              
-              
-                    <div class="bars pull-left">
-                      <div class="btn-group pull-left barsMargin" role="group">
-                          <form role="form"> 
-                             <label><input type="text" class="Inlinesearch form-control" id="simpleQueryParam" name="simpleQueryParam" placeholder="请输入角色名称"></label>
-                              <button type="button" id="search_button"  class="btn btn-outline btn-default">搜索
-                              </button>
-                             <input id="hiddenText" type="text" style="display:none">
-                          </form> 
-                      </div>
-                      <div class="dropdown pull-left">
-                          <button class="btn btn-default dropdown-toggle"  data-toggle="dropdown" >操作菜单<span class="caret"></span>
-                          </button>
-                          <ul class="dropdown-menu" >
-                              <li><a href="{% url 'dma:role_create_manager' %}" id="addId" data-toggle="modal" data-target="#commonSmWin"><i class="glyphicon glyphicon-plus icoPaddingLeft"></i>新增</a></li>
-                              <li><a href="javascript:void(0);" id="del_model"><i class="glyphicon glyphicon-trash icoPaddingLeft"></i>批量删除</a></li>
-                          </ul>
-                      </div>
-
-                      
-                    </div>
-
-                    
-                    
-                    <div>
-                    <table id="tb_stations" class="ax_default table table-bordered">
-                      <thead>
-                        <tr>
-                          
-                          <th style="height: 51px;width: 51px;text-align: center;" >序号</th>
-                          <th style="height: 51px;width: 51px;text-align: center;" >选择</th>
-                          <th style="height: 51px;width: 164px;text-align: center;" >操作</th>
-                          <th style="height: 51px;width: 240px;text-align: center;" >角色名称</th>
-                          <th style="height: 51px;width: 500px;text-align: center;" >备注</th>
-                          <th style="height: 51px;text-align: center;" >预览</th>
-                          
-                          
-                        </tr>
-        
-                      </thead>
-                     {% for r in role_list %}
-                        <tr >
-                          <td>{{ r.id }} </td>
-                          <td><input type="checkbox"/> </td>
-                          <td class="ax_default _查询按钮">
-                            <div >
-                              <a class="btn btn-default" href="{% url 'dma:role_edit_manager' r.id %}" data-toggle="modal" data-target="#commonSmWin" title="update stations" style="background-color: #169bd5;width: 60px;height: 35;">修改</a>
-                              <a class="btn btn-default" id = "btnDelete" style="background-color: rgba(153, 153, 153, 1);width: 60px;height: 35;">删除</a>
-
-                            </div>
-                          </td>
-
-                          
-                
-                          <td >{{ r.name }} </td>
-                          <td>{{ r.notes }} </td>
-                          <td>预览 </td>
-                          
-                          
-                        </tr>
-                        
-                     {% endfor %}
-                    </table>
-                    <div class="row">
-                      <div class="col-md-3 col-sm-12 col-xs-12">
-                        <div class="dataTables_length" id="dataTable_length">
-                          <label>每页 <select name="dataTable_length" aria-controls="dataTable" class=""><option value="10">10</option><option value="20">20</option><option value="50">50</option><option value="100">100</option><option value="200">200</option></select> 条记录</label>
+          <div class="row">
+                  <div class="col-md-12">
+                    <div class="panel panel-default">
+                      <div class="panel-heading" id="stretch" >
+                        <h3 class="panel-title fwb">角色列表</h3>
+                        <div class="actions pull-right">
+                          <i class="fa fa-chevron-down"  id="stretch-chevron" ></i>
                         </div>
                       </div>
-                      <div class="col-md-4 col-sm-12 col-xs-12">
-                        <div class="dataTables_info" id="dataTable_info" role="alert" aria-live="polite" aria-relevant="all">第 1 至 10 条记录，共 14 条</div>
+                      <div class="panel-body fixed-table-body"  id="stretch-body">
+                      <input value="true" id="permission" type="hidden"  />
+                                  <div class="ToolPanel">
+                                      <div class="bars pull-left">
+                                          <div class="btn-group pull-left barsMargin" role="group">
+                                              <form role="form"> 
+                                                 <label><input type="text" class="Inlinesearch form-control" id="simpleQueryParam" name="simpleQueryParam" placeholder="请输入角色名称"></label>
+                                                      <button type="button" id="search_button" onclick="myTable.requestData()"
+                                                              class="btn btn-outline btn-default">搜索
+                                                      </button>
+                                                 <input id="hiddenText" type="text" style="display:none" />
+                                              </form> 
+                                          </div>
+                                          <div class="dropdown pull-left">
+                                              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">操作菜单<span class="caret"></span>
+                                              </button>
+                                              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                                  <li><a href="{% url 'dma:role_create_manager' %}" id="addId" data-toggle="modal" data-target="#commonSmWin"><i class="glyphicon glyphicon-plus icoPaddingLeft"></i>新增</a></li>
+                                                  <li><a href="javascript:void(0);" id="del_model"><i class="glyphicon glyphicon-trash icoPaddingLeft"></i>批量删除</a></li>
+                                              </ul>
+                                          </div>
+                                      </div>
+                                      <div class="columns btn-group pull-right roleManagementF">
+                                          <button id="refreshTable" class="btn btn-default" type="button" name="refresh" title="刷新">
+                                              <i class="glyphicon glyphicon-refresh icon-refresh"></i>
+                                          </button>
+                                          <div class="keep-open btn-group" title="定制显示列">
+                                              <button id="customizeColumns" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                                  <i class="glyphicon glyphicon-th icon-th"></i> <span class="caret"></span>
+                                              </button>
+                                              <ul class="dropdown-menu" role="menu" id="Ul-menu-text">                
+                                              </ul>
+                                          </div>
+                                      </div>
+                                  </div>
+                        <table id="dataTable"
+                          class="table table-striped table-bordered table-hover checkTable"
+                          cellspacing="0" width="100%">
+                          <thead>
+                            <tr>
+                              <th></th>
+                              <th><input
+                                type="checkbox" id="checkAll"></th>
+                              <th>操作设置</th>
+                              <th>角色名称</th>
+                              <th>备注</th>
+                              <th>权限</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                          </tbody>
+                        </table>
+                          
                       </div>
-                      <div class="col-md-5 col-sm-12 col-xs-12">
-                        <div class="dataTables_paginate paging_full_numbers" id="dataTable_paginate">
-                          <ul class="pagination">
-                            <li class="paginate_button first disabled" aria-controls="dataTable" tabindex="0" id="dataTable_first"><a href="#">首页</a>
-                            </li>
-                            <li class="paginate_button previous disabled" aria-controls="dataTable" tabindex="0" id="dataTable_previous"><a href="#">上一页</a>
-                            </li>
-                            <li class="paginate_button active" aria-controls="dataTable" tabindex="0"><a href="#">1</a></li>
-                            <li class="paginate_button next" aria-controls="dataTable" tabindex="0" id="dataTable_next"><a href="#">下一页</a></li>
-                            <li class="paginate_button last" aria-controls="dataTable" tabindex="0" id="dataTable_last"><a href="#">末页</a>
-                            </li>
-                          </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal fade" id="showPermissionDiv" tabindex="-1"
+                  role="dialog" aria-labelledby="myModalLabel"  aria-hidden="true" data-backdrop="static">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <form id="permissionForm"
+            role="form" action="/clbs/c/role/getPermission" method="post" class="form-horizontal">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"
+                aria-hidden="true">&times;</button>
+              <h4 class="modal-title">查看角色权限</h4>
+            </div>
+            <div class="modal-body modal-body-overflow">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="panel panel-default">
+                    <div class="panel-body">
+                      <div class="tab-content">
+                        <div class="tab-pane active" id="home1">
+                          <section class="fuelux">
+                            <form class="form-horizontal">
+                              <div id="resourceAll">
+                                <h5 class="fwb">操作权限：</h5>
+                                <div class="treeArea">
+                                  <ul id="resourceDemo" name="fenceTree" class="ztree"></ul>
+                                </div>
+                              </div>
+                            </form>
+                          </section>
                         </div>
                       </div>
                     </div>
-
                   </div>
-                  
-
+                </div>
               </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">
+                <strong>关 闭</strong>
+              </button>
+            </div>
+          </form>
           </div>
-      
-          
-      </div> 
-
-
-
-  </div>
-
-
-<!-- Modal -->
-    
-
-<div id="commonSmWin" class="modal fade" aria-hidden="true" data-keyboard="false" data-backdrop="static" >
-  <div class="modal-dialog" style="max-height: 726px; height: auto;">
-    <div class="modal-content"></div>
-  </div>
-  
-</div>
+        </div>
+      </div>
     
 
 {% endblock %}
 
 
-
 {% block javascript %}
-      {{ block.super }}
-      <script>
-
-      
-
-        // console.log('stations_list_manger...')
-/*<![CDATA[*/
-        $(function() {
-            var windowId = "commonSmWin";
-            $("#" + windowId).on("hidden.bs.modal", function() {
-                $(this).removeData("bs.modal");
-            });
-        });
-        /*]]>*/
-        
-
-        $('body').on('hidden.bs.modal', '.modal', function () {
-            // console.log('hidden??...')
-            $(this).removeData('bs.modal');
-        });
-      </script>
-    {% endblock %}
-
+<script src="{% static 'virvo/wro/roleList.js' %}"></script>
+{% endblock %}

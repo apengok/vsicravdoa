@@ -56,9 +56,13 @@
                 <div class="row eightIsZero">
                     <div class="col-md-12">
                         <ul class="breadcrumb">
-                            <li><a href="#">首页</a>
-                            </li>
+                            <li><a href="#">首页</a></li>
+                            {% if page_menu %}
+                                <li class="active">{{ page_menu }}</li>
+                                <li class="active">{{ page_title }}</li>
+                            {% endif %}
                         </ul>
+                        <h1 class="h1 ">{{ page_title }}</h1>
                     </div>
                 </div>
                 {% block main_content %}
@@ -263,8 +267,10 @@
     </script>
 </div>
 
-<script src="{% static 'virvo/resources/js/zTree/js/ztreeSearch.js' %}"></script>
+{% block javascript %}
 
+
+{% endblock %}
 
 </body>
 </html>

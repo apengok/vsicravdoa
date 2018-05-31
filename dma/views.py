@@ -288,30 +288,97 @@ def choicePermissionTree(request):
 from django.core import serializers
 
 def rolelist(request):
+    draw = 1
+    length = 0
+    start=0
+    if request.method == 'GET':
+        draw = int(request.GET.get('draw', None)[0])
+        length = int(request.GET.get('length', None)[0])
+        start = int(request.GET.get('start', None)[0])
+        search_value = request.GET.get('search[value]', None)
+        # order_column = request.GET.get('order[0][column]', None)[0]
+        # order = request.GET.get('order[0][dir]', None)[0]
 
-    draw = int(request.GET.get('draw', None)[0])
-    length = int(request.GET.get('length', None)[0])
-    start = int(request.GET.get('start', None)[0])
-    search_value = request.GET.get('search[value]', None)
-    # order_column = request.GET.get('order[0][column]', None)[0]
-    # order = request.GET.get('order[0][dir]', None)[0]
+    if request.method == 'POST':
+        draw = int(request.POST.get('draw', None)[0])
+        length = int(request.POST.get('length', None)[0])
+        start = int(request.POST.get('start', None)[0])
+        pageSize = int(request.POST.get('pageSize', 10))
+        search_value = request.POST.get('search[value]', None)
+        # order_column = request.POST.get('order[0][column]', None)[0]
+        # order = request.POST.get('order[0][dir]', None)[0]
 
-    print('get rolelist:',draw,length,start,search_value)
+    # print('get rolelist:',draw,length,start,search_value)
     rolel = MyRoles.objects.all()
     data = []
     for r in rolel:
         data.append({'id':r.pk,'name':r.name,'notes':r.notes})
     # json = serializers.serialize('json', rolel)
-    output = [{"draw":draw,"recordsTotal":rolel.count(),"length":length,"start":start,"records":data}]
+    recordsTotal = rolel.count()
 
     result = dict()
-    result['data'] = data
+    result['records'] = data
     result['draw'] = draw
-    result['recordsTotal'] = rolel.count()
+    result['success'] = 'true'
+    result['pageSize'] = pageSize
+    # result['totalPages'] = recordsTotal/pageSize
+    result['recordsTotal'] = recordsTotal
     # result['recordsFiltered'] = music['count']
     
     return HttpResponse(json.dumps(result))
-    # return JsonResponse(output,safe=False)
+    # return JsonResponse([result],safe=False)
+
+
+def userlist(request):
+    draw = 1
+    length = 0
+    start=0
+    if request.method == 'GET':
+        draw = int(request.GET.get('draw', None)[0])
+        length = int(request.GET.get('length', None)[0])
+        start = int(request.GET.get('start', None)[0])
+        search_value = request.GET.get('search[value]', None)
+        # order_column = request.GET.get('order[0][column]', None)[0]
+        # order = request.GET.get('order[0][dir]', None)[0]
+
+    if request.method == 'POST':
+        draw = int(request.POST.get('draw', None)[0])
+        length = int(request.POST.get('length', None)[0])
+        start = int(request.POST.get('start', None)[0])
+        pageSize = int(request.POST.get('pageSize', 10))
+        search_value = request.POST.get('search[value]', None)
+        # order_column = request.POST.get('order[0][column]', None)[0]
+        # order = request.POST.get('order[0][dir]', None)[0]
+
+    # print('get rolelist:',draw,length,start,search_value)
+    userl = User.objects.all()
+    data = []
+    for u in userl:
+        data.append({
+            'id':u.pk,
+            'user_name':u.user_name,
+            'real_name':u.real_name,
+            'sex':u.sex,
+            'phone_number':u.phone_number,
+            'expire_date':u.expire_date,
+            'groupName':u.belongto,
+            'roleName':u.Role,
+            'email':u.email,
+        })
+    # json = serializers.serialize('json', rolel)
+    recordsTotal = userl.count()
+
+    result = dict()
+    result['records'] = data
+    result['draw'] = draw
+    result['success'] = 'true'
+    result['pageSize'] = pageSize
+    # result['totalPages'] = recordsTotal/pageSize
+    result['recordsTotal'] = recordsTotal
+    # result['recordsFiltered'] = music['count']
+    
+    return HttpResponse(json.dumps(result))
+    # return JsonResponse([result],safe=False)
 
 def getchartd(request):
     data = [random.randint(2,13), 20, 6, 10, 20, 30]
@@ -994,6 +1061,8 @@ class OrganUserMangerView(TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(OrganUserMangerView, self).get_context_data(*args, **kwargs)
+        context['page_menu'] = '企业管理'
+        # context['page_submenu'] = '组织和用户管理'
         context['page_title'] = '组织和用户管理'
 
         context['user_list'] = User.objects.all()
