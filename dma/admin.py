@@ -50,3 +50,6 @@ class StationsAdmin(admin.ModelAdmin):
 class StationsAdmin(admin.ModelAdmin):
     list_display = ['stations','report_time','alarm_type','process_status','process_by','process_time','notes',]    
 
+@admin.register(models.Organizations)
+class OrganizationsAdmin(admin.ModelAdmin):
+    list_display = ['name','attribute','register_date','owner_name','phone_number','firm_address','cid','pId','is_org','uuid']

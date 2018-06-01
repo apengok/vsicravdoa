@@ -63,7 +63,7 @@
                         var idStr = row.id;
                         // var arrayObj = row.id.all;
                         // var idStr = arrayObj.join(",");
-                        var editUrlPath = myTable.editUrl + idStr + ".gsp"; // 修改地址
+                        var editUrlPath = myTable.editUrl + idStr + "/"; // 修改地址
                         var roleUrlPre = '/clbs/c/user/roleList_{id}.gsp';
                         var VehicleUrlPre = '/clbs/c/user/vehiclePer_{id}.gsp';
                         var result = '';
@@ -201,7 +201,7 @@
             // 初始化文件树
             treeSetting = {
                 async : {
-                    url : "gettree/",
+                    url : "user/oranizationtree/",
                     type : "post",
                     enable : true,
                     autoParam : [ "id" ],
@@ -384,9 +384,10 @@
             var id = (100 + newCount);
             var pid = treeNode.id;
             pid = window.encodeURI(window.encodeURI(pid));
+            
             var addStr = "<span class='button add' id='addBtn_"
                     + treeNode.tId
-                    + "' title='增加' href='/clbs/c/group/add.gsp?id="
+                    + "' title='增加' href='user/group/add/?id="
                     + id
                     + "&pid="
                     + pid

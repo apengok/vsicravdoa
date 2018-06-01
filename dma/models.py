@@ -284,3 +284,28 @@ class Alarms(models.Model):
 
     def __str__(self):
         return '%s_alarms'%(self.stations.station_name) 
+
+
+class Organizations(models.Model):
+    name               = models.CharField('组织机构名称',max_length=300,null=True)
+    attribute          = models.CharField('组织机构性质',max_length=300,null=True,blank=True)
+    register_date      = models.DateField('注册日期',max_length=300,null=True,blank=True)
+    owner_name         = models.CharField('负责人',max_length=300,null=True,blank=True)
+    phone_number       = models.CharField('电话号码',max_length=300,null=True,blank=True)
+    firm_address       = models.CharField('地址',max_length=300,null=True,blank=True)
+
+    cid           = models.CharField(max_length=300,null=True,blank=True)
+    pId           = models.CharField(max_length=300,null=True,blank=True)
+    is_org        = models.BooleanField(max_length=300,blank=True)
+    uuid          = models.CharField(max_length=300,null=True,blank=True)
+
+
+    class Meta:
+        managed = True
+        db_table = 'organizations'
+
+    def __unicode__(self):
+        return self.name    
+
+    def __str__(self):
+        return self.name 

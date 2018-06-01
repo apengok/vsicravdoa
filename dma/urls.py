@@ -70,6 +70,8 @@ urlpatterns = [
     url(r'^roles/create/?$', views.RolesCreateMangerView.as_view(), name='role_create_manager'),
     url(r'^roles/update/(?P<pk>[0-9]+)/?$', views.RolesUpdateManagerView.as_view(), name='role_edit_manager'),
 
+    url(r'^user/oranizationtree/',views.oranizationtree,name='oranizationtree'),
+    url(r'^user/group/add/',views.groupadd,name='groupadd'),
     url(r'^user/userlist/',views.userlist,name='userlist'),
     url(r'^organ_users/?$', views.OrganUserMangerView.as_view(), name='organ_users'),#组织和用户管理
     url(r'^user/create/?$', views.UserCreateMangerView.as_view(), name='user_create_manager'),

@@ -23,7 +23,7 @@ from django.contrib.auth.models import Permission
 
 from django.urls import reverse_lazy
 from .forms import DMABaseinfoForm,CreateDMAForm,TestForm,StationsCreateManagerForm,StationsForm
-from . models import Organization,Stations,DMABaseinfo,Alarms
+from . models import Organization,Stations,DMABaseinfo,Alarms,Organizations
 from accounts.models import User,MyRoles
 from accounts.forms import RoleCreateForm,MyRolesForm,RegisterForm,UserDetailChangeForm
 
@@ -277,15 +277,30 @@ def choicePermissionTree(request):
             else:
                 node['checked'] = 'true'
             
-                
 
-
-    
 
     # return JsonResponse(dicts,safe=False)
     return HttpResponse(json.dumps(ctree))
 
-from django.core import serializers
+def oranizationtree(request):   
+    organtree = []
+
+    organs = Organizations.objects.all()
+    for o in organs:
+        organtree.append({
+            'name':o.name,
+            'id':o.cid,
+            'pId':o.pId,
+            'type':'group'
+            })
+
+    return HttpResponse(json.dumps(organtree)) 
+
+def groupadd(request):
+    print(request)
+
+    return HttpResponse(json.dumps([{'ok':1}]))
+# from django.core import serializers
 
 def rolelist(request):
     draw = 1
